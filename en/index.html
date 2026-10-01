@@ -465,7 +465,9 @@ body.noche .tel{background:#05182B;box-shadow:0 0 0 1px var(--linea-t),var(--som
 .nota-demo{font-size:13px;color:var(--texto3);margin:0}
 .pie-web{padding-block:56px 40px;border-top:1px solid var(--linea)}
 .pie-web .wrap{padding-right:96px;display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between;font-size:15px;color:var(--texto2)}
-.pie-web nav{display:flex;gap:20px}
+.pie-web nav{display:flex;flex-wrap:wrap;gap:10px 20px}
+.pie-web nav a{white-space:nowrap}
+@media (max-width:900px){.pie-web{padding-bottom:104px}.pie-web .wrap{padding-right:16px}}
 
 /* ---------- menú: botón en la cabecera y panel a pantalla completa que se abre en círculo desde el botón */
 .menu-b{display:inline-flex;align-items:center;gap:10px;height:44px;padding:0 18px 0 16px;border-radius:999px;border:1px solid var(--linea-f);background:transparent;font-weight:600;font-size:15px;flex-shrink:0}
