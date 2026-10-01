@@ -257,6 +257,14 @@ body.noche .tel{background:#05182B;box-shadow:0 0 0 1px var(--linea-t),var(--som
 .plan.fuerte .cifra span{color:var(--en-tinta)}
 .plan .anual{margin:-10px 0 0;font-size:13.5px;color:var(--texto2);min-height:1.4em}
 .plan.fuerte .anual{color:var(--en-tinta)}
+.garantias{margin-top:28px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--linea)}
+.garantias div{padding:24px 24px 4px 0;display:flex;flex-direction:column;gap:6px}
+.garantias div + div{padding-left:24px;border-left:1px solid var(--linea)}
+.garantias b{font-family:var(--f-titulo);font-weight:700;font-size:18px}
+.garantias span{color:var(--texto2);font-size:16px}
+.plan .cifra small{font-family:var(--f-texto);font-size:15px;color:var(--texto2);letter-spacing:0}
+.plan.fuerte .cifra small{color:var(--en-tinta)}
+.plan .cifra .medida{font-size:40px}
 .plan .usuarios{font-size:15px;padding:12px 14px;border-radius:14px;background:var(--blanco);color:var(--tinta)}
 .plan.fuerte .usuarios{background:var(--linea-t);color:var(--blanco)}
 .plan ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;font-size:15.5px}
@@ -268,19 +276,12 @@ body.noche .tel{background:#05182B;box-shadow:0 0 0 1px var(--linea-t),var(--som
 .notas-precio{margin:28px auto 0;text-align:center;font-size:14px;color:var(--texto3);max-width:70ch}
 @media (max-width:1100px){.planes{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:640px){.planes{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:900px){.garantias{grid-template-columns:minmax(0,1fr)}.garantias div + div{padding-left:0;border-left:0;border-top:1px solid var(--linea)}}
 
-/* ---------- 6. frase, opiniones, preguntas, cierre */
+/* ---------- 6. frase, preguntas, cierre */
 .frase{padding-block:170px;text-align:center}
 .frase .titular{font-size:clamp(44px,6.4vw,96px);max-width:15ch;margin:0 auto}
 .frase .p{display:inline-block;opacity:.18}
-.opiniones{padding-block:40px 120px;display:flex;flex-direction:column;gap:20px}
-.cinta{overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
-.cinta .pista{display:flex;gap:20px;width:max-content;animation:cinta 60s linear infinite}
-.cinta.inv .pista{animation-direction:reverse;animation-duration:70s}
-.cinta:hover .pista{animation-play-state:paused}
-.opinion{width:380px;margin:0;background:var(--hielo);border-radius:28px;padding:28px;display:flex;flex-direction:column;gap:18px}
-.opinion blockquote{margin:0;font-family:var(--f-titulo);font-weight:500;font-size:19px;line-height:1.35;color:var(--texto3)}
-.opinion figcaption{font-size:12.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--texto3)}
 .preguntas{padding-block:110px}
 .preguntas .wrap{max-width:900px;display:flex;flex-direction:column;gap:28px}
 .preg{border-top:1px solid var(--linea)}
@@ -411,7 +412,6 @@ body.noche .arriba .pista{stroke:var(--linea-t)}
   .porque .wrap{grid-template-columns:minmax(0,1fr);gap:40px}
   .porque .fijo{position:static}
     .sector-dos{grid-template-columns:minmax(0,1fr)}
-  .opinion{width:300px}
   .cursor{display:none}
 }
 @media (max-width:600px){
@@ -586,7 +586,7 @@ body.noche .arriba .pista{stroke:var(--linea-t)}
     <div class="cabeza">
       <div class="ojo">Precios</div>
       <h2 class="titular" data-letras>Un plan para cada etapa. <em>Sin sorpresas.</em></h2>
-      <p class="entrada">Empieza con lo que necesitas y sube de plan cuando tu equipo crezca. Todos incluyen la app en el móvil, tu marca y tus datos en la Unión Europea.</p>
+      <p class="entrada">Pagas por cada persona que lo usa, como en cualquier programa. Cada plan suma una parte de la empresa: el campo, la venta y la oficina. Todos incluyen la app en el móvil, tu marca y tus datos en la Unión Europea.</p>
       <div class="periodo" role="group" aria-label="Forma de pago">
         <span class="marca-p" aria-hidden="true"></span>
         <button type="button" id="p-mes" aria-pressed="true">Mensual</button>
@@ -594,7 +594,12 @@ body.noche .arriba .pista{stroke:var(--linea-t)}
       </div>
     </div>
     <div class="planes" id="planes"></div>
-    <p class="notas-precio">Precios por empresa y mes, IVA no incluido. Puedes añadir usuarios por bloques en cualquier plan. Con pago anual, pagas diez meses y tienes doce.</p>
+    <div class="garantias">
+      <div><b>Puesta en marcha incluida</b><span>Con pago anual, importamos tus Excel, configuramos tu empresa y formamos al equipo. Con pago mensual, 490 € una sola vez.</span></div>
+      <div><b>30 días de prueba</b><span>Pruébalo con tus propios datos y sin permanencia. Si no sigues, te llevas tus datos.</span></div>
+      <div><b>Desde 3 usuarios</b><span>Para que un equipo pequeño pueda empezar. Añades o quitas personas cuando quieras.</span></div>
+    </div>
+    <p class="notas-precio">Precios por usuario y mes, IVA no incluido. Con pago anual pagas diez meses y tienes doce.</p>
   </div>
 </section>
 
@@ -608,12 +613,6 @@ body.noche .arriba .pista{stroke:var(--linea-t)}
       <circle class="luna" cx="100" cy="100" r="57" fill="#0B2540" transform="translate(-44 0)"/>
     </svg>
     <h2 class="titular" id="frase">Por fin, un software que entiende cómo se vende en salud.</h2></div>
-</section>
-
-<section class="opiniones" aria-label="Opiniones">
-  <div class="wrap"><h2 class="titular" style="text-align:center;margin-block:80px 40px">Lo que dicen <em>los equipos.</em></h2></div>
-  <div class="cinta"><div class="pista" id="cinta1"></div></div>
-  <div class="cinta inv"><div class="pista" id="cinta2"></div></div>
 </section>
 
 <section class="preguntas" id="preguntas">
@@ -731,7 +730,7 @@ const PREGUNTAS = [
   ['¿Hay que instalar algo?', 'No. Se abre en el navegador del ordenador o del móvil, y en el móvil se añade a la pantalla de inicio como una app más.'],
   ['¿Puedo traer mis datos desde Excel?', 'Sí. Clientes, productos, fichas y ventas. Subes la hoja, ves cómo queda antes de guardar y, si algo no cuadra, lo deshaces.'],
   ['¿Dónde están mis datos?', 'En servidores de la Unión Europea, en Fráncfort, con copias de seguridad diarias. Cada empresa está separada de las demás.'],
-  ['¿Cuánto cuesta?', 'Desde 149 € al mes con cinco usuarios. Hay cuatro planes según lo que necesites (puedes verlos arriba, en «Precios»), con usuarios extra por bloques y dos meses gratis si pagas al año.']
+  ['¿Cuánto cuesta?', 'Desde 24 € por usuario y mes con pago anual (29 € con pago mensual), a partir de tres usuarios. Hay tres planes según lo que necesites y uno a medida para equipos de más de 50. Con pago anual, la puesta en marcha va incluida, y puedes probarlo 30 días con tus datos.']
 ];
 
 /* ================= construir ================= */
@@ -749,8 +748,6 @@ $('#mosaico').innerHTML = MODULOS.map((m, i) => `<button class="tesela ${m.g}" d
   <span class="ver" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
   <span class="ventana"><img src="${cap(m.img)}" alt="" loading="lazy" width="1600" height="1000"></span></button>`).join('');
 $('#razones').innerHTML = RAZONES.map(([t, d], i) => `<div class="razon"><div class="n">${String(i + 1).padStart(2, '0')}</div><div><h3>${t}</h3><p>${d}</p></div></div>`).join('');
-const op = '<figure class="opinion"><blockquote>«[Testimonio real de un cliente: qué le ha cambiado en su día a día]»</blockquote><figcaption>[Nombre · cargo · empresa]</figcaption></figure>';
-$('#cinta1').innerHTML = op.repeat(10); $('#cinta2').innerHTML = op.repeat(10);
 $('#lista-preg').innerHTML = PREGUNTAS.map(([p, r], i) => `<div class="preg" data-abierta="${i === 0}"><button id="preg-${i}" aria-expanded="${i === 0}" aria-controls="resp-${i}"><span>${p}</span><span class="mas" aria-hidden="true">+</span></button>
   <div class="resp" id="resp-${i}" role="region" aria-labelledby="preg-${i}"><div><p>${r}</p></div></div></div>`).join('');
 $$('.preg button').forEach(b => b.addEventListener('click', () => {
@@ -759,32 +756,33 @@ $$('.preg button').forEach(b => b.addEventListener('click', () => {
   p.dataset.abierta = String(abre); b.setAttribute('aria-expanded', String(abre));
 }));
 
-/* ================= precios (los mismos planes que «Plan y suscripción» de la app) ================= */
+/* ================= precios por usuario (decisión del 1/10/2026, tras el estudio de la competencia) ================= */
 const PLANES = [
-  { nombre: 'Esencial', precio: 149, usuarios: 5, bloque: [5, 99], para: 'Equipos pequeños que quieren ordenar sus visitas.',
-    incluye: ['Cartera de profesionales y centros', 'Agenda, «Tu día» y registro de visitas', 'Rutas y planificación semanal', 'Calidad del dato y duplicados', 'App en el móvil'] },
-  { nombre: 'Profesional', precio: 349, usuarios: 10, bloque: [5, 149], para: 'Equipos que venden y quieren medir resultados.',
-    incluye: ['Todo lo de Esencial', 'Pedidos, clientes y llamadas', 'Productos y stock por lotes', 'Analítica de ventas y visitas', 'Comisiones por tramos'] },
-  { nombre: 'Avanzado', precio: 649, usuarios: 20, bloque: [10, 249], fuerte: true, para: 'Empresas con facturación propia y varios equipos.',
-    incluye: ['Todo lo de Profesional', 'Facturación con VeriFactu y cobros', 'Compras, proveedores y trazabilidad', 'Zonas, supervisión del equipo y alertas', 'Espacio del profesional (hasta 50)'] },
-  { nombre: 'Premium', precio: 1190, usuarios: 40, bloque: [10, 249], para: 'Redes comerciales grandes que lo quieren todo.',
-    incluye: ['Todo lo de Avanzado', 'Espacio del profesional sin límite', 'Auditoría completa de cambios', 'Puesta en marcha y migración de datos incluidas', 'Soporte prioritario'] }
+  { nombre: 'Campo', mes: 29, para: 'Para equipos que visitan y quieren ordenar su cartera.',
+    incluye: ['Cartera de profesionales y centros', 'Agenda, «Tu día» y registro de visitas', 'Rutas y planificación semanal', 'Muestras y material', 'Calidad del dato y duplicados'] },
+  { nombre: 'Comercial', mes: 42, para: 'Para equipos que venden y quieren medir resultados.',
+    incluye: ['Todo lo de Campo', 'Pedidos, televenta y clientes', 'Productos y stock por lotes', 'Analítica de ventas y visitas', 'Comisiones por tramos'] },
+  { nombre: 'Empresa', mes: 59, fuerte: true, para: 'Para empresas que facturan y llevan su almacén.',
+    incluye: ['Todo lo de Comercial', 'Facturación con VeriFactu y cobros', 'Compras, proveedores y trazabilidad', 'Zonas, supervisión del equipo y auditoría', 'Espacio del profesional (hasta 50)'] },
+  { nombre: 'A medida', medida: true, para: 'Para redes de más de 50 personas o con necesidades propias.',
+    incluye: ['Todo lo de Empresa', 'Migración de tus datos', 'Conexión con tu programa de gestión', 'Espacio del profesional sin límite', 'Soporte prioritario'] }
 ];
 const eur = n => String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, '.') + ' €';
 let anual = false;
 $('#planes').innerHTML = PLANES.map((p, i) => `<article class="plan ${p.fuerte ? 'fuerte' : ''}">
   ${p.fuerte ? '<span class="sello">Con facturación</span>' : ''}
   <h3>${p.nombre}</h3><p class="para">${p.para}</p>
-  <div class="cifra"><b data-plan="${i}">${eur(p.precio)}</b><span>/mes</span></div>
-  <p class="anual" data-anual="${i}"></p>
-  <div class="usuarios"><b>${p.usuarios} usuarios</b> incluidos · +${p.bloque[0]} por ${eur(p.bloque[1])}/mes</div>
+  ${p.medida ? '<div class="cifra"><b class="medida">Presupuesto</b></div><p class="anual">Según tu equipo y lo que necesites</p>'
+    : `<div class="cifra"><b data-plan="${i}">${eur(p.mes)}</b><small>por usuario<br>y mes</small></div><p class="anual" data-anual="${i}"></p>`}
+  <div class="usuarios">${p.medida ? '<b>Desde 50 usuarios</b>' : '<b>Desde 3 usuarios</b> · añade los que necesites'}</div>
   <ul>${p.incluye.map(t => `<li>${check(p.fuerte ? '#7CC3EC' : '#0E6B4C')}<span>${t}</span></li>`).join('')}</ul>
-  <a class="boton ${p.fuerte ? '' : 'sec'}" href="dudas.html?tipo=Precios">Pide una demo</a>
+  <a class="boton ${p.fuerte ? '' : 'sec'}" href="dudas.html?tipo=${p.medida ? 'Precios' : 'Demo'}">${p.medida ? 'Pide presupuesto' : 'Pruébalo 30 días'}</a>
 </article>`).join('');
 function pintaPrecios(animar) {
   PLANES.forEach((p, i) => {
-    const el = $(`[data-plan="${i}"]`), fin = anual ? Math.round(p.precio * 10 / 12) : p.precio, ini = parseInt(el.textContent.replace(/\D/g, ''), 10) || fin;
-    $(`[data-anual="${i}"]`).textContent = anual ? `${eur(p.precio * 10)} al año, en un solo pago` : '';
+    if (p.medida) return;
+    const el = $(`[data-plan="${i}"]`), fin = anual ? Math.round(p.mes * 10 / 12) : p.mes, ini = parseInt(el.textContent.replace(/\D/g, ''), 10) || fin;
+    $(`[data-anual="${i}"]`).textContent = anual ? `${eur(p.mes * 10)} por usuario al año` : `${eur(Math.round(p.mes * 10 / 12))} con pago anual`;
     if (!animar || QUIETO) { el.textContent = eur(fin); return; }
     const t0 = performance.now(), d = 600;
     const paso = t => { const k = Math.min(1, (t - t0) / d), e = 1 - Math.pow(1 - k, 3); el.textContent = eur(Math.round(ini + (fin - ini) * e)); if (k < 1) requestAnimationFrame(paso); };
