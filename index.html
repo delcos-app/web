@@ -57,7 +57,7 @@ body.noche .ojo{color:var(--celeste)}
 body.noche .titular em{color:var(--celeste)}
 .entrada{margin:0;font-size:clamp(17px,1.5vw,20px);color:var(--texto2);max-width:58ch}
 body.noche .entrada{color:var(--en-tinta)}
-.linea-txt{display:block;overflow:hidden;padding-bottom:.08em}
+.linea-txt{display:block;overflow:hidden;padding-bottom:.2em;margin-bottom:-.12em}
 .boton{display:inline-flex;align-items:center;gap:10px;height:54px;padding:0 28px;border-radius:999px;background:var(--marino);color:var(--blanco);
   font-weight:600;font-size:17px;text-decoration:none;border:0;transition:background .1s;will-change:transform}
 .boton:hover{background:var(--marino-h)}
@@ -233,6 +233,37 @@ body.noche .tel{background:#05182B;box-shadow:0 0 0 1px var(--linea-t),var(--som
 .pestanas.parada button .prog{animation-play-state:paused}
 @keyframes progreso{to{transform:scaleX(1)}}
 .sector-dos{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);gap:56px;align-items:center}
+.sector-lista{grid-column:1/-1;display:flex;justify-content:center}
+.sec-cuenta{display:none}
+.pestanas .num{display:none}
+/* Modo foco (escritorio ancho): la sección se queda fija y el desplazamiento recorre los sectores uno a uno */
+@media (min-width:1101px){
+  .sectores{height:100vh;min-height:640px;padding-block:88px 24px;display:flex;flex-direction:column;justify-content:center}
+  .sectores .cabeza{margin-bottom:28px;gap:12px}
+  .sectores .cabeza .titular{font-size:clamp(34px,3.4vw,52px)}
+  .sectores .cabeza .entrada{display:none}
+  .sectores .cambio{gap:12px}
+  .sectores .cambio .titular{font-size:clamp(26px,2.3vw,36px)!important}
+  .sectores .fuerte{padding:11px 0}
+  .sectores .fuerte span{font-size:15px}
+  .sectores .escena-sector .tel{width:clamp(110px,9vw,140px)}
+  .sector-lista .pestanas button{padding-block:9px}
+  .sector-dos{grid-template-columns:230px minmax(0,1.4fr) minmax(0,1fr);gap:48px}
+  .sector-lista{grid-column:auto;flex-direction:column;justify-content:flex-start;gap:20px;align-self:center}
+  .sec-cuenta{display:flex;align-items:baseline;gap:8px;font-family:var(--f-titulo);overflow:hidden}
+  .sec-cuenta b{font-weight:200;font-size:64px;line-height:1;letter-spacing:-.05em;color:var(--azul);font-variant-numeric:tabular-nums;display:inline-block}
+  .sec-cuenta span{font-size:15px;color:var(--texto2)}
+  .sector-lista .pestanas{flex-direction:column;background:none;padding:0;border-radius:0;gap:0;overflow:visible;position:relative}
+  .sector-lista .pestanas::before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--linea)}
+  .sector-lista .pestanas button{height:auto;padding:12px 0 12px 22px;border-radius:0;background:none!important;color:var(--texto2);text-align:left;display:flex;align-items:baseline;gap:14px;
+    font-family:var(--f-titulo);font-weight:500;font-size:20px;letter-spacing:-.01em;opacity:.42;overflow:visible;transition:opacity .4s,color .4s,transform .6s var(--ease-sal)}
+  .sector-lista .pestanas button:hover{opacity:.75}
+  .sector-lista .pestanas button[aria-selected="true"]{opacity:1;color:var(--tinta);transform:translateX(8px)}
+  .sector-lista .pestanas .num{display:inline;font-family:var(--f-texto);font-size:12px;font-weight:700;letter-spacing:.12em;color:var(--azul)}
+  .sector-lista .pestanas .prog{left:0;right:auto;top:0;bottom:0;width:2px;height:auto;transform:scaleY(0);transform-origin:top;background:var(--marino)}
+  .sector-lista .pestanas button[aria-selected="true"] .prog{animation:none}
+  .pestanas.por-scroll .prog{animation:none!important;transition:transform .15s linear}
+}
 .sector-dos > *{min-width:0}
 .escena-sector{position:relative;padding:0 56px 56px 0;perspective:1400px}
 .escena-sector .ordenador{transform-origin:left center}
@@ -365,7 +396,7 @@ body.noche .tel{background:#05182B;box-shadow:0 0 0 1px var(--linea-t),var(--som
 .preg .resp p{margin:0;padding:0 48px 24px 0;color:var(--texto2)}
 .cierre{padding-block:160px 140px;text-align:center}
 .cierre .wrap{display:flex;flex-direction:column;align-items:center;gap:26px}
-.orbita{width:104px;height:104px}
+.orbita{width:104px;height:104px;overflow:visible}
 .orbita .sat{transform-origin:20px 24px;animation:gira 6s linear infinite}
 @keyframes gira{to{transform:rotate(360deg)}}
 .cierre .titular{font-size:clamp(54px,9vw,140px)}
@@ -672,7 +703,7 @@ body.noche .arriba .pista{stroke:var(--linea-t)}
   <div class="wrap">
     <div class="cabeza">
       <div class="ojo">Módulos</div>
-      <h2 class="titular" data-letras>No es una app de rutas. <em>Es tu empresa entera.</em></h2>
+      <h2 class="titular" data-letras>No es una app. <em>Es tu empresa entera.</em></h2>
       <p class="entrada">Cada módulo trabaja con los mismos datos: la visita alimenta el pedido, el pedido mueve el stock y la factura, y todo acaba en la analítica y en las comisiones.</p>
     </div>
     <div class="mosaico" id="mosaico"></div>
@@ -700,9 +731,12 @@ body.noche .arriba .pista{stroke:var(--linea-t)}
       <div class="ojo">Sectores</div>
       <h2 class="titular" data-letras>Cada sector trabaja distinto. <em>delcos también.</em></h2>
       <p class="entrada">Laboratorios, dental, ortopedia, farmacia, hospital y veterinaria. Cada empresa trabaja con sus palabras, sus estados y lo que de verdad pesa en su sector.</p>
-      <div class="pestanas" role="tablist" aria-label="Sectores" id="pest-sectores"></div>
     </div>
     <div class="sector-dos">
+      <div class="sector-lista">
+        <div class="sec-cuenta" aria-hidden="true"><b id="sec-num">01</b><span>/ 06</span></div>
+        <div class="pestanas" role="tablist" aria-label="Sectores" id="pest-sectores"></div>
+      </div>
       <div class="escena-sector" id="escena-sector">
         <div class="ordenador" id="esc-sector"><div class="barra"><i></i><i></i><i></i></div><div class="vista"><img alt="" width="1600" height="1000"></div></div>
         <div class="tel" id="tel-sector"><div class="pant"><img alt="" width="780" height="1688"></div></div>
@@ -717,8 +751,8 @@ body.noche .arriba .pista{stroke:var(--linea-t)}
   <div class="wrap">
     <div class="cabeza">
       <div class="ojo">Clientes</div>
-      <h2 class="titular" data-letras>Nacida en un laboratorio. <em>Probada cada día.</em></h2>
-      <p class="entrada">delcos no se diseñó en una pizarra. Nació dentro de DLC Health Group para ordenar su red comercial, sus pedidos y su facturación, y cada versión se prueba primero con su equipo, en la calle y en la oficina.</p>
+      <h2 class="titular" data-letras>Dos caminos. <em>Un mismo momento.</em></h2>
+      <p class="entrada">DLC Health Group buscaba algo que el mercado no tenía: una herramienta que entendiera de verdad cómo trabaja un laboratorio con profesionales sanitarios. Las aplicaciones que conocía estaban pensadas para cualquier pyme, eran rígidas y no dejaban adaptarse al sector. delcos llegó justo entonces, con la idea contraria: una plataforma que se adapta al sector, y no al revés.</p>
     </div>
     <article class="caso">
       <div class="caso-marca">
@@ -729,7 +763,7 @@ body.noche .arriba .pista{stroke:var(--linea-t)}
       <div class="caso-der">
         <svg class="caso-orbita" viewBox="0 0 200 200" aria-hidden="true"><circle cx="100" cy="100" r="80" fill="none" stroke="#C5D5E4" stroke-dasharray="2 6"/><circle cx="100" cy="20" r="7" fill="#7CC3EC"/></svg>
         <div class="datos">
-          <div class="dato"><b><span data-cuenta="100">100</span>+</b><span>versiones de la plataforma, cada una probada con su equipo</span></div>
+          <div class="dato"><b><span data-cuenta="100">100</span>+</b><span>versiones publicadas desde que trabajamos juntos, cada una probada con su equipo</span></div>
           <div class="dato"><b data-cuenta="8">8</b><span>módulos en su día a día, del campo a la factura</span></div>
           <div class="dato"><b data-cuenta="1">1</b><span>sola plataforma para el equipo de campo, la oficina y dirección</span></div>
         </div>
@@ -753,11 +787,11 @@ body.noche .arriba .pista{stroke:var(--linea-t)}
     </div>
     <div class="historia">
       <div class="hito"><small>2025</small><b>Nace DLC Health Group</b><p>Un laboratorio pequeño, de trato cercano, con formulación propia y una red de profesionales que empieza a crecer.</p></div>
-      <div class="hito"><small>El reto</small><b>Ordenar la red</b><p>Hacía falta una herramienta que entendiera cómo trabaja un laboratorio con profesionales sanitarios, y no la había.</p></div>
-      <div class="hito"><small>La respuesta</small><b>Su propia plataforma</b><p>La construye con su equipo: más de cien versiones probadas en la calle y en la oficina.</p></div>
-      <div class="hito"><small>2026</small><b>Nace delcos</b><p>La plataforma se abre a todo el sector, con el vocabulario y los estados de cada empresa.</p></div>
+      <div class="hito"><small>La necesidad</small><b>Ninguna herramienta encajaba</b><p>Las aplicaciones del mercado estaban encasilladas en la pyme genérica: rígidas, sin visión del sector y sin margen para adaptarse.</p></div>
+      <div class="hito"><small>El encuentro</small><b>delcos y DLC se cruzan</b><p>delcos buscaba un laboratorio exigente con el que crecer; DLC, una plataforma con visión del sector. Se encontraron en el mejor momento.</p></div>
+      <div class="hito"><small>2026</small><b>Aire nuevo</b><p>DLC trabaja con todo su equipo en delcos, y delcos lleva lo aprendido a todo el sector, con el vocabulario de cada empresa.</p></div>
     </div>
-    <blockquote class="manifiesto"><p>«Construimos delcos para un laboratorio de verdad. <em>Ahora la abrimos a todo el sector.</em>»</p><footer>El equipo de delcos</footer></blockquote>
+    <blockquote class="manifiesto"><p>«Lo que DLC necesitaba no existía. <em>Ahora existe, para todo el sector.</em>»</p><footer>El equipo de delcos</footer></blockquote>
     <div class="proximo">
       <div class="hueco" aria-hidden="true"><svg viewBox="0 0 44 44"><circle cx="20" cy="24" r="16" fill="none" stroke="#C5D5E4" stroke-dasharray="2 3"/><circle cx="35" cy="9" r="5" fill="#7CC3EC"/></svg></div>
       <div><b>¿Tu empresa, la siguiente?</b><p>Buscamos a los próximos clientes fundadores de cada sector. Te acompañamos en la puesta en marcha y escuchamos lo que necesitas para las próximas versiones.</p></div>
@@ -869,8 +903,8 @@ const PARA_QUIEN = [
 ];
 const TALLAS = [
   ['pequeña', 'De 3 a 10 personas', 'Ordena la cartera, toma pedidos y factura sin otro programa.'],
-  ['mediana', 'De 10 a 50', 'Zonas, almacén por lotes, compras y comisiones por tramos, con cada papel en su sitio.'],
-  ['grande', 'Más de 50', 'Varios equipos y almacenes, permisos por papel, auditoría y un plan a medida.']
+  ['mediana', 'De 10 a 50', 'Zonas, almacén por lotes, compras y comisiones por tramos, con cada rol en su sitio.'],
+  ['grande', 'Más de 50', 'Varios equipos y almacenes, permisos por rol, auditoría y un plan a medida.']
 ];
 const MODULOS = [
   { g: 'g8', ojo: 'Cartera', t: 'Fichas con todo lo que importa', d: 'Profesionales, centros y clientes con su historial, horarios, estado comercial y tus propios campos.', img: 'labs_e_directorio' },
@@ -883,7 +917,7 @@ const MODULOS = [
   { g: '', ojo: 'Comisiones', t: 'Cada venta, a quien la genera', d: 'Esquemas por tramos y liquidaciones de cada mes.', img: 'labs_e_comisiones' },
   { g: '', ojo: 'Analítica', t: 'Explora tus datos', d: 'Cruza ventas, visitas y cobertura por cualquier dimensión.', img: 'labs_e_explorar' },
   { g: 'g6', ojo: 'Calidad del dato', t: 'Sin fichas repetidas', d: 'Detecta duplicados y fichas incompletas, y te dice qué falta.', img: 'labs_e_calidad' },
-  { g: 'g6', ojo: 'Equipo', t: 'Usuarios, papeles y permisos', d: 'Cada persona ve y hace lo que le toca: comercial, televenta, administración o dirección.', img: 'labs_e_usuarios' },
+  { g: 'g6', ojo: 'Equipo', t: 'Usuarios, roles y permisos', d: 'Cada persona ve y hace lo que le toca: comercial, televenta, administración o dirección.', img: 'labs_e_usuarios' },
   { g: 'g6', ojo: 'Importar', t: 'Trae lo que ya tienes', d: 'Clientes, productos, fichas y ventas desde Excel o CSV, con vista previa.', img: 'labs_e_importar' },
   { g: 'g6', ojo: 'Catálogos', t: 'Tus listas y tus campos', d: 'Especialidades, motivos, resultados y campos propios, sin programar.', img: 'labs_e_clasificadores' }
 ];
@@ -893,7 +927,7 @@ const RAZONES = [
   ['Entiende la recomendación', 'La venta que hace el paciente por indicación del profesional se atribuye a ese profesional y a su comercial. Y la venta a centro, con su descuento.'],
   ['Controla muestras y lotes', 'Las muestras y el material salen de la visita; el stock va por lote y caducidad, de la compra a la venta.'],
   ['Factura como en España', 'VeriFactu, IVA del 21, 10, 4 y 0 %, rectificativas y cobros. Sin conectores ni hojas de cálculo.'],
-  ['Ordena el equipo', 'Cartera exclusiva por zonas, permisos por papel y comisiones por tramos. Dirección lo ve todo; cada comercial, lo suyo.'],
+  ['Ordena el equipo', 'Cartera exclusiva por zonas, permisos por rol y comisiones por tramos. Dirección lo ve todo; cada comercial, lo suyo.'],
   ['Cuida los datos', 'Alojados en la Unión Europea, en Fráncfort, con copias de seguridad diarias. Cada empresa, separada de las demás.']
 ];
 const SECTORES = [
@@ -1015,7 +1049,7 @@ visor.addEventListener('keydown', e => { if (e.key === 'Escape') cerrarVisor(); 
 function carrusel(contenedor, items, alCambiar, dur = 5200) {
   let actual = 0, enVista = false;
   contenedor.style.setProperty('--dur', dur + 'ms');
-  contenedor.innerHTML = items.map((it, i) => `<button role="tab" id="${contenedor.id}-${i}" aria-selected="${i === 0}">${it.nombre}<span class="prog"></span></button>`).join('');
+  contenedor.innerHTML = items.map((it, i) => `<button role="tab" id="${contenedor.id}-${i}" aria-selected="${i === 0}"><small class="num">${String(i + 1).padStart(2, '0')}</small><span class="nom">${it.nombre}</span><span class="prog"></span></button>`).join('');
   const botones = [...contenedor.children];
   const elegir = (i, auto) => {
     actual = (i + items.length) % items.length;
@@ -1046,6 +1080,9 @@ elegirSector = carrusel($('#pest-sectores'), SECTORES, (x, inicial) => {
     <div class="chips">${x.estados.map(e => `<span>${e}</span>`).join('')}</div>`;
   if (inicial || QUIETO || !window.gsap) { pintaSector(x); txtS.innerHTML = html; return; }
   // La pantalla del ordenador sale en órbita hacia un lado y vuelve por el otro con la otra empresa; el móvil gira sobre sí mismo
+  gsap.killTweensOf([escS, telS, txtS]);
+  const num = $('#sec-num'); num.textContent = String(SECTORES.indexOf(x) + 1).padStart(2, '0');
+  gsap.fromTo(num, { yPercent: 60, opacity: 0 }, { yPercent: 0, opacity: 1, duration: .6, ease: 'expo.out' });
   gsap.timeline()
     .to(escS, { rotateY: -24, x: -60, scale: .9, opacity: 0, duration: .35, ease: 'power2.in' })
     .to(telS, { rotateY: 90, duration: .3, ease: 'power2.in' }, '<.05')
@@ -1082,7 +1119,7 @@ const MENU_PLAT = [
   ['Venta', [['Pedidos', 'De la visita al pedido', 'labs_e_ventas', 3], ['Televenta', 'Llamadas que acaban en pedido', 'labs_e_llamadas', 3],
     ['Comisiones', 'Cada venta, a quien la genera', 'labs_e_comisiones', 7], ['Analítica', 'Cruza ventas, visitas y cobertura', 'labs_e_explorar', 8]]],
   ['Oficina', [['Almacén y lotes', 'Stock por lote y caducidad', 'labs_e_stock', 4], ['Compras', 'Proveedores y pedidos de compra', 'labs_e_compras', 5],
-    ['Facturación', 'VeriFactu, rectificativas y cobros', 'labs_e_facturas', 6], ['Equipo y permisos', 'Cada papel ve y hace lo suyo', 'labs_e_usuarios', 10]]]
+    ['Facturación', 'VeriFactu, rectificativas y cobros', 'labs_e_facturas', 6], ['Equipo y permisos', 'Cada rol ve y hace lo suyo', 'labs_e_usuarios', 10]]]
 ];
 const previa = (img, pie) => `<div class="previa"><div class="ordenador"><div class="barra"><i></i><i></i><i></i></div><div class="vista"><img src="${cap(img)}" alt="" width="1600" height="1000"><img class="fuera" alt="" width="1600" height="1000"></div></div><p>${pie}</p></div>`;
 let ni = 0;
@@ -1136,7 +1173,7 @@ $$('.panel a.it').forEach(a => {
   a.addEventListener('click', e => {
     e.preventDefault(); e.stopImmediatePropagation(); cerrarPanel();
     if (a.dataset.tesela) { const t = $$('.tesela')[+a.dataset.tesela]; irA(t, -140); setTimeout(() => { t.classList.remove('resalta'); t.offsetWidth; t.classList.add('resalta'); }, 1200); }
-    else if (a.dataset.sector) { irA($('#sectores')); setTimeout(() => elegirSector(+a.dataset.sector), 500); }
+    else if (a.dataset.sector) { if (window.__irSector) __irSector(+a.dataset.sector); else { irA($('#sectores')); setTimeout(() => elegirSector(+a.dataset.sector), 500); } }
     else irA($(a.getAttribute('href')));
   });
 });
@@ -1372,6 +1409,30 @@ $$('.razon').forEach(r => {
   gsap.fromTo(r, { '--k': 0 }, { '--k': 1, ease: 'none', scrollTrigger: { trigger: r, start: 'top 85%', end: 'top 55%', scrub: true } });
   gsap.from(r.children, { y: 24, opacity: 0, duration: .9, stagger: .08, ease: 'expo.out', scrollTrigger: { trigger: r, start: 'top 82%' } });
 });
+
+/* ================= sectores: modo foco, el desplazamiento recorre cada sector ================= */
+ScrollTrigger.matchMedia({ '(min-width: 1101px)': () => {
+  const pest = $('#pest-sectores'), botones = [...pest.children], n = SECTORES.length;
+  let actual = 0;
+  pest.classList.add('por-scroll');
+  const st = ScrollTrigger.create({ trigger: '#sectores', start: 'top top', end: () => '+=' + innerHeight * .7 * n, pin: true, refreshPriority: 1, invalidateOnRefresh: true,
+    snap: { snapTo: v => Math.min((n - .5) / n, Math.max(.5 / n, (Math.round(v * n - .5) + .5) / n)), duration: { min: .25, max: .7 }, delay: .1, ease: 'power2.inOut' },
+    onUpdate: s => {
+      const p = s.progress * n, i = Math.min(n - 1, Math.floor(p)), local = Math.min(1, p - i);
+      if (i !== actual) { actual = i; elegirSector(i); }
+      botones.forEach((b, k) => { b.querySelector('.prog').style.transform = `scaleY(${k < i ? 1 : k === i ? local : 0})`; });
+    } });
+  // Pulsar un sector lleva a su tramo del recorrido
+  const alPulsar = e => {
+    const b = e.target.closest('button'); if (!b) return;
+    e.stopPropagation();
+    const k = botones.indexOf(b);
+    __lenis.scrollTo(st.start + (k + .5) / n * (st.end - st.start), { duration: 1.1 });
+  };
+  pest.addEventListener('click', alPulsar, true);
+  window.__irSector = k => __lenis.scrollTo(st.start + (k + .5) / n * (st.end - st.start), { duration: 1.4 });
+  return () => { delete window.__irSector; st.kill(); pest.classList.remove('por-scroll'); pest.removeEventListener('click', alPulsar, true); botones.forEach(b => { b.querySelector('.prog').style.transform = ''; }); };
+} });
 
 /* ================= precios: los planes suben en cascada ================= */
 gsap.from('.plan', { y: 70, opacity: 0, rotateX: -10, duration: 1, stagger: .09, ease: 'expo.out', scrollTrigger: { trigger: '#planes', start: 'top 82%' } });
