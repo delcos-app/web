@@ -997,6 +997,8 @@ const MODULOS = [
   { g: 'g8', ojo: 'Orders', t: 'From visit to order', d: 'Patient recommendation or sale to a centre, with discounts, shipping and the operations of every order.', img: 'labs_e_ventas' },
   { g: 'g6', ojo: 'Warehouse', t: 'Stock by batch and expiry', d: 'Goods in, goods out, samples and transfers by warehouse.', img: 'labs_e_stock' },
   { g: 'g6', ojo: 'Purchasing', t: 'Suppliers and purchase orders', d: 'What has been sent, what is in transit and what has arrived.', img: 'labs_e_compras' },
+  { g: 'g6', ojo: 'Web orders', t: 'What comes in through your website, in sight', d: 'Orders placed through your website, with their own filter and sales summary.', img: 'pharma_e_pedidos_web' },
+  { g: 'g6', ojo: 'Payments', t: 'Every payment, with its reference', d: 'The bank transfer or Bizum reference and the proof of payment, right on the order.', img: 'pharma_e_pedido_web' },
   { g: '', ojo: 'Invoicing', t: 'VeriFactu, built in', d: 'Series, credit notes, payments and the record of every invoice.', img: 'labs_e_facturas' },
   { g: '', ojo: 'Commissions', t: 'Every sale, credited to whoever made it', d: 'Tiered schemes and monthly settlements.', img: 'labs_e_comisiones' },
   { g: '', ojo: 'Analytics', t: 'Explore your data', d: 'Cross sales, visits and coverage by any dimension.', img: 'labs_e_explorar' },
@@ -1219,11 +1221,12 @@ addEventListener('scroll', alDesplazar, { passive: true }); alDesplazar();
 /* ================= menú desplegable de la cabecera ================= */
 const MENU_PLAT = [
   ['Field', [['Accounts', 'Professionals, centres and their history', 'labs_e_directorio', 0], ['Calendar and routes', 'Each rep’s week', 'labs_e_agenda', 2],
-    ['Follow-up', 'What needs doing on each record', 'labs_e_seguimiento', 1], ['Data quality', 'No duplicate or incomplete records', 'labs_e_calidad', 9]]],
+    ['Follow-up', 'What needs doing on each record', 'labs_e_seguimiento', 1], ['Data quality', 'No duplicate or incomplete records', 'labs_e_calidad', 11]]],
   ['Sales', [['Orders', 'From visit to order', 'labs_e_ventas', 3], ['Telesales', 'Calls that end in orders', 'labs_e_llamadas', 3],
-    ['Commissions', 'Every sale, credited to whoever made it', 'labs_e_comisiones', 7], ['Analytics', 'Cross sales, visits and coverage', 'labs_e_explorar', 8]]],
+    ['Commissions', 'Every sale, credited to whoever made it', 'labs_e_comisiones', 9], ['Analytics', 'Cross sales, visits and coverage', 'labs_e_explorar', 10],
+    ['Web orders', 'With their filter, summary and payment reference', 'pharma_e_pedidos_web', 6]]],
   ['Office', [['Warehouse and batches', 'Stock by batch and expiry', 'labs_e_stock', 4], ['Purchasing', 'Suppliers and purchase orders', 'labs_e_compras', 5],
-    ['Invoicing', 'VeriFactu, credit notes and payments', 'labs_e_facturas', 6], ['Team and permissions', 'Each role sees and does its own part', 'labs_e_usuarios', 10]]]
+    ['Invoicing', 'VeriFactu, credit notes and payments', 'labs_e_facturas', 8], ['Team and permissions', 'Each role sees and does its own part', 'labs_e_usuarios', 12]]]
 ];
 const previa = (img, pie) => `<div class="previa"><div class="ordenador"><div class="barra"><i></i><i></i><i></i></div><div class="vista"><img src="${cap(img)}" alt="" width="1600" height="1000"><img class="fuera" alt="" width="1600" height="1000"></div></div><p>${pie}</p></div>`;
 let ni = 0;
