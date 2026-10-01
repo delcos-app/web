@@ -39,6 +39,7 @@
   color-scheme:light;
 }
 *{box-sizing:border-box}
+html,body{overflow-x:clip}
 html.lenis,html.lenis body{height:auto}
 .lenis.lenis-smooth{scroll-behavior:auto!important}
 body{margin:0;background:var(--fondo);color:var(--tinta-txt);font-family:var(--f-texto);font-size:17px;line-height:1.5;overflow-x:hidden;transition:background .6s var(--ease-sal),color .6s var(--ease-sal)}
@@ -502,6 +503,8 @@ body.noche .arriba .pista{stroke:var(--linea-t)}
   .portada{padding-block:110px 40px}
   .portada .wrap{grid-template-columns:minmax(0,1fr)}
   .baraja{height:520px;transform:scale(.62);transform-origin:top left;margin-bottom:-200px;width:160%}
+  .satelites span{font-size:21px;padding:12px 20px;gap:10px}
+  .satelites i{width:13px;height:13px}
   .escenario{display:flex;flex-direction:column;gap:72px;padding:0 16px 80px}
   .orbita-dia{display:none}
   .escenario .tel{width:260px}
@@ -1037,6 +1040,14 @@ elegirSector = carrusel($('#pest-sectores'), SECTORES, (x, inicial) => {
 });
 [...SECTORES.map(s => s.clave + '_m_inicio'), ...SECTORES.map(s => s.esc)].forEach(n => { const i = new Image(); i.src = cap(n); });
 
+/* ================= ir a una sección: si la página crece por el camino (imágenes que cargan), corrige al llegar ================= */
+const irSeguro = (el, off = -72, dur = 1.4) => {
+  if (!window.__lenis) { el.scrollIntoView({ behavior: QUIETO ? 'auto' : 'smooth' }); return; }
+  let intentos = 0;
+  const ir = d => __lenis.scrollTo(el, { offset: off, duration: d, force: true, onComplete: () => { if (Math.abs(el.getBoundingClientRect().top + off) > 6 && ++intentos < 4) ir(.6); } });
+  ir(dur);
+};
+
 /* ================= cabecera (siempre a mano) y volver arriba con su órbita ================= */
 const arriba = $('#arriba'), arribaAv = $('#arriba-av'), arribaSat = $('#arriba-sat');
 const alDesplazar = () => {
@@ -1102,7 +1113,7 @@ const cambiaPrevia = a => {
   p.querySelector('p').textContent = a.dataset.sector ? SECTORES[+a.dataset.sector].empresa + ' · demostración' : a.querySelector('b').textContent;
   a.closest('.panel').querySelectorAll('a.it').forEach(x => x.classList.toggle('activo', x === a));
 };
-const irA = (el, off = -90) => window.__lenis ? __lenis.scrollTo(el, { offset: off, duration: 1.3 }) : el.scrollIntoView({ behavior: QUIETO ? 'auto' : 'smooth' });
+const irA = (el, off = -90) => irSeguro(el, off, 1.3);
 $$('.panel a.it').forEach(a => {
   a.addEventListener('mouseenter', () => cambiaPrevia(a)); a.addEventListener('focus', () => cambiaPrevia(a));
   if (!a.getAttribute('href').startsWith('#')) return;
@@ -1154,8 +1165,7 @@ function cerrarMenu(destino) {
   window.__lenis ? __lenis.start() : (document.documentElement.style.overflow = '');
   setTimeout(() => { if (!menuAbierto) menu.hidden = true; }, QUIETO ? 0 : 750);
   if (destino) {
-    if (window.__lenis) __lenis.scrollTo(destino, { offset: -72, duration: 1.4 });
-    else destino.scrollIntoView({ behavior: QUIETO ? 'auto' : 'smooth' });
+    irSeguro(destino);
   } else menuB.focus();
 }
 menuB.addEventListener('click', () => menuAbierto ? cerrarMenu() : abrirMenu());
@@ -1184,7 +1194,7 @@ if (window.Lenis) {
   window.__lenis = lenis;
   lenis.on('scroll', ScrollTrigger.update);
   gsap.ticker.add(t => lenis.raf(t * 1000)); gsap.ticker.lagSmoothing(0);
-  $$('a[href^="#"]').forEach(a => a.addEventListener('click', e => { const d = $(a.getAttribute('href')); if (d) { e.preventDefault(); lenis.scrollTo(d, { offset: -72, duration: 1.4 }); } }));
+  $$('a[href^="#"]').forEach(a => a.addEventListener('click', e => { const d = $(a.getAttribute('href')); if (d) { e.preventDefault(); irSeguro(d); } }));
 }
 
 /* ================= entrada: la órbita se forma, «delcos» sube y la cortina se levanta ================= */
@@ -1250,7 +1260,7 @@ orb.k = 0; orb.t = -4;
 gsap.to(orb, { k: 1, duration: 2.4, ease: 'expo.out', delay: RET + .35 });
 gsap.from('.orbe', { opacity: 0, duration: 1.2, delay: RET + .3 });
 gsap.ticker.add((t, dt) => { if (scrollY > innerHeight * 1.3) return; orb.t += Math.min(dt, 50) / 1000; colocarOrbita(); });
-gsap.to('#satelites, .orbe', { opacity: 0, ease: 'none', scrollTrigger: { trigger: '.portada', start: 'top top', end: '60% top', scrub: true } });
+if (ESCRITORIO) gsap.to('#satelites, .orbe', { opacity: 0, ease: 'none', scrollTrigger: { trigger: '.portada', start: 'top top', end: '60% top', scrub: true } });
 if (ESCRITORIO) {
   const qx = cartas.map(c => gsap.quickTo(c, 'x', { duration: 1.1, ease: 'power3' })), qy = cartas.map(c => gsap.quickTo(c, 'y', { duration: 1.1, ease: 'power3' }));
   const qr = cartas.map(c => gsap.quickTo(c, 'rotateY', { duration: 1.1, ease: 'power3' })), qt = gsap.quickTo(orb, 'tilt', { duration: 1.4, ease: 'power3' });
@@ -1344,7 +1354,7 @@ if (ESCRITORIO) {
 /* ================= por qué: cada razón traza su línea y entra ================= */
 $$('.razon').forEach(r => {
   gsap.fromTo(r, { '--k': 0 }, { '--k': 1, ease: 'none', scrollTrigger: { trigger: r, start: 'top 85%', end: 'top 55%', scrub: true } });
-  gsap.from(r.children, { x: 40, opacity: 0, duration: .9, stagger: .08, ease: 'expo.out', scrollTrigger: { trigger: r, start: 'top 82%' } });
+  gsap.from(r.children, { y: 24, opacity: 0, duration: .9, stagger: .08, ease: 'expo.out', scrollTrigger: { trigger: r, start: 'top 82%' } });
 });
 
 /* ================= precios: los planes suben en cascada ================= */
