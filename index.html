@@ -16,6 +16,7 @@
 <meta property="og:image" content="https://www.delcos.app/capturas/labs_e_analitica.webp">
 <meta property="og:locale" content="es_ES">
 <style>html{color-scheme:light}body{margin:0}</style>
+<script>try{if(!sessionStorage.getItem('delcos-intro')&&!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('con-intro')}catch(e){}</script>
 <link rel="preload" href="fuentes/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fuentes/source-sans-3-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="fuentes/fuentes.css">
@@ -79,7 +80,6 @@ body.noche .cab.fondo{background:rgba(11,37,64,.94);box-shadow:0 1px 0 var(--lin
 .nav a::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:2px;background:var(--azul);transform:scaleX(0);transform-origin:left;transition:transform .18s var(--ease-sal)}
 .nav a:hover::after{transform:scaleX(1)}
 .cab .boton{height:44px;padding:0 20px;font-size:15px}
-.progreso{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--celeste);transform-origin:left;transform:scaleX(0);z-index:41}
 
 /* ---------- marcos: siempre una captura real de la app dentro */
 .tel{width:280px;aspect-ratio:300/629;border-radius:44px;background:var(--tinta);padding:9px;flex-shrink:0;box-shadow:var(--sombra-3)}
@@ -257,18 +257,100 @@ body.noche .tel{background:#05182B;box-shadow:0 0 0 1px var(--linea-t),var(--som
 .cierre .titular{font-size:clamp(54px,9vw,140px)}
 .nota-demo{font-size:13px;color:var(--texto3);margin:0}
 .pie-web{padding-block:56px 40px;border-top:1px solid var(--linea)}
-.pie-web .wrap{display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between;font-size:15px;color:var(--texto2)}
+.pie-web .wrap{padding-right:96px;display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between;font-size:15px;color:var(--texto2)}
 .pie-web nav{display:flex;gap:20px}
+
+/* ---------- menú: botón en la cabecera y panel a pantalla completa que se abre en círculo desde el botón */
+.menu-b{display:inline-flex;align-items:center;gap:10px;height:44px;padding:0 18px 0 16px;border-radius:999px;border:1px solid var(--linea-f);background:transparent;font-weight:600;font-size:15px;flex-shrink:0}
+body.noche .menu-b{border-color:var(--linea-t)}
+.menu-b .ico{width:18px;height:10px;position:relative}
+.menu-b .ico i{position:absolute;left:0;right:0;height:2px;border-radius:2px;background:currentColor;transition:transform .35s var(--ease-sal),top .35s var(--ease-sal)}
+.menu-b .ico i:first-child{top:0}
+.menu-b .ico i:last-child{top:8px}
+.menu-abierto .menu-b .ico i:first-child{top:4px;transform:rotate(45deg)}
+.menu-abierto .menu-b .ico i:last-child{top:4px;transform:rotate(-45deg)}
+.menu-abierto .cab{color:var(--blanco);background:transparent!important;box-shadow:none!important;transform:none!important}
+.menu-abierto .cab .boton,.menu-abierto .cab .nav{opacity:0;pointer-events:none}
+.menu-abierto .menu-b{border-color:var(--linea-t)}
+.nav a.activa::after{transform:scaleX(1)}
+.menu{position:fixed;inset:0;z-index:39;background:var(--tinta);color:var(--blanco);overflow-y:auto;overscroll-behavior:contain;
+  clip-path:circle(0px at var(--mx,calc(100% - 80px)) var(--my,36px));transition:clip-path .75s cubic-bezier(.76,0,.24,1)}
+.menu[hidden]{display:none}
+.menu.abierto{clip-path:circle(160vmax at var(--mx,calc(100% - 80px)) var(--my,36px))}
+.menu .in{min-height:100%;display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:64px;align-items:center;padding-block:120px 56px}
+.menu nav{display:flex;flex-direction:column}
+.menu nav a{display:flex;align-items:baseline;gap:20px;padding:8px 0;border-bottom:1px solid var(--linea-t);text-decoration:none;overflow:hidden;border-radius:0}
+.menu nav a small{width:30px;flex-shrink:0;font-size:13px;font-weight:700;letter-spacing:.14em;color:var(--celeste)}
+.menu nav a span{display:inline-block;font-family:var(--f-titulo);font-weight:300;font-size:clamp(34px,4.6vw,62px);line-height:1.12;letter-spacing:-.04em;
+  transform:translateY(110%);transition:transform .9s var(--ease-sal) calc(.28s + var(--i) * .055s),translate .35s var(--ease-sal),color .2s}
+.menu.abierto nav a span{transform:none}
+.menu nav a:hover span,.menu nav a:focus-visible span{translate:14px 0;color:var(--celeste)}
+.menu nav a.activa span{color:var(--celeste)}
+.menu aside{display:flex;flex-direction:column;align-items:flex-start;gap:24px;opacity:0;transform:translateY(24px);transition:opacity .6s .55s,transform .9s var(--ease-sal) .55s}
+.menu.abierto aside{opacity:1;transform:none}
+.menu aside .orbita{width:150px;height:150px}
+.menu aside p{margin:0;font-size:19px;color:var(--en-tinta);max-width:32ch}
+.menu aside .boton{background:var(--blanco);color:var(--tinta)}
+.menu aside .legal{display:flex;gap:18px;font-size:14px;color:var(--en-tinta)}
+
+/* ---------- entrada: la órbita se forma y la cortina sube (una vez por visita) */
+.intro{display:none}
+html.con-intro .intro{position:fixed;inset:0;z-index:100;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;
+  background:var(--tinta);color:var(--blanco);animation:intro-fuera .01s 4s forwards}
+@keyframes intro-fuera{to{visibility:hidden}}
+.intro svg{width:92px;height:92px;overflow:visible}
+.intro b{font-family:var(--f-titulo);font-weight:800;font-size:34px;letter-spacing:-.035em;display:flex;overflow:hidden}
+.intro b span{display:inline-block}
+.intro .punto{width:3px;height:3px;background:var(--en-tinta)}
+
+/* ---------- órbitas, estrellas y eclipse */
+.orbita-fondo{position:absolute;z-index:0;pointer-events:none;width:1100px;height:1100px;right:-260px;top:50%;margin-top:-500px}
+.orbita-fondo .giro{transform-origin:550px 550px;animation:gira 48s linear infinite}
+.estrellas{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0;opacity:0;transition:opacity .8s var(--ease-sal)}
+body.noche .estrellas{opacity:1}
+.estrellas .capa{position:absolute;inset:-20% 0}
+.estrellas i{position:absolute;border-radius:50%;background:var(--blanco);opacity:var(--o);animation:titila var(--d) ease-in-out infinite alternate}
+@keyframes titila{to{opacity:calc(var(--o) * .25)}}
+.porque,.frase,.cierre{position:relative}
+.porque > .wrap,.frase > .wrap,.cierre > .wrap{position:relative;z-index:1}
+.eclipse{display:block;width:200px;height:200px;margin:0 auto 48px;overflow:visible}
+body.noche .cierre .boton{background:var(--blanco);color:var(--tinta)}
+body.noche .nota-demo{color:var(--en-tinta)}
+.cierre .orbita{width:150px;height:150px}
+body.noche .pie-web{border-top-color:var(--linea-t)}
+body.noche .pie-web .wrap{color:var(--en-tinta)}
+
+/* ---------- volver arriba: una órbita que se completa al bajar */
+.arriba{position:fixed;right:24px;bottom:24px;z-index:38;width:58px;height:58px;border-radius:999px;background:var(--fondo);color:var(--tinta-txt);box-shadow:var(--sombra-2);
+  display:flex;align-items:center;justify-content:center;opacity:0;transform:translateY(16px) scale(.8);pointer-events:none;transition:opacity .3s,transform .4s var(--ease-sal),background .6s,color .6s}
+.arriba.ver{opacity:1;transform:none;pointer-events:auto}
+.arriba svg{width:58px;height:58px;overflow:visible}
+.arriba .pista{fill:none;stroke:var(--linea);stroke-width:1.5}
+body.noche .arriba .pista{stroke:var(--linea-t)}
+.arriba .avance{fill:none;stroke:var(--azul);stroke-width:2;stroke-linecap:round;stroke-dasharray:100;stroke-dashoffset:100;transform:rotate(-90deg);transform-origin:29px 29px}
+.arriba .satg{transform-origin:29px 29px}
+.arriba .satg circle{fill:var(--celeste)}
+.arriba:hover .flecha{transform:translateY(-3px)}
+.arriba .flecha{transition:transform .25s var(--ease-sal)}
 
 /* ---------- cursor «Ver» sobre el mosaico */
 .cursor{position:fixed;left:0;top:0;z-index:50;width:84px;height:84px;margin:-42px 0 0 -42px;border-radius:999px;background:var(--marino);color:var(--blanco);
   display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;pointer-events:none;transform:scale(0);will-change:transform}
 
 /* ---------- móvil */
-@media (max-width:900px){
-  .wrap{padding-inline:16px}
+@media (max-width:1100px){
   .nav{display:none}
   .cab .boton{margin-left:auto}
+}
+@media (max-width:900px){
+  .wrap{padding-inline:16px}
+  .cab .wrap{gap:12px}
+  .menu .in{grid-template-columns:minmax(0,1fr);gap:40px;padding-block:96px 40px;align-items:start}
+  .menu aside .orbita{display:none}
+  .orbita-fondo{width:700px;height:700px;right:-380px;top:120px;margin-top:0}
+  .arriba{right:16px;bottom:16px;width:50px;height:50px}
+  .arriba svg{width:50px;height:50px}
+  .eclipse{width:150px;height:150px}
   .portada{padding-block:110px 40px}
   .portada .wrap{grid-template-columns:minmax(0,1fr)}
   .baraja{height:520px;transform:scale(.62);transform-origin:top left;margin-bottom:-200px;width:160%}
@@ -283,6 +365,10 @@ body.noche .tel{background:#05182B;box-shadow:0 0 0 1px var(--linea-t),var(--som
   .opinion{width:300px}
   .cursor{display:none}
 }
+@media (max-width:600px){
+  .cab .boton{display:none}
+  .menu-b{margin-left:auto}
+}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
   .frase .p{opacity:1}
@@ -293,7 +379,12 @@ body.noche .tel{background:#05182B;box-shadow:0 0 0 1px var(--linea-t),var(--som
 <body>
 
 
-<div class="progreso" id="progreso" aria-hidden="true"></div>
+<div class="intro" id="intro" aria-hidden="true">
+  <i class="punto"></i>
+  <svg viewBox="0 0 44 44"><circle class="i-anillo" cx="20" cy="24" r="19.5" fill="none" stroke="#22405F" stroke-width=".6" stroke-dasharray="1.5 2"/><circle class="i-esfera" cx="20" cy="24" r="16" fill="#17457A"/><g class="i-sat"><circle cx="35" cy="9" r="5" fill="#7CC3EC"/></g></svg>
+  <b><span>d</span><span>e</span><span>l</span><span>c</span><span>o</span><span>s</span></b>
+  <i class="punto"></i>
+</div>
 <header class="cab" id="cab">
   <div class="wrap">
     <a class="logo" href="#inicio" aria-label="delcos, inicio">
@@ -303,12 +394,44 @@ body.noche .tel{background:#05182B;box-shadow:0 0 0 1px var(--linea-t),var(--som
       <a href="#dia">Un día</a><a href="#modulos">Módulos</a><a href="#porque">Por qué delcos</a><a href="#sectores">Sectores</a><a href="#precios">Precios</a><a href="#preguntas">Preguntas</a>
     </nav>
     <a class="boton iman" href="#cierre">Pide una demo</a>
+    <button class="menu-b" id="menu-b" type="button" aria-expanded="false" aria-controls="menu"><span class="ico" aria-hidden="true"><i></i><i></i></span><span id="menu-t">Menú</span></button>
   </div>
 </header>
+
+<div class="menu" id="menu" hidden>
+  <div class="wrap in">
+    <nav aria-label="Menú">
+      <a href="#inicio" style="--i:0"><small>01</small><span>Inicio</span></a>
+      <a href="#dia" style="--i:1"><small>02</small><span>Un día en la empresa</span></a>
+      <a href="#modulos" style="--i:2"><small>03</small><span>Módulos</span></a>
+      <a href="#porque" style="--i:3"><small>04</small><span>Por qué delcos</span></a>
+      <a href="#sectores" style="--i:4"><small>05</small><span>Sectores</span></a>
+      <a href="#precios" style="--i:5"><small>06</small><span>Precios</span></a>
+      <a href="#preguntas" style="--i:6"><small>07</small><span>Preguntas</span></a>
+    </nav>
+    <aside>
+      <svg class="orbita" viewBox="0 0 44 44" aria-hidden="true"><circle cx="20" cy="24" r="19.5" fill="none" stroke="#22405F" stroke-width=".6" stroke-dasharray="1.5 2"/><circle cx="20" cy="24" r="16" fill="#17457A"/><g class="sat"><circle cx="35" cy="9" r="5" fill="#7CC3EC"/></g></svg>
+      <p>Software comercial y operativo para empresas que venden a través de profesionales y centros sanitarios.</p>
+      <a class="boton" href="#cierre">Pide una demo</a>
+      <div class="legal"><a href="aviso-legal.html">Aviso legal</a><a href="privacidad.html">Privacidad</a><a href="cookies.html">Cookies</a></div>
+    </aside>
+  </div>
+</div>
+
+<a class="arriba" id="arriba" href="#inicio" aria-label="Volver arriba">
+  <svg viewBox="0 0 58 58" aria-hidden="true"><circle class="pista" cx="29" cy="29" r="25"/><circle class="avance" id="arriba-av" cx="29" cy="29" r="25" pathLength="100"/>
+    <g class="satg" id="arriba-sat"><circle cx="29" cy="4" r="3.5"/></g>
+    <path class="flecha" d="M29 37V22M22.5 28.5 29 22l6.5 6.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</a>
 
 <main>
 <!-- 1 · Portada -->
 <section class="portada" id="inicio">
+  <svg class="orbita-fondo" id="orbita-fondo" viewBox="0 0 1100 1100" aria-hidden="true">
+    <circle cx="550" cy="550" r="520" fill="none" stroke="#D8E4EF" stroke-width="1"/>
+    <circle cx="550" cy="550" r="400" fill="none" stroke="#E4EFFA" stroke-width="1" stroke-dasharray="2 7"/>
+    <g class="giro"><circle cx="550" cy="30" r="9" fill="#7CC3EC"/><circle cx="950" cy="550" r="5" fill="#C5D5E4"/></g>
+  </svg>
   <div class="wrap">
     <div class="texto">
       <div class="ojo">Software para empresas del sector sanitario</div>
@@ -409,7 +532,14 @@ body.noche .tel{background:#05182B;box-shadow:0 0 0 1px var(--linea-t),var(--som
 
 <!-- 6 · Frase -->
 <section class="frase" data-noche>
-  <div class="wrap"><h2 class="titular" id="frase">Por fin, un software que entiende cómo se vende en salud.</h2></div>
+  <div class="wrap">
+    <svg class="eclipse" id="eclipse" viewBox="0 0 200 200" aria-hidden="true">
+      <circle class="corona" cx="100" cy="100" r="66" fill="none" stroke="#7CC3EC" stroke-width="1.2"/>
+      <circle class="anillo" cx="100" cy="100" r="88" fill="none" stroke="#22405F" stroke-width="1" stroke-dasharray="2 5"/>
+      <circle cx="100" cy="100" r="56" fill="#7CC3EC"/>
+      <circle class="luna" cx="100" cy="100" r="57" fill="#0B2540" transform="translate(-44 0)"/>
+    </svg>
+    <h2 class="titular" id="frase">Por fin, un software que entiende cómo se vende en salud.</h2></div>
 </section>
 
 <section class="opiniones" aria-label="Opiniones">
@@ -425,7 +555,7 @@ body.noche .tel{background:#05182B;box-shadow:0 0 0 1px var(--linea-t),var(--som
   </div>
 </section>
 
-<section class="cierre" id="cierre">
+<section class="cierre" id="cierre" data-noche>
   <div class="wrap">
     <svg class="orbita" viewBox="0 0 44 44" aria-hidden="true"><circle cx="20" cy="24" r="16" fill="#17457A"/><circle cx="20" cy="24" r="19.5" fill="none" stroke="#C5D5E4" stroke-width=".6" stroke-dasharray="1.5 2"/><g class="sat"><circle cx="35" cy="9" r="5" fill="#7CC3EC"/></g></svg>
     <h2 class="titular" data-letras>Cada visita <em>cuenta.</em></h2>
@@ -642,12 +772,58 @@ carrusel($('#pest-sectores'), SECTORES, (x, inicial) => {
 });
 [...SECTORES.map(s => s.clave + '_m_inicio')].forEach(n => { const i = new Image(); i.src = cap(n); });
 
-/* ================= cabecera ================= */
-let ultimo = 0;
-addEventListener('scroll', () => {
-  const y = scrollY, cab = $('#cab');
-  cab.classList.toggle('fondo', y > 40); cab.classList.toggle('oculta', y > ultimo && y > 400 && visor.hidden); ultimo = y;
-}, { passive: true });
+/* ================= cabecera (siempre a mano) y volver arriba con su órbita ================= */
+const arriba = $('#arriba'), arribaAv = $('#arriba-av'), arribaSat = $('#arriba-sat');
+const alDesplazar = () => {
+  const y = scrollY, p = Math.min(1, y / Math.max(1, document.documentElement.scrollHeight - innerHeight));
+  $('#cab').classList.toggle('fondo', y > 40);
+  arriba.classList.toggle('ver', y > innerHeight * .8);
+  arribaAv.style.strokeDashoffset = 100 - p * 100;
+  arribaSat.style.transform = `rotate(${p * 360}deg)`;
+};
+addEventListener('scroll', alDesplazar, { passive: true }); alDesplazar();
+
+/* ================= menú a pantalla completa ================= */
+const menu = $('#menu'), menuB = $('#menu-b');
+let menuAbierto = false;
+function abrirMenu() {
+  const r = menuB.getBoundingClientRect();
+  menu.style.setProperty('--mx', r.left + r.width / 2 + 'px'); menu.style.setProperty('--my', r.top + r.height / 2 + 'px');
+  menu.hidden = false; menu.getBoundingClientRect();
+  menu.classList.add('abierto'); document.body.classList.add('menu-abierto');
+  menuB.setAttribute('aria-expanded', 'true'); $('#menu-t').textContent = 'Cerrar';
+  window.__lenis ? __lenis.stop() : (document.documentElement.style.overflow = 'hidden');
+  menuAbierto = true;
+  setTimeout(() => menu.querySelector('nav a').focus({ preventScroll: true }), 350);
+}
+function cerrarMenu(destino) {
+  if (!menuAbierto) return;
+  menuAbierto = false;
+  menu.classList.remove('abierto'); document.body.classList.remove('menu-abierto');
+  menuB.setAttribute('aria-expanded', 'false'); $('#menu-t').textContent = 'Menú';
+  window.__lenis ? __lenis.start() : (document.documentElement.style.overflow = '');
+  setTimeout(() => { if (!menuAbierto) menu.hidden = true; }, QUIETO ? 0 : 750);
+  if (destino) {
+    if (window.__lenis) __lenis.scrollTo(destino, { offset: -72, duration: 1.4 });
+    else destino.scrollIntoView({ behavior: QUIETO ? 'auto' : 'smooth' });
+  } else menuB.focus();
+}
+menuB.addEventListener('click', () => menuAbierto ? cerrarMenu() : abrirMenu());
+menu.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
+  e.preventDefault(); e.stopImmediatePropagation(); cerrarMenu($(a.getAttribute('href')));
+}));
+addEventListener('keydown', e => { if (e.key === 'Escape' && menuAbierto) cerrarMenu(); });
+
+/* ================= estrellas en las escenas de noche ================= */
+const azar = (a, b) => a + Math.random() * (b - a);
+$$('[data-noche]').forEach(sec => {
+  const cielo = document.createElement('div'); cielo.className = 'estrellas'; cielo.setAttribute('aria-hidden', 'true');
+  cielo.innerHTML = [0, 1, 2].map(c => `<div class="capa" data-capa="${c}">${Array.from({ length: 22 }, () => {
+    const t = azar(1, 2.4 + c * .6).toFixed(1);
+    return `<i style="left:${azar(0, 100).toFixed(2)}%;top:${azar(0, 100).toFixed(2)}%;width:${t}px;height:${t}px;--o:${azar(.25, .8).toFixed(2)};--d:${azar(2, 6).toFixed(1)}s"></i>`;
+  }).join('')}</div>`).join('');
+  sec.prepend(cielo);
+});
 
 if (QUIETO || !window.gsap || !window.ScrollTrigger) { $('#frase').style.opacity = 1; return; }
 gsap.registerPlugin(ScrollTrigger, ...(window.SplitText ? [SplitText] : []), ...(window.Flip ? [Flip] : []));
@@ -658,23 +834,65 @@ if (window.Lenis) {
   window.__lenis = lenis;
   lenis.on('scroll', ScrollTrigger.update);
   gsap.ticker.add(t => lenis.raf(t * 1000)); gsap.ticker.lagSmoothing(0);
-  $$('a[href^="#"]').forEach(a => a.addEventListener('click', e => { const d = $(a.getAttribute('href')); if (d) { e.preventDefault(); lenis.scrollTo(d, { offset: -72 }); } }));
+  $$('a[href^="#"]').forEach(a => a.addEventListener('click', e => { const d = $(a.getAttribute('href')); if (d) { e.preventDefault(); lenis.scrollTo(d, { offset: -72, duration: 1.4 }); } }));
 }
-gsap.to('#progreso', { scaleX: 1, ease: 'none', scrollTrigger: { trigger: document.body, start: 'top top', end: 'bottom bottom', scrub: true } });
+
+/* ================= entrada: la órbita se forma, «delcos» sube y la cortina se levanta ================= */
+const conIntro = document.documentElement.classList.contains('con-intro');
+const RET = conIntro ? 1.55 : 0;
+if (conIntro) {
+  window.__lenis && __lenis.stop();
+  gsap.timeline({ onComplete: () => {
+      document.documentElement.classList.remove('con-intro');
+      try { sessionStorage.setItem('delcos-intro', '1'); } catch (e) {}
+      window.__lenis && __lenis.start();
+    } })
+    .from('.intro .i-esfera', { scale: 0, transformOrigin: '20px 24px', duration: .6, ease: 'back.out(1.8)' })
+    .from('.intro .i-anillo', { scale: .4, opacity: 0, transformOrigin: '20px 24px', duration: .7, ease: 'expo.out' }, '<.1')
+    .from('.intro .i-sat', { rotate: -220, opacity: 0, transformOrigin: '20px 24px', duration: .9, ease: 'expo.out' }, '<')
+    .from('.intro b span', { yPercent: 110, duration: .6, stagger: .04, ease: 'expo.out' }, '<.15')
+    .from('.intro .punto', { scale: 0, duration: .4, stagger: .1 }, '<')
+    .to('.intro > *', { y: -30, opacity: 0, duration: .35, stagger: .03, ease: 'power2.in' }, '+=.15')
+    .to('.intro', { yPercent: -100, duration: .75, ease: 'expo.inOut' }, '-=.15');
+}
+
+/* ================= la cabecera y el menú marcan la sección en la que estás ================= */
+$$('main section[id]').forEach(sec => ScrollTrigger.create({ trigger: sec, start: 'top 45%', end: 'bottom 45%', onToggle: s => {
+  if (!s.isActive) return;
+  $$('.nav a, .menu nav a').forEach(a => a.classList.toggle('activa', a.getAttribute('href') === '#' + sec.id));
+} }));
+
+/* ================= órbita de la portada: se agranda y se aleja al bajar ================= */
+gsap.from('#orbita-fondo', { scale: .6, opacity: 0, rotate: -40, duration: 2, ease: 'expo.out', delay: RET });
+gsap.to('#orbita-fondo', { scale: 1.35, rotate: 25, opacity: .3, ease: 'none', scrollTrigger: { trigger: '.portada', start: 'top top', end: 'bottom top', scrub: true } });
+
+/* ================= estrellas en profundidad: cada capa se mueve a su velocidad ================= */
+$$('.estrellas .capa').forEach(c => gsap.fromTo(c, { yPercent: 6 + c.dataset.capa * 8 }, { yPercent: -(6 + c.dataset.capa * 8), ease: 'none',
+  scrollTrigger: { trigger: c.closest('section'), start: 'top bottom', end: 'bottom top', scrub: true } }));
+
+/* ================= párrafos que suben línea a línea tras una máscara ================= */
+if (window.SplitText) $$('.entrada').forEach(p => {
+  if (p.closest('.portada')) return;
+  SplitText.create(p, { type: 'lines', mask: 'lines', autoSplit: true,
+    onSplit: s => gsap.from(s.lines, { yPercent: 105, duration: 1, stagger: .09, ease: 'expo.out', scrollTrigger: { trigger: p, start: 'top 88%' } }) });
+});
 
 /* ================= titulares que se revelan por letras ================= */
 $$('[data-letras]').forEach((h, k) => {
   if (!window.SplitText) return;
-  const s = new SplitText(h, { type: 'lines,words,chars', linesClass: 'linea-txt' });
+  // autoSplit: si cambia el ancho (o llegan las fuentes), vuelve a partir las líneas con el ancho nuevo
   const desde = { yPercent: 110, rotate: 4, opacity: 0 };
-  if (h.closest('.portada')) gsap.from(s.chars, { ...desde, duration: 1, stagger: .018, ease: 'expo.out', delay: .15 });
-  else gsap.from(s.chars, { ...desde, duration: .9, stagger: .012, ease: 'expo.out', scrollTrigger: { trigger: h, start: 'top 82%', toggleActions: 'play none none reverse' } });
+  let primera = true;
+  SplitText.create(h, { type: 'lines,words,chars', linesClass: 'linea-txt', autoSplit: true, onSplit: s => {
+    if (h.closest('.portada')) { const d = primera ? RET + .15 : 0; primera = false; return gsap.from(s.chars, { ...desde, duration: 1, stagger: .018, ease: 'expo.out', delay: d }); }
+    return gsap.from(s.chars, { ...desde, duration: .9, stagger: .012, ease: 'expo.out', scrollTrigger: { trigger: h, start: 'top 82%', toggleActions: 'play none none reverse' } });
+  } });
 });
-gsap.from('.portada .texto > :not(h1)', { y: 24, opacity: 0, duration: .9, stagger: .1, ease: 'expo.out', delay: .6 });
+gsap.from('.portada .texto > :not(h1)', { y: 24, opacity: 0, duration: .9, stagger: .1, ease: 'expo.out', delay: RET + .6 });
 
 /* ================= portada: la baraja entra, sigue al ratón y se recoge al bajar ================= */
 const cartas = $$('#baraja [data-p]');
-gsap.from(cartas, { y: 160, rotateX: -30, rotateY: 20, opacity: 0, duration: 1.4, stagger: .1, ease: 'expo.out', delay: .3 });
+gsap.from(cartas, { y: 160, rotateX: -30, rotateY: 20, opacity: 0, duration: 1.4, stagger: .1, ease: 'expo.out', delay: RET + .3 });
 if (ESCRITORIO) {
   const baraja = $('#baraja');
   const qx = cartas.map(c => gsap.quickTo(c, 'x', { duration: .9, ease: 'power3' })), qy = cartas.map(c => gsap.quickTo(c, 'y', { duration: .9, ease: 'power3' }));
@@ -698,7 +916,7 @@ ScrollTrigger.matchMedia({
   '(min-width: 901px)': () => {
     const riel = $('#riel');
     const dist = () => riel.scrollWidth - innerWidth;
-    const mover = gsap.to(riel, { x: () => -dist(), ease: 'none', scrollTrigger: { trigger: '#dia', start: 'top top', end: () => '+=' + dist(), scrub: .8, pin: true,
+    const mover = gsap.to(riel, { x: () => -dist(), ease: 'none', scrollTrigger: { trigger: '#dia', start: 'top top', end: () => '+=' + dist(), scrub: .8, pin: true, refreshPriority: 1,
       invalidateOnRefresh: true, onUpdate: s => {
         const tramo = s.progress * (pasos.length - 1), i = Math.min(Math.floor(tramo), pasos.length - 1), f = tramo - i;
         const a = minutos(DIA[i].h), b = minutos(DIA[Math.min(i + 1, DIA.length - 1)].h);
@@ -749,7 +967,14 @@ if (ESCRITORIO) $$('.iman').forEach(b => {
   b.addEventListener('mousemove', e => { const r = b.getBoundingClientRect(); qx((e.clientX - r.left - r.width / 2) * .3); qy((e.clientY - r.top - r.height / 2) * .4); });
   b.addEventListener('mouseleave', () => { qx(0); qy(0); });
 });
-gsap.from('.cierre .orbita', { scale: .5, rotate: -120, duration: 1.2, ease: 'back.out(1.6)', scrollTrigger: { trigger: '.cierre', start: 'top 75%' } });
+/* ================= eclipse: la luna tapa la órbita mientras la frase se enciende ================= */
+gsap.fromTo('#eclipse .luna', { x: -150 }, { x: 0, ease: 'none', scrollTrigger: { trigger: '.frase', start: 'top 85%', end: 'center 50%', scrub: true } });
+gsap.fromTo('#eclipse .corona', { scale: .82, opacity: 0, transformOrigin: '100px 100px' }, { scale: 1.12, opacity: 1, ease: 'none', scrollTrigger: { trigger: '.frase', start: 'top 45%', end: 'center 45%', scrub: true } });
+gsap.to('#eclipse .anillo', { rotate: 120, transformOrigin: '100px 100px', ease: 'none', scrollTrigger: { trigger: '.frase', start: 'top bottom', end: 'bottom top', scrub: true } });
+
+/* ================= cierre: el planeta llega desde lejos y se queda en órbita ================= */
+gsap.fromTo('.cierre .orbita', { scale: .25, rotate: -160, y: 120 }, { scale: 1, rotate: 0, y: 0, ease: 'none', scrollTrigger: { trigger: '.cierre', start: 'top bottom', end: 'top 25%', scrub: 1 } });
+ScrollTrigger.sort(); ScrollTrigger.refresh();
 addEventListener('load', () => ScrollTrigger.refresh());
 })();
 </script>
