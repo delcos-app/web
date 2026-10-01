@@ -118,8 +118,11 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--azul);bo
 
 @media (max-width:900px){
   .wrap{padding-inline:16px}
-  .cab nav{display:none}
+  .cab .wrap{height:auto;flex-wrap:wrap;padding-block:12px 0;row-gap:4px}
   .cab .boton{margin-left:auto}
+  /* En móvil, las secciones van en una segunda fila que se desliza de lado */
+  .cab nav{order:3;flex-basis:100%;margin-left:0;gap:22px;overflow-x:auto;white-space:nowrap;scrollbar-width:none;padding-block:10px 12px}
+  .cab nav::-webkit-scrollbar{display:none}
   .cabeza{grid-template-columns:minmax(0,1fr);padding-block:56px 40px}
   .orbita{display:none}
   .canales,.ayuda,.formulario,form{grid-template-columns:minmax(0,1fr)}
