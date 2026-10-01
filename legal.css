@@ -14,4 +14,6 @@ p,li{color:var(--texto2)}
 li b{color:var(--tinta)}
 a{color:var(--marino)}
 .nota{background:var(--aviso-s);color:var(--aviso);border-radius:12px;padding:12px 16px;font-size:15px}
-.pie{margin-top:48px;padding-top:24px;border-top:1px solid var(--linea);font-size:15px}
+.pie{margin-top:48px;padding-top:12px;border-top:1px solid var(--linea);font-size:15px}
+/* Enlaces del pie con área cómoda para el dedo (44 px) */
+.pie a{display:inline-block;padding-block:11px}
