@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Soporte · delcos</title>
+<meta name="description" content="Ayuda para usar delcos: acceso, móvil, datos, facturación y seguridad. Y cómo escribirnos si no encuentras lo que buscas.">
+<link rel="canonical" href="https://www.delcos.app/soporte.html">
+<meta name="theme-color" content="#17457A">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preload" href="fuentes/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="paginas.css">
+</head>
+<body>
+
+<header class="cab">
+  <div class="wrap">
+    <a class="logo" href="./" aria-label="delcos, inicio">
+      <svg width="28" height="28" viewBox="0 0 44 44" aria-hidden="true"><circle cx="20" cy="24" r="16" fill="#17457A"/><circle cx="35" cy="9" r="6" fill="#7CC3EC"/></svg><b>delcos</b>
+    </a>
+    <nav aria-label="Secciones"><a href="./">Inicio</a><a href="./#precios">Precios</a><a href="soporte.html" aria-current="page">Soporte</a><a href="dudas.html">Envíanos tu duda</a></nav>
+    <a class="boton" href="dudas.html">Pide una demo</a>
+  </div>
+</header>
+
+<main>
+  <div class="wrap cabeza">
+    <div class="texto">
+      <div class="ojo sube">Soporte</div>
+      <h1 class="sube" style="--d:1">Que tu equipo <em>no se pare.</em></h1>
+      <p class="sube" style="--d:2">Respuestas a lo que más nos preguntan los equipos que usan delcos. Si no encuentras la tuya, escríbenos y te contestamos en horario laboral, de lunes a viernes.</p>
+    </div>
+    <svg class="orbita sube" style="--d:2" viewBox="0 0 44 44" aria-hidden="true"><circle cx="20" cy="24" r="19.5" fill="none" stroke="#C5D5E4" stroke-width=".5" stroke-dasharray="1.5 2"/><circle cx="20" cy="24" r="16" fill="#17457A"/><g class="sat"><circle cx="35" cy="9" r="5" fill="#7CC3EC"/></g></svg>
+  </div>
+
+  <div class="wrap canales">
+    <div class="canal sube" style="--d:3">
+      <h2>El manual, dentro de la app</h2>
+      <p>En delcos tienes el «Manual de uso», con cada pantalla explicada paso a paso y un buscador para ir directo a lo que necesitas.</p>
+    </div>
+    <a class="canal oscura sube" style="--d:4" href="dudas.html">
+      <h2>Envíanos tu duda</h2>
+      <p>Cuéntanos qué pasa, en qué pantalla y con qué usuario. Cuanto más concreto, antes lo resolvemos.</p>
+      <span class="ir">Escribir ahora <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+    </a>
+    <div class="canal sube" style="--d:5">
+      <h2>Puesta en marcha</h2>
+      <p>Te ayudamos a traer tus datos desde Excel, a configurar tu empresa, tu marca y tus permisos, y a formar al equipo.</p>
+    </div>
+  </div>
+
+  <section class="wrap ayuda" aria-labelledby="ayuda-t">
+    <div class="lado">
+      <div class="ojo">Preguntas frecuentes</div>
+      <h2 id="ayuda-t">Busca tu duda</h2>
+      <div class="buscar">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input type="search" id="buscar" placeholder="Contraseña, móvil, factura…" aria-label="Buscar en las preguntas frecuentes" autocomplete="off">
+      </div>
+      <p class="sin-resultados" id="sin" hidden>No hay ninguna pregunta con esas palabras. <a href="dudas.html">Escríbenos tu duda</a> y te respondemos.</p>
+    </div>
+    <div class="temas" id="temas"></div>
+  </section>
+</main>
+
+<footer class="pie-web">
+  <div class="wrap">
+    <div class="logo"><svg width="22" height="22" viewBox="0 0 44 44" aria-hidden="true"><circle cx="20" cy="24" r="16" fill="#17457A"/><circle cx="35" cy="9" r="6" fill="#7CC3EC"/></svg><b style="font-size:18px">delcos</b></div>
+    <nav aria-label="Más"><a href="soporte.html">Soporte</a><a href="dudas.html">Envíanos tu duda</a><a href="aviso-legal.html">Aviso legal</a><a href="privacidad.html">Privacidad</a><a href="cookies.html">Cookies</a></nav>
+  </div>
+</footer>
+
+<script>
+(() => {
+const TEMAS = [
+  ['Acceso y usuarios', [
+    ['He olvidado la contraseña', 'En la pantalla de acceso, pulsa «He olvidado la contraseña» y te llegará un enlace por correo para crear otra. Si el enlace ha caducado o ya lo usaste, pide uno nuevo de la misma forma.'],
+    ['¿Por qué se cierra mi sesión?', 'Si al entrar no marcas «Mantener la sesión iniciada en este dispositivo», la sesión dura lo que la pestaña abierta. El correo se recuerda siempre, así que solo tendrás que poner la contraseña.'],
+    ['¿Cómo doy de alta a un compañero?', 'Quien administra tu empresa lo invita desde Configuración, en «Usuarios y roles», y le asigna su papel: comercial, televenta, administración o dirección. Quien se registra sin invitación queda pendiente hasta que lo activan.'],
+    ['Un compañero no ve lo mismo que yo', 'Cada papel ve y hace lo que le toca: un comercial ve su cartera y su zona, y dirección lo ve todo. Si a alguien le falta algo, revisad su papel y su zona en «Usuarios y roles».']
+  ]],
+  ['En el móvil', [
+    ['¿Hay que instalar algo?', 'No. delcos se abre en el navegador del ordenador o del móvil. En el móvil puedes añadirlo a la pantalla de inicio y se abre como una app más.'],
+    ['¿Cómo lo pongo en la pantalla de inicio?', 'En iPhone, ábrelo en Safari, pulsa «Compartir» y después «Añadir a pantalla de inicio». En Android, ábrelo en Chrome, abre el menú y elige «Instalar aplicación» o «Añadir a pantalla de inicio».']
+  ]],
+  ['Tus datos', [
+    ['¿Puedo traer mis datos desde Excel?', 'Sí. En Configuración, «Importar datos» acepta clientes, productos, fichas y ventas. Ves cómo queda antes de guardar y, si algo no cuadra, lo deshaces.'],
+    ['¿Puedo sacar mis datos?', 'Sí. Puedes exportar tus datos cuando quieras: son tuyos.'],
+    ['Tengo fichas repetidas', 'En «Calidad del dato» delcos te enseña los posibles duplicados y las fichas incompletas, y te ayuda a unificarlas.']
+  ]],
+  ['Pedidos y facturación', [
+    ['¿Puedo borrar una factura?', 'No. Con VeriFactu, una factura emitida no se puede cambiar ni borrar. Si hay un error, se hace una factura rectificativa y queda todo registrado.'],
+    ['¿Qué tipos de IVA admite?', 'Los de España: 21, 10, 4 y 0 %.'],
+    ['Un cobro no me deja poner más importe', 'Es a propósito: un cobro nunca puede superar lo que queda pendiente de la factura.']
+  ]],
+  ['Seguridad', [
+    ['¿Dónde están mis datos?', 'En servidores de la Unión Europea, en Fráncfort, con copias de seguridad diarias. Cada empresa está separada de las demás.'],
+    ['¿Quién puede ver mis datos?', 'Las personas de tu empresa, cada una según su papel y su zona. Ninguna otra empresa puede ver tus datos.']
+  ]]
+];
+const temas = document.getElementById('temas');
+let k = 0;
+temas.innerHTML = TEMAS.map(([t, ps]) => `<div class="tema"><h3>${t}</h3>${ps.map(([p, r]) => {
+  const i = k++;
+  return `<div class="preg" data-abierta="false" data-texto="${(p + ' ' + r).toLowerCase()}"><button id="p-${i}" aria-expanded="false" aria-controls="r-${i}"><span>${p}</span><span class="mas" aria-hidden="true">+</span></button>
+    <div class="resp" id="r-${i}" role="region" aria-labelledby="p-${i}"><div><p>${r}</p></div></div></div>`;
+}).join('')}</div>`).join('');
+temas.addEventListener('click', e => {
+  const b = e.target.closest('.preg button'); if (!b) return;
+  const p = b.closest('.preg'), abre = p.dataset.abierta !== 'true';
+  p.dataset.abierta = String(abre); b.setAttribute('aria-expanded', String(abre));
+});
+// Buscador: sin acentos y por palabras; abre las que coinciden
+const sinAcentos = t => t.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+document.getElementById('buscar').addEventListener('input', e => {
+  const palabras = sinAcentos(e.target.value).split(/\s+/).filter(Boolean);
+  let alguna = false;
+  document.querySelectorAll('.tema').forEach(t => {
+    let enTema = false;
+    t.querySelectorAll('.preg').forEach(p => {
+      const ok = palabras.every(w => sinAcentos(p.dataset.texto).includes(w));
+      p.hidden = !ok; enTema ||= ok;
+      const abre = ok && palabras.length > 0;
+      p.dataset.abierta = String(abre); p.querySelector('button').setAttribute('aria-expanded', String(abre));
+    });
+    t.hidden = !enTema; alguna ||= enTema;
+  });
+  document.getElementById('sin').hidden = alguna;
+});
+})();
+</script>
+</body>
+</html>
