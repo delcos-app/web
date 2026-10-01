@@ -256,7 +256,7 @@ body.noche .tel{background:#05182B;box-shadow:0 0 0 1px var(--linea-t),var(--som
 .caso-marca p{margin:0;color:var(--texto2)}
 .fundador{align-self:flex-start;padding:5px 12px;border-radius:999px;background:var(--suave);color:var(--marino);font-size:13px;font-weight:700}
 .caso-der{position:relative;overflow:hidden;border-radius:28px;background:var(--tinta);color:var(--blanco);padding:36px;display:flex;flex-direction:column;justify-content:space-between;gap:32px}
-.caso-orbita{position:absolute;right:-70px;top:-70px;width:260px;height:260px;opacity:.5;animation:gira 40s linear infinite}
+.caso-orbita{position:absolute;right:-90px;top:-90px;width:240px;height:240px;opacity:.3;animation:gira 40s linear infinite}
 .datos{position:relative;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
 .dato{display:flex;flex-direction:column;gap:8px}
 .dato b{font-family:var(--f-titulo);font-weight:200;font-size:clamp(48px,5vw,72px);line-height:1;letter-spacing:-.04em;color:var(--celeste);font-variant-numeric:tabular-nums}
@@ -520,6 +520,22 @@ body.noche .arriba .pista{stroke:var(--linea-t)}
   .porque .fijo{position:static}
     .sector-dos{grid-template-columns:minmax(0,1fr)}
   .cursor{display:none}
+}
+/* ---------- tablet en vertical: dos columnas donde sobra sitio */
+@media (min-width:601px) and (max-width:900px){
+  .baraja{width:148%}
+  .pq-rejilla{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .tallas{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .talla + .talla{padding-left:20px;border-left:1px solid var(--linea);border-top:0}
+  .mosaico{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .tesela.g8{grid-column:span 2}
+  .datos{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .historia{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .hito:nth-child(odd){padding-left:0;border-left:0}
+  .hito:nth-child(even){padding-left:20px;border-left:1px solid var(--linea);border-top:0}
+  .hito:nth-child(n+3){border-top:1px solid var(--linea)}
+  .garantias{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .garantias div + div{padding-left:20px;border-left:1px solid var(--linea);border-top:0}
 }
 @media (max-width:600px){
   .cab .boton{display:none}
