@@ -1,0 +1,17 @@
+/* Páginas legales de delcos: sobrias, con las letras de la marca alojadas en la propia web */
+@import url("fuentes/fuentes.css");
+:root{--tinta:#0B2540;--marino:#17457A;--texto2:#4A617A;--hielo:#F2F7FC;--linea:#D8E4EF;--aviso:#8A4B0B;--aviso-s:#FDF1E1;color-scheme:light}
+*{box-sizing:border-box}
+body{margin:0;background:#FFFFFF;color:var(--tinta);font:17px/1.6 "Source Sans 3",system-ui,-apple-system,"Segoe UI",sans-serif}
+h1,h2,.logo b{font-family:Manrope,"Source Sans 3",system-ui,sans-serif}
+header{padding:20px max(16px,calc((100vw - 760px)/2));border-bottom:1px solid var(--linea)}
+.logo{display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:var(--tinta)}
+.logo b{font-size:22px;letter-spacing:-.03em}
+main{max-width:760px;margin:0 auto;padding:48px 16px 80px}
+h1{font-size:40px;line-height:1.1;letter-spacing:-.03em;margin:0 0 16px}
+h2{font-size:21px;margin:36px 0 8px}
+p,li{color:var(--texto2)}
+li b{color:var(--tinta)}
+a{color:var(--marino)}
+.nota{background:var(--aviso-s);color:var(--aviso);border-radius:12px;padding:12px 16px;font-size:15px}
+.pie{margin-top:48px;padding-top:24px;border-top:1px solid var(--linea);font-size:15px}

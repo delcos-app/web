@@ -1,0 +1,758 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>delcos · Software comercial y operativo para el sector sanitario</title>
+<meta name="description" content="Cartera y visitas, pedidos y televenta, almacén y compras, facturación con VeriFactu, comisiones y analítica. La plataforma para empresas que venden a través de profesionales y centros sanitarios.">
+<link rel="canonical" href="https://www.delcos.app/">
+<meta name="theme-color" content="#17457A">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="delcos">
+<meta property="og:title" content="delcos · Del campo a la factura, en una sola plataforma">
+<meta property="og:description" content="Software comercial y operativo hecho para el sector sanitario.">
+<meta property="og:url" content="https://www.delcos.app/">
+<meta property="og:image" content="https://www.delcos.app/capturas/labs_e_analitica.webp">
+<meta property="og:locale" content="es_ES">
+<style>html{color-scheme:light}body{margin:0}</style>
+<link rel="preload" href="fuentes/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fuentes/source-sans-3-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="fuentes/fuentes.css">
+<style>
+/* Concepto: delcos como la plataforma entera de una empresa sanitaria, del campo a la factura. La página cuenta un día
+   completo de la empresa (comercial, televenta, almacén, compras, administración y dirección) con capturas reales de la app.
+   Movimiento de alto nivel pero sobrio: texto que se revela por letras, una baraja de pantallas en 3D, un recorrido
+   horizontal con reloj, un mosaico de módulos que se inclina hacia el ratón y fondos que cambian de color por escena.
+   Sin fotos ni degradados de fondo. Un solo aspecto (claro, con escenas en tinta). */
+:root{
+  --tinta:#0B2540; --marino:#17457A; --marino-h:#123A66; --azul:#3F82C0; --celeste:#7CC3EC;
+  --hielo:#F2F7FC; --suave:#E4EFFA; --blanco:#FFFFFF; --linea:#D8E4EF; --linea-f:#C5D5E4;
+  --texto2:#4A617A; --texto3:#5F7389; --ok:#0E6B4C; --ok-s:#E3F4EC; --en-tinta:#B9CCE0; --linea-t:#22405F;
+  --fondo:var(--blanco); --tinta-txt:var(--tinta);
+  --f-titulo:Manrope,"Source Sans 3",system-ui,sans-serif;
+  --f-texto:"Source Sans 3",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --ease-sal:cubic-bezier(.2,.8,.2,1);
+  --sombra-2:0 2px 4px rgba(11,37,64,.04),0 8px 24px rgba(11,37,64,.08);
+  --sombra-3:0 4px 12px rgba(11,37,64,.08),0 28px 72px rgba(11,37,64,.20);
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+body{margin:0;background:var(--fondo);color:var(--tinta-txt);font-family:var(--f-texto);font-size:17px;line-height:1.5;overflow-x:hidden;transition:background .6s var(--ease-sal),color .6s var(--ease-sal)}
+body.noche{--fondo:var(--tinta);--tinta-txt:var(--blanco)}
+img{max-width:100%;display:block}
+a{color:inherit}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:none;box-shadow:0 0 0 2px var(--blanco),0 0 0 4px var(--azul);border-radius:12px}
+h1,h2,h3{text-wrap:balance}
+.wrap{max-width:1280px;margin:0 auto;padding-inline:40px}
+.ojo{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#3F6488}
+body.noche .ojo{color:var(--celeste)}
+.titular{margin:0;font-family:var(--f-titulo);font-weight:300;font-size:clamp(40px,5.4vw,76px);line-height:1.02;letter-spacing:-.04em}
+.titular em{font-style:normal;color:var(--azul)}
+body.noche .titular em{color:var(--celeste)}
+.entrada{margin:0;font-size:clamp(17px,1.5vw,20px);color:var(--texto2);max-width:58ch}
+body.noche .entrada{color:var(--en-tinta)}
+.linea-txt{display:block;overflow:hidden;padding-bottom:.08em}
+.boton{display:inline-flex;align-items:center;gap:10px;height:54px;padding:0 28px;border-radius:999px;background:var(--marino);color:var(--blanco);
+  font-weight:600;font-size:17px;text-decoration:none;border:0;transition:background .1s;will-change:transform}
+.boton:hover{background:var(--marino-h)}
+.boton svg{transition:transform .18s var(--ease-sal)}
+.boton:hover svg{transform:translateX(4px)}
+.boton.sec{background:transparent;color:inherit;border:1px solid var(--linea-f)}
+.boton.sec:hover{background:var(--hielo)}
+body.noche .boton.sec{border-color:var(--linea-t)}
+body.noche .boton.sec:hover{background:var(--linea-t)}
+
+/* ---------- cabecera */
+.cab{position:fixed;inset:0 0 auto 0;z-index:40;padding-top:env(safe-area-inset-top,0px);transition:transform .3s var(--ease-sal),background .3s,box-shadow .3s,color .3s}
+.cab.fondo{background:rgba(255,255,255,.94);box-shadow:0 1px 0 var(--linea);color:var(--tinta)}
+body.noche .cab.fondo{background:rgba(11,37,64,.94);box-shadow:0 1px 0 var(--linea-t);color:var(--blanco)}
+.cab.oculta{transform:translateY(-100%)}
+.cab .wrap{height:72px;display:flex;align-items:center;gap:32px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo b{font-family:var(--f-titulo);font-weight:800;font-size:25px;letter-spacing:-.035em}
+.nav{display:flex;gap:28px;margin-left:auto;font-weight:600;font-size:15px}
+.nav a{text-decoration:none;position:relative}
+.nav a::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:2px;background:var(--azul);transform:scaleX(0);transform-origin:left;transition:transform .18s var(--ease-sal)}
+.nav a:hover::after{transform:scaleX(1)}
+.cab .boton{height:44px;padding:0 20px;font-size:15px}
+.progreso{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--celeste);transform-origin:left;transform:scaleX(0);z-index:41}
+
+/* ---------- marcos: siempre una captura real de la app dentro */
+.tel{width:280px;aspect-ratio:300/629;border-radius:44px;background:var(--tinta);padding:9px;flex-shrink:0;box-shadow:var(--sombra-3)}
+body.noche .tel{background:#05182B;box-shadow:0 0 0 1px var(--linea-t),var(--sombra-3)}
+.tel .pant{width:100%;height:100%;border-radius:36px;overflow:hidden;background:var(--blanco);position:relative}
+.tel .pant img{width:100%;height:auto}
+.ordenador{border-radius:16px;background:var(--blanco);box-shadow:var(--sombra-3);overflow:hidden;border:1px solid var(--linea)}
+.ordenador .barra{height:30px;background:var(--hielo);border-bottom:1px solid var(--linea);display:flex;align-items:center;gap:6px;padding:0 12px}
+.ordenador .barra i{width:9px;height:9px;border-radius:999px;background:var(--linea-f)}
+.ordenador .vista{aspect-ratio:1440/900;overflow:hidden}
+.ordenador .vista img{width:100%;height:100%;object-fit:cover;object-position:top left}
+
+/* ---------- 1. portada: titular por letras y una baraja de pantallas en 3D */
+.portada{position:relative;min-height:100vh;padding-block:140px 80px;overflow:hidden}
+.portada .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:40px;align-items:center}
+.portada .texto{display:flex;flex-direction:column;gap:26px;position:relative;z-index:2}
+.portada h1{font-size:clamp(46px,6.2vw,96px)}
+.acciones{display:flex;gap:12px;flex-wrap:wrap}
+.baraja{position:relative;height:640px;perspective:1600px}
+.baraja .carta{position:absolute;will-change:transform;transform-style:preserve-3d}
+.baraja .c-esc{width:640px;left:0;top:70px}
+.baraja .c-esc2{width:520px;left:110px;top:330px}
+.baraja .c-tel{left:auto;right:10px;top:10px}
+.baraja .c-tel2{right:250px;top:240px}
+.baraja .c-tel2 .tel{width:220px}
+.etiqueta{position:absolute;z-index:3;background:var(--blanco);color:var(--tinta);border:1px solid var(--linea);border-radius:999px;padding:9px 16px;font-size:14px;font-weight:600;
+  box-shadow:var(--sombra-2);white-space:nowrap;display:flex;gap:8px;align-items:center}
+.etiqueta i{width:8px;height:8px;border-radius:999px;background:var(--azul)}
+
+/* ---------- cinta de módulos */
+.cinta-mod{padding-block:36px;border-block:1px solid var(--linea);overflow:hidden;white-space:nowrap}
+.cinta-mod .pista{display:inline-flex;gap:48px;animation:cinta 40s linear infinite;padding-left:48px}
+.cinta-mod span{font-family:var(--f-titulo);font-weight:300;font-size:clamp(34px,4vw,56px);letter-spacing:-.03em;color:var(--tinta)}
+.cinta-mod span.h{color:transparent;-webkit-text-stroke:1.2px var(--azul)}
+.cinta-mod b{color:var(--celeste);font-weight:300}
+@keyframes cinta{to{transform:translateX(-50%)}}
+
+/* ---------- 2. un día en la empresa: recorrido horizontal con reloj */
+.dia{position:relative;overflow:hidden}
+.dia .cabeza{padding-block:130px 40px}
+.dia .cabeza .wrap{display:flex;justify-content:space-between;align-items:end;gap:32px;flex-wrap:wrap}
+.reloj{font-family:var(--f-titulo);font-weight:200;font-size:clamp(64px,9vw,140px);line-height:1;letter-spacing:-.05em;font-variant-numeric:tabular-nums;color:var(--azul)}
+.dia .riel{display:flex;gap:56px;padding-inline:max(40px,calc((100vw - 1280px)/2 + 40px));padding-block:20px 120px;width:max-content;will-change:transform}
+.paso{width:min(860px,78vw);display:grid;grid-template-columns:300px minmax(0,1fr);gap:40px;align-items:center}
+.paso.ancho{grid-template-columns:minmax(0,1fr);width:min(980px,82vw)}
+.paso .info{display:flex;flex-direction:column;gap:14px}
+.paso .hora{font-family:var(--f-titulo);font-weight:700;font-size:15px;color:var(--azul);font-variant-numeric:tabular-nums;display:flex;gap:10px;align-items:center}
+.paso .rol{padding:4px 12px;border-radius:999px;background:var(--suave);color:var(--marino);font-size:13px;font-weight:700}
+.paso h3{margin:0;font-family:var(--f-titulo);font-weight:400;font-size:clamp(28px,2.6vw,38px);line-height:1.1;letter-spacing:-.03em}
+.paso p{margin:0;color:var(--texto2)}
+.paso.ancho .info{max-width:620px}
+.barra-dia{position:absolute;left:max(40px,calc((100vw - 1280px)/2 + 40px));right:max(40px,calc((100vw - 1280px)/2 + 40px));bottom:56px;height:2px;background:var(--linea)}
+.barra-dia i{position:absolute;inset:0;background:var(--marino);transform-origin:left;transform:scaleX(0)}
+
+/* ---------- 3. módulos: mosaico que se inclina hacia el ratón */
+.modulos{padding-block:140px 120px}
+.modulos .cabeza{display:flex;flex-direction:column;gap:18px;margin-bottom:56px;max-width:900px}
+.mosaico{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));grid-auto-rows:minmax(0,auto);gap:18px}
+.tesela{grid-column:span 4;position:relative;border-radius:28px;background:var(--hielo);padding:26px 26px 0;display:flex;flex-direction:column;gap:8px;overflow:hidden;
+  text-align:left;border:0;color:var(--tinta);transform-style:preserve-3d;will-change:transform;transition:background .2s;min-height:360px}
+.tesela.g6{grid-column:span 6}.tesela.g8{grid-column:span 8}
+.tesela:hover{background:var(--suave)}
+.tesela small{font-size:12.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#3F6488}
+.tesela h3{margin:0;font-family:var(--f-titulo);font-weight:700;font-size:22px;letter-spacing:-.015em}
+.tesela p{margin:0;color:var(--texto2);font-size:16px;max-width:42ch}
+.tesela .ventana{margin-top:auto;border-radius:14px 14px 0 0;overflow:hidden;box-shadow:var(--sombra-2);background:var(--blanco);aspect-ratio:16/9;position:relative;translate:0 10px}
+.tesela .ventana img{width:100%;height:100%;object-fit:cover;object-position:top left;transition:transform 1.2s var(--ease-sal)}
+.tesela:hover .ventana img{transform:scale(1.08) translate(-2%,-2%)}
+.tesela .ver{position:absolute;right:20px;top:20px;width:40px;height:40px;border-radius:999px;background:var(--blanco);display:flex;align-items:center;justify-content:center;color:var(--marino);
+  box-shadow:var(--sombra-2);transition:transform .2s var(--ease-sal)}
+.tesela:hover .ver{transform:rotate(-45deg) scale(1.1)}
+
+/* ---------- visor a pantalla completa */
+.visor{position:fixed;inset:0;z-index:60;background:rgba(11,37,64,.86);display:flex;align-items:center;justify-content:center;padding:40px 24px}
+.visor[hidden]{display:none}
+.visor figure{margin:0;max-width:1200px;width:100%;display:flex;flex-direction:column;gap:14px}
+.visor img{border-radius:14px;box-shadow:var(--sombra-3);width:100%;max-height:78vh;object-fit:contain;background:var(--blanco)}
+.visor figcaption{color:var(--blanco);display:flex;justify-content:space-between;gap:16px;align-items:center;flex-wrap:wrap}
+.visor figcaption b{font-family:var(--f-titulo);font-size:20px}
+.visor button{background:var(--blanco);color:var(--tinta);border:0;border-radius:999px;height:44px;padding:0 20px;font-weight:600}
+
+/* ---------- 4. por qué delcos: título fijo y razones */
+.porque{padding-block:150px}
+.porque .wrap{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:72px;align-items:start}
+.porque .fijo{position:sticky;top:120px;display:flex;flex-direction:column;gap:22px}
+.razones{display:flex;flex-direction:column}
+.razon{display:grid;grid-template-columns:64px minmax(0,1fr);gap:20px;padding-block:34px;border-top:1px solid var(--linea-t);position:relative}
+.razon::before{content:"";position:absolute;left:0;top:-1px;height:1px;width:100%;background:var(--celeste);transform:scaleX(var(--k,0));transform-origin:left}
+.razon .n{font-family:var(--f-titulo);font-weight:200;font-size:40px;line-height:1;color:var(--celeste);font-variant-numeric:tabular-nums}
+.razon h3{margin:0 0 8px;font-family:var(--f-titulo);font-weight:600;font-size:24px;letter-spacing:-.02em}
+.razon p{margin:0;color:var(--en-tinta)}
+
+/* ---------- 5. sectores */
+.sectores{padding-block:140px 120px}
+.sectores .cabeza{display:flex;flex-direction:column;align-items:center;gap:20px;text-align:center;margin-bottom:48px}
+.pestanas{display:flex;gap:6px;padding:6px;border-radius:999px;background:var(--hielo);max-width:100%;overflow-x:auto;scrollbar-width:none}
+.pestanas::-webkit-scrollbar{display:none}
+.pestanas button{position:relative;height:44px;padding:0 18px;border-radius:999px;border:0;background:transparent;white-space:nowrap;font-weight:600;font-size:15px;overflow:hidden;transition:color .18s,background .18s;flex-shrink:0}
+.pestanas button[aria-selected="true"]{background:var(--marino);color:var(--blanco)}
+.pestanas button .prog{position:absolute;left:0;bottom:0;height:3px;width:100%;background:var(--celeste);transform:scaleX(0);transform-origin:left}
+.pestanas button[aria-selected="true"] .prog{animation:progreso var(--dur,5s) linear forwards}
+.pestanas.parada button .prog{animation-play-state:paused}
+@keyframes progreso{to{transform:scaleX(1)}}
+.sector-dos{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px;align-items:center;max-width:1040px;margin:0 auto}
+.sector-dos > *{min-width:0}
+.escena-tel{display:flex;justify-content:center;perspective:1200px}
+.escena-tel .tel{transform-style:preserve-3d}
+.cambio{display:flex;flex-direction:column;gap:16px}
+.lista-c div{display:flex;gap:12px;align-items:baseline;padding:14px 0;border-top:1px solid var(--linea);font-size:17px}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chips span{padding:5px 12px;border-radius:999px;background:var(--suave);color:var(--marino);font-size:14px;font-weight:600}
+
+/* ---------- precios */
+.precios{padding-block:140px 120px}
+.precios .cabeza{display:flex;flex-direction:column;align-items:center;gap:20px;text-align:center;margin-bottom:48px}
+.periodo{display:inline-flex;gap:4px;padding:5px;border-radius:999px;background:var(--hielo);position:relative}
+.periodo button{position:relative;z-index:1;height:42px;padding:0 20px;border:0;border-radius:999px;background:transparent;font-weight:600;font-size:15px;transition:color .2s}
+.periodo button[aria-pressed="true"]{color:var(--blanco)}
+.periodo .marca-p{position:absolute;top:5px;bottom:5px;border-radius:999px;background:var(--marino);transition:left .35s var(--ease-sal),width .35s var(--ease-sal)}
+.periodo small{display:inline-block;margin-left:6px;padding:2px 8px;border-radius:999px;background:var(--ok-s);color:var(--ok);font-size:12px;font-weight:700}
+.sectores .cabeza .titular,.precios .cabeza .titular{align-self:stretch;text-align:center}
+.precios .entrada{max-width:640px}
+.planes{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;align-items:stretch}
+.plan{border-radius:28px;background:var(--hielo);padding:30px 26px;display:flex;flex-direction:column;gap:18px;position:relative;will-change:transform}
+.plan.fuerte{background:var(--tinta);color:var(--blanco)}
+.plan h3{margin:0;font-family:var(--f-titulo);font-weight:700;font-size:22px;letter-spacing:-.015em}
+.plan .para{margin:0;font-size:15px;color:var(--texto2);min-height:3em}
+.plan.fuerte .para{color:var(--en-tinta)}
+.plan .cifra{display:flex;align-items:baseline;gap:6px}
+.plan .cifra b{font-family:var(--f-titulo);font-weight:300;font-size:52px;letter-spacing:-.04em;line-height:1;font-variant-numeric:tabular-nums}
+.plan .cifra span{color:var(--texto2);font-size:15px}
+.plan.fuerte .cifra span{color:var(--en-tinta)}
+.plan .anual{margin:-10px 0 0;font-size:13.5px;color:var(--texto2);min-height:1.4em}
+.plan.fuerte .anual{color:var(--en-tinta)}
+.plan .usuarios{font-size:15px;padding:12px 14px;border-radius:14px;background:var(--blanco);color:var(--tinta)}
+.plan.fuerte .usuarios{background:var(--linea-t);color:var(--blanco)}
+.plan ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;font-size:15.5px}
+.plan li{display:flex;gap:10px;align-items:flex-start}
+.plan li svg{flex-shrink:0;margin-top:3px}
+.plan .boton{margin-top:auto;justify-content:center}
+.plan.fuerte .boton{background:var(--blanco);color:var(--tinta)}
+.plan .sello{position:absolute;top:-12px;right:22px;padding:5px 12px;border-radius:999px;background:var(--celeste);color:var(--tinta);font-size:12.5px;font-weight:700}
+.notas-precio{margin:28px auto 0;text-align:center;font-size:14px;color:var(--texto3);max-width:70ch}
+@media (max-width:1100px){.planes{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){.planes{grid-template-columns:minmax(0,1fr)}}
+
+/* ---------- 6. frase, opiniones, preguntas, cierre */
+.frase{padding-block:170px;text-align:center}
+.frase .titular{font-size:clamp(44px,6.4vw,96px);max-width:15ch;margin:0 auto}
+.frase .p{display:inline-block;opacity:.18}
+.opiniones{padding-block:40px 120px;display:flex;flex-direction:column;gap:20px}
+.cinta{overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.cinta .pista{display:flex;gap:20px;width:max-content;animation:cinta 60s linear infinite}
+.cinta.inv .pista{animation-direction:reverse;animation-duration:70s}
+.cinta:hover .pista{animation-play-state:paused}
+.opinion{width:380px;margin:0;background:var(--hielo);border-radius:28px;padding:28px;display:flex;flex-direction:column;gap:18px}
+.opinion blockquote{margin:0;font-family:var(--f-titulo);font-weight:500;font-size:19px;line-height:1.35;color:var(--texto3)}
+.opinion figcaption{font-size:12.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--texto3)}
+.preguntas{padding-block:110px}
+.preguntas .wrap{max-width:900px;display:flex;flex-direction:column;gap:28px}
+.preg{border-top:1px solid var(--linea)}
+.preg:last-child{border-bottom:1px solid var(--linea)}
+.preg button{width:100%;min-height:72px;padding:20px 0;background:none;border:0;display:flex;justify-content:space-between;align-items:center;gap:16px;text-align:left;font-family:var(--f-titulo);font-weight:600;font-size:20px;border-radius:0}
+.preg .mas{flex-shrink:0;font-weight:300;font-size:32px;line-height:1;color:var(--azul);transition:transform .2s var(--ease-sal)}
+.preg[data-abierta="true"] .mas{transform:rotate(45deg)}
+.preg .resp{display:grid;grid-template-rows:0fr;transition:grid-template-rows .3s var(--ease-sal)}
+.preg[data-abierta="true"] .resp{grid-template-rows:1fr}
+.preg .resp > div{overflow:hidden}
+.preg .resp p{margin:0;padding:0 48px 24px 0;color:var(--texto2)}
+.cierre{padding-block:160px 140px;text-align:center}
+.cierre .wrap{display:flex;flex-direction:column;align-items:center;gap:26px}
+.orbita{width:104px;height:104px}
+.orbita .sat{transform-origin:20px 24px;animation:gira 6s linear infinite}
+@keyframes gira{to{transform:rotate(360deg)}}
+.cierre .titular{font-size:clamp(54px,9vw,140px)}
+.nota-demo{font-size:13px;color:var(--texto3);margin:0}
+.pie-web{padding-block:56px 40px;border-top:1px solid var(--linea)}
+.pie-web .wrap{display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between;font-size:15px;color:var(--texto2)}
+.pie-web nav{display:flex;gap:20px}
+
+/* ---------- cursor «Ver» sobre el mosaico */
+.cursor{position:fixed;left:0;top:0;z-index:50;width:84px;height:84px;margin:-42px 0 0 -42px;border-radius:999px;background:var(--marino);color:var(--blanco);
+  display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;pointer-events:none;transform:scale(0);will-change:transform}
+
+/* ---------- móvil */
+@media (max-width:900px){
+  .wrap{padding-inline:16px}
+  .nav{display:none}
+  .cab .boton{margin-left:auto}
+  .portada{padding-block:110px 40px}
+  .portada .wrap{grid-template-columns:minmax(0,1fr)}
+  .baraja{height:520px;transform:scale(.62);transform-origin:top left;margin-bottom:-200px;width:160%}
+  .dia .riel{flex-direction:column;width:auto;padding-inline:16px;gap:72px;padding-bottom:80px}
+  .paso,.paso.ancho{width:auto;grid-template-columns:minmax(0,1fr)}
+  .barra-dia{display:none}
+  .mosaico{grid-template-columns:minmax(0,1fr)}
+  .tesela,.tesela.g6,.tesela.g8{grid-column:auto;min-height:0}
+  .porque .wrap{grid-template-columns:minmax(0,1fr);gap:40px}
+  .porque .fijo{position:static}
+    .sector-dos{grid-template-columns:minmax(0,1fr)}
+  .opinion{width:300px}
+  .cursor{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .frase .p{opacity:1}
+  .razon::before{transform:scaleX(1)}
+}
+</style>
+</head>
+<body>
+
+
+<div class="progreso" id="progreso" aria-hidden="true"></div>
+<header class="cab" id="cab">
+  <div class="wrap">
+    <a class="logo" href="#inicio" aria-label="delcos, inicio">
+      <svg width="28" height="28" viewBox="0 0 44 44" aria-hidden="true"><circle cx="20" cy="24" r="16" fill="#17457A"/><circle cx="35" cy="9" r="6" fill="#7CC3EC"/></svg><b>delcos</b>
+    </a>
+    <nav class="nav" aria-label="Secciones">
+      <a href="#dia">Un día</a><a href="#modulos">Módulos</a><a href="#porque">Por qué delcos</a><a href="#sectores">Sectores</a><a href="#precios">Precios</a><a href="#preguntas">Preguntas</a>
+    </nav>
+    <a class="boton iman" href="#cierre">Pide una demo</a>
+  </div>
+</header>
+
+<main>
+<!-- 1 · Portada -->
+<section class="portada" id="inicio">
+  <div class="wrap">
+    <div class="texto">
+      <div class="ojo">Software para empresas del sector sanitario</div>
+      <h1 class="titular" data-letras>Del campo a la factura, <em>en una sola plataforma.</em></h1>
+      <p class="entrada">Cartera y visitas, pedidos y televenta, almacén y compras, facturación con VeriFactu, comisiones y analítica. Hecha para quien vende a través de profesionales y centros sanitarios.</p>
+      <div class="acciones">
+        <a class="boton iman" href="#cierre">Pide una demo <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        <a class="boton sec" href="#dia">Ver un día completo</a>
+      </div>
+    </div>
+    <div class="baraja" id="baraja" aria-label="Pantallas de la app">
+      <div class="carta c-esc" data-p="18"><div class="ordenador"><div class="barra"><i></i><i></i><i></i></div><div class="vista"><img src="capturas/labs_e_analitica.webp" alt="Analítica de ventas en el ordenador" width="1600" height="1000"></div></div></div>
+      <div class="carta c-esc2" data-p="30"><div class="ordenador"><div class="barra"><i></i><i></i><i></i></div><div class="vista"><img src="capturas/labs_e_factura.webp" alt="Factura emitida" width="1600" height="1000"></div></div></div>
+      <div class="carta c-tel2" data-p="44"><div class="tel"><div class="pant"><img src="capturas/labs_m_ficha.webp" alt="Ficha de una médica en el móvil" width="780" height="1688"></div></div></div>
+      <div class="carta c-tel" data-p="58"><div class="tel"><div class="pant"><img src="capturas/labs_m_inicio.webp" alt="Inicio de la app en el móvil" width="780" height="1688"></div></div></div>
+      <div class="etiqueta" style="left:-10px;top:30px" data-p="70"><i></i>Comercial · en el móvil</div>
+      <div class="etiqueta" style="right:40px;bottom:30px" data-p="70"><i style="background:var(--ok)"></i>Administración · en el ordenador</div>
+    </div>
+  </div>
+</section>
+
+<div class="cinta-mod" aria-label="Módulos de delcos">
+  <div class="pista" id="cinta-mod"></div>
+</div>
+
+<!-- 2 · Un día en la empresa -->
+<section class="dia" id="dia">
+  <div class="cabeza"><div class="wrap">
+    <div style="display:flex;flex-direction:column;gap:18px;max-width:640px">
+      <div class="ojo">Un día en la empresa</div>
+      <h2 class="titular" data-letras>Todo el equipo, <em>en la misma app.</em></h2>
+      <p class="entrada">Desde que la comercial sale de casa hasta que dirección mira las cifras. Cada pantalla es la app real con una empresa de demostración.</p>
+    </div>
+    <div class="reloj" id="reloj" aria-hidden="true">08:05</div>
+  </div></div>
+  <div class="riel" id="riel"></div>
+  <div class="barra-dia" aria-hidden="true"><i id="barra-dia"></i></div>
+</section>
+
+<!-- 3 · Módulos -->
+<section class="modulos" id="modulos">
+  <div class="wrap">
+    <div class="cabeza">
+      <div class="ojo">Módulos</div>
+      <h2 class="titular" data-letras>No es una app de rutas. <em>Es tu empresa entera.</em></h2>
+      <p class="entrada">Cada módulo trabaja con los mismos datos: la visita alimenta el pedido, el pedido mueve el stock y la factura, y todo acaba en la analítica y en las comisiones.</p>
+    </div>
+    <div class="mosaico" id="mosaico"></div>
+  </div>
+</section>
+
+<!-- 4 · Por qué delcos -->
+<section class="porque" id="porque" data-noche>
+  <div class="wrap">
+    <div class="fijo">
+      <div class="ojo">Por qué delcos</div>
+      <h2 class="titular" data-letras>Hecha para el sector sanitario, <em>no adaptada a él.</em></h2>
+      <p class="entrada">Pensada desde el primer día para empresas que venden a través de profesionales y centros sanitarios. Lo que necesitas para vender en salud viene de serie.</p>
+    </div>
+    <div>
+      <div class="razones" id="razones"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 5 · Sectores -->
+<section class="sectores" id="sectores">
+  <div class="wrap">
+    <div class="cabeza">
+      <h2 class="titular" data-letras>Tus palabras. <em>Tu sector.</em></h2>
+      <p class="entrada">Laboratorios, dental, ortopedia, farmacia, hospital o veterinaria. Cambias el vocabulario y los estados, y la app entera habla como tu empresa.</p>
+      <div class="pestanas" role="tablist" aria-label="Sectores" id="pest-sectores"></div>
+    </div>
+    <div class="sector-dos">
+      <div class="escena-tel"><div class="tel" id="tel-sector"><div class="pant"><img alt="" width="780" height="1688"></div></div></div>
+      <div class="cambio" id="txt-sector" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+
+<!-- Precios -->
+<section class="precios" id="precios">
+  <div class="wrap">
+    <div class="cabeza">
+      <div class="ojo">Precios</div>
+      <h2 class="titular" data-letras>Un plan para cada etapa. <em>Sin sorpresas.</em></h2>
+      <p class="entrada">Empieza con lo que necesitas y sube de plan cuando tu equipo crezca. Todos incluyen la app en el móvil, tu marca y tus datos en la Unión Europea.</p>
+      <div class="periodo" role="group" aria-label="Forma de pago">
+        <span class="marca-p" aria-hidden="true"></span>
+        <button type="button" id="p-mes" aria-pressed="true">Mensual</button>
+        <button type="button" id="p-anual" aria-pressed="false">Anual <small>2 meses gratis</small></button>
+      </div>
+    </div>
+    <div class="planes" id="planes"></div>
+    <p class="notas-precio">Precios por empresa y mes, IVA no incluido. Puedes añadir usuarios por bloques en cualquier plan. Con pago anual, pagas diez meses y tienes doce.</p>
+  </div>
+</section>
+
+<!-- 6 · Frase -->
+<section class="frase" data-noche>
+  <div class="wrap"><h2 class="titular" id="frase">Por fin, un software que entiende cómo se vende en salud.</h2></div>
+</section>
+
+<section class="opiniones" aria-label="Opiniones">
+  <div class="wrap"><h2 class="titular" style="text-align:center;margin-block:80px 40px">Lo que dicen <em>los equipos.</em></h2></div>
+  <div class="cinta"><div class="pista" id="cinta1"></div></div>
+  <div class="cinta inv"><div class="pista" id="cinta2"></div></div>
+</section>
+
+<section class="preguntas" id="preguntas">
+  <div class="wrap">
+    <h2 class="titular">Preguntas</h2>
+    <div id="lista-preg"></div>
+  </div>
+</section>
+
+<section class="cierre" id="cierre">
+  <div class="wrap">
+    <svg class="orbita" viewBox="0 0 44 44" aria-hidden="true"><circle cx="20" cy="24" r="16" fill="#17457A"/><circle cx="20" cy="24" r="19.5" fill="none" stroke="#C5D5E4" stroke-width=".6" stroke-dasharray="1.5 2"/><g class="sat"><circle cx="35" cy="9" r="5" fill="#7CC3EC"/></g></svg>
+    <h2 class="titular" data-letras>Cada visita <em>cuenta.</em></h2>
+    <p class="entrada">Cuéntanos cómo trabaja tu equipo y te lo enseñamos funcionando, con tus clientes, tus productos y tu forma de facturar.</p>
+    <a class="boton iman" href="#cierre">Pide una demo <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    <p class="nota-demo">Todas las pantallas son capturas reales de la app con empresas de demostración: los datos son ficticios.</p>
+  </div>
+</section>
+</main>
+
+<footer class="pie-web">
+  <div class="wrap">
+    <div class="logo"><svg width="22" height="22" viewBox="0 0 44 44" aria-hidden="true"><circle cx="20" cy="24" r="16" fill="#17457A"/><circle cx="35" cy="9" r="6" fill="#7CC3EC"/></svg><b style="font-size:18px">delcos</b></div>
+    <nav aria-label="Legal"><a href="aviso-legal.html">Aviso legal</a><a href="privacidad.html">Privacidad</a><a href="cookies.html">Cookies</a></nav>
+  </div>
+</footer>
+
+<div class="visor" id="visor" hidden role="dialog" aria-modal="true" aria-labelledby="visor-t">
+  <figure><img id="visor-img" alt=""><figcaption><b id="visor-t"></b><button id="visor-x">Cerrar</button></figcaption></figure>
+</div>
+<div class="cursor" id="cursor" aria-hidden="true">Ver</div>
+
+<script src="js/gsap.min.js"></script>
+<script src="js/ScrollTrigger.min.js"></script>
+<script src="js/SplitText.min.js"></script>
+<script src="js/Flip.min.js"></script>
+<script src="js/lenis.min.js"></script>
+<script>
+(() => {
+const QUIETO = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const ESCRITORIO = matchMedia('(min-width: 901px)').matches;
+const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+const cap = n => `capturas/${n}.webp`;
+const ease = 'cubic-bezier(.2,.8,.2,1)';
+const check = c => `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="${c}" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>`;
+const telHTML = (img, alt) => `<div class="tel"><div class="pant"><img src="${cap(img)}" alt="${alt}" width="780" height="1688" loading="lazy"></div></div>`;
+const escHTML = (img, alt) => `<div class="ordenador"><div class="barra"><i></i><i></i><i></i></div><div class="vista"><img src="${cap(img)}" alt="${alt}" width="1600" height="1000" loading="lazy"></div></div>`;
+
+/* ================= contenido ================= */
+const MODULOS_CINTA = ['Cartera', 'Visitas', 'Agenda', 'Rutas', 'Pedidos', 'Televenta', 'Clientes', 'Almacén', 'Lotes', 'Compras', 'Proveedores', 'Facturación', 'Cobros', 'Comisiones', 'Analítica', 'Calidad del dato'];
+const DIA = [
+  { h: '08:05', rol: 'Comercial', img: 'labs_m_inicio', tel: 1, t: 'Abre la app y ya sabe su día.', d: 'Cinco citas en orden, dos seguidas en el mismo hospital y lo que quedó pendiente de la semana pasada.' },
+  { h: '09:25', rol: 'Comercial', img: 'labs_m_ficha', tel: 1, t: 'Antes de entrar, todo en la ficha.', d: 'Planta y consulta, su horario de hoy, cómo llegar dentro, la última visita y la tarea pendiente.' },
+  { h: '09:50', rol: 'Comercial', img: 'labs_m_visita', tel: 1, t: 'Registra la visita al salir.', d: 'Resultado, muestras y material entregados, próxima acción. El estado de la ficha avanza solo.' },
+  { h: '11:20', rol: 'Televenta', img: 'labs_e_llamadas', t: 'Una llamada que acaba en pedido.', d: 'Motivo, resultado y seguimiento de cada llamada, entrante o saliente, unidos al cliente y a su pedido.' },
+  { h: '12:00', rol: 'Almacén', img: 'labs_e_stock', t: 'El pedido descuenta su lote.', d: 'Stock por almacén y por lote con caducidad. Avisa de lo que baja del mínimo y de los lotes que caducan.' },
+  { h: '13:30', rol: 'Compras', img: 'labs_e_compras', t: 'Lo que falta, al proveedor.', d: 'Pedidos de compra enviados, en tránsito o recibidos a medias. Al recibir, cada lote entra en el almacén.' },
+  { h: '16:10', rol: 'Administración', img: 'labs_e_factura', t: 'Factura, cobro y correo.', d: 'Facturas inalterables con su huella, rectificativas cuando hace falta y cobros que nunca pasan de lo pendiente.' },
+  { h: '19:00', rol: 'Dirección', img: 'labs_e_analitica', t: 'Las cifras del día, sin pedirlas.', d: 'Ventas por zona, producto, cliente y comercial. Y las comisiones del mes, calculadas por tramos.' }
+];
+const MODULOS = [
+  { g: 'g8', ojo: 'Cartera', t: 'Fichas con todo lo que importa', d: 'Profesionales, centros y clientes con su historial, horarios, estado comercial y tus propios campos.', img: 'labs_e_directorio' },
+  { g: '', ojo: 'Seguimiento', t: 'Lo que toca hacer', d: 'Las próximas acciones de cada ficha, con las atrasadas primero.', img: 'labs_e_seguimiento' },
+  { g: '', ojo: 'Agenda', t: 'La semana del equipo', d: 'Citas planificadas, confirmadas y hechas, por persona.', img: 'labs_e_agenda' },
+  { g: 'g8', ojo: 'Pedidos', t: 'De la visita al pedido', d: 'Recomendación al paciente o venta a centro, con descuentos, envío y la operativa de cada pedido.', img: 'labs_e_ventas' },
+  { g: 'g6', ojo: 'Almacén', t: 'Stock por lotes y caducidad', d: 'Entradas, salidas, muestras y traspasos por almacén.', img: 'labs_e_stock' },
+  { g: 'g6', ojo: 'Compras', t: 'Proveedores y pedidos de compra', d: 'Lo enviado, lo que está en tránsito y lo recibido.', img: 'labs_e_compras' },
+  { g: '', ojo: 'Facturación', t: 'VeriFactu, de serie', d: 'Series, rectificativas, cobros y el registro de cada factura.', img: 'labs_e_facturas' },
+  { g: '', ojo: 'Comisiones', t: 'Cada venta, a quien la genera', d: 'Esquemas por tramos y liquidaciones de cada mes.', img: 'labs_e_comisiones' },
+  { g: '', ojo: 'Analítica', t: 'Explora tus datos', d: 'Cruza ventas, visitas y cobertura por cualquier dimensión.', img: 'labs_e_explorar' },
+  { g: 'g6', ojo: 'Calidad del dato', t: 'Sin fichas repetidas', d: 'Detecta duplicados y fichas incompletas, y te dice qué falta.', img: 'labs_e_calidad' },
+  { g: 'g6', ojo: 'Equipo', t: 'Usuarios, papeles y permisos', d: 'Cada persona ve y hace lo que le toca: comercial, televenta, administración o dirección.', img: 'labs_e_usuarios' },
+  { g: 'g6', ojo: 'Importar', t: 'Trae lo que ya tienes', d: 'Clientes, productos, fichas y ventas desde Excel o CSV, con vista previa.', img: 'labs_e_importar' },
+  { g: 'g6', ojo: 'Catálogos', t: 'Tus listas y tus campos', d: 'Especialidades, motivos, resultados y campos propios, sin programar.', img: 'labs_e_clasificadores' }
+];
+const RAZONES = [
+  ['Habla tu idioma', 'Médico, clínica, farmacia o contacto de hospital; «Prescribe», «Cliente activa» u «Homologado». Cada empresa pone sus palabras y sus estados.'],
+  ['Sabe dónde se visita', 'Centros con planta y consulta, el horario de consulta de cada profesional y cómo llegar dentro. Las rutas lo respetan.'],
+  ['Entiende la recomendación', 'La venta que hace el paciente por indicación del profesional se atribuye a ese profesional y a su comercial. Y la venta a centro, con su descuento.'],
+  ['Controla muestras y lotes', 'Las muestras y el material salen de la visita; el stock va por lote y caducidad, de la compra a la venta.'],
+  ['Factura como en España', 'VeriFactu, IVA del 21, 10, 4 y 0 %, rectificativas y cobros. Sin conectores ni hojas de cálculo.'],
+  ['Ordena el equipo', 'Cartera exclusiva por zonas, permisos por papel y comisiones por tramos. Dirección lo ve todo; cada comercial, lo suyo.'],
+  ['Cuida los datos', 'Alojados en la Unión Europea, en Fráncfort, con copias de seguridad diarias. Cada empresa, separada de las demás.']
+];
+const SECTORES = [
+  { clave: 'labs', nombre: 'Laboratorios', empresa: 'Company Labs', titulo: 'Para quien visita médicos.', cambios: ['«Buscar médico, centro o municipio»', '«Médicos en tu cartera»', 'Recomendación al paciente y venta a centro'], estados: ['Presentado', 'Interesado', 'Prescribe'] },
+  { clave: 'dental', nombre: 'Dental', empresa: 'Company Dental', titulo: 'Para quien vende a clínicas dentales.', cambios: ['«Buscar clínica, centro o municipio»', '«Clínicas en tu cartera»', 'Reposición con descuento por volumen'], estados: ['Visitada', 'Interesada', 'Cliente'] },
+  { clave: 'orto', nombre: 'Ortopedia', empresa: 'Company Orto', titulo: 'Para quien trabaja con fisios, podólogos y ortopedias.', cambios: ['«Buscar profesional, centro o municipio»', '«Profesionales en tu cartera»', 'Muestras y tallaje en cada visita'], estados: ['Presentado', 'Interesado', 'Recomienda'] },
+  { clave: 'pharma', nombre: 'Farmacia', empresa: 'Company Pharma', titulo: 'Para quien visita farmacias.', cambios: ['«Buscar farmacia, centro o municipio»', '«Farmacias en tu cartera»', '«Cliente» en lugar de «paciente»'], estados: ['Visitada', 'Interesada', 'Cliente activa'] },
+  { clave: 'medtech', nombre: 'Hospital', empresa: 'Company Medtech', titulo: 'Para quien vende a hospitales.', cambios: ['«Contactos» y «reuniones» en lugar de «médicos» y «visitas»', 'Pruebas en el servicio y homologación', 'Pedidos grandes y ciclos de venta largos'], estados: ['Presentado', 'En evaluación', 'Homologado'] },
+  { clave: 'vet', nombre: 'Veterinaria', empresa: 'Company Vet', titulo: 'Para quien visita clínicas veterinarias.', cambios: ['«Buscar veterinario, centro o municipio»', '«Veterinarios en tu cartera»', '«Propietario» en lugar de «paciente»'], estados: ['Presentado', 'Interesado', 'Recomienda'] }
+];
+const PREGUNTAS = [
+  ['¿Para qué empresas es delcos?', 'Para laboratorios, distribuidoras y fabricantes que venden a través de profesionales y centros sanitarios: visita médica, dental, ortopedia, farmacia, hospital y veterinaria.'],
+  ['¿Sustituye a mi programa de gestión?', 'Cubre la parte comercial y la operativa de ventas: pedidos, almacén por lotes, compras, facturación con VeriFactu, cobros y comisiones. Te ayudamos a ver qué parte de tu programa actual puedes dejar.'],
+  ['¿Hay que instalar algo?', 'No. Se abre en el navegador del ordenador o del móvil, y en el móvil se añade a la pantalla de inicio como una app más.'],
+  ['¿Puedo traer mis datos desde Excel?', 'Sí. Clientes, productos, fichas y ventas. Subes la hoja, ves cómo queda antes de guardar y, si algo no cuadra, lo deshaces.'],
+  ['¿Dónde están mis datos?', 'En servidores de la Unión Europea, en Fráncfort, con copias de seguridad diarias. Cada empresa está separada de las demás.'],
+  ['¿Cuánto cuesta?', 'Desde 149 € al mes con cinco usuarios. Hay cuatro planes según lo que necesites (puedes verlos arriba, en «Precios»), con usuarios extra por bloques y dos meses gratis si pagas al año.']
+];
+
+/* ================= construir ================= */
+$('#cinta-mod').innerHTML = [...MODULOS_CINTA, ...MODULOS_CINTA].map((m, i) => `<span class="${i % 2 ? 'h' : ''}">${m}</span><b aria-hidden="true">·</b>`).join('');
+$('#riel').innerHTML = DIA.map((p, i) => `<article class="paso ${p.tel ? '' : 'ancho'}" data-hora="${p.h}">
+  ${p.tel ? telHTML(p.img, p.t) : ''}
+  <div class="info"><div class="hora">${p.h}<span class="rol">${p.rol}</span></div><h3>${p.t}</h3><p>${p.d}</p></div>
+  ${p.tel ? '' : escHTML(p.img, p.t)}
+</article>`).join('');
+$('#mosaico').innerHTML = MODULOS.map((m, i) => `<button class="tesela ${m.g}" data-i="${i}" aria-label="Ver ${m.ojo}: ${m.t}">
+  <small>${m.ojo}</small><h3>${m.t}</h3><p>${m.d}</p>
+  <span class="ver" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+  <span class="ventana"><img src="${cap(m.img)}" alt="" loading="lazy" width="1600" height="1000"></span></button>`).join('');
+$('#razones').innerHTML = RAZONES.map(([t, d], i) => `<div class="razon"><div class="n">${String(i + 1).padStart(2, '0')}</div><div><h3>${t}</h3><p>${d}</p></div></div>`).join('');
+const op = '<figure class="opinion"><blockquote>«[Testimonio real de un cliente: qué le ha cambiado en su día a día]»</blockquote><figcaption>[Nombre · cargo · empresa]</figcaption></figure>';
+$('#cinta1').innerHTML = op.repeat(10); $('#cinta2').innerHTML = op.repeat(10);
+$('#lista-preg').innerHTML = PREGUNTAS.map(([p, r], i) => `<div class="preg" data-abierta="${i === 0}"><button id="preg-${i}" aria-expanded="${i === 0}" aria-controls="resp-${i}"><span>${p}</span><span class="mas" aria-hidden="true">+</span></button>
+  <div class="resp" id="resp-${i}" role="region" aria-labelledby="preg-${i}"><div><p>${r}</p></div></div></div>`).join('');
+$$('.preg button').forEach(b => b.addEventListener('click', () => {
+  const p = b.closest('.preg'), abre = p.dataset.abierta !== 'true';
+  $$('.preg').forEach(x => { x.dataset.abierta = 'false'; x.querySelector('button').setAttribute('aria-expanded', 'false'); });
+  p.dataset.abierta = String(abre); b.setAttribute('aria-expanded', String(abre));
+}));
+
+/* ================= precios (los mismos planes que «Plan y suscripción» de la app) ================= */
+const PLANES = [
+  { nombre: 'Esencial', precio: 149, usuarios: 5, bloque: [5, 99], para: 'Equipos pequeños que quieren ordenar sus visitas.',
+    incluye: ['Cartera de profesionales y centros', 'Agenda, «Tu día» y registro de visitas', 'Rutas y planificación semanal', 'Calidad del dato y duplicados', 'App en el móvil'] },
+  { nombre: 'Profesional', precio: 349, usuarios: 10, bloque: [5, 149], para: 'Equipos que venden y quieren medir resultados.',
+    incluye: ['Todo lo de Esencial', 'Pedidos, clientes y llamadas', 'Productos y stock por lotes', 'Analítica de ventas y visitas', 'Comisiones por tramos'] },
+  { nombre: 'Avanzado', precio: 649, usuarios: 20, bloque: [10, 249], fuerte: true, para: 'Empresas con facturación propia y varios equipos.',
+    incluye: ['Todo lo de Profesional', 'Facturación con VeriFactu y cobros', 'Compras, proveedores y trazabilidad', 'Zonas, supervisión del equipo y alertas', 'Espacio del profesional (hasta 50)'] },
+  { nombre: 'Premium', precio: 1190, usuarios: 40, bloque: [10, 249], para: 'Redes comerciales grandes que lo quieren todo.',
+    incluye: ['Todo lo de Avanzado', 'Espacio del profesional sin límite', 'Auditoría completa de cambios', 'Puesta en marcha y migración de datos incluidas', 'Soporte prioritario'] }
+];
+const eur = n => String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, '.') + ' €';
+let anual = false;
+$('#planes').innerHTML = PLANES.map((p, i) => `<article class="plan ${p.fuerte ? 'fuerte' : ''}">
+  ${p.fuerte ? '<span class="sello">Con facturación</span>' : ''}
+  <h3>${p.nombre}</h3><p class="para">${p.para}</p>
+  <div class="cifra"><b data-plan="${i}">${eur(p.precio)}</b><span>/mes</span></div>
+  <p class="anual" data-anual="${i}"></p>
+  <div class="usuarios"><b>${p.usuarios} usuarios</b> incluidos · +${p.bloque[0]} por ${eur(p.bloque[1])}/mes</div>
+  <ul>${p.incluye.map(t => `<li>${check(p.fuerte ? '#7CC3EC' : '#0E6B4C')}<span>${t}</span></li>`).join('')}</ul>
+  <a class="boton ${p.fuerte ? '' : 'sec'}" href="#cierre">Pide una demo</a>
+</article>`).join('');
+function pintaPrecios(animar) {
+  PLANES.forEach((p, i) => {
+    const el = $(`[data-plan="${i}"]`), fin = anual ? Math.round(p.precio * 10 / 12) : p.precio, ini = parseInt(el.textContent.replace(/\D/g, ''), 10) || fin;
+    $(`[data-anual="${i}"]`).textContent = anual ? `${eur(p.precio * 10)} al año, en un solo pago` : '';
+    if (!animar || QUIETO) { el.textContent = eur(fin); return; }
+    const t0 = performance.now(), d = 600;
+    const paso = t => { const k = Math.min(1, (t - t0) / d), e = 1 - Math.pow(1 - k, 3); el.textContent = eur(Math.round(ini + (fin - ini) * e)); if (k < 1) requestAnimationFrame(paso); };
+    requestAnimationFrame(paso);
+  });
+  $('#p-mes').setAttribute('aria-pressed', String(!anual)); $('#p-anual').setAttribute('aria-pressed', String(anual));
+  const b = anual ? $('#p-anual') : $('#p-mes'), m = $('.periodo .marca-p');
+  m.style.left = b.offsetLeft + 'px'; m.style.width = b.offsetWidth + 'px';
+}
+$('#p-mes').addEventListener('click', () => { anual = false; pintaPrecios(true); });
+$('#p-anual').addEventListener('click', () => { anual = true; pintaPrecios(true); });
+pintaPrecios(false);
+addEventListener('load', () => pintaPrecios(false));
+document.fonts && document.fonts.ready.then(() => pintaPrecios(false));
+
+/* ================= visor de módulos (se abre desde la tesela con un FLIP) ================= */
+const visor = $('#visor'), vImg = $('#visor-img');
+let origen = null;
+function abrirVisor(i, desde) {
+  const m = MODULOS[i]; origen = desde;
+  vImg.src = cap(m.img); vImg.alt = `${m.ojo}: ${m.t}`; $('#visor-t').textContent = `${m.ojo} · ${m.t}`;
+  // La captura sale de su tesela y crece hasta ocupar el visor
+  const st = !QUIETO && window.Flip ? Flip.getState(desde.querySelector('img')) : null;
+  visor.hidden = false; document.documentElement.style.overflow = 'hidden'; window.__lenis && window.__lenis.stop();
+  if (st) {
+    gsap.fromTo(visor, { backgroundColor: 'rgba(11,37,64,0)' }, { backgroundColor: 'rgba(11,37,64,.86)', duration: .35 });
+    Flip.fit(vImg, st, { scale: true });
+    gsap.to(vImg, { x: 0, y: 0, scaleX: 1, scaleY: 1, duration: .7, ease: 'expo.out' });
+    gsap.from('#visor figcaption', { y: 16, opacity: 0, duration: .4, delay: .3 });
+  }
+  $('#visor-x').focus();
+}
+function cerrarVisor() {
+  visor.hidden = true; document.documentElement.style.overflow = ''; window.__lenis && window.__lenis.start();
+  gsap.set && gsap.set(vImg, { clearProps: 'all' });
+  if (origen) origen.focus();
+}
+$('#mosaico').addEventListener('click', e => { const t = e.target.closest('.tesela'); if (t) abrirVisor(+t.dataset.i, t); });
+$('#visor-x').addEventListener('click', cerrarVisor);
+visor.addEventListener('click', e => { if (e.target === visor) cerrarVisor(); });
+visor.addEventListener('keydown', e => { if (e.key === 'Escape') cerrarVisor(); });
+
+/* ================= pestañas de sectores (avanzan solas) ================= */
+function carrusel(contenedor, items, alCambiar, dur = 5200) {
+  let actual = 0, enVista = false;
+  contenedor.style.setProperty('--dur', dur + 'ms');
+  contenedor.innerHTML = items.map((it, i) => `<button role="tab" id="${contenedor.id}-${i}" aria-selected="${i === 0}">${it.nombre}<span class="prog"></span></button>`).join('');
+  const botones = [...contenedor.children];
+  const elegir = (i, auto) => {
+    actual = (i + items.length) % items.length;
+    botones.forEach((b, k) => { b.setAttribute('aria-selected', k === actual); const p = b.querySelector('.prog'); p.style.animation = 'none'; p.offsetWidth; p.style.animation = ''; });
+    if (!auto) contenedor.classList.remove('parada');
+    alCambiar(items[actual]);
+    const b = botones[actual]; contenedor.scrollTo({ left: b.offsetLeft - (contenedor.clientWidth - b.offsetWidth) / 2, behavior: QUIETO ? 'auto' : 'smooth' });
+  };
+  botones.forEach((b, i) => { b.addEventListener('click', () => elegir(i)); b.querySelector('.prog').addEventListener('animationend', () => { if (enVista && !QUIETO) elegir(actual + 1, true); }); });
+  contenedor.addEventListener('keydown', e => { if (e.key === 'ArrowRight') { elegir(actual + 1); botones[actual].focus(); } if (e.key === 'ArrowLeft') { elegir(actual - 1); botones[actual].focus(); } });
+  const zona = contenedor.closest('section');
+  zona.addEventListener('mouseenter', () => contenedor.classList.add('parada'));
+  zona.addEventListener('mouseleave', () => contenedor.classList.remove('parada'));
+  new IntersectionObserver(([e]) => { enVista = e.isIntersecting; contenedor.classList.toggle('parada', !enVista || QUIETO); }, { threshold: .35 }).observe(zona);
+  alCambiar(items[0], true);
+}
+const telS = $('#tel-sector'), txtS = $('#txt-sector');
+carrusel($('#pest-sectores'), SECTORES, (x, inicial) => {
+  const img = telS.querySelector('img'), html = `<div class="ojo">${x.empresa} · demostración</div><h3 class="titular" style="font-size:clamp(30px,3vw,42px)">${x.titulo}</h3>
+    <div class="lista-c">${x.cambios.map(c => `<div>${check('#0E6B4C')}<span>${c}</span></div>`).join('')}</div><div class="chips">${x.estados.map(e => `<span>${e}</span>`).join('')}</div>`;
+  if (inicial || QUIETO || !window.gsap) { img.src = cap(x.clave + '_m_inicio'); img.alt = `Inicio de la app de ${x.empresa}`; txtS.innerHTML = html; return; }
+  // El móvil gira sobre sí mismo y vuelve con la app de otra empresa
+  gsap.timeline()
+    .to(telS, { rotateY: 90, duration: .32, ease: 'power2.in' })
+    .add(() => { img.src = cap(x.clave + '_m_inicio'); img.alt = `Inicio de la app de ${x.empresa}`; })
+    .fromTo(telS, { rotateY: -90 }, { rotateY: 0, duration: .55, ease: 'expo.out' });
+  gsap.to(txtS, { opacity: 0, y: -10, duration: .2, onComplete: () => { txtS.innerHTML = html; gsap.fromTo(txtS.children, { opacity: 0, y: 18 }, { opacity: 1, y: 0, stagger: .06, duration: .5, ease: 'expo.out' }); gsap.set(txtS, { opacity: 1, y: 0 }); } });
+});
+[...SECTORES.map(s => s.clave + '_m_inicio')].forEach(n => { const i = new Image(); i.src = cap(n); });
+
+/* ================= cabecera ================= */
+let ultimo = 0;
+addEventListener('scroll', () => {
+  const y = scrollY, cab = $('#cab');
+  cab.classList.toggle('fondo', y > 40); cab.classList.toggle('oculta', y > ultimo && y > 400 && visor.hidden); ultimo = y;
+}, { passive: true });
+
+if (QUIETO || !window.gsap || !window.ScrollTrigger) { $('#frase').style.opacity = 1; return; }
+gsap.registerPlugin(ScrollTrigger, ...(window.SplitText ? [SplitText] : []), ...(window.Flip ? [Flip] : []));
+
+/* ================= desplazamiento suave ================= */
+if (window.Lenis) {
+  const lenis = new Lenis({ lerp: .09, smoothWheel: true });
+  window.__lenis = lenis;
+  lenis.on('scroll', ScrollTrigger.update);
+  gsap.ticker.add(t => lenis.raf(t * 1000)); gsap.ticker.lagSmoothing(0);
+  $$('a[href^="#"]').forEach(a => a.addEventListener('click', e => { const d = $(a.getAttribute('href')); if (d) { e.preventDefault(); lenis.scrollTo(d, { offset: -72 }); } }));
+}
+gsap.to('#progreso', { scaleX: 1, ease: 'none', scrollTrigger: { trigger: document.body, start: 'top top', end: 'bottom bottom', scrub: true } });
+
+/* ================= titulares que se revelan por letras ================= */
+$$('[data-letras]').forEach((h, k) => {
+  if (!window.SplitText) return;
+  const s = new SplitText(h, { type: 'lines,words,chars', linesClass: 'linea-txt' });
+  const desde = { yPercent: 110, rotate: 4, opacity: 0 };
+  if (h.closest('.portada')) gsap.from(s.chars, { ...desde, duration: 1, stagger: .018, ease: 'expo.out', delay: .15 });
+  else gsap.from(s.chars, { ...desde, duration: .9, stagger: .012, ease: 'expo.out', scrollTrigger: { trigger: h, start: 'top 82%', toggleActions: 'play none none reverse' } });
+});
+gsap.from('.portada .texto > :not(h1)', { y: 24, opacity: 0, duration: .9, stagger: .1, ease: 'expo.out', delay: .6 });
+
+/* ================= portada: la baraja entra, sigue al ratón y se recoge al bajar ================= */
+const cartas = $$('#baraja [data-p]');
+gsap.from(cartas, { y: 160, rotateX: -30, rotateY: 20, opacity: 0, duration: 1.4, stagger: .1, ease: 'expo.out', delay: .3 });
+if (ESCRITORIO) {
+  const baraja = $('#baraja');
+  const qx = cartas.map(c => gsap.quickTo(c, 'x', { duration: .9, ease: 'power3' })), qy = cartas.map(c => gsap.quickTo(c, 'y', { duration: .9, ease: 'power3' }));
+  const qr = cartas.map(c => gsap.quickTo(c, 'rotateY', { duration: .9, ease: 'power3' }));
+  addEventListener('mousemove', e => {
+    const nx = e.clientX / innerWidth - .5, ny = e.clientY / innerHeight - .5;
+    cartas.forEach((c, i) => { const p = +c.dataset.p / 30; qx[i](nx * 26 * p); qy[i](ny * 20 * p); qr[i](nx * 10 * p); });
+  });
+  gsap.to(cartas, { yPercent: (i, c) => -(+c.dataset.p) * .9, rotateX: 8, ease: 'none', scrollTrigger: { trigger: '.portada', start: 'top top', end: 'bottom top', scrub: .6 } });
+}
+
+/* ================= fondo que cambia de color por escena ================= */
+$$('[data-noche]').forEach(sec => ScrollTrigger.create({ trigger: sec, start: 'top 55%', end: 'bottom 45%',
+  onToggle: s => document.body.classList.toggle('noche', s.isActive) }));
+
+/* ================= un día: recorrido horizontal con reloj ================= */
+const minutos = h => { const [a, b] = h.split(':').map(Number); return a * 60 + b; };
+const reloj = $('#reloj'), pasos = $$('.paso');
+const pintaReloj = m => { const h = Math.floor(m / 60), mi = Math.round(m % 60); reloj.textContent = `${String(h).padStart(2, '0')}:${String(mi).padStart(2, '0')}`; };
+ScrollTrigger.matchMedia({
+  '(min-width: 901px)': () => {
+    const riel = $('#riel');
+    const dist = () => riel.scrollWidth - innerWidth;
+    const mover = gsap.to(riel, { x: () => -dist(), ease: 'none', scrollTrigger: { trigger: '#dia', start: 'top top', end: () => '+=' + dist(), scrub: .8, pin: true,
+      invalidateOnRefresh: true, onUpdate: s => {
+        const tramo = s.progress * (pasos.length - 1), i = Math.min(Math.floor(tramo), pasos.length - 1), f = tramo - i;
+        const a = minutos(DIA[i].h), b = minutos(DIA[Math.min(i + 1, DIA.length - 1)].h);
+        pintaReloj(a + (b - a) * f);
+        gsap.set('#barra-dia', { scaleX: s.progress });
+      } } });
+    // Cada pantalla se endereza al llegar al centro
+    pasos.forEach(p => gsap.fromTo(p.querySelector('.tel, .ordenador'), { rotateY: -18, scale: .9, opacity: .5 },
+      { rotateY: 0, scale: 1, opacity: 1, ease: 'none', scrollTrigger: { trigger: p, containerAnimation: mover, start: 'left 85%', end: 'left 35%', scrub: true } }));
+    gsap.set('.paso', { perspective: 1200 });
+  },
+  '(max-width: 900px)': () => {
+    pasos.forEach(p => gsap.from(p, { y: 60, opacity: 0, duration: .9, ease: 'expo.out', scrollTrigger: { trigger: p, start: 'top 88%', onEnter: () => pintaReloj(minutos(p.dataset.hora)) } }));
+  }
+});
+
+/* ================= módulos: entrada en cascada, inclinación hacia el ratón y cursor «Ver» ================= */
+gsap.from('.tesela', { y: 80, opacity: 0, rotateX: -12, duration: 1, stagger: { each: .06, from: 'start' }, ease: 'expo.out', scrollTrigger: { trigger: '#mosaico', start: 'top 80%' } });
+if (ESCRITORIO) {
+  const cur = $('#cursor'), cx = gsap.quickTo(cur, 'x', { duration: .35, ease: 'power3' }), cy = gsap.quickTo(cur, 'y', { duration: .35, ease: 'power3' });
+  addEventListener('mousemove', e => { cx(e.clientX); cy(e.clientY); });
+  $$('.tesela').forEach(t => {
+    const rx = gsap.quickTo(t, 'rotateX', { duration: .5, ease: 'power3' }), ry = gsap.quickTo(t, 'rotateY', { duration: .5, ease: 'power3' });
+    t.addEventListener('mousemove', e => { const r = t.getBoundingClientRect(); ry(((e.clientX - r.left) / r.width - .5) * 8); rx(-((e.clientY - r.top) / r.height - .5) * 8); });
+    t.addEventListener('mouseenter', () => gsap.to(cur, { scale: 1, duration: .3, ease: 'back.out(2)' }));
+    t.addEventListener('mouseleave', () => { rx(0); ry(0); gsap.to(cur, { scale: 0, duration: .25 }); });
+  });
+  gsap.set('.mosaico', { perspective: 1400 });
+}
+
+/* ================= por qué: cada razón traza su línea y entra ================= */
+$$('.razon').forEach(r => {
+  gsap.fromTo(r, { '--k': 0 }, { '--k': 1, ease: 'none', scrollTrigger: { trigger: r, start: 'top 85%', end: 'top 55%', scrub: true } });
+  gsap.from(r.children, { x: 40, opacity: 0, duration: .9, stagger: .08, ease: 'expo.out', scrollTrigger: { trigger: r, start: 'top 82%' } });
+});
+
+/* ================= precios: los planes suben en cascada ================= */
+gsap.from('.plan', { y: 70, opacity: 0, rotateX: -10, duration: 1, stagger: .09, ease: 'expo.out', scrollTrigger: { trigger: '#planes', start: 'top 82%' } });
+
+/* ================= frase que se enciende palabra a palabra ================= */
+const fr = $('#frase');
+fr.innerHTML = fr.textContent.split(' ').map(w => `<span class="p">${w}</span>`).join(' ');
+gsap.to('#frase .p', { opacity: 1, stagger: .15, ease: 'none', scrollTrigger: { trigger: '.frase', start: 'top 70%', end: 'center 45%', scrub: true } });
+
+/* ================= botones que atraen al ratón ================= */
+if (ESCRITORIO) $$('.iman').forEach(b => {
+  const qx = gsap.quickTo(b, 'x', { duration: .4, ease: 'power3' }), qy = gsap.quickTo(b, 'y', { duration: .4, ease: 'power3' });
+  b.addEventListener('mousemove', e => { const r = b.getBoundingClientRect(); qx((e.clientX - r.left - r.width / 2) * .3); qy((e.clientY - r.top - r.height / 2) * .4); });
+  b.addEventListener('mouseleave', () => { qx(0); qy(0); });
+});
+gsap.from('.cierre .orbita', { scale: .5, rotate: -120, duration: 1.2, ease: 'back.out(1.6)', scrollTrigger: { trigger: '.cierre', start: 'top 75%' } });
+addEventListener('load', () => ScrollTrigger.refresh());
+})();
+</script>
+
+</body>
+</html>
