@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>delcos · Vende más en salud. Gestiona todo lo demás.</title>
+<title>delcos · Todo gira en torno a quien cuida</title>
 <meta name="description" content="La plataforma de gestión comercial para laboratorios, distribuidores y fabricantes del sector salud: cartera y visitas, pedidos y televenta, almacén por lotes, compras, facturación con VeriFactu, comisiones y analítica.">
 <link rel="canonical" href="https://www.delcos.app/">
 <meta name="theme-color" content="#17457A">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="delcos">
-<meta property="og:title" content="delcos · Vende más en salud. Gestiona todo lo demás.">
+<meta property="og:title" content="delcos · Todo gira en torno a quien cuida">
 <meta property="og:description" content="La plataforma de gestión comercial hecha para el sector salud.">
 <meta property="og:url" content="https://www.delcos.app/">
 <meta property="og:image" content="https://www.delcos.app/capturas/labs_e_analitica.webp">
@@ -72,7 +72,7 @@ body.noche .boton.sec:hover{background:var(--linea-t)}
 .cab.fondo{background:rgba(255,255,255,.94);box-shadow:0 1px 0 var(--linea);color:var(--tinta)}
 body.noche .cab.fondo{background:rgba(11,37,64,.94);box-shadow:0 1px 0 var(--linea-t);color:var(--blanco)}
 .cab.oculta{transform:translateY(-100%)}
-.cab .wrap{height:72px;display:flex;align-items:center;gap:32px}
+.cab > .wrap{height:72px;display:flex;align-items:center;gap:32px}
 .logo{display:flex;align-items:center;gap:10px;text-decoration:none}
 .logo b{font-family:var(--f-titulo);font-weight:800;font-size:25px;letter-spacing:-.035em}
 .nav{display:flex;gap:28px;margin-left:auto;font-weight:600;font-size:15px}
@@ -99,7 +99,17 @@ body.noche .tel{background:#05182B;box-shadow:0 0 0 1px var(--linea-t),var(--som
 .portada h1{font-size:clamp(46px,6.2vw,96px)}
 .acciones{display:flex;gap:12px;flex-wrap:wrap}
 .baraja{position:relative;height:640px;perspective:1600px}
-.baraja .carta{position:absolute;will-change:transform;transform-style:preserve-3d}
+.baraja .carta{position:absolute;z-index:5;will-change:transform;transform-style:preserve-3d}
+/* La órbita de los módulos: la mitad de delante pasa por encima de las pantallas y la de detrás, por debajo */
+.orbe{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
+.orbe.atras{z-index:0}
+.orbe.delante{z-index:11}
+.orbe ellipse{fill:none;stroke:#AFC4D8;stroke-width:1.4;stroke-dasharray:3 6}
+.orbe.delante ellipse{stroke:var(--azul);stroke-opacity:.55}
+.satelites{position:absolute;inset:0;pointer-events:none}
+.satelites span{position:absolute;left:0;top:0;display:flex;align-items:center;gap:8px;padding:9px 15px;border-radius:999px;background:var(--blanco);color:var(--tinta);
+  border:1px solid var(--linea);box-shadow:var(--sombra-2);font-size:14px;font-weight:600;white-space:nowrap;will-change:transform,opacity}
+.satelites i{width:9px;height:9px;border-radius:50%}
 .baraja .c-esc{width:680px;left:-10px;top:60px}
 .baraja .c-esc2{width:520px;left:110px;top:330px}
 .baraja .c-tel{left:auto;right:-30px;top:60px}
@@ -235,6 +245,33 @@ body.noche .tel{background:#05182B;box-shadow:0 0 0 1px var(--linea-t),var(--som
 .chips{display:flex;gap:8px;flex-wrap:wrap}
 .chips span{padding:5px 12px;border-radius:999px;background:var(--suave);color:var(--marino);font-size:14px;font-weight:600}
 
+/* ---------- clientes: el caso del cliente fundador y un hueco para el siguiente */
+.clientes{padding-block:130px 20px}
+.clientes .cabeza{display:flex;flex-direction:column;gap:18px;margin-bottom:44px;max-width:900px}
+.caso{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.4fr);gap:18px;align-items:stretch}
+.caso-marca{border-radius:28px;border:1px solid var(--linea);padding:36px;display:flex;flex-direction:column;justify-content:center;gap:22px}
+.caso-marca img{width:min(240px,100%);height:auto;filter:grayscale(1);opacity:.75;transition:filter .5s,opacity .5s}
+.caso:hover .caso-marca img{filter:none;opacity:1}
+.caso-marca p{margin:0;color:var(--texto2)}
+.fundador{align-self:flex-start;padding:5px 12px;border-radius:999px;background:var(--suave);color:var(--marino);font-size:13px;font-weight:700}
+.caso-der{position:relative;overflow:hidden;border-radius:28px;background:var(--tinta);color:var(--blanco);padding:36px;display:flex;flex-direction:column;justify-content:space-between;gap:32px}
+.caso-orbita{position:absolute;right:-70px;top:-70px;width:260px;height:260px;opacity:.5;animation:gira 40s linear infinite}
+.datos{position:relative;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.dato{display:flex;flex-direction:column;gap:8px}
+.dato b{font-family:var(--f-titulo);font-weight:200;font-size:clamp(48px,5vw,72px);line-height:1;letter-spacing:-.04em;color:var(--celeste);font-variant-numeric:tabular-nums}
+.dato > span{color:var(--en-tinta);font-size:15.5px}
+.caso-der .usa{position:relative;display:flex;flex-wrap:wrap;gap:8px}
+.caso-der .usa span{padding:6px 12px;border-radius:999px;background:var(--linea-t);font-size:14px;font-weight:600}
+.proximo{margin-top:18px;border:1.5px dashed var(--linea-f);border-radius:28px;padding:24px 28px;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:24px;align-items:center}
+.proximo .hueco svg{width:56px;height:56px;animation:gira 12s linear infinite}
+.proximo b{font-family:var(--f-titulo);font-size:20px;font-weight:700}
+.proximo p{margin:4px 0 0;color:var(--texto2);max-width:62ch}
+@media (max-width:900px){
+  .caso,.datos{grid-template-columns:minmax(0,1fr)}
+  .proximo{grid-template-columns:minmax(0,1fr)}
+  .proximo .hueco{display:none}
+}
+
 /* ---------- precios */
 .precios{padding-block:140px 120px}
 .precios .cabeza{display:flex;flex-direction:column;align-items:center;gap:20px;text-align:center;margin-bottom:48px}
@@ -317,6 +354,41 @@ body.noche .menu-b{border-color:var(--linea-t)}
 .menu-abierto .cab .boton,.menu-abierto .cab .nav{opacity:0;pointer-events:none}
 .menu-abierto .menu-b{border-color:var(--linea-t)}
 .nav a.activa::after{transform:scaleX(1)}
+.nav{align-items:center}
+.desp-b{display:inline-flex;align-items:center;gap:6px;height:40px;padding:0;background:none;border:0;font-weight:600;font-size:15px;color:inherit;cursor:pointer}
+.desp-b svg{transition:transform .3s var(--ease-sal)}
+.desp-b[aria-expanded="true"]{color:var(--azul)}
+.desp-b[aria-expanded="true"] svg{transform:rotate(180deg)}
+/* Paneles del menú: bajan como una persiana desde la cabecera */
+.panel{position:absolute;left:0;right:0;top:100%;background:var(--blanco);color:var(--tinta);border-radius:0 0 28px 28px;box-shadow:0 40px 70px rgba(11,37,64,.16);
+  clip-path:inset(0 0 100% 0);visibility:hidden;transition:clip-path .45s cubic-bezier(.76,0,.24,1),visibility 0s linear .45s}
+.panel.abierto{clip-path:inset(0 0 -60px 0);visibility:visible;transition:clip-path .55s cubic-bezier(.76,0,.24,1)}
+.panel-in{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(0,1fr);gap:48px;padding-block:28px 40px;border-top:1px solid var(--linea)}
+.grupos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px 28px}
+.grupos.dos{grid-template-columns:repeat(2,minmax(0,1fr))}
+.grupo{display:flex;flex-direction:column;gap:2px}
+.grupo small{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#3F6488;margin-bottom:8px}
+.panel a.it{display:flex;flex-direction:column;gap:2px;padding:10px 12px;margin-inline:-12px;border-radius:14px;text-decoration:none;
+  opacity:0;transform:translateY(12px);transition:opacity .35s,transform .5s var(--ease-sal),background .15s}
+.panel.abierto a.it{opacity:1;transform:none;transition-delay:calc(.12s + var(--i) * .03s),calc(.12s + var(--i) * .03s),0s}
+.panel a.it:hover,.panel a.it:focus-visible,.panel a.it.activo{background:var(--hielo)}
+.panel a.it b{font-family:var(--f-titulo);font-weight:700;font-size:16px;letter-spacing:-.01em}
+.panel a.it span{font-size:14px;color:var(--texto2)}
+.previa{display:flex;flex-direction:column;gap:12px;opacity:0;transform:translateY(16px) scale(.98);transition:opacity .4s .2s,transform .7s var(--ease-sal) .2s}
+.panel.abierto .previa{opacity:1;transform:none}
+.previa .vista{position:relative}
+.previa .vista img{position:absolute;inset:0;transition:opacity .35s}
+.previa .vista img.fuera{opacity:0}
+.previa p{margin:0;font-size:14px;color:var(--texto2)}
+.previa .tarjeta{border-radius:22px;background:var(--tinta);color:var(--blanco);padding:26px;display:flex;flex-direction:column;gap:12px;align-items:flex-start}
+.previa .tarjeta p{color:var(--en-tinta);font-size:15px}
+.previa .tarjeta b{font-family:var(--f-titulo);font-size:22px;font-weight:700;letter-spacing:-.02em}
+.previa .tarjeta .boton{background:var(--blanco);color:var(--tinta);height:44px;font-size:15px}
+.velo{position:fixed;inset:0;z-index:35;background:rgba(11,37,64,.28);opacity:0;pointer-events:none;transition:opacity .35s}
+body.desp-abierto .velo{opacity:1;pointer-events:auto}
+body.desp-abierto .cab{background:var(--blanco)!important;color:var(--tinta)!important;box-shadow:none!important}
+.tesela.resalta{animation:resalta 1.6s var(--ease-sal)}
+@keyframes resalta{0%,100%{box-shadow:0 0 0 0 rgba(63,130,192,0)}25%{box-shadow:0 0 0 6px rgba(63,130,192,.35)}}
 .menu{position:fixed;inset:0;z-index:39;background:var(--tinta);color:var(--blanco);overflow-y:auto;overscroll-behavior:contain;
   clip-path:circle(0px at var(--mx,calc(100% - 80px)) var(--my,36px));transition:clip-path .75s cubic-bezier(.76,0,.24,1)}
 .menu[hidden]{display:none}
@@ -388,7 +460,7 @@ body.noche .arriba .pista{stroke:var(--linea-t)}
 }
 @media (max-width:900px){
   .wrap{padding-inline:16px}
-  .cab .wrap{gap:12px}
+  .cab > .wrap{gap:12px}
   .menu .in{grid-template-columns:minmax(0,1fr);gap:40px;padding-block:96px 40px;align-items:start}
   .menu aside .orbita{display:none}
   .orbita-fondo{width:700px;height:700px;right:-380px;top:120px;margin-top:0}
@@ -440,12 +512,19 @@ body.noche .arriba .pista{stroke:var(--linea-t)}
       <svg width="28" height="28" viewBox="0 0 44 44" aria-hidden="true"><circle cx="20" cy="24" r="16" fill="#17457A"/><circle cx="35" cy="9" r="6" fill="#7CC3EC"/></svg><b>delcos</b>
     </a>
     <nav class="nav" aria-label="Secciones">
-      <a href="#para-quien">Para quién</a><a href="#modulos">Módulos</a><a href="#sectores">Sectores</a><a href="#precios">Precios</a><a href="soporte.html">Soporte</a>
+      <button class="desp-b" type="button" aria-expanded="false" aria-controls="panel-plataforma">Plataforma <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+      <button class="desp-b" type="button" aria-expanded="false" aria-controls="panel-sectores">Sectores <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+      <a href="#clientes">Clientes</a><a href="#precios">Precios</a>
+      <button class="desp-b" type="button" aria-expanded="false" aria-controls="panel-ayuda">Ayuda <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
     </nav>
     <a class="boton iman" href="#cierre">Pide una demo</a>
     <button class="menu-b" id="menu-b" type="button" aria-expanded="false" aria-controls="menu"><span class="ico" aria-hidden="true"><i></i><i></i></span><span id="menu-t">Menú</span></button>
   </div>
+  <div class="panel" id="panel-plataforma" role="region" aria-label="Plataforma"></div>
+  <div class="panel" id="panel-sectores" role="region" aria-label="Sectores"></div>
+  <div class="panel" id="panel-ayuda" role="region" aria-label="Ayuda"></div>
 </header>
+<div class="velo" id="velo" aria-hidden="true"></div>
 
 <div class="menu" id="menu" hidden>
   <div class="wrap in">
@@ -455,9 +534,10 @@ body.noche .arriba .pista{stroke:var(--linea-t)}
       <a href="#dia" style="--i:2"><small>03</small><span>Un día en la empresa</span></a>
       <a href="#modulos" style="--i:3"><small>04</small><span>Módulos</span></a>
       <a href="#sectores" style="--i:4"><small>05</small><span>Sectores</span></a>
-      <a href="#precios" style="--i:5"><small>06</small><span>Precios</span></a>
-      <a href="soporte.html" style="--i:6"><small>07</small><span>Soporte</span></a>
-      <a href="dudas.html" style="--i:7"><small>08</small><span>Envíanos tu duda</span></a>
+      <a href="#clientes" style="--i:5"><small>06</small><span>Clientes</span></a>
+      <a href="#precios" style="--i:6"><small>07</small><span>Precios</span></a>
+      <a href="soporte.html" style="--i:7"><small>08</small><span>Soporte</span></a>
+      <a href="dudas.html" style="--i:8"><small>09</small><span>Envíanos tu duda</span></a>
     </nav>
     <aside>
       <svg class="orbita" viewBox="0 0 44 44" aria-hidden="true"><circle cx="20" cy="24" r="19.5" fill="none" stroke="#22405F" stroke-width=".6" stroke-dasharray="1.5 2"/><circle cx="20" cy="24" r="16" fill="#17457A"/><g class="sat"><circle cx="35" cy="9" r="5" fill="#7CC3EC"/></g></svg>
@@ -485,21 +565,21 @@ body.noche .arriba .pista{stroke:var(--linea-t)}
   <div class="wrap">
     <div class="texto">
       <div class="ojo">Plataforma de gestión comercial · sector salud</div>
-      <h1 class="titular" data-letras>Vende más en salud. <em>Gestiona todo lo demás.</em></h1>
-      <p class="entrada">Para laboratorios, distribuidores y fabricantes que venden a través de profesionales y centros sanitarios. Desde la oficina llevas cartera, pedidos, almacén por lotes, facturación con VeriFactu y comisiones; tu equipo de campo lo tiene todo en el móvil.</p>
+      <h1 class="titular" data-letras>Todo gira en torno <em>a quien cuida.</em></h1>
+      <p class="entrada">Médicos, farmacias, clínicas, hospitales o veterinarios: tu empresa vive de esas relaciones. delcos las reúne en una sola plataforma con todo lo que las sostiene: visitas, pedidos, almacén por lotes, facturación con VeriFactu y comisiones.</p>
       <div class="acciones">
         <a class="boton iman" href="dudas.html?tipo=Demo">Pide una demo <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
         <a class="boton sec" href="#dia">Ver un día completo</a>
       </div>
     </div>
     <div class="baraja" id="baraja" aria-label="Pantallas de la app">
+      <svg class="orbe atras" aria-hidden="true"><ellipse/></svg>
       <div class="carta c-esc" data-p="18"><div class="ordenador"><div class="barra"><i></i><i></i><i></i></div><div class="vista"><img src="capturas/labs_e_analitica.webp" alt="Analítica de ventas en el ordenador" width="1600" height="1000"></div></div></div>
       <div class="carta c-esc2" data-p="30"><div class="ordenador"><div class="barra"><i></i><i></i><i></i></div><div class="vista"><img src="capturas/labs_e_factura.webp" alt="Factura emitida" width="1600" height="1000"></div></div></div>
       <div class="carta c-esc3" data-p="44"><div class="ordenador"><div class="barra"><i></i><i></i><i></i></div><div class="vista"><img src="capturas/labs_e_stock.webp" alt="Stock por lotes y caducidad" width="1600" height="1000"></div></div></div>
       <div class="carta c-tel" data-p="58"><div class="tel"><div class="pant"><img src="capturas/labs_m_inicio.webp" alt="Inicio de la app en el móvil" width="780" height="1688"></div></div></div>
-      <div class="etiqueta" style="left:-10px;top:30px" data-p="70"><i></i>Dirección · analítica de ventas</div>
-      <div class="etiqueta" style="left:60px;bottom:-6px" data-p="70"><i style="background:var(--ok)"></i>Administración · factura con VeriFactu</div>
-      <div class="etiqueta" style="right:150px;top:-4px" data-p="70"><i style="background:var(--celeste)"></i>Comercial · en el móvil</div>
+      <svg class="orbe delante" aria-hidden="true"><defs><clipPath id="orbe-mitad"><rect/></clipPath></defs><ellipse clip-path="url(#orbe-mitad)"/></svg>
+      <div class="satelites" id="satelites" aria-hidden="true"></div>
     </div>
   </div>
 </section>
@@ -513,7 +593,7 @@ body.noche .arriba .pista{stroke:var(--linea-t)}
   <div class="wrap">
     <div class="cabeza">
       <div class="ojo">Para quién</div>
-      <h2 class="titular" data-letras>Hecha para quien <em>vende salud.</em></h2>
+      <h2 class="titular" data-letras>Hecha para quien acompaña <em>a quien cuida.</em></h2>
       <p class="entrada">No es otra app de rutas. Es la plataforma con la que una empresa del sector organiza su red comercial y su operativa, del laboratorio de tres personas a la red de doscientos comerciales.</p>
     </div>
     <div class="pq-rejilla" id="pq-rejilla"></div>
@@ -553,7 +633,7 @@ body.noche .arriba .pista{stroke:var(--linea-t)}
     <div class="fijo">
       <div class="ojo">Por qué delcos</div>
       <h2 class="titular" data-letras>Hecha para el sector sanitario, <em>no adaptada a él.</em></h2>
-      <p class="entrada">Pensada desde el primer día para empresas que venden a través de profesionales y centros sanitarios. Lo que necesitas para vender en salud viene de serie.</p>
+      <p class="entrada">Pensada desde el primer día para empresas que venden a través de profesionales y centros sanitarios. Lo que el sector necesita viene de serie.</p>
     </div>
     <div>
       <div class="razones" id="razones"></div>
@@ -566,7 +646,7 @@ body.noche .arriba .pista{stroke:var(--linea-t)}
   <div class="wrap">
     <div class="cabeza">
       <div class="ojo">Sectores</div>
-      <h2 class="titular" data-letras>Cada sector vende distinto. <em>delcos también.</em></h2>
+      <h2 class="titular" data-letras>Cada sector trabaja distinto. <em>delcos también.</em></h2>
       <p class="entrada">Laboratorios, dental, ortopedia, farmacia, hospital y veterinaria. Cada empresa trabaja con sus palabras, sus estados y lo que de verdad pesa en su sector.</p>
       <div class="pestanas" role="tablist" aria-label="Sectores" id="pest-sectores"></div>
     </div>
@@ -576,6 +656,38 @@ body.noche .arriba .pista{stroke:var(--linea-t)}
         <div class="tel" id="tel-sector"><div class="pant"><img alt="" width="780" height="1688"></div></div>
       </div>
       <div class="cambio" id="txt-sector" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+
+<!-- Clientes -->
+<section class="clientes" id="clientes">
+  <div class="wrap">
+    <div class="cabeza">
+      <div class="ojo">Clientes</div>
+      <h2 class="titular" data-letras>Nacida en un laboratorio. <em>Probada cada día.</em></h2>
+      <p class="entrada">delcos no se diseñó en una pizarra. Nació dentro de DLC Health Group para ordenar su red comercial, sus pedidos y su facturación, y cada versión se prueba primero con su equipo, en la calle y en la oficina.</p>
+    </div>
+    <article class="caso">
+      <div class="caso-marca">
+        <span class="fundador">Cliente fundador</span>
+        <img src="clientes/dlc-health-group.webp" alt="DLC Health Group" width="360" height="143" loading="lazy">
+        <p>Laboratorio de complementos alimenticios que vende a través de profesionales sanitarios.</p>
+      </div>
+      <div class="caso-der">
+        <svg class="caso-orbita" viewBox="0 0 200 200" aria-hidden="true"><circle cx="100" cy="100" r="80" fill="none" stroke="#C5D5E4" stroke-dasharray="2 6"/><circle cx="100" cy="20" r="7" fill="#7CC3EC"/></svg>
+        <div class="datos">
+          <div class="dato"><b><span data-cuenta="100">100</span>+</b><span>versiones de la plataforma, cada una probada con su equipo</span></div>
+          <div class="dato"><b data-cuenta="8">8</b><span>módulos en su día a día, del campo a la factura</span></div>
+          <div class="dato"><b data-cuenta="1">1</b><span>sola plataforma para el equipo de campo, la oficina y dirección</span></div>
+        </div>
+        <div class="usa"><span>Cartera y visitas</span><span>Agenda y rutas</span><span>Pedidos</span><span>Facturación con VeriFactu</span><span>Comisiones</span><span>Analítica</span></div>
+      </div>
+    </article>
+    <div class="proximo">
+      <div class="hueco" aria-hidden="true"><svg viewBox="0 0 44 44"><circle cx="20" cy="24" r="16" fill="none" stroke="#C5D5E4" stroke-dasharray="2 3"/><circle cx="35" cy="9" r="5" fill="#7CC3EC"/></svg></div>
+      <div><b>¿Tu empresa, la siguiente?</b><p>Buscamos a los próximos clientes fundadores de cada sector. Te acompañamos en la puesta en marcha y escuchamos lo que necesitas para las próximas versiones.</p></div>
+      <a class="boton" href="dudas.html?tipo=Demo">Quiero ser el siguiente</a>
     </div>
   </div>
 </section>
@@ -612,7 +724,7 @@ body.noche .arriba .pista{stroke:var(--linea-t)}
       <circle cx="100" cy="100" r="56" fill="#7CC3EC"/>
       <circle class="luna" cx="100" cy="100" r="57" fill="#0B2540" transform="translate(-44 0)"/>
     </svg>
-    <h2 class="titular" id="frase">Por fin, un software que entiende cómo se vende en salud.</h2></div>
+    <h2 class="titular" id="frase">Por fin, un software que entiende cómo se trabaja en salud.</h2></div>
 </section>
 
 <section class="preguntas" id="preguntas">
@@ -625,7 +737,7 @@ body.noche .arriba .pista{stroke:var(--linea-t)}
 <section class="cierre" id="cierre" data-noche>
   <div class="wrap">
     <svg class="orbita" viewBox="0 0 44 44" aria-hidden="true"><circle cx="20" cy="24" r="16" fill="#17457A"/><circle cx="20" cy="24" r="19.5" fill="none" stroke="#C5D5E4" stroke-width=".6" stroke-dasharray="1.5 2"/><g class="sat"><circle cx="35" cy="9" r="5" fill="#7CC3EC"/></g></svg>
-    <h2 class="titular" data-letras>Más ventas. <em>Menos hojas de cálculo.</em></h2>
+    <h2 class="titular" data-letras>Menos hojas de cálculo. <em>Más tiempo para quien cuida.</em></h2>
     <p class="entrada">Cuéntanos cómo trabaja tu equipo y te lo enseñamos funcionando, con tus clientes, tus productos y tu forma de facturar.</p>
     <a class="boton iman" href="dudas.html?tipo=Demo">Pide una demo <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
     <p class="nota-demo">Todas las pantallas son capturas reales de la app con empresas de demostración: los datos son ficticios.</p>
@@ -845,6 +957,7 @@ function carrusel(contenedor, items, alCambiar, dur = 5200) {
   zona.addEventListener('mouseleave', () => contenedor.classList.remove('parada'));
   new IntersectionObserver(([e]) => { enVista = e.isIntersecting; contenedor.classList.toggle('parada', !enVista || QUIETO); }, { threshold: .35 }).observe(zona);
   alCambiar(items[0], true);
+  return elegir;
 }
 const telS = $('#tel-sector'), escS = $('#esc-sector'), txtS = $('#txt-sector');
 const pintaSector = x => {
@@ -852,7 +965,8 @@ const pintaSector = x => {
   ie.src = cap(x.esc); ie.alt = `Pantalla de escritorio de ${x.empresa}`;
   it.src = cap(x.clave + '_m_inicio'); it.alt = `Inicio en el móvil de ${x.empresa}`;
 };
-carrusel($('#pest-sectores'), SECTORES, (x, inicial) => {
+let elegirSector = () => {};
+elegirSector = carrusel($('#pest-sectores'), SECTORES, (x, inicial) => {
   const html = `<div class="ojo">${x.empresa} · demostración</div><h3 class="titular" style="font-size:clamp(30px,3vw,42px)">${x.titulo}</h3>
     <div class="fuertes">${x.fuertes.map(([t, d]) => `<div class="fuerte">${check('#0E6B4C')}<div><b>${t}</b><span>${d}</span></div></div>`).join('')}</div>
     <div class="chips">${x.estados.map(e => `<span>${e}</span>`).join('')}</div>`;
@@ -878,6 +992,91 @@ const alDesplazar = () => {
   arribaSat.style.transform = `rotate(${p * 360}deg)`;
 };
 addEventListener('scroll', alDesplazar, { passive: true }); alDesplazar();
+
+/* ================= menú desplegable de la cabecera ================= */
+const MENU_PLAT = [
+  ['Campo', [['Cartera', 'Profesionales, centros y su historial', 'labs_e_directorio', 0], ['Agenda y rutas', 'La semana de cada comercial', 'labs_e_agenda', 2],
+    ['Seguimiento', 'Lo que toca hacer en cada ficha', 'labs_e_seguimiento', 1], ['Calidad del dato', 'Sin fichas repetidas ni incompletas', 'labs_e_calidad', 9]]],
+  ['Venta', [['Pedidos', 'De la visita al pedido', 'labs_e_ventas', 3], ['Televenta', 'Llamadas que acaban en pedido', 'labs_e_llamadas', 3],
+    ['Comisiones', 'Cada venta, a quien la genera', 'labs_e_comisiones', 7], ['Analítica', 'Cruza ventas, visitas y cobertura', 'labs_e_explorar', 8]]],
+  ['Oficina', [['Almacén y lotes', 'Stock por lote y caducidad', 'labs_e_stock', 4], ['Compras', 'Proveedores y pedidos de compra', 'labs_e_compras', 5],
+    ['Facturación', 'VeriFactu, rectificativas y cobros', 'labs_e_facturas', 6], ['Equipo y permisos', 'Cada papel ve y hace lo suyo', 'labs_e_usuarios', 10]]]
+];
+const previa = (img, pie) => `<div class="previa"><div class="ordenador"><div class="barra"><i></i><i></i><i></i></div><div class="vista"><img src="${cap(img)}" alt="" width="1600" height="1000"><img class="fuera" alt="" width="1600" height="1000"></div></div><p>${pie}</p></div>`;
+let ni = 0;
+$('#panel-plataforma').innerHTML = `<div class="wrap panel-in"><div class="grupos">${MENU_PLAT.map(([g, its]) => `<div class="grupo"><small>${g}</small>${its.map(([t, d, img, tes]) =>
+  `<a class="it" href="#modulos" data-tesela="${tes}" data-img="${img}" style="--i:${ni++}"><b>${t}</b><span>${d}</span></a>`).join('')}</div>`).join('')}</div>${previa('labs_e_directorio', 'Cartera')}</div>`;
+ni = 0;
+$('#panel-sectores').innerHTML = `<div class="wrap panel-in"><div class="grupos dos">${SECTORES.map((x, i) =>
+  `<a class="it" href="#sectores" data-sector="${i}" data-img="${x.esc}" style="--i:${ni++}"><b>${x.nombre}</b><span>${x.titulo}</span></a>`).join('')}</div>${previa(SECTORES[0].esc, SECTORES[0].empresa + ' · demostración')}</div>`;
+$('#panel-ayuda').innerHTML = `<div class="wrap panel-in"><div class="grupos">
+  <div class="grupo"><small>Soporte</small><a class="it" href="soporte.html" style="--i:0"><b>Centro de ayuda</b><span>Preguntas frecuentes con buscador</span></a><a class="it" href="#preguntas" style="--i:1"><b>Preguntas</b><span>Lo que más nos preguntan antes de empezar</span></a></div>
+  <div class="grupo"><small>Contacto</small><a class="it" href="dudas.html" style="--i:2"><b>Envíanos tu duda</b><span>Te responde una persona del equipo</span></a><a class="it" href="dudas.html?tipo=Precios" style="--i:3"><b>Precios a medida</b><span>Para equipos de más de 50 personas</span></a></div>
+  <div class="grupo"><small>Empresa</small><a class="it" href="#clientes" style="--i:4"><b>Clientes</b><span>Quién usa delcos cada día</span></a><a class="it" href="aviso-legal.html" style="--i:5"><b>Aviso legal</b><span>Quiénes somos</span></a></div>
+</div><div class="previa"><div class="tarjeta"><b>¿Lo vemos con tus datos?</b><p>Te enseñamos delcos con tu sector y tu forma de trabajar, y lo pruebas 30 días.</p><a class="boton" href="dudas.html?tipo=Demo">Pide una demo</a></div></div></div>`;
+const cab = $('#cab'), velo = $('#velo'), CON_RATON = matchMedia('(hover: hover) and (pointer: fine)').matches;
+let panelAbierto = null, tAbrir, tCerrar;
+const botonDe = id => $(`[aria-controls="panel-${id}"]`);
+function abrirPanel(id) {
+  clearTimeout(tCerrar);
+  if (panelAbierto === id) return;
+  if (panelAbierto) { $('#panel-' + panelAbierto).classList.remove('abierto'); botonDe(panelAbierto).setAttribute('aria-expanded', 'false'); }
+  $('#panel-' + id).classList.add('abierto'); botonDe(id).setAttribute('aria-expanded', 'true');
+  document.body.classList.add('desp-abierto'); panelAbierto = id;
+}
+function cerrarPanel() {
+  if (!panelAbierto) return;
+  $('#panel-' + panelAbierto).classList.remove('abierto'); botonDe(panelAbierto).setAttribute('aria-expanded', 'false');
+  document.body.classList.remove('desp-abierto'); panelAbierto = null;
+}
+$$('.desp-b').forEach(b => {
+  const id = b.getAttribute('aria-controls').replace('panel-', '');
+  b.addEventListener('click', () => panelAbierto === id ? cerrarPanel() : abrirPanel(id));
+  if (CON_RATON) { b.addEventListener('mouseenter', () => { clearTimeout(tAbrir); tAbrir = setTimeout(() => abrirPanel(id), 90); }); b.addEventListener('mouseleave', () => clearTimeout(tAbrir)); }
+});
+if (CON_RATON) { cab.addEventListener('mouseleave', () => { tCerrar = setTimeout(cerrarPanel, 240); }); cab.addEventListener('mouseenter', () => clearTimeout(tCerrar)); }
+velo.addEventListener('click', cerrarPanel);
+addEventListener('keydown', e => { if (e.key === 'Escape' && panelAbierto) { const b = botonDe(panelAbierto); cerrarPanel(); b.focus(); } });
+// La vista previa cambia con un fundido al pasar por cada opción
+const cambiaPrevia = a => {
+  const p = a.closest('.panel').querySelector('.previa'), img = a.dataset.img; if (!img || !p.querySelector('.vista')) return;
+  const [i1, i2] = p.querySelectorAll('.vista img'), vis = i1.classList.contains('fuera') ? i2 : i1, otra = vis === i1 ? i2 : i1;
+  if (vis.getAttribute('src') === cap(img)) return;
+  otra.onload = () => { otra.classList.remove('fuera'); vis.classList.add('fuera'); };
+  otra.src = cap(img);
+  p.querySelector('p').textContent = a.dataset.sector ? SECTORES[+a.dataset.sector].empresa + ' · demostración' : a.querySelector('b').textContent;
+  a.closest('.panel').querySelectorAll('a.it').forEach(x => x.classList.toggle('activo', x === a));
+};
+const irA = (el, off = -90) => window.__lenis ? __lenis.scrollTo(el, { offset: off, duration: 1.3 }) : el.scrollIntoView({ behavior: QUIETO ? 'auto' : 'smooth' });
+$$('.panel a.it').forEach(a => {
+  a.addEventListener('mouseenter', () => cambiaPrevia(a)); a.addEventListener('focus', () => cambiaPrevia(a));
+  if (!a.getAttribute('href').startsWith('#')) return;
+  a.addEventListener('click', e => {
+    e.preventDefault(); e.stopImmediatePropagation(); cerrarPanel();
+    if (a.dataset.tesela) { const t = $$('.tesela')[+a.dataset.tesela]; irA(t, -140); setTimeout(() => { t.classList.remove('resalta'); t.offsetWidth; t.classList.add('resalta'); }, 1200); }
+    else if (a.dataset.sector) { irA($('#sectores')); setTimeout(() => elegirSector(+a.dataset.sector), 500); }
+    else irA($(a.getAttribute('href')));
+  });
+});
+
+/* ================= portada: los módulos giran en órbita alrededor de las pantallas ================= */
+const SATELITES = [['Visitas', '#3F82C0'], ['Pedidos', '#1BAF7A'], ['Lotes y caducidad', '#E0762B'], ['VeriFactu', '#17457A'], ['Comisiones', '#6E5BC4'], ['Rutas', '#7CC3EC']];
+$('#satelites').innerHTML = SATELITES.map(([t, c]) => `<span><i style="background:${c}"></i>${t}</span>`).join('');
+const baraja = $('#baraja'), sats = $$('#satelites span'), orb = { k: 1, tilt: -11, t: 0 };
+function colocarOrbita() {
+  const w = baraja.clientWidth, h = baraja.clientHeight, cx = w * .53, cy = h * .57, rx = Math.max(1, w * .54 * orb.k), ry = Math.max(1, h * .19 * orb.k);
+  const T = orb.tilt * Math.PI / 180, cT = Math.cos(T), sT = Math.sin(T), apar = Math.min(1, orb.k * 1.4);
+  sats.forEach((el, i) => {
+    const a = orb.t * .22 + i * Math.PI * 2 / sats.length, x = rx * Math.cos(a), y = ry * Math.sin(a), d = (Math.sin(a) + 1) / 2;
+    el.style.transform = `translate(${cx + x * cT - y * sT}px,${cy + x * sT + y * cT}px) translate(-50%,-50%) scale(${(.74 + .26 * d) * apar})`;
+    el.style.opacity = ((.38 + .62 * d) * apar).toFixed(3);
+    el.style.zIndex = d > .5 ? 12 : 1;
+  });
+  $$('.orbe ellipse').forEach(e => { e.setAttribute('cx', cx); e.setAttribute('cy', cy); e.setAttribute('rx', rx); e.setAttribute('ry', ry); e.setAttribute('transform', `rotate(${orb.tilt} ${cx} ${cy})`); });
+  const m = $('#orbe-mitad rect');
+  m.setAttribute('x', cx - rx - 40); m.setAttribute('y', cy); m.setAttribute('width', rx * 2 + 80); m.setAttribute('height', ry + 40); m.setAttribute('transform', `rotate(${orb.tilt} ${cx} ${cy})`);
+}
+colocarOrbita(); addEventListener('resize', colocarOrbita);
 
 /* ================= menú a pantalla completa ================= */
 const menu = $('#menu'), menuB = $('#menu-b');
@@ -986,19 +1185,32 @@ $$('[data-letras]').forEach((h, k) => {
 });
 gsap.from('.portada .texto > :not(h1)', { y: 24, opacity: 0, duration: .9, stagger: .1, ease: 'expo.out', delay: RET + .6 });
 
-/* ================= portada: la baraja entra, sigue al ratón y se recoge al bajar ================= */
-const cartas = $$('#baraja [data-p]');
-gsap.from(cartas, { y: 160, rotateX: -30, rotateY: 20, opacity: 0, duration: 1.4, stagger: .1, ease: 'expo.out', delay: RET + .3 });
+/* ================= portada: las pantallas llegan desde la órbita, flotan, siguen al ratón y se recogen al bajar ================= */
+const cartas = $$('#baraja [data-p]'), interiores = cartas.map(c => c.firstElementChild);
+gsap.from(interiores, { x: i => [-340, -220, 300, 360][i] || 0, y: i => [140, 240, -90, -160][i] || 0, rotateY: i => i % 2 ? -55 : 55, scale: .55, opacity: 0,
+  duration: 1.7, stagger: .12, ease: 'expo.out', delay: RET + .25 });
+interiores.forEach((el, i) => gsap.to(el, { y: i % 2 ? 12 : -12, rotation: i % 2 ? .6 : -.6, duration: 3.4 + i * .8, ease: 'sine.inOut', yoyo: true, repeat: -1, delay: RET + 2.2 }));
+// La órbita se abre desde el centro y los módulos salen girando hacia su sitio
+orb.k = 0; orb.t = -4;
+gsap.to(orb, { k: 1, duration: 2.4, ease: 'expo.out', delay: RET + .35 });
+gsap.from('.orbe', { opacity: 0, duration: 1.2, delay: RET + .3 });
+gsap.ticker.add((t, dt) => { if (scrollY > innerHeight * 1.3) return; orb.t += Math.min(dt, 50) / 1000; colocarOrbita(); });
+gsap.to('#satelites, .orbe', { opacity: 0, ease: 'none', scrollTrigger: { trigger: '.portada', start: 'top top', end: '60% top', scrub: true } });
 if (ESCRITORIO) {
-  const baraja = $('#baraja');
-  const qx = cartas.map(c => gsap.quickTo(c, 'x', { duration: .9, ease: 'power3' })), qy = cartas.map(c => gsap.quickTo(c, 'y', { duration: .9, ease: 'power3' }));
-  const qr = cartas.map(c => gsap.quickTo(c, 'rotateY', { duration: .9, ease: 'power3' }));
-  addEventListener('mousemove', e => {
-    const nx = e.clientX / innerWidth - .5, ny = e.clientY / innerHeight - .5;
-    cartas.forEach((c, i) => { const p = +c.dataset.p / 30; qx[i](nx * 26 * p); qy[i](ny * 20 * p); qr[i](nx * 10 * p); });
-  });
+  const qx = cartas.map(c => gsap.quickTo(c, 'x', { duration: 1.1, ease: 'power3' })), qy = cartas.map(c => gsap.quickTo(c, 'y', { duration: 1.1, ease: 'power3' }));
+  const qr = cartas.map(c => gsap.quickTo(c, 'rotateY', { duration: 1.1, ease: 'power3' })), qt = gsap.quickTo(orb, 'tilt', { duration: 1.4, ease: 'power3' });
+  let quieto;
+  const mover = (nx, ny) => { cartas.forEach((c, i) => { const p = +c.dataset.p / 30; qx[i](nx * 16 * p); qy[i](ny * 12 * p); qr[i](nx * 7 * p); }); qt(-11 + nx * 7 + ny * 4); };
+  // Si el ratón se para o sale de la ventana, todo vuelve al centro: nada se queda «clavado» hacia un lado
+  addEventListener('mousemove', e => { mover(e.clientX / innerWidth - .5, e.clientY / innerHeight - .5); clearTimeout(quieto); quieto = setTimeout(() => mover(0, 0), 2200); });
+  document.documentElement.addEventListener('mouseleave', () => mover(0, 0));
   gsap.to(cartas, { yPercent: (i, c) => -(+c.dataset.p) * .9, rotateX: 8, ease: 'none', scrollTrigger: { trigger: '.portada', start: 'top top', end: 'bottom top', scrub: .6 } });
 }
+
+/* ================= clientes: el caso entra y las cifras cuentan ================= */
+gsap.from('.caso > *, .proximo', { y: 60, opacity: 0, duration: 1, stagger: .12, ease: 'expo.out', scrollTrigger: { trigger: '.caso', start: 'top 82%' } });
+$$('[data-cuenta]').forEach(el => { const fin = +el.dataset.cuenta, o = { v: 0 };
+  gsap.to(o, { v: fin, duration: 1.6, ease: 'power2.out', scrollTrigger: { trigger: '.caso', start: 'top 75%' }, onUpdate: () => { el.textContent = Math.round(o.v); } }); });
 
 /* ================= fondo que cambia de color por escena ================= */
 $$('[data-noche]').forEach(sec => ScrollTrigger.create({ trigger: sec, start: 'top 55%', end: 'bottom 45%',
