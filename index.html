@@ -84,9 +84,27 @@ body.noche .cab.fondo{background:rgba(11,37,64,.94);box-shadow:0 1px 0 var(--lin
 .nav a::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:2px;background:var(--azul);transform:scaleX(0);transform-origin:left;transition:transform .18s var(--ease-sal)}
 .nav a:hover::after{transform:scaleX(1)}
 .cab .boton{height:44px;padding:0 20px;font-size:15px}
-.idioma{display:inline-flex;align-items:center;justify-content:center;height:44px;min-width:44px;padding:0 10px;border-radius:999px;font-weight:700;font-size:13px;letter-spacing:.08em;text-decoration:none;flex-shrink:0;transition:background .2s}
-.idioma:hover{background:var(--hielo)}
-body.noche .idioma:hover{background:var(--linea-t)}
+/* Selector de idioma: los dos idiomas a la vista, el activo relleno */
+.idioma{display:inline-flex;align-items:center;gap:2px;height:44px;padding:4px;border:1px solid var(--linea-f);border-radius:999px;flex-shrink:0;color:inherit}
+.idioma .globo{width:18px;height:18px;margin:0 4px 0 7px;color:var(--azul);transition:transform .8s var(--ease-sal)}
+.idioma:hover .globo{transform:rotate(-30deg)}
+.idioma span,.idioma a{display:inline-flex;align-items:center;justify-content:center;height:34px;min-width:40px;padding:0 10px;border-radius:999px;font-weight:700;font-size:13px;letter-spacing:.06em;text-decoration:none;color:inherit;transition:background .2s,color .2s}
+.idioma .activo{background:var(--marino);color:var(--blanco)}
+.idioma a:hover,.idioma a:focus-visible{background:var(--hielo)}
+body.noche .idioma{border-color:var(--linea-t)}
+body.noche .idioma .activo{background:var(--blanco);color:var(--tinta)}
+body.noche .idioma a:hover{background:var(--linea-t)}
+body.desp-abierto .idioma{border-color:var(--linea-f)}
+body.desp-abierto .idioma .activo{background:var(--marino);color:var(--blanco)}
+/* Sugerencia de idioma según el navegador */
+.aviso-idioma{position:fixed;left:24px;bottom:24px;z-index:38;max-width:340px;background:var(--tinta);color:var(--blanco);border-radius:20px;padding:18px 20px;box-shadow:var(--sombra-3);
+  display:flex;flex-direction:column;gap:12px;transform:translateY(24px);opacity:0;transition:opacity .4s,transform .6s var(--ease-sal)}
+.aviso-idioma.ver{opacity:1;transform:none}
+.aviso-idioma p{margin:0;font-size:15px;color:var(--en-tinta)}
+.aviso-idioma b{color:var(--blanco);font-family:var(--f-titulo)}
+.aviso-idioma .acc{display:flex;gap:8px;align-items:center}
+.aviso-idioma a{display:inline-flex;align-items:center;height:40px;padding:0 16px;border-radius:999px;background:var(--blanco);color:var(--tinta);font-weight:700;font-size:14px;text-decoration:none}
+.aviso-idioma button{height:40px;padding:0 14px;border-radius:999px;border:1px solid var(--linea-t);background:none;color:var(--blanco);font-size:14px}
 .menu-abierto .cab .idioma{opacity:0;pointer-events:none}
 
 /* ---------- marcos: siempre una captura real de la app dentro */
@@ -283,6 +301,29 @@ body.noche .tel{background:#05182B;box-shadow:0 0 0 1px var(--linea-t),var(--som
 .lista-c div{display:flex;gap:12px;align-items:baseline;padding:14px 0;border-top:1px solid var(--linea);font-size:17px}
 .chips{display:flex;gap:8px;flex-wrap:wrap}
 .chips span{padding:5px 12px;border-radius:999px;background:var(--suave);color:var(--marino);font-size:14px;font-weight:600}
+
+/* ---------- el canal con los profesionales */
+.canal{padding-block:140px 60px}
+.canal-in{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:64px;align-items:center}
+.canal-txt{display:flex;flex-direction:column;gap:20px}
+.canal-lista{list-style:none;margin:8px 0 0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 28px}
+.canal-lista li{display:flex;flex-direction:column;gap:6px;padding-top:16px;border-top:1px solid var(--linea)}
+.canal-lista b{font-family:var(--f-titulo);font-weight:700;font-size:17px}
+.canal-lista p{margin:0;color:var(--texto2);font-size:15.5px}
+.estado{align-self:flex-start;padding:3px 10px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.02em}
+.estado.hoy{background:var(--ok-s);color:var(--ok)}
+.estado.pronto{background:#FBF1DC;color:#8A5A00}
+.canal-graf{border-radius:32px;background:var(--hielo);padding:28px 20px 24px;display:flex;flex-direction:column;gap:12px}
+.canal-graf svg{width:100%;height:auto;overflow:visible}
+.canal-graf .sat-canal{transform-origin:110px 200px;animation:gira 9s linear infinite}
+.fuera-canal{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 16px;font-size:14px;font-weight:600;color:var(--texto2)}
+.fuera-canal .tachado{text-decoration:line-through;text-decoration-color:var(--azul);text-decoration-thickness:2px;opacity:.7}
+.fuera-canal span:last-child{color:var(--marino)}
+@media (max-width:900px){
+  .canal{padding-block:96px 40px}
+  .canal-in{grid-template-columns:minmax(0,1fr);gap:40px}
+  .canal-lista{grid-template-columns:minmax(0,1fr)}
+}
 
 /* ---------- clientes: el caso del cliente fundador y un hueco para el siguiente */
 .clientes{padding-block:130px 20px}
@@ -576,6 +617,8 @@ body.noche .arriba .pista{stroke:var(--linea-t)}
   .garantias div + div{padding-left:20px;border-left:1px solid var(--linea);border-top:0}
 }
 @media (max-width:600px){
+  .idioma .globo{display:none}
+  .aviso-idioma{left:16px;right:16px;bottom:16px;max-width:none}
   .cab .boton{display:none}
   .menu-b{margin-left:auto}
 }
@@ -608,7 +651,7 @@ body.noche .arriba .pista{stroke:var(--linea-t)}
       <button class="desp-b" type="button" aria-expanded="false" aria-controls="panel-ayuda">Ayuda <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
     </nav>
     <a class="boton iman" href="#cierre">Pide una demo</a>
-    <a class="idioma" href="en/" hreflang="en" lang="en" aria-label="English version">EN</a>
+    <div class="idioma" role="group" aria-label="Idioma · Language"><svg class="globo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg><span class="activo" aria-current="true" lang="es">ES</span><a href="en/" hreflang="en" lang="en" title="English version" data-idioma="en">EN</a></div>
     <button class="menu-b" id="menu-b" type="button" aria-expanded="false" aria-controls="menu"><span class="ico" aria-hidden="true"><i></i><i></i></span><span id="menu-t">Menú</span></button>
   </div>
   <div class="panel" id="panel-plataforma" role="region" aria-label="Plataforma"></div>
@@ -728,6 +771,45 @@ body.noche .arriba .pista{stroke:var(--linea-t)}
     </div>
     <div>
       <div class="razones" id="razones"></div>
+    </div>
+  </div>
+</section>
+
+<!-- El canal con los profesionales -->
+<section class="canal" id="canal">
+  <div class="wrap canal-in">
+    <div class="canal-txt">
+      <div class="ojo">El canal</div>
+      <h2 class="titular" data-letras>Un canal directo <em>con quien cuida.</em></h2>
+      <p class="entrada">Tus profesionales entran en delcos con su propio acceso, que les da su comercial desde la ficha. Lo que hoy se pierde entre correos, mensajes y llamadas pasa a un solo canal, de ida y vuelta, unido a su ficha.</p>
+      <ul class="canal-lista">
+        <li><span class="estado hoy">Disponible</span><b>Su informe, siempre al día</b><p>Lo que se ha vendido por su recomendación mes a mes, su posición entre los profesionales y las llamadas de sus pacientes. Sin datos de pacientes ni importes.</p></li>
+        <li><span class="estado hoy">Disponible</span><b>Avisos al momento</b><p>Cada vez que se registra un pedido a su nombre, le llega un aviso.</p></li>
+        <li><span class="estado pronto">Próximamente</span><b>Reacciones y dudas</b><p>Valoran un material, preguntan o piden una visita, y te llega directamente en su ficha.</p></li>
+        <li><span class="estado pronto">Próximamente</span><b>Peticiones</b><p>Material, muestras o reposición de los productos que el centro tiene dados de alta, sin una llamada.</p></li>
+      </ul>
+    </div>
+    <div class="canal-graf" aria-hidden="true">
+      <svg viewBox="0 0 560 400">
+        <path id="ida" d="M170 170 C 250 70, 310 70, 390 170" fill="none" stroke="#AFC4D8" stroke-width="1.5" stroke-dasharray="3 7"/>
+        <path id="vuelta" d="M390 230 C 310 330, 250 330, 170 230" fill="none" stroke="#AFC4D8" stroke-width="1.5" stroke-dasharray="3 7"/>
+        <g class="nodo"><circle cx="110" cy="200" r="62" fill="#17457A"/><circle cx="110" cy="200" r="78" fill="none" stroke="#C5D5E4" stroke-dasharray="2 5"/>
+          <g class="sat-canal"><circle cx="110" cy="122" r="9" fill="#7CC3EC"/></g>
+          <text x="110" y="206" text-anchor="middle" fill="#FFFFFF" font-size="17" font-weight="700" font-family="Manrope, sans-serif">delcos</text></g>
+        <g class="nodo"><circle cx="450" cy="200" r="62" fill="#F2F7FC" stroke="#C5D5E4"/>
+          <circle cx="450" cy="186" r="14" fill="none" stroke="#17457A" stroke-width="2.4"/><path d="M424 228c4-15 14-22 26-22s22 7 26 22" fill="none" stroke="#17457A" stroke-width="2.4" stroke-linecap="round"/></g>
+        <text x="110" y="310" text-anchor="middle" fill="#4A617A" font-size="15" font-weight="600" font-family="Source Sans 3, sans-serif" class="et-empresa">Tu empresa</text>
+        <text x="450" y="310" text-anchor="middle" fill="#4A617A" font-size="15" font-weight="600" font-family="Source Sans 3, sans-serif" class="et-pro">Profesional</text>
+        <g opacity="0"><rect x="-62" y="-17" width="124" height="34" rx="17" fill="#FFFFFF" stroke="#D8E4EF"/><circle cx="-44" cy="0" r="5" fill="#1BAF7A"/><text x="6" y="5" text-anchor="middle" fill="#0B2540" font-size="13" font-weight="600" font-family="Source Sans 3, sans-serif" class="m1">Tu informe</text>
+          <animateMotion dur="7s" repeatCount="indefinite" begin="0s"><mpath href="#ida"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.15;.85;1" dur="7s" repeatCount="indefinite" begin="0s"/></g>
+        <g opacity="0"><rect x="-74" y="-17" width="148" height="34" rx="17" fill="#FFFFFF" stroke="#D8E4EF"/><circle cx="-56" cy="0" r="5" fill="#3F82C0"/><text x="6" y="5" text-anchor="middle" fill="#0B2540" font-size="13" font-weight="600" font-family="Source Sans 3, sans-serif" class="m2">Nuevo pedido</text>
+          <animateMotion dur="7s" repeatCount="indefinite" begin="3.5s"><mpath href="#ida"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.15;.85;1" dur="7s" repeatCount="indefinite" begin="3.5s"/></g>
+        <g opacity="0"><rect x="-70" y="-17" width="140" height="34" rx="17" fill="#0B2540"/><circle cx="-52" cy="0" r="5" fill="#7CC3EC"/><text x="6" y="5" text-anchor="middle" fill="#FFFFFF" font-size="13" font-weight="600" font-family="Source Sans 3, sans-serif" class="m3">Pedir material</text>
+          <animateMotion dur="7s" repeatCount="indefinite" begin="1.75s"><mpath href="#vuelta"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.15;.85;1" dur="7s" repeatCount="indefinite" begin="1.75s"/></g>
+        <g opacity="0"><rect x="-56" y="-17" width="112" height="34" rx="17" fill="#0B2540"/><circle cx="-38" cy="0" r="5" fill="#E0A400"/><text x="6" y="5" text-anchor="middle" fill="#FFFFFF" font-size="13" font-weight="600" font-family="Source Sans 3, sans-serif" class="m4">Una duda</text>
+          <animateMotion dur="7s" repeatCount="indefinite" begin="5.25s"><mpath href="#vuelta"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.15;.85;1" dur="7s" repeatCount="indefinite" begin="5.25s"/></g>
+      </svg>
+      <div class="fuera-canal"><span class="tachado">Correo</span><span class="tachado">WhatsApp</span><span class="tachado">Llamadas</span><span>Todo, en su ficha</span></div>
     </div>
   </div>
 </section>
@@ -1121,6 +1203,25 @@ const alDesplazar = () => {
 };
 addEventListener('scroll', alDesplazar, { passive: true }); alDesplazar();
 
+/* ================= sugerencia de idioma según el navegador (una vez; recuerda la elección) ================= */
+(() => {
+  const aqui = document.documentElement.lang, otro = aqui === 'es' ? 'en' : 'es';
+  let pref = null;
+  try { pref = localStorage.getItem('delcos-idioma'); } catch (e) {}
+  const guarda = v => { try { localStorage.setItem('delcos-idioma', v); } catch (e) {} };
+  $$('.idioma a, a[hreflang]').forEach(a => a.addEventListener('click', () => guarda(a.getAttribute('hreflang'))));
+  const nav = (navigator.languages && navigator.languages[0]) || navigator.language || '';
+  if (pref || !nav.toLowerCase().startsWith(otro)) return;
+  const enlace = $('.idioma a').getAttribute('href');
+  const t = otro === 'en' ? { p: '<b>This site is also in English.</b> Would you like to switch?', ir: 'English version', no: 'Stay in Spanish' }
+    : { p: '<b>Esta web también está en español.</b> ¿Quieres cambiar?', ir: 'Ver en español', no: 'Seguir en inglés' };
+  const caja = document.createElement('div'); caja.className = 'aviso-idioma'; caja.setAttribute('role', 'dialog'); caja.setAttribute('aria-label', t.ir); caja.lang = otro;
+  caja.innerHTML = `<p>${t.p}</p><div class="acc"><a href="${enlace}" hreflang="${otro}">${t.ir}</a><button type="button">${t.no}</button></div>`;
+  caja.querySelector('a').addEventListener('click', () => guarda(otro));
+  caja.querySelector('button').addEventListener('click', () => { guarda(aqui); caja.classList.remove('ver'); setTimeout(() => caja.remove(), 500); });
+  setTimeout(() => { document.body.appendChild(caja); requestAnimationFrame(() => caja.classList.add('ver')); }, 2600);
+})();
+
 /* ================= menú desplegable de la cabecera ================= */
 const MENU_PLAT = [
   ['Campo', [['Cartera', 'Profesionales, centros y su historial', 'labs_e_directorio', 0], ['Agenda y rutas', 'La semana de cada comercial', 'labs_e_agenda', 2],
@@ -1418,6 +1519,10 @@ $$('.razon').forEach(r => {
   gsap.fromTo(r, { '--k': 0 }, { '--k': 1, ease: 'none', scrollTrigger: { trigger: r, start: 'top 85%', end: 'top 55%', scrub: true } });
   gsap.from(r.children, { y: 24, opacity: 0, duration: .9, stagger: .08, ease: 'expo.out', scrollTrigger: { trigger: r, start: 'top 82%' } });
 });
+
+/* ================= el canal: los nodos aparecen y la lista entra en cascada ================= */
+gsap.from('.canal-graf .nodo', { scale: .4, opacity: 0, transformOrigin: '50% 50%', duration: 1.2, stagger: .2, ease: 'back.out(1.6)', scrollTrigger: { trigger: '.canal-graf', start: 'top 80%' } });
+gsap.from('.canal-lista li', { y: 30, opacity: 0, duration: .8, stagger: .08, ease: 'expo.out', scrollTrigger: { trigger: '.canal-lista', start: 'top 85%' } });
 
 /* ================= sectores: modo foco, el desplazamiento recorre cada sector ================= */
 ScrollTrigger.matchMedia({ '(min-width: 1101px)': () => {

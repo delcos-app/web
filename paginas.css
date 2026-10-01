@@ -35,6 +35,13 @@ h1,h2,h3{font-family:var(--f-titulo);text-wrap:balance;margin:0}
 .boton.sec{background:transparent;color:var(--tinta);border:1px solid var(--linea-f)}
 .boton.sec:hover{background:var(--hielo)}
 .cab .boton{height:44px;padding:0 20px;font-size:15px}
+/* Selector de idioma: los dos idiomas a la vista, el activo relleno */
+.idioma{display:inline-flex;align-items:center;gap:2px;height:44px;padding:4px;border:1px solid var(--linea-f);border-radius:999px;flex-shrink:0;color:inherit}
+.idioma .globo{width:18px;height:18px;margin:0 4px 0 7px;color:var(--azul);transition:transform .8s var(--ease-sal)}
+.idioma:hover .globo{transform:rotate(-30deg)}
+.idioma span,.idioma a{display:inline-flex;align-items:center;justify-content:center;height:34px;min-width:40px;padding:0 10px;border-radius:999px;font-weight:700;font-size:13px;letter-spacing:.06em;text-decoration:none;color:inherit;transition:background .2s,color .2s}
+.idioma .activo{background:var(--marino);color:var(--blanco)}
+.idioma a:hover,.idioma a:focus-visible{background:var(--hielo)}
 
 /* portada de la página */
 .cabeza{padding-block:88px 56px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:40px;align-items:center}
@@ -119,7 +126,9 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--azul);bo
 @media (max-width:900px){
   .wrap{padding-inline:16px}
   .cab .wrap{height:auto;flex-wrap:wrap;padding-block:12px 0;row-gap:4px}
-  .cab .boton{margin-left:auto}
+  .cab .boton{margin-left:0}
+  .idioma{margin-left:auto}
+  .idioma .globo{display:none}
   /* En móvil, las secciones van en una segunda fila que se desliza de lado */
   .cab nav{order:3;flex-basis:100%;margin-left:0;gap:22px;overflow-x:auto;white-space:nowrap;scrollbar-width:none;padding-block:10px 12px}
   .cab nav::-webkit-scrollbar{display:none}
@@ -127,6 +136,10 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--azul);bo
   .orbita{display:none}
   .canales,.ayuda,.formulario,form{grid-template-columns:minmax(0,1fr)}
   .ayuda .lado,.lado-form{position:static}
+}
+/* Móvil estrecho: el logotipo y el idioma en una fila; la demo se pide desde el contenido */
+@media (max-width:600px){
+  .cab .boton{display:none}
 }
 /* Tablet en vertical: el formulario en dos columnas */
 @media (min-width:601px) and (max-width:900px){
