@@ -302,6 +302,33 @@ body.noche .tel{background:#05182B;box-shadow:0 0 0 1px var(--linea-t),var(--som
 .chips{display:flex;gap:8px;flex-wrap:wrap}
 .chips span{padding:5px 12px;border-radius:999px;background:var(--suave);color:var(--marino);font-size:14px;font-weight:600}
 
+.opcionales{margin-top:28px;padding:20px 24px;border-radius:20px;border:1px dashed var(--linea);display:flex;flex-direction:column;gap:6px;font-size:15.5px;color:var(--texto2)}
+.opcionales b{font-family:var(--f-titulo);color:var(--marino);font-size:17px}
+.opcionales strong{color:var(--tinta)}
+.opcionales a{color:var(--azul);font-weight:600}
+
+/* ---------- duplicados: una persona, una sola ficha */
+.dup{padding-block:140px 40px}
+.dup-in{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:64px;align-items:center}
+.dup-txt{display:flex;flex-direction:column;gap:20px}
+.dup-pasos{list-style:none;margin:8px 0 0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 28px;counter-reset:paso}
+.dup-pasos li{display:flex;flex-direction:column;gap:6px;padding-top:16px;border-top:1px solid var(--linea);counter-increment:paso}
+.dup-pasos b{font-family:var(--f-titulo);font-weight:700;font-size:17px}
+.dup-pasos b::before{content:counter(paso,decimal-leading-zero) ' ';color:var(--azul)}
+.dup-pasos p{margin:0;color:var(--texto2);font-size:15.5px}
+.dup-nota{margin:0;padding:14px 18px;border-radius:16px;background:var(--hielo);color:var(--texto2);font-size:15px}
+.dup-graf{position:relative;padding:0 0 120px 0}
+.dup-graf .dup-aviso{position:absolute;left:-28px;bottom:0;width:62%;box-shadow:var(--sombra-3)}
+.dup-et{left:auto;right:18px;top:-16px}
+@media (max-width:900px){
+  .dup{padding-block:96px 24px}
+  .dup-in{grid-template-columns:minmax(0,1fr);gap:40px}
+  .dup-pasos{grid-template-columns:minmax(0,1fr)}
+  .dup-graf{padding:0;display:flex;flex-direction:column;gap:16px}
+  .dup-graf .dup-aviso{position:static;width:100%}
+  .dup-et{right:8px}
+}
+
 /* ---------- el canal con los profesionales */
 .canal{padding-block:140px 60px}
 .canal-in{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:64px;align-items:center}
@@ -310,6 +337,7 @@ body.noche .tel{background:#05182B;box-shadow:0 0 0 1px var(--linea-t),var(--som
 .canal-lista li{display:flex;flex-direction:column;gap:6px;padding-top:16px;border-top:1px solid var(--linea)}
 .canal-lista b{font-family:var(--f-titulo);font-weight:700;font-size:17px}
 .canal-lista p{margin:0;color:var(--texto2);font-size:15.5px}
+.canal-opc{margin:0;font-size:14.5px;color:var(--texto2)}
 .estado{align-self:flex-start;padding:3px 10px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.02em}
 .estado.hoy{background:var(--ok-s);color:var(--ok)}
 .estado.pronto{background:#FBF1DC;color:#8A5A00}
@@ -777,6 +805,29 @@ body.noche .arriba .pista{stroke:var(--linea-t)}
   </div>
 </section>
 
+<!-- Duplicados: una persona, una sola ficha -->
+<section class="dup" id="duplicados">
+  <div class="wrap dup-in">
+    <div class="dup-txt">
+      <div class="ojo">Data quality</div>
+      <h2 class="titular" data-letras>One person, <em>one single record.</em></h2>
+      <p class="entrada">When the same doctor appears twice, their visits, sales and commissions are split across two records and nobody sees the real picture. delcos finds duplicated records even when they aren’t spelt the same, and helps you merge them without losing anything.</p>
+      <ol class="dup-pasos">
+        <li><b>Warns before it happens</b><p>When you create a record, it compares the name with your whole portfolio, even with missing accents, a different word order or an extra letter. If it looks like another one, it shows you the candidates with their centre, their town and the percentage of similarity.</p></li>
+        <li><b>Watches your whole portfolio</b><p>It looks for pairs that are 80 % similar or more. The ones you mark as different people never come back.</p></li>
+        <li><b>Compare side by side</b><p>You choose which record stays and, field by field, which name, phone, email or stage to keep. Missing custom fields are filled in from the other one.</p></li>
+        <li><b>Merge without losing anything</b><p>Visits, appointments, practices, sales, clients, calls and accounts move to the record that remains. The other one is archived, not deleted, and the merge is logged.</p></li>
+      </ol>
+      <p class="dup-nota">And when you import from Excel, each client is recognised by their tax ID, email or name, and each product by its reference or barcode: you decide whether to update it or leave it as it is.</p>
+    </div>
+    <div class="dup-graf">
+      <div class="ordenador"><div class="barra"><i></i><i></i><i></i></div><div class="vista"><img src="../capturas/labs_e_calidad.webp" alt="Duplicates: two records compared side by side to merge them" width="1600" height="1000" loading="lazy"></div></div>
+      <div class="ordenador dup-aviso"><div class="barra"><i></i><i></i><i></i></div><div class="vista"><img src="../capturas/labs_e_alta_duplicado.webp" alt="“It may already exist” warning when creating a record" width="1600" height="1000" loading="lazy"></div></div>
+      <span class="canal-et dup-et"><i></i>85 % similar</span>
+    </div>
+  </div>
+</section>
+
 <!-- 4 · Por qué delcos -->
 <section class="porque" id="porque" data-noche>
   <div class="wrap">
@@ -799,18 +850,19 @@ body.noche .arriba .pista{stroke:var(--linea-t)}
       <h2 class="titular" data-letras>A direct channel <em>with those who care.</em></h2>
       <p class="entrada">Your professionals log in to delcos with their own access, which their rep grants from their record. What today gets lost between emails, messages and calls moves into a single two-way channel, linked to their record.</p>
       <ul class="canal-lista">
-        <li><span class="estado hoy">Available</span><b>Their report, always up to date</b><p>What has been sold on their recommendation month by month, their position among professionals and the calls from their patients. No patient data or amounts.</p></li>
+        <li><span class="estado hoy">Available</span><b>Their report, always up to date</b><p>What has been sold on their recommendation month by month, their position among professionals and how consistent their patients are: how many start, repeat or stop. Figures only, no patient data.</p></li>
         <li><span class="estado hoy">Available</span><b>Instant alerts</b><p>Every time an order is logged in their name, they get an alert.</p></li>
-        <li><span class="estado pronto">Coming soon</span><b>Reactions and questions</b><p>They rate a piece of material, ask a question or request a visit, and it reaches you right in their record.</p></li>
-        <li><span class="estado pronto">Coming soon</span><b>Requests</b><p>Materials, samples or restocking of the products the centre has set up, without a phone call.</p></li>
+        <li><span class="estado hoy">Available</span><b>Materials and questions</b><p>They request the materials your company offers and send you their questions. You get an alert and it stays in their record; they see when you deliver it and your reply.</p></li>
+        <li><span class="estado hoy">Available</span><b>Centre orders</b><p>The centre restocks only the products it has set up, at its own price. It reaches you as a draft to approve, and the centre sees whether it is pending, approved or packed.</p></li>
       </ul>
+      <p class="canal-opc">Their report and alerts come with the Company and Custom plans. Patient consistency, materials, messages and centre orders are an optional module.</p>
     </div>
     <div class="canal-graf">
       <div class="canal-escena">
-        <div class="ordenador"><div class="barra"><i></i><i></i><i></i></div><div class="vista"><img src="../capturas/labs_e_portal.webp" alt="A professional’s report in their delcos space" width="1600" height="1000" loading="lazy"></div></div>
-        <div class="tel"><div class="pant"><img src="../capturas/labs_m_portal_avisos.webp" alt="New order alerts on the professional’s phone" width="780" height="1688" loading="lazy"></div></div>
-        <span class="canal-et et1"><i></i>Their report</span>
-        <span class="canal-et et2"><i></i>Alert for every order</span>
+        <div class="ordenador"><div class="barra"><i></i><i></i><i></i></div><div class="vista"><img src="../capturas/labs_e_portal_material.webp" alt="Professional’s space: patient consistency, materials and messages with their rep" width="1600" height="1000" loading="lazy"></div></div>
+        <div class="tel"><div class="pant"><img src="../capturas/dental_m_centro.webp" alt="A clinic orders a restock of its products from the phone" width="780" height="1688" loading="lazy"></div></div>
+        <span class="canal-et et1"><i></i>Materials and messages</span>
+        <span class="canal-et et2"><i></i>Centre order</span>
       </div>
       <div class="fuera-canal"><span class="tachado">Email</span><span class="tachado">WhatsApp</span><span class="tachado">Calls</span><span>All in their record</span></div>
     </div>
@@ -912,6 +964,7 @@ body.noche .arriba .pista{stroke:var(--linea-t)}
       <div><b>30-day trial</b><span>Try it with your own data and no commitment. If you don’t continue, you take your data with you.</span></div>
       <div><b>From 3 users</b><span>So a small team can get started. Add or remove people whenever you like.</span></div>
     </div>
+    <div class="opcionales"><b>Optional modules, on any plan</b><span><strong>Opportunities</strong>: every sale logged, whether it closes or not, with its metrics. <strong>Extended portal for professionals and centres</strong>: patient consistency in figures, materials, messages and, for centres, restock orders. Activated separately: <a href="dudas.html?tipo=Precios">ask us for pricing</a>.</span></div>
     <p class="notas-precio">Prices per user per month, VAT not included. With annual billing you pay for ten months and get twelve.</p>
   </div>
 </section>
@@ -975,12 +1028,12 @@ const telHTML = (img, alt) => `<div class="tel"><div class="pant"><img src="${ca
 const escHTML = (img, alt) => `<div class="ordenador"><div class="barra"><i></i><i></i><i></i></div><div class="vista"><img src="${cap(img)}" alt="${alt}" width="1600" height="1000" loading="lazy"></div></div>`;
 
 /* ================= contenido ================= */
-const MODULOS_CINTA = ['Accounts', 'Visits', 'Calendar', 'Routes', 'Orders', 'Telesales', 'Clients', 'Warehouse', 'Batches', 'Purchasing', 'Suppliers', 'Invoicing', 'Payments', 'Commissions', 'Analytics', 'Data quality'];
+const MODULOS_CINTA = ['Accounts', 'Visits', 'Calendar', 'Routes', 'Orders', 'Opportunities', 'Clients', 'Warehouse', 'Batches', 'Purchasing', 'Suppliers', 'Invoicing', 'Payments', 'Commissions', 'Analytics', 'Duplicates', 'History', 'Portal'];
 const DIA = [
-  { h: '07:45', rol: 'Management', img: 'labs_e_agenda', t: 'The team’s week at a glance.', d: 'Every rep’s appointments, planned, confirmed and done, plus suggestions on who to visit today.' },
+  { h: '07:45', rol: 'Management', img: 'labs_e_agenda', t: 'The day, the week and the month at a glance.', d: 'Today’s appointments with suggestions of who to visit, the week in a strip and the month with every appointment marked.' },
   { h: '08:05', rol: 'Sales rep', img: 'labs_m_inicio', tel: 1, t: 'On the road, the day on their phone.', d: 'Appointments in order, two back to back at the same hospital, and what was left pending last week.' },
   { h: '09:50', rol: 'Sales rep', img: 'labs_m_visita', tel: 1, t: 'Log the visit on the way out.', d: 'Outcome, samples and materials handed over, next step. The record’s stage moves on by itself.' },
-  { h: '11:20', rol: 'Telesales', img: 'labs_e_llamadas', t: 'A call that ends in an order.', d: 'Reason, outcome and follow-up of every call, linked to the client and their order.' },
+  { h: '11:20', rol: 'Telesales', img: 'pharma_e_nueva_venta', t: 'A call that ends in an order.', d: 'Find the client, repeat their last order or note what they want, and close with the order or the reason they didn’t buy.' },
   { h: '12:00', rol: 'Warehouse', img: 'labs_e_stock', t: 'The order draws down its batch.', d: 'Stock by warehouse and by batch with expiry dates. Alerts for what drops below the minimum and what is about to expire.' },
   { h: '13:30', rol: 'Purchasing', img: 'labs_e_compras', t: 'What’s missing, off to the supplier.', d: 'Purchase orders sent, in transit or partly received. On receipt, each batch goes into the warehouse.' },
   { h: '16:10', rol: 'Accounts', img: 'labs_e_factura', t: 'Invoice, payment and email.', d: 'Unalterable invoices with VeriFactu, credit notes when needed and payments that never exceed what is outstanding.' },
@@ -1001,20 +1054,25 @@ const TALLAS = [
 ];
 const MODULOS = [
   { g: 'g8', ojo: 'Accounts', t: 'Records with everything that matters', d: 'Professionals, centres and clients with their history, hours, sales stage and your own fields.', img: 'labs_e_directorio' },
-  { g: '', ojo: 'Follow-up', t: 'What needs doing', d: 'The next actions on every record, overdue ones first.', img: 'labs_e_seguimiento' },
-  { g: '', ojo: 'Calendar', t: 'The team’s week', d: 'Appointments planned, confirmed and done, by person.', img: 'labs_e_agenda' },
+  { g: '', ojo: 'Data quality', t: 'What each record is missing', d: 'No phone, no centre or no rep: you see it at a glance and fill it in.', img: 'labs_e_seguimiento' },
+  { g: '', ojo: 'Calendar', t: 'Your day, your week and your month', d: 'Today’s appointments with suggestions of who to see, on a single screen.', img: 'labs_e_agenda' },
+  { g: 'g8', ojo: 'Routes', t: 'Routes proposed every morning', d: 'Up to three routes per area, filled to your working day: urgent visits, who is consulting that day, interested prospects and good clients. Into your calendar in one click.', img: 'labs_e_rutas' },
   { g: 'g8', ojo: 'Orders', t: 'From visit to order', d: 'Patient recommendation or sale to a centre, with discounts, shipping and the operations of every order.', img: 'labs_e_ventas' },
-  { g: 'g6', ojo: 'Warehouse', t: 'Stock by batch and expiry', d: 'Goods in, goods out, samples and transfers by warehouse.', img: 'labs_e_stock' },
-  { g: 'g6', ojo: 'Purchasing', t: 'Suppliers and purchase orders', d: 'What has been sent, what is in transit and what has arrived.', img: 'labs_e_compras' },
+  { g: '', ojo: 'New sale', t: 'Call and order, in one step', d: 'Find the client, repeat their last order or note what they want, and close.', img: 'pharma_e_nueva_venta' },
+  { g: 'g6', ojo: 'Opportunities', t: 'What sells and what doesn’t', d: 'Conversion, value won and lost, what people ask for, at what time and through which channel each client arrives.', img: 'pharma_e_oportunidades' },
   { g: 'g6', ojo: 'Web orders', t: 'What comes in through your website, in sight', d: 'Orders placed through your website, with their own filter and sales summary.', img: 'pharma_e_pedidos_web' },
   { g: 'g6', ojo: 'Payments', t: 'Every payment, with its reference', d: 'The bank transfer or Bizum reference and the proof of payment, right on the order.', img: 'pharma_e_pedido_web' },
+  { g: 'g6', ojo: 'Warehouse', t: 'Stock by batch and expiry', d: 'Goods in, goods out, samples and transfers by warehouse.', img: 'labs_e_stock' },
+  { g: '', ojo: 'Purchasing', t: 'Suppliers and purchase orders', d: 'What has been sent, what is in transit and what has arrived.', img: 'labs_e_compras' },
   { g: '', ojo: 'Invoicing', t: 'VeriFactu, built in', d: 'Series, credit notes, payments and the record of every invoice.', img: 'labs_e_facturas' },
   { g: '', ojo: 'Commissions', t: 'Every sale, credited to whoever made it', d: 'Tiered schemes and monthly settlements.', img: 'labs_e_comisiones' },
-  { g: '', ojo: 'Analytics', t: 'Explore your data', d: 'Cross sales, visits and coverage by any dimension.', img: 'labs_e_explorar' },
-  { g: 'g6', ojo: 'Data quality', t: 'No duplicate records', d: 'Detects duplicates and incomplete records, and tells you what is missing.', img: 'labs_e_calidad' },
-  { g: 'g6', ojo: 'Team', t: 'Users, roles and permissions', d: 'Everyone sees and does what is theirs: sales rep, telesales, accounts or management.', img: 'labs_e_usuarios' },
-  { g: 'g6', ojo: 'Import', t: 'Bring what you already have', d: 'Clients, products, records and sales from Excel or CSV, with a preview.', img: 'labs_e_importar' },
-  { g: 'g6', ojo: 'Catalogues', t: 'Your lists and your fields', d: 'Specialties, reasons, outcomes and custom fields, with no coding.', img: 'labs_e_clasificadores' }
+  { g: 'g8', ojo: 'Analytics', t: 'Indicators by area', d: 'Sales, clients, team, opportunities, payments and stock, each compared with the previous period and with its own filter.', img: 'labs_e_analitica' },
+  { g: '', ojo: 'Explore', t: 'Cross your data', d: 'Sales, visits and coverage by any dimension.', img: 'labs_e_explorar' },
+  { g: 'g6', ojo: 'History', t: 'Who changed what, and undo it', d: 'Every change to a record with its author, its date and what was there before. If it was a mistake, undo it in one click.', img: 'labs_e_historial' },
+  { g: 'g6', ojo: 'Notifications', t: 'Alerts that help', d: 'Grouped by day, with their action one click away. Each person chooses what arrives instantly and what goes into the daily summary.', img: 'labs_e_notificaciones' },
+  { g: '', ojo: 'Team', t: 'Users, roles and permissions', d: 'Each person sees and does what is theirs, and arranges their own menu.', img: 'labs_e_usuarios' },
+  { g: '', ojo: 'Import', t: 'Bring what you already have', d: 'Clients, products, records and sales from Excel or CSV, with a preview.', img: 'labs_e_importar' },
+  { g: '', ojo: 'Catalogues', t: 'Your lists and your fields', d: 'Specialties, reasons, outcomes and custom fields, with no coding.', img: 'labs_e_clasificadores' }
 ];
 const RAZONES = [
   ['Speaks your language', 'Doctor, clinic, pharmacy or hospital contact; “Prescribes”, “Active client” or “Approved”. Each company sets its own words and stages.'],
@@ -1023,7 +1081,7 @@ const RAZONES = [
   ['Controls samples and batches', 'Samples and materials go out with the visit; stock is tracked by batch and expiry, from purchase to sale.'],
   ['Invoices the Spanish way', 'VeriFactu, 21, 10, 4 and 0 % VAT, credit notes and payments. No connectors, no spreadsheets.'],
   ['Organises the team', 'Exclusive accounts by area, role-based permissions and tiered commissions. Management sees everything; each rep sees their own.'],
-  ['Looks after your data', 'Hosted in the European Union, in Frankfurt, with daily backups. Each company kept separate from the rest.']
+  ['Looks after your data', 'One record per person, the history of every change and daily backups, in the European Union. Each company kept separate from the rest.']
 ];
 const SECTORES = [
   { clave: 'labs', esc: 'labs_e_ventas', nombre: 'Laboratories', empresa: 'Company Labs', titulo: 'Every recommendation, credited to whoever made it.',
@@ -1044,6 +1102,7 @@ const PREGUNTAS = [
   ['Does it replace my management software?', 'It covers the commercial side and sales operations: orders, batch-tracked stock, purchasing, VeriFactu invoicing, payments and commissions. We help you see which part of your current software you can drop.'],
   ['Do I need to install anything?', 'No. It opens in the browser on your computer or phone, and on your phone you can add it to the home screen like any other app.'],
   ['Can I bring my data from Excel?', 'Yes. Clients, products, records and sales. You upload the sheet, see how it looks before saving and, if something doesn’t add up, you undo it.'],
+  ['What if a record is duplicated?', 'delcos warns you when you create it if it looks like another one, and watches your whole portfolio for similar names. You compare both records, choose which details stay and merge them: visits, sales and accounts move to the one that remains.'],
   ['Where is my data?', 'On servers in the European Union, in Frankfurt, with daily backups. Each company is kept separate from the rest.'],
   ['Does delcos sell or use my data?', 'No. delcos only sells software. The data you store belongs to your company: we never sell it or share it with anyone, and you can export it whenever you like.'],
   ['How much does it cost?', 'From €24 per user per month with annual billing (€29 with monthly billing), from three users. There are three plans depending on what you need, plus a custom one for teams of more than 50. With annual billing onboarding is included, and you can try it for 30 days with your own data.']
@@ -1229,13 +1288,14 @@ addEventListener('scroll', alDesplazar, { passive: true }); alDesplazar();
 
 /* ================= menú desplegable de la cabecera ================= */
 const MENU_PLAT = [
-  ['Field', [['Accounts', 'Professionals, centres and their history', 'labs_e_directorio', 0], ['Calendar and routes', 'Each rep’s week', 'labs_e_agenda', 2],
-    ['Follow-up', 'What needs doing on each record', 'labs_e_seguimiento', 1], ['Data quality', 'No duplicate or incomplete records', 'labs_e_calidad', 11]]],
-  ['Sales', [['Orders', 'From visit to order', 'labs_e_ventas', 3], ['Telesales', 'Calls that end in orders', 'labs_e_llamadas', 3],
-    ['Commissions', 'Every sale, credited to whoever made it', 'labs_e_comisiones', 9], ['Analytics', 'Cross sales, visits and coverage', 'labs_e_explorar', 10],
-    ['Web orders', 'With their filter, summary and payment reference', 'pharma_e_pedidos_web', 6]]],
-  ['Office', [['Warehouse and batches', 'Stock by batch and expiry', 'labs_e_stock', 4], ['Purchasing', 'Suppliers and purchase orders', 'labs_e_compras', 5],
-    ['Invoicing', 'VeriFactu, credit notes and payments', 'labs_e_facturas', 8], ['Team and permissions', 'Each role sees and does its own part', 'labs_e_usuarios', 12]]]
+  ['Field', [['Accounts', 'Professionals, centres and their history', 'labs_e_directorio', 0], ['Calendar', 'Your day, your week and your month', 'labs_e_agenda', 2],
+    ['Routes', 'Proposed every morning', 'labs_e_rutas', 3], ['Duplicates', 'One person, one record', 'labs_e_calidad', 1]]],
+  ['Sales', [['Orders', 'From visit to order', 'labs_e_ventas', 4], ['New sale and opportunities', 'What sells and what doesn’t', 'pharma_e_oportunidades', 6],
+    ['Commissions', 'Every sale, credited to whoever made it', 'labs_e_comisiones', 12], ['Analytics', 'Indicators by area', 'labs_e_analitica', 13],
+    ['Web orders', 'With their filter, their summary and the payment reference', 'pharma_e_pedidos_web', 7]]],
+  ['Office', [['Warehouse and batches', 'Stock by batch and expiry', 'labs_e_stock', 9], ['Purchasing', 'Suppliers and purchase orders', 'labs_e_compras', 10],
+    ['Invoicing', 'VeriFactu, credit notes and payments', 'labs_e_facturas', 11], ['History', 'Who changed what, and undo it', 'labs_e_historial', 15],
+    ['Team and permissions', 'Each role sees and does its own part', 'labs_e_usuarios', 17]]]
 ];
 const previa = (img, pie) => `<div class="previa"><div class="ordenador"><div class="barra"><i></i><i></i><i></i></div><div class="vista"><img src="${cap(img)}" alt="" width="1600" height="1000"><img class="fuera" alt="" width="1600" height="1000"></div></div><p>${pie}</p></div>`;
 let ni = 0;

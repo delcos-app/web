@@ -302,6 +302,33 @@ body.noche .tel{background:#05182B;box-shadow:0 0 0 1px var(--linea-t),var(--som
 .chips{display:flex;gap:8px;flex-wrap:wrap}
 .chips span{padding:5px 12px;border-radius:999px;background:var(--suave);color:var(--marino);font-size:14px;font-weight:600}
 
+.opcionales{margin-top:28px;padding:20px 24px;border-radius:20px;border:1px dashed var(--linea);display:flex;flex-direction:column;gap:6px;font-size:15.5px;color:var(--texto2)}
+.opcionales b{font-family:var(--f-titulo);color:var(--marino);font-size:17px}
+.opcionales strong{color:var(--tinta)}
+.opcionales a{color:var(--azul);font-weight:600}
+
+/* ---------- duplicados: una persona, una sola ficha */
+.dup{padding-block:140px 40px}
+.dup-in{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:64px;align-items:center}
+.dup-txt{display:flex;flex-direction:column;gap:20px}
+.dup-pasos{list-style:none;margin:8px 0 0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 28px;counter-reset:paso}
+.dup-pasos li{display:flex;flex-direction:column;gap:6px;padding-top:16px;border-top:1px solid var(--linea);counter-increment:paso}
+.dup-pasos b{font-family:var(--f-titulo);font-weight:700;font-size:17px}
+.dup-pasos b::before{content:counter(paso,decimal-leading-zero) ' ';color:var(--azul)}
+.dup-pasos p{margin:0;color:var(--texto2);font-size:15.5px}
+.dup-nota{margin:0;padding:14px 18px;border-radius:16px;background:var(--hielo);color:var(--texto2);font-size:15px}
+.dup-graf{position:relative;padding:0 0 120px 0}
+.dup-graf .dup-aviso{position:absolute;left:-28px;bottom:0;width:62%;box-shadow:var(--sombra-3)}
+.dup-et{left:auto;right:18px;top:-16px}
+@media (max-width:900px){
+  .dup{padding-block:96px 24px}
+  .dup-in{grid-template-columns:minmax(0,1fr);gap:40px}
+  .dup-pasos{grid-template-columns:minmax(0,1fr)}
+  .dup-graf{padding:0;display:flex;flex-direction:column;gap:16px}
+  .dup-graf .dup-aviso{position:static;width:100%}
+  .dup-et{right:8px}
+}
+
 /* ---------- el canal con los profesionales */
 .canal{padding-block:140px 60px}
 .canal-in{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:64px;align-items:center}
@@ -310,6 +337,7 @@ body.noche .tel{background:#05182B;box-shadow:0 0 0 1px var(--linea-t),var(--som
 .canal-lista li{display:flex;flex-direction:column;gap:6px;padding-top:16px;border-top:1px solid var(--linea)}
 .canal-lista b{font-family:var(--f-titulo);font-weight:700;font-size:17px}
 .canal-lista p{margin:0;color:var(--texto2);font-size:15.5px}
+.canal-opc{margin:0;font-size:14.5px;color:var(--texto2)}
 .estado{align-self:flex-start;padding:3px 10px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.02em}
 .estado.hoy{background:var(--ok-s);color:var(--ok)}
 .estado.pronto{background:#FBF1DC;color:#8A5A00}
@@ -777,6 +805,29 @@ body.noche .arriba .pista{stroke:var(--linea-t)}
   </div>
 </section>
 
+<!-- Duplicados: una persona, una sola ficha -->
+<section class="dup" id="duplicados">
+  <div class="wrap dup-in">
+    <div class="dup-txt">
+      <div class="ojo">Calidad del dato</div>
+      <h2 class="titular" data-letras>Una persona, <em>una sola ficha.</em></h2>
+      <p class="entrada">Cuando la misma doctora está dos veces, sus visitas, sus ventas y sus comisiones se reparten entre dos fichas y nadie ve la foto real. delcos encuentra las fichas repetidas aunque no se escriban igual y te ayuda a unirlas sin perder nada.</p>
+      <ol class="dup-pasos">
+        <li><b>Avisa antes de que pase</b><p>Al dar de alta una ficha, compara el nombre con toda la cartera, aunque falten tildes, cambie el orden o sobre una letra. Si se parece a otra, te enseña las candidatas con su centro, su municipio y el porcentaje de parecido.</p></li>
+        <li><b>Vigila toda la cartera</b><p>Busca parejas con un parecido del 80 % o más. Las que marques como personas distintas no vuelven a salir.</p></li>
+        <li><b>Compara lado a lado</b><p>Eliges qué ficha se queda y, dato a dato, con qué nombre, teléfono, correo o estado. Los campos propios que falten se completan con los de la otra.</p></li>
+        <li><b>Une sin perder nada</b><p>Visitas, citas, consultas, ventas, clientes, llamadas y cartera pasan a la ficha que queda. La otra se archiva, no se borra, y la unión queda registrada.</p></li>
+      </ol>
+      <p class="dup-nota">Y al importar desde Excel, cada cliente se reconoce por su NIF, su correo o su nombre, y cada producto por su referencia o su código de barras: decides si se actualiza o se deja como está.</p>
+    </div>
+    <div class="dup-graf">
+      <div class="ordenador"><div class="barra"><i></i><i></i><i></i></div><div class="vista"><img src="capturas/labs_e_calidad.webp" alt="Duplicados: dos fichas comparadas lado a lado para unirlas" width="1600" height="1000" loading="lazy"></div></div>
+      <div class="ordenador dup-aviso"><div class="barra"><i></i><i></i><i></i></div><div class="vista"><img src="capturas/labs_e_alta_duplicado.webp" alt="Aviso «Puede que ya exista» al dar de alta una ficha" width="1600" height="1000" loading="lazy"></div></div>
+      <span class="canal-et dup-et"><i></i>Parecido del 85 %</span>
+    </div>
+  </div>
+</section>
+
 <!-- 4 · Por qué delcos -->
 <section class="porque" id="porque" data-noche>
   <div class="wrap">
@@ -799,18 +850,19 @@ body.noche .arriba .pista{stroke:var(--linea-t)}
       <h2 class="titular" data-letras>Un canal directo <em>con quien cuida.</em></h2>
       <p class="entrada">Tus profesionales entran en delcos con su propio acceso, que les da su comercial desde la ficha. Lo que hoy se pierde entre correos, mensajes y llamadas pasa a un solo canal, de ida y vuelta, unido a su ficha.</p>
       <ul class="canal-lista">
-        <li><span class="estado hoy">Disponible</span><b>Su informe, siempre al día</b><p>Lo que se ha vendido por su recomendación mes a mes, su posición entre los profesionales y las llamadas de sus pacientes. Sin datos de pacientes ni importes.</p></li>
+        <li><span class="estado hoy">Disponible</span><b>Su informe, siempre al día</b><p>Lo que se ha vendido por su recomendación mes a mes, su posición entre los profesionales y la constancia de sus pacientes: cuántos empiezan, repiten o lo dejan. Solo cifras, sin datos de pacientes.</p></li>
         <li><span class="estado hoy">Disponible</span><b>Avisos al momento</b><p>Cada vez que se registra un pedido a su nombre, le llega un aviso.</p></li>
-        <li><span class="estado pronto">Próximamente</span><b>Reacciones y dudas</b><p>Valoran un material, preguntan o piden una visita, y te llega directamente en su ficha.</p></li>
-        <li><span class="estado pronto">Próximamente</span><b>Peticiones</b><p>Material, muestras o reposición de los productos que el centro tiene dados de alta, sin una llamada.</p></li>
+        <li><span class="estado hoy">Disponible</span><b>Material y dudas</b><p>Piden el material que tu empresa ofrece y te escriben sus dudas. Te llega como aviso y queda en su ficha; ellos ven cuándo se lo entregas y tu respuesta.</p></li>
+        <li><span class="estado hoy">Disponible</span><b>Pedidos del centro</b><p>El centro repone solo los productos que tiene dados de alta, a su precio. Te llega como borrador para validar y el centro ve si está pendiente, validado o preparado.</p></li>
       </ul>
+      <p class="canal-opc">Su informe y los avisos vienen en los planes Empresa y A medida. La constancia de sus pacientes, el material, los mensajes y los pedidos del centro son un módulo opcional.</p>
     </div>
     <div class="canal-graf">
       <div class="canal-escena">
-        <div class="ordenador"><div class="barra"><i></i><i></i><i></i></div><div class="vista"><img src="capturas/labs_e_portal.webp" alt="Informe de un profesional en su espacio de delcos" width="1600" height="1000" loading="lazy"></div></div>
-        <div class="tel"><div class="pant"><img src="capturas/labs_m_portal_avisos.webp" alt="Avisos de nuevos pedidos en el móvil del profesional" width="780" height="1688" loading="lazy"></div></div>
-        <span class="canal-et et1"><i></i>Su informe</span>
-        <span class="canal-et et2"><i></i>Aviso de cada pedido</span>
+        <div class="ordenador"><div class="barra"><i></i><i></i><i></i></div><div class="vista"><img src="capturas/labs_e_portal_material.webp" alt="Espacio del profesional: constancia de sus pacientes, material y mensajes con su comercial" width="1600" height="1000" loading="lazy"></div></div>
+        <div class="tel"><div class="pant"><img src="capturas/dental_m_centro.webp" alt="Una clínica pide la reposición de sus productos desde el móvil" width="780" height="1688" loading="lazy"></div></div>
+        <span class="canal-et et1"><i></i>Material y mensajes</span>
+        <span class="canal-et et2"><i></i>Pedido del centro</span>
       </div>
       <div class="fuera-canal"><span class="tachado">Correo</span><span class="tachado">WhatsApp</span><span class="tachado">Llamadas</span><span>Todo, en su ficha</span></div>
     </div>
@@ -912,6 +964,7 @@ body.noche .arriba .pista{stroke:var(--linea-t)}
       <div><b>30 días de prueba</b><span>Pruébalo con tus propios datos y sin permanencia. Si no sigues, te llevas tus datos.</span></div>
       <div><b>Desde 3 usuarios</b><span>Para que un equipo pequeño pueda empezar. Añades o quitas personas cuando quieras.</span></div>
     </div>
+    <div class="opcionales"><b>Módulos opcionales, en cualquier plan</b><span><strong>Oportunidades</strong>: cada venta registrada, se cierre o no, con sus métricas. <strong>Portal ampliado del profesional y del centro</strong>: la constancia de sus pacientes en cifras, material, mensajes y, para los centros, pedidos de reposición. Se activan aparte: <a href="dudas.html?tipo=Precios">pídenos precio</a>.</span></div>
     <p class="notas-precio">Precios por usuario y mes, IVA no incluido. Con pago anual pagas diez meses y tienes doce.</p>
   </div>
 </section>
@@ -975,12 +1028,12 @@ const telHTML = (img, alt) => `<div class="tel"><div class="pant"><img src="${ca
 const escHTML = (img, alt) => `<div class="ordenador"><div class="barra"><i></i><i></i><i></i></div><div class="vista"><img src="${cap(img)}" alt="${alt}" width="1600" height="1000" loading="lazy"></div></div>`;
 
 /* ================= contenido ================= */
-const MODULOS_CINTA = ['Cartera', 'Visitas', 'Agenda', 'Rutas', 'Pedidos', 'Televenta', 'Clientes', 'Almacén', 'Lotes', 'Compras', 'Proveedores', 'Facturación', 'Cobros', 'Comisiones', 'Analítica', 'Calidad del dato'];
+const MODULOS_CINTA = ['Cartera', 'Visitas', 'Agenda', 'Rutas', 'Pedidos', 'Oportunidades', 'Clientes', 'Almacén', 'Lotes', 'Compras', 'Proveedores', 'Facturación', 'Cobros', 'Comisiones', 'Analítica', 'Duplicados', 'Historial', 'Portal'];
 const DIA = [
-  { h: '07:45', rol: 'Dirección', img: 'labs_e_agenda', t: 'La semana del equipo, de un vistazo.', d: 'Las citas de cada comercial, planificadas, confirmadas y hechas, y las sugerencias de a quién visitar hoy.' },
+  { h: '07:45', rol: 'Dirección', img: 'labs_e_agenda', t: 'El día, la semana y el mes, de un vistazo.', d: 'Las citas de hoy con sugerencias de a quién visitar, la semana en una franja y el mes con cada cita marcada.' },
   { h: '08:05', rol: 'Comercial', img: 'labs_m_inicio', tel: 1, t: 'En la calle, su día en el móvil.', d: 'Citas en orden, dos seguidas en el mismo hospital y lo que quedó pendiente de la semana pasada.' },
   { h: '09:50', rol: 'Comercial', img: 'labs_m_visita', tel: 1, t: 'Registra la visita al salir.', d: 'Resultado, muestras y material entregados, próxima acción. El estado de la ficha avanza solo.' },
-  { h: '11:20', rol: 'Televenta', img: 'labs_e_llamadas', t: 'Una llamada que acaba en pedido.', d: 'Motivo, resultado y seguimiento de cada llamada, unidos al cliente y a su pedido.' },
+  { h: '11:20', rol: 'Televenta', img: 'pharma_e_nueva_venta', t: 'Una llamada que acaba en pedido.', d: 'Busca al cliente, repite su último pedido o apunta lo que quiere, y cierra con el pedido o con el motivo de no compra.' },
   { h: '12:00', rol: 'Almacén', img: 'labs_e_stock', t: 'El pedido descuenta su lote.', d: 'Stock por almacén y por lote con caducidad. Avisa de lo que baja del mínimo y de lo que caduca.' },
   { h: '13:30', rol: 'Compras', img: 'labs_e_compras', t: 'Lo que falta, al proveedor.', d: 'Pedidos de compra enviados, en tránsito o recibidos a medias. Al recibir, cada lote entra en el almacén.' },
   { h: '16:10', rol: 'Administración', img: 'labs_e_factura', t: 'Factura, cobro y correo.', d: 'Facturas inalterables con VeriFactu, rectificativas cuando hace falta y cobros que nunca pasan de lo pendiente.' },
@@ -1001,20 +1054,25 @@ const TALLAS = [
 ];
 const MODULOS = [
   { g: 'g8', ojo: 'Cartera', t: 'Fichas con todo lo que importa', d: 'Profesionales, centros y clientes con su historial, horarios, estado comercial y tus propios campos.', img: 'labs_e_directorio' },
-  { g: '', ojo: 'Seguimiento', t: 'Lo que toca hacer', d: 'Las próximas acciones de cada ficha, con las atrasadas primero.', img: 'labs_e_seguimiento' },
-  { g: '', ojo: 'Agenda', t: 'La semana del equipo', d: 'Citas planificadas, confirmadas y hechas, por persona.', img: 'labs_e_agenda' },
+  { g: '', ojo: 'Calidad del dato', t: 'Lo que le falta a cada ficha', d: 'Sin teléfono, sin centro o sin comercial: lo ves de un vistazo y lo completas.', img: 'labs_e_seguimiento' },
+  { g: '', ojo: 'Agenda', t: 'Tu día, tu semana y tu mes', d: 'Las citas de hoy con sugerencias de a quién ver, en una sola pantalla.', img: 'labs_e_agenda' },
+  { g: 'g8', ojo: 'Rutas', t: 'Rutas propuestas cada mañana', d: 'Hasta tres rutas por zona, llenas hasta tu jornada: urgentes, quien pasa consulta ese día, interesados y buenos clientes. A tu agenda en un clic.', img: 'labs_e_rutas' },
   { g: 'g8', ojo: 'Pedidos', t: 'De la visita al pedido', d: 'Recomendación al paciente o venta a centro, con descuentos, envío y la operativa de cada pedido.', img: 'labs_e_ventas' },
-  { g: 'g6', ojo: 'Almacén', t: 'Stock por lotes y caducidad', d: 'Entradas, salidas, muestras y traspasos por almacén.', img: 'labs_e_stock' },
-  { g: 'g6', ojo: 'Compras', t: 'Proveedores y pedidos de compra', d: 'Lo enviado, lo que está en tránsito y lo recibido.', img: 'labs_e_compras' },
+  { g: '', ojo: 'Nueva venta', t: 'Llamada y pedido, en un paso', d: 'Buscas al cliente, repites su último pedido o apuntas lo que quiere, y cierras.', img: 'pharma_e_nueva_venta' },
+  { g: 'g6', ojo: 'Oportunidades', t: 'Lo que se vende y lo que no', d: 'Conversión, importe ganado y perdido, qué piden, a qué hora y por qué canal llega cada cliente.', img: 'pharma_e_oportunidades' },
   { g: 'g6', ojo: 'Pedidos web', t: 'Lo que entra por tu web, a la vista', d: 'Los pedidos que llegan por la web, con su filtro y su propio resumen de ventas.', img: 'pharma_e_pedidos_web' },
   { g: 'g6', ojo: 'Pagos', t: 'Cada pago, con su referencia', d: 'La referencia de la transferencia o el bizum y el justificante, en el mismo pedido.', img: 'pharma_e_pedido_web' },
+  { g: 'g6', ojo: 'Almacén', t: 'Stock por lotes y caducidad', d: 'Entradas, salidas, muestras y traspasos por almacén.', img: 'labs_e_stock' },
+  { g: '', ojo: 'Compras', t: 'Proveedores y pedidos de compra', d: 'Lo enviado, lo que está en tránsito y lo recibido.', img: 'labs_e_compras' },
   { g: '', ojo: 'Facturación', t: 'VeriFactu, de serie', d: 'Series, rectificativas, cobros y el registro de cada factura.', img: 'labs_e_facturas' },
   { g: '', ojo: 'Comisiones', t: 'Cada venta, a quien la genera', d: 'Esquemas por tramos y liquidaciones de cada mes.', img: 'labs_e_comisiones' },
-  { g: '', ojo: 'Analítica', t: 'Explora tus datos', d: 'Cruza ventas, visitas y cobertura por cualquier dimensión.', img: 'labs_e_explorar' },
-  { g: 'g6', ojo: 'Calidad del dato', t: 'Sin fichas repetidas', d: 'Detecta duplicados y fichas incompletas, y te dice qué falta.', img: 'labs_e_calidad' },
-  { g: 'g6', ojo: 'Equipo', t: 'Usuarios, roles y permisos', d: 'Cada persona ve y hace lo que le toca: comercial, televenta, administración o dirección.', img: 'labs_e_usuarios' },
-  { g: 'g6', ojo: 'Importar', t: 'Trae lo que ya tienes', d: 'Clientes, productos, fichas y ventas desde Excel o CSV, con vista previa.', img: 'labs_e_importar' },
-  { g: 'g6', ojo: 'Catálogos', t: 'Tus listas y tus campos', d: 'Especialidades, motivos, resultados y campos propios, sin programar.', img: 'labs_e_clasificadores' }
+  { g: 'g8', ojo: 'Analítica', t: 'Indicadores por áreas', d: 'Ventas, clientes, equipo, oportunidades, cobros y stock, cada uno comparado con el periodo anterior y con su propio filtro.', img: 'labs_e_analitica' },
+  { g: '', ojo: 'Explorar', t: 'Cruza tus datos', d: 'Ventas, visitas y cobertura por cualquier dimensión.', img: 'labs_e_explorar' },
+  { g: 'g6', ojo: 'Historial', t: 'Quién cambió qué, y deshacerlo', d: 'Cada cambio de una ficha con su autor, su fecha y lo que había antes. Si fue un error, se deshace con un clic.', img: 'labs_e_historial' },
+  { g: 'g6', ojo: 'Notificaciones', t: 'Avisos que sirven', d: 'Agrupados por día, con su acción a un clic. Cada persona elige qué le llega al momento y qué en el resumen del día.', img: 'labs_e_notificaciones' },
+  { g: '', ojo: 'Equipo', t: 'Usuarios, roles y permisos', d: 'Cada persona ve y hace lo que le toca, y ordena su propio menú.', img: 'labs_e_usuarios' },
+  { g: '', ojo: 'Importar', t: 'Trae lo que ya tienes', d: 'Clientes, productos, fichas y ventas desde Excel o CSV, con vista previa.', img: 'labs_e_importar' },
+  { g: '', ojo: 'Catálogos', t: 'Tus listas y tus campos', d: 'Especialidades, motivos, resultados y campos propios, sin programar.', img: 'labs_e_clasificadores' }
 ];
 const RAZONES = [
   ['Habla tu idioma', 'Médico, clínica, farmacia o contacto de hospital; «Prescribe», «Cliente activa» u «Homologado». Cada empresa pone sus palabras y sus estados.'],
@@ -1023,7 +1081,7 @@ const RAZONES = [
   ['Controla muestras y lotes', 'Las muestras y el material salen de la visita; el stock va por lote y caducidad, de la compra a la venta.'],
   ['Factura como en España', 'VeriFactu, IVA del 21, 10, 4 y 0 %, rectificativas y cobros. Sin conectores ni hojas de cálculo.'],
   ['Ordena el equipo', 'Cartera exclusiva por zonas, permisos por rol y comisiones por tramos. Dirección lo ve todo; cada comercial, lo suyo.'],
-  ['Cuida los datos', 'Alojados en la Unión Europea, en Fráncfort, con copias de seguridad diarias. Cada empresa, separada de las demás.']
+  ['Cuida los datos', 'Una sola ficha por persona, el historial de cada cambio y copias de seguridad diarias, en la Unión Europea. Cada empresa, separada de las demás.']
 ];
 const SECTORES = [
   { clave: 'labs', esc: 'labs_e_ventas', nombre: 'Laboratorios', empresa: 'Company Labs', titulo: 'Cada recomendación, atribuida a quien la generó.',
@@ -1044,6 +1102,7 @@ const PREGUNTAS = [
   ['¿Sustituye a mi programa de gestión?', 'Cubre la parte comercial y la operativa de ventas: pedidos, almacén por lotes, compras, facturación con VeriFactu, cobros y comisiones. Te ayudamos a ver qué parte de tu programa actual puedes dejar.'],
   ['¿Hay que instalar algo?', 'No. Se abre en el navegador del ordenador o del móvil, y en el móvil se añade a la pantalla de inicio como una app más.'],
   ['¿Puedo traer mis datos desde Excel?', 'Sí. Clientes, productos, fichas y ventas. Subes la hoja, ves cómo queda antes de guardar y, si algo no cuadra, lo deshaces.'],
+  ['¿Qué pasa si una ficha se repite?', 'delcos te avisa al darla de alta si se parece a otra y vigila toda la cartera en busca de nombres parecidos. Comparas las dos fichas, eliges qué datos se quedan y las unes: visitas, ventas y cartera pasan a la que queda.'],
   ['¿Dónde están mis datos?', 'En servidores de la Unión Europea, en Fráncfort, con copias de seguridad diarias. Cada empresa está separada de las demás.'],
   ['¿delcos vende o usa mis datos?', 'No. delcos solo vende software. Los datos que guardas son de tu empresa: no los vendemos ni los cedemos a nadie, y puedes exportarlos cuando quieras.'],
   ['¿Cuánto cuesta?', 'Desde 24 € por usuario y mes con pago anual (29 € con pago mensual), a partir de tres usuarios. Hay tres planes según lo que necesites y uno a medida para equipos de más de 50. Con pago anual, la puesta en marcha va incluida, y puedes probarlo 30 días con tus datos.']
@@ -1229,13 +1288,14 @@ addEventListener('scroll', alDesplazar, { passive: true }); alDesplazar();
 
 /* ================= menú desplegable de la cabecera ================= */
 const MENU_PLAT = [
-  ['Campo', [['Cartera', 'Profesionales, centros y su historial', 'labs_e_directorio', 0], ['Agenda y rutas', 'La semana de cada comercial', 'labs_e_agenda', 2],
-    ['Seguimiento', 'Lo que toca hacer en cada ficha', 'labs_e_seguimiento', 1], ['Calidad del dato', 'Sin fichas repetidas ni incompletas', 'labs_e_calidad', 11]]],
-  ['Venta', [['Pedidos', 'De la visita al pedido', 'labs_e_ventas', 3], ['Televenta', 'Llamadas que acaban en pedido', 'labs_e_llamadas', 3],
-    ['Comisiones', 'Cada venta, a quien la genera', 'labs_e_comisiones', 9], ['Analítica', 'Cruza ventas, visitas y cobertura', 'labs_e_explorar', 10],
-    ['Pedidos por la web', 'Con su filtro, su resumen y la referencia del pago', 'pharma_e_pedidos_web', 6]]],
-  ['Oficina', [['Almacén y lotes', 'Stock por lote y caducidad', 'labs_e_stock', 4], ['Compras', 'Proveedores y pedidos de compra', 'labs_e_compras', 5],
-    ['Facturación', 'VeriFactu, rectificativas y cobros', 'labs_e_facturas', 8], ['Equipo y permisos', 'Cada rol ve y hace lo suyo', 'labs_e_usuarios', 12]]]
+  ['Campo', [['Cartera', 'Profesionales, centros y su historial', 'labs_e_directorio', 0], ['Agenda', 'Tu día, tu semana y tu mes', 'labs_e_agenda', 2],
+    ['Rutas', 'Propuestas cada mañana', 'labs_e_rutas', 3], ['Duplicados', 'Una persona, una sola ficha', 'labs_e_calidad', 1]]],
+  ['Venta', [['Pedidos', 'De la visita al pedido', 'labs_e_ventas', 4], ['Nueva venta y oportunidades', 'Lo que se vende y lo que no', 'pharma_e_oportunidades', 6],
+    ['Comisiones', 'Cada venta, a quien la genera', 'labs_e_comisiones', 12], ['Analítica', 'Indicadores por áreas', 'labs_e_analitica', 13],
+    ['Pedidos por la web', 'Con su filtro, su resumen y la referencia del pago', 'pharma_e_pedidos_web', 7]]],
+  ['Oficina', [['Almacén y lotes', 'Stock por lote y caducidad', 'labs_e_stock', 9], ['Compras', 'Proveedores y pedidos de compra', 'labs_e_compras', 10],
+    ['Facturación', 'VeriFactu, rectificativas y cobros', 'labs_e_facturas', 11], ['Historial', 'Quién cambió qué, y deshacerlo', 'labs_e_historial', 15],
+    ['Equipo y permisos', 'Cada rol ve y hace lo suyo', 'labs_e_usuarios', 17]]]
 ];
 const previa = (img, pie) => `<div class="previa"><div class="ordenador"><div class="barra"><i></i><i></i><i></i></div><div class="vista"><img src="${cap(img)}" alt="" width="1600" height="1000"><img class="fuera" alt="" width="1600" height="1000"></div></div><p>${pie}</p></div>`;
 let ni = 0;
