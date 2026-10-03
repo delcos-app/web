@@ -813,12 +813,12 @@ body.noche .arriba .pista{stroke:var(--linea-t)}
       <h2 class="titular" data-letras>Una persona, <em>una sola ficha.</em></h2>
       <p class="entrada">Cuando la misma doctora está dos veces, sus visitas, sus ventas y sus comisiones se reparten entre dos fichas y nadie ve la foto real. delcos encuentra las fichas repetidas aunque no se escriban igual y te ayuda a unirlas sin perder nada.</p>
       <ol class="dup-pasos">
-        <li><b>Avisa antes de que pase</b><p>Al dar de alta una ficha, compara el nombre con toda la cartera, aunque falten tildes, cambie el orden o sobre una letra. Si se parece a otra, te enseña las candidatas con su centro, su municipio y el porcentaje de parecido.</p></li>
+        <li><b>Avisa antes de que pase</b><p>Al dar de alta una ficha, compara el nombre con las fichas que ves, aunque falten tildes, cambie el orden o haya una letra distinta. Si se parece a otra, te enseña las candidatas con su centro, su municipio y el porcentaje de parecido.</p></li>
         <li><b>Vigila toda la cartera</b><p>Busca parejas con un parecido del 80 % o más. Las que marques como personas distintas no vuelven a salir.</p></li>
         <li><b>Compara lado a lado</b><p>Eliges qué ficha se queda y, dato a dato, con qué nombre, teléfono, correo o estado. Los campos propios que falten se completan con los de la otra.</p></li>
         <li><b>Une sin perder nada</b><p>Visitas, citas, consultas, ventas, clientes, llamadas y cartera pasan a la ficha que queda. La otra se archiva, no se borra, y la unión queda registrada.</p></li>
       </ol>
-      <p class="dup-nota">Y al importar desde Excel, cada cliente se reconoce por su NIF, su correo o su nombre, y cada producto por su referencia o su código de barras: decides si se actualiza o se deja como está.</p>
+      <p class="dup-nota">Y al importar desde Excel, cada cliente se reconoce por su NIF, su correo o su nombre, y cada producto por su referencia, su código de barras o su nombre: decides si se actualiza o se deja como está. Los pedidos que ya están, por su número, no se duplican.</p>
     </div>
     <div class="dup-graf">
       <div class="ordenador"><div class="barra"><i></i><i></i><i></i></div><div class="vista"><img src="capturas/labs_e_calidad.webp" alt="Duplicados: dos fichas comparadas lado a lado para unirlas" width="1600" height="1000" loading="lazy"></div></div>
@@ -850,7 +850,7 @@ body.noche .arriba .pista{stroke:var(--linea-t)}
       <h2 class="titular" data-letras>Un canal directo <em>con quien cuida.</em></h2>
       <p class="entrada">Tus profesionales entran en delcos con su propio acceso, que les da su comercial desde la ficha. Lo que hoy se pierde entre correos, mensajes y llamadas pasa a un solo canal, de ida y vuelta, unido a su ficha.</p>
       <ul class="canal-lista">
-        <li><span class="estado hoy">Disponible</span><b>Su informe, siempre al día</b><p>Lo que se ha vendido por su recomendación mes a mes, su posición entre los profesionales y la constancia de sus pacientes: cuántos empiezan, repiten o lo dejan. Solo cifras, sin datos de pacientes.</p></li>
+        <li><span class="estado hoy">Disponible</span><b>Su informe, siempre al día</b><p>Lo que se ha vendido por su recomendación mes a mes, su posición entre los profesionales y la constancia de sus pacientes: cuántos empezaron, repiten, lo dejaron tras el primer pedido o llevan más de 60 días sin pedir. Solo cifras, y a partir de 5 pacientes.</p></li>
         <li><span class="estado hoy">Disponible</span><b>Avisos al momento</b><p>Cada vez que se registra un pedido a su nombre, le llega un aviso.</p></li>
         <li><span class="estado hoy">Disponible</span><b>Material y dudas</b><p>Piden el material que tu empresa ofrece y te escriben sus dudas. Te llega como aviso y queda en su ficha; ellos ven cuándo se lo entregas y tu respuesta.</p></li>
         <li><span class="estado hoy">Disponible</span><b>Pedidos del centro</b><p>El centro repone solo los productos que tiene dados de alta, a su precio. Te llega como borrador para validar y el centro ve si está pendiente, validado o preparado.</p></li>
@@ -1056,7 +1056,7 @@ const MODULOS = [
   { g: 'g8', ojo: 'Cartera', t: 'Fichas con todo lo que importa', d: 'Profesionales, centros y clientes con su historial, horarios, estado comercial y tus propios campos.', img: 'labs_e_directorio' },
   { g: '', ojo: 'Calidad del dato', t: 'Lo que le falta a cada ficha', d: 'Sin teléfono, sin centro o sin comercial: lo ves de un vistazo y lo completas.', img: 'labs_e_seguimiento' },
   { g: '', ojo: 'Agenda', t: 'Tu día, tu semana y tu mes', d: 'Las citas de hoy con sugerencias de a quién ver, en una sola pantalla.', img: 'labs_e_agenda' },
-  { g: 'g8', ojo: 'Rutas', t: 'Rutas propuestas cada mañana', d: 'Hasta tres rutas por zona, llenas hasta tu jornada: urgentes, quien pasa consulta ese día, interesados y buenos clientes. A tu agenda en un clic.', img: 'labs_e_rutas' },
+  { g: 'g8', ojo: 'Rutas', t: 'Rutas propuestas cada mañana', d: 'Hasta tres rutas, cada una en una zona, llenas hasta tu jornada: urgentes, quien pasa consulta ese día, interesados, pendientes y buenos clientes. A tu agenda en un clic.', img: 'labs_e_rutas' },
   { g: 'g8', ojo: 'Pedidos', t: 'De la visita al pedido', d: 'Recomendación al paciente o venta a centro, con descuentos, envío y la operativa de cada pedido.', img: 'labs_e_ventas' },
   { g: '', ojo: 'Nueva venta', t: 'Llamada y pedido, en un paso', d: 'Buscas al cliente, repites su último pedido o apuntas lo que quiere, y cierras.', img: 'pharma_e_nueva_venta' },
   { g: 'g6', ojo: 'Oportunidades', t: 'Lo que se vende y lo que no', d: 'Conversión, importe ganado y perdido, qué piden, a qué hora y por qué canal llega cada cliente.', img: 'pharma_e_oportunidades' },
@@ -1066,11 +1066,11 @@ const MODULOS = [
   { g: '', ojo: 'Compras', t: 'Proveedores y pedidos de compra', d: 'Lo enviado, lo que está en tránsito y lo recibido.', img: 'labs_e_compras' },
   { g: '', ojo: 'Facturación', t: 'VeriFactu, de serie', d: 'Series, rectificativas, cobros y el registro de cada factura.', img: 'labs_e_facturas' },
   { g: '', ojo: 'Comisiones', t: 'Cada venta, a quien la genera', d: 'Esquemas por tramos y liquidaciones de cada mes.', img: 'labs_e_comisiones' },
-  { g: 'g8', ojo: 'Analítica', t: 'Indicadores por áreas', d: 'Ventas, clientes, equipo, oportunidades, cobros y stock, cada uno comparado con el periodo anterior y con su propio filtro.', img: 'labs_e_analitica' },
+  { g: 'g8', ojo: 'Analítica', t: 'Indicadores por áreas', d: 'Ventas, clientes, equipo, oportunidades, cobros y stock, comparados con el periodo anterior o con el mismo del año pasado.', img: 'labs_e_analitica' },
   { g: '', ojo: 'Explorar', t: 'Cruza tus datos', d: 'Ventas, visitas y cobertura por cualquier dimensión.', img: 'labs_e_explorar' },
-  { g: 'g6', ojo: 'Historial', t: 'Quién cambió qué, y deshacerlo', d: 'Cada cambio de una ficha con su autor, su fecha y lo que había antes. Si fue un error, se deshace con un clic.', img: 'labs_e_historial' },
+  { g: 'g6', ojo: 'Historial', t: 'Quién cambió qué, y deshacerlo', d: 'La administración ve en cada ficha quién cambió qué, cuándo y lo que había antes, y lo deshace con un clic.', img: 'labs_e_historial' },
   { g: 'g6', ojo: 'Notificaciones', t: 'Avisos que sirven', d: 'Agrupados por día, con su acción a un clic. Cada persona elige qué le llega al momento y qué en el resumen del día.', img: 'labs_e_notificaciones' },
-  { g: '', ojo: 'Equipo', t: 'Usuarios, roles y permisos', d: 'Cada persona ve y hace lo que le toca, y ordena su propio menú.', img: 'labs_e_usuarios' },
+  { g: '', ojo: 'Equipo', t: 'Usuarios, roles y permisos', d: 'Cada persona ve y hace lo que le toca y, en el ordenador, ordena su propio menú.', img: 'labs_e_usuarios' },
   { g: '', ojo: 'Importar', t: 'Trae lo que ya tienes', d: 'Clientes, productos, fichas y ventas desde Excel o CSV, con vista previa.', img: 'labs_e_importar' },
   { g: '', ojo: 'Catálogos', t: 'Tus listas y tus campos', d: 'Especialidades, motivos, resultados y campos propios, sin programar.', img: 'labs_e_clasificadores' }
 ];
@@ -1081,7 +1081,7 @@ const RAZONES = [
   ['Controla muestras y lotes', 'Las muestras y el material salen de la visita; el stock va por lote y caducidad, de la compra a la venta.'],
   ['Factura como en España', 'VeriFactu, IVA del 21, 10, 4 y 0 %, rectificativas y cobros. Sin conectores ni hojas de cálculo.'],
   ['Ordena el equipo', 'Cartera exclusiva por zonas, permisos por rol y comisiones por tramos. Dirección lo ve todo; cada comercial, lo suyo.'],
-  ['Cuida los datos', 'Una sola ficha por persona, el historial de cada cambio y copias de seguridad diarias, en la Unión Europea. Cada empresa, separada de las demás.']
+  ['Cuida los datos', 'Una sola ficha por persona, el historial de cambios de cada ficha y copias de seguridad diarias, en la Unión Europea. Cada empresa, separada de las demás.']
 ];
 const SECTORES = [
   { clave: 'labs', esc: 'labs_e_ventas', nombre: 'Laboratorios', empresa: 'Company Labs', titulo: 'Cada recomendación, atribuida a quien la generó.',

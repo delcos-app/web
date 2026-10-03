@@ -813,12 +813,12 @@ body.noche .arriba .pista{stroke:var(--linea-t)}
       <h2 class="titular" data-letras>One person, <em>one single record.</em></h2>
       <p class="entrada">When the same doctor appears twice, their visits, sales and commissions are split across two records and nobody sees the real picture. delcos finds duplicated records even when they aren’t spelt the same, and helps you merge them without losing anything.</p>
       <ol class="dup-pasos">
-        <li><b>Warns before it happens</b><p>When you create a record, it compares the name with your whole portfolio, even with missing accents, a different word order or an extra letter. If it looks like another one, it shows you the candidates with their centre, their town and the percentage of similarity.</p></li>
+        <li><b>Warns before it happens</b><p>When you create a record, it compares the name with the records you can see, even with missing accents, a different word order or a different letter. If it looks like another one, it shows you the candidates with their centre, their town and the percentage of similarity.</p></li>
         <li><b>Watches your whole portfolio</b><p>It looks for pairs that are 80 % similar or more. The ones you mark as different people never come back.</p></li>
         <li><b>Compare side by side</b><p>You choose which record stays and, field by field, which name, phone, email or stage to keep. Missing custom fields are filled in from the other one.</p></li>
         <li><b>Merge without losing anything</b><p>Visits, appointments, practices, sales, clients, calls and accounts move to the record that remains. The other one is archived, not deleted, and the merge is logged.</p></li>
       </ol>
-      <p class="dup-nota">And when you import from Excel, each client is recognised by their tax ID, email or name, and each product by its reference or barcode: you decide whether to update it or leave it as it is.</p>
+      <p class="dup-nota">And when you import from Excel, each client is recognised by their tax ID, email or name, and each product by its reference, barcode or name: you decide whether to update it or leave it as it is. Orders that already exist, by their number, are not duplicated.</p>
     </div>
     <div class="dup-graf">
       <div class="ordenador"><div class="barra"><i></i><i></i><i></i></div><div class="vista"><img src="../capturas/labs_e_calidad.webp" alt="Duplicates: two records compared side by side to merge them" width="1600" height="1000" loading="lazy"></div></div>
@@ -850,7 +850,7 @@ body.noche .arriba .pista{stroke:var(--linea-t)}
       <h2 class="titular" data-letras>A direct channel <em>with those who care.</em></h2>
       <p class="entrada">Your professionals log in to delcos with their own access, which their rep grants from their record. What today gets lost between emails, messages and calls moves into a single two-way channel, linked to their record.</p>
       <ul class="canal-lista">
-        <li><span class="estado hoy">Available</span><b>Their report, always up to date</b><p>What has been sold on their recommendation month by month, their position among professionals and how consistent their patients are: how many start, repeat or stop. Figures only, no patient data.</p></li>
+        <li><span class="estado hoy">Available</span><b>Their report, always up to date</b><p>What has been sold on their recommendation month by month, their position among professionals and how consistent their patients are: how many started, repeat, stopped after the first order or have not ordered for over 60 days. Figures only, and from 5 patients up.</p></li>
         <li><span class="estado hoy">Available</span><b>Instant alerts</b><p>Every time an order is logged in their name, they get an alert.</p></li>
         <li><span class="estado hoy">Available</span><b>Materials and questions</b><p>They request the materials your company offers and send you their questions. You get an alert and it stays in their record; they see when you deliver it and your reply.</p></li>
         <li><span class="estado hoy">Available</span><b>Centre orders</b><p>The centre restocks only the products it has set up, at its own price. It reaches you as a draft to approve, and the centre sees whether it is pending, approved or packed.</p></li>
@@ -1056,7 +1056,7 @@ const MODULOS = [
   { g: 'g8', ojo: 'Accounts', t: 'Records with everything that matters', d: 'Professionals, centres and clients with their history, hours, sales stage and your own fields.', img: 'labs_e_directorio' },
   { g: '', ojo: 'Data quality', t: 'What each record is missing', d: 'No phone, no centre or no rep: you see it at a glance and fill it in.', img: 'labs_e_seguimiento' },
   { g: '', ojo: 'Calendar', t: 'Your day, your week and your month', d: 'Today’s appointments with suggestions of who to see, on a single screen.', img: 'labs_e_agenda' },
-  { g: 'g8', ojo: 'Routes', t: 'Routes proposed every morning', d: 'Up to three routes per area, filled to your working day: urgent visits, who is consulting that day, interested prospects and good clients. Into your calendar in one click.', img: 'labs_e_rutas' },
+  { g: 'g8', ojo: 'Routes', t: 'Routes proposed every morning', d: 'Up to three routes, each in one area, filled to your working day: urgent visits, who is consulting that day, interested prospects, pending visits and good clients. Into your calendar in one click.', img: 'labs_e_rutas' },
   { g: 'g8', ojo: 'Orders', t: 'From visit to order', d: 'Patient recommendation or sale to a centre, with discounts, shipping and the operations of every order.', img: 'labs_e_ventas' },
   { g: '', ojo: 'New sale', t: 'Call and order, in one step', d: 'Find the client, repeat their last order or note what they want, and close.', img: 'pharma_e_nueva_venta' },
   { g: 'g6', ojo: 'Opportunities', t: 'What sells and what doesn’t', d: 'Conversion, value won and lost, what people ask for, at what time and through which channel each client arrives.', img: 'pharma_e_oportunidades' },
@@ -1066,11 +1066,11 @@ const MODULOS = [
   { g: '', ojo: 'Purchasing', t: 'Suppliers and purchase orders', d: 'What has been sent, what is in transit and what has arrived.', img: 'labs_e_compras' },
   { g: '', ojo: 'Invoicing', t: 'VeriFactu, built in', d: 'Series, credit notes, payments and the record of every invoice.', img: 'labs_e_facturas' },
   { g: '', ojo: 'Commissions', t: 'Every sale, credited to whoever made it', d: 'Tiered schemes and monthly settlements.', img: 'labs_e_comisiones' },
-  { g: 'g8', ojo: 'Analytics', t: 'Indicators by area', d: 'Sales, clients, team, opportunities, payments and stock, each compared with the previous period and with its own filter.', img: 'labs_e_analitica' },
+  { g: 'g8', ojo: 'Analytics', t: 'Indicators by area', d: 'Sales, clients, team, opportunities, payments and stock, compared with the previous period or with the same period last year.', img: 'labs_e_analitica' },
   { g: '', ojo: 'Explore', t: 'Cross your data', d: 'Sales, visits and coverage by any dimension.', img: 'labs_e_explorar' },
-  { g: 'g6', ojo: 'History', t: 'Who changed what, and undo it', d: 'Every change to a record with its author, its date and what was there before. If it was a mistake, undo it in one click.', img: 'labs_e_historial' },
+  { g: 'g6', ojo: 'History', t: 'Who changed what, and undo it', d: 'Administrators see on each record who changed what, when and what was there before, and undo it in one click.', img: 'labs_e_historial' },
   { g: 'g6', ojo: 'Notifications', t: 'Alerts that help', d: 'Grouped by day, with their action one click away. Each person chooses what arrives instantly and what goes into the daily summary.', img: 'labs_e_notificaciones' },
-  { g: '', ojo: 'Team', t: 'Users, roles and permissions', d: 'Each person sees and does what is theirs, and arranges their own menu.', img: 'labs_e_usuarios' },
+  { g: '', ojo: 'Team', t: 'Users, roles and permissions', d: 'Each person sees and does what is theirs and, on the computer, arranges their own menu.', img: 'labs_e_usuarios' },
   { g: '', ojo: 'Import', t: 'Bring what you already have', d: 'Clients, products, records and sales from Excel or CSV, with a preview.', img: 'labs_e_importar' },
   { g: '', ojo: 'Catalogues', t: 'Your lists and your fields', d: 'Specialties, reasons, outcomes and custom fields, with no coding.', img: 'labs_e_clasificadores' }
 ];
@@ -1081,7 +1081,7 @@ const RAZONES = [
   ['Controls samples and batches', 'Samples and materials go out with the visit; stock is tracked by batch and expiry, from purchase to sale.'],
   ['Invoices the Spanish way', 'VeriFactu, 21, 10, 4 and 0 % VAT, credit notes and payments. No connectors, no spreadsheets.'],
   ['Organises the team', 'Exclusive accounts by area, role-based permissions and tiered commissions. Management sees everything; each rep sees their own.'],
-  ['Looks after your data', 'One record per person, the history of every change and daily backups, in the European Union. Each company kept separate from the rest.']
+  ['Looks after your data', 'One record per person, the change history of every record and daily backups, in the European Union. Each company kept separate from the rest.']
 ];
 const SECTORES = [
   { clave: 'labs', esc: 'labs_e_ventas', nombre: 'Laboratories', empresa: 'Company Labs', titulo: 'Every recommendation, credited to whoever made it.',
