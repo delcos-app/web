@@ -856,7 +856,7 @@ body.noche .arriba .pista{stroke:var(--linea-t)}
         <li><span class="estado hoy">Disponible</span><b>Material y dudas</b><p>Piden el material que tu empresa ofrece y te escriben sus dudas. Te llega como aviso y queda en su ficha; ellos ven cuándo se lo entregas y tu respuesta.</p></li>
         <li><span class="estado hoy">Disponible</span><b>Pedidos del centro</b><p>El centro repone solo los productos que tiene dados de alta, a su precio. Te llega como borrador para validar y el centro ve si está pendiente, validado o preparado.</p></li>
       </ul>
-      <p class="canal-opc">Su informe y los avisos vienen en los planes Empresa y A medida. La constancia de sus pacientes, el material, los mensajes y los pedidos del centro son un módulo opcional.</p>
+      <p class="canal-opc">El canal viene en los planes Empresa, hasta 50 profesionales o centros, y A medida, sin límite.</p>
     </div>
     <div class="canal-graf">
       <div class="canal-escena">
@@ -965,7 +965,6 @@ body.noche .arriba .pista{stroke:var(--linea-t)}
       <div><b>30 días de prueba</b><span>Pruébalo con tus propios datos y sin permanencia. Si no sigues, te llevas tus datos.</span></div>
       <div><b>Desde 3 usuarios</b><span>Para que un equipo pequeño pueda empezar. Añades o quitas personas cuando quieras.</span></div>
     </div>
-    <div class="opcionales"><b>Módulos opcionales, en cualquier plan</b><span><strong>Oportunidades</strong>: cada venta registrada, se cierre o no, con sus métricas. <strong>Portal ampliado del profesional y del centro</strong>: la constancia de sus pacientes en cifras, material, mensajes y, para los centros, pedidos de reposición. Se activan aparte: <a href="dudas.html?tipo=Precios">pídenos precio</a>.</span></div>
     <p class="notas-precio">Precios por usuario y mes, IVA no incluido. Con pago anual pagas diez meses y tienes doce.</p>
   </div>
 </section>
@@ -1137,11 +1136,11 @@ const PLANES = [
   { nombre: 'Campo', mes: 29, para: 'Para equipos que visitan y quieren ordenar su cartera.',
     incluye: ['Cartera de profesionales y centros', 'Agenda, «Tu día» y registro de visitas', 'Rutas y planificación semanal', 'Muestras y material', 'Calidad del dato y duplicados'] },
   { nombre: 'Comercial', mes: 42, para: 'Para equipos que venden y quieren medir resultados.',
-    incluye: ['Todo lo de Campo', 'Pedidos, televenta y clientes', 'Productos y stock por lotes', 'Analítica de ventas y visitas', 'Comisiones por tramos'] },
+    incluye: ['Todo lo de Campo', 'Pedidos, televenta y clientes', 'Productos y stock por lotes', 'Analítica de ventas y visitas', 'Comisiones por tramos', 'Oportunidades: cada venta, se cierre o no'] },
   { nombre: 'Empresa', mes: 59, fuerte: true, para: 'Para empresas que facturan y llevan su almacén.',
-    incluye: ['Todo lo de Comercial', 'Facturación con VeriFactu y cobros', 'Compras, proveedores y trazabilidad', 'Zonas, supervisión del equipo y auditoría', 'Espacio del profesional (hasta 50)'] },
+    incluye: ['Todo lo de Comercial', 'Facturación con VeriFactu y cobros', 'Compras, proveedores y trazabilidad', 'Zonas, supervisión del equipo y auditoría', 'Portal del profesional y del centro (hasta 50)'] },
   { nombre: 'A medida', medida: true, para: 'Para redes de más de 50 personas o con necesidades propias.',
-    incluye: ['Todo lo de Empresa', 'Migración de tus datos', 'Conexión con tu programa de gestión', 'Espacio del profesional sin límite', 'Ver la plataforma como cada persona de tu equipo, para ayudarla', 'Soporte prioritario'] }
+    incluye: ['Todo lo de Empresa', 'Migración de tus datos', 'Conexión con tu programa de gestión', 'Portal del profesional y del centro, sin límite', 'Ver la plataforma como cada persona de tu equipo, para ayudarla', 'Soporte prioritario'] }
 ];
 const eur = n => String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, '.') + ' €';
 let anual = false;

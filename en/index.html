@@ -856,7 +856,7 @@ body.noche .arriba .pista{stroke:var(--linea-t)}
         <li><span class="estado hoy">Available</span><b>Materials and questions</b><p>They request the materials your company offers and send you their questions. You get an alert and it stays in their record; they see when you deliver it and your reply.</p></li>
         <li><span class="estado hoy">Available</span><b>Centre orders</b><p>The centre restocks only the products it has set up, at its own price. It reaches you as a draft to approve, and the centre sees whether it is pending, approved or packed.</p></li>
       </ul>
-      <p class="canal-opc">Their report and alerts come with the Company and Custom plans. Patient consistency, materials, messages and centre orders are an optional module.</p>
+      <p class="canal-opc">The channel comes with the Company plan, for up to 50 professionals or centres, and the Custom plan, with no limit.</p>
     </div>
     <div class="canal-graf">
       <div class="canal-escena">
@@ -965,7 +965,6 @@ body.noche .arriba .pista{stroke:var(--linea-t)}
       <div><b>30-day trial</b><span>Try it with your own data and no commitment. If you don’t continue, you take your data with you.</span></div>
       <div><b>From 3 users</b><span>So a small team can get started. Add or remove people whenever you like.</span></div>
     </div>
-    <div class="opcionales"><b>Optional modules, on any plan</b><span><strong>Opportunities</strong>: every sale logged, whether it closes or not, with its metrics. <strong>Extended portal for professionals and centres</strong>: patient consistency in figures, materials, messages and, for centres, restock orders. Activated separately: <a href="dudas.html?tipo=Precios">ask us for pricing</a>.</span></div>
     <p class="notas-precio">Prices per user per month, VAT not included. With annual billing you pay for ten months and get twelve.</p>
   </div>
 </section>
@@ -1137,11 +1136,11 @@ const PLANES = [
   { nombre: 'Field', mes: 29, para: 'For teams that visit and want to organise their accounts.',
     incluye: ['Professional and centre accounts', 'Calendar, “Your day” and visit logging', 'Routes and weekly planning', 'Samples and materials', 'Data quality and duplicates'] },
   { nombre: 'Sales', mes: 42, para: 'For teams that sell and want to measure results.',
-    incluye: ['Everything in Field', 'Orders, telesales and clients', 'Products and batch-tracked stock', 'Sales and visit analytics', 'Tiered commissions'] },
+    incluye: ['Everything in Field', 'Orders, telesales and clients', 'Products and batch-tracked stock', 'Sales and visit analytics', 'Tiered commissions', 'Opportunities: every sale, closed or not'] },
   { nombre: 'Company', mes: 59, fuerte: true, para: 'For companies that invoice and run their own warehouse.',
-    incluye: ['Everything in Sales', 'VeriFactu invoicing and payments', 'Purchasing, suppliers and traceability', 'Areas, team supervision and auditing', 'Professional portal (up to 50)'] },
+    incluye: ['Everything in Sales', 'VeriFactu invoicing and payments', 'Purchasing, suppliers and traceability', 'Areas, team supervision and auditing', 'Portal for professionals and centres (up to 50)'] },
   { nombre: 'Custom', medida: true, para: 'For networks of more than 50 people or with specific needs.',
-    incluye: ['Everything in Company', 'Migration of your data', 'Connection to your management software', 'Unlimited professional portal', 'See the platform as each person on your team does, to help them', 'Priority support'] }
+    incluye: ['Everything in Company', 'Migration of your data', 'Connection to your management software', 'Portal for professionals and centres, unlimited', 'See the platform as each person on your team does, to help them', 'Priority support'] }
 ];
 const eur = n => '€' + String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 let anual = false;
