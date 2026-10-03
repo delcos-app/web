@@ -290,6 +290,36 @@ body.noche .tel{background:#05182B;box-shadow:0 0 0 1px var(--linea-t),var(--som
   .pestanas.por-scroll .prog{animation:none!important;transition:transform .15s linear}
 }
 .sector-dos > *{min-width:0}
+/* La órbita del sector: cuatro paradas con su ciclo de trabajo y un satélite que las recorre */
+.ciclo{position:absolute;inset:-34px 22px 18px -34px;pointer-events:none}
+.ciclo svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;z-index:0}
+.ciclo ellipse{fill:none;stroke:#7CC3EC;stroke-width:1.6;stroke-dasharray:1.2 1.6;vector-effect:non-scaling-stroke;opacity:.9}
+.escena-sector .ordenador{position:relative;z-index:1}
+.escena-sector .tel{z-index:2}
+.ciclo-cometa{position:absolute;z-index:4;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;background:#7CC3EC;
+  box-shadow:0 0 0 6px rgba(124,195,236,.28),0 0 26px 6px rgba(124,195,236,.7)}
+.ciclo-nodo{position:absolute;z-index:3;transform:translate(-50%,-50%);display:flex;align-items:center;gap:8px;padding:5px 13px 5px 5px;border-radius:999px;
+  background:var(--blanco);border:1px solid var(--linea);box-shadow:var(--sombra-2);font-size:13.5px;font-weight:600;white-space:nowrap;color:var(--texto2);
+  transition:color .35s,border-color .35s,box-shadow .35s,scale .35s}
+.ciclo-nodo i{width:24px;height:24px;border-radius:50%;background:var(--hielo);display:grid;place-items:center;font-style:normal;font-size:11.5px;font-weight:700;color:var(--azul);
+  transition:background .35s,color .35s}
+.ciclo-nodo.on{color:var(--tinta);border-color:var(--azul);scale:1.08;box-shadow:0 0 0 5px rgba(63,130,192,.12),var(--sombra-2)}
+.ciclo-nodo.on i{background:var(--marino);color:var(--blanco)}
+.ciclo-nodo.hecho i{background:var(--ok-s);color:var(--ok)}
+.ciclo-pie{display:flex;flex-direction:column;gap:2px;padding:12px 16px;border-radius:16px;background:var(--hielo);border-left:3px solid var(--azul);min-height:66px;
+  font-size:15px;color:var(--texto2)}
+.ciclo-pie b{font-family:var(--f-titulo);font-weight:700;color:var(--tinta);font-size:15.5px}
+.ciclo-pie:empty{display:none}
+.fuertes.ciclo-on .fuerte{transition:opacity .4s}
+.fuertes.ciclo-on .fuerte:not(.activo){opacity:.45}
+@media (min-width:1101px){ .sectores .ciclo-pie{min-height:0;padding:9px 14px} }
+@media (max-width:1100px) and (min-width:601px){ .ciclo{inset:-22px 30px 24px -8px} }
+@media (max-width:600px){
+  .ciclo{inset:-14px 16px 22px -12px}
+  .ciclo-nodo{padding:3px}
+  .ciclo-nodo span{display:none}
+  .ciclo-nodo i{width:22px;height:22px}
+}
 .escena-sector{position:relative;padding:0 56px 56px 0;perspective:1400px}
 .escena-sector .ordenador{transform-origin:left center}
 .escena-sector .tel{position:absolute;right:0;bottom:0;width:clamp(120px,11vw,160px);transform-style:preserve-3d;box-shadow:var(--sombra-3)}
@@ -886,6 +916,12 @@ body.noche .arriba .pista{stroke:var(--linea-t)}
       <div class="escena-sector" id="escena-sector">
         <div class="ordenador" id="esc-sector"><div class="barra"><i></i><i></i><i></i></div><div class="vista"><img alt="" width="1600" height="1000"></div></div>
         <div class="tel" id="tel-sector"><div class="pant"><img alt="" width="780" height="1688"></div></div>
+        <div class="ciclo" id="ciclo" aria-hidden="true">
+          <svg viewBox="0 0 100 100" preserveAspectRatio="none"><ellipse cx="50" cy="50" rx="50" ry="50" pathLength="100"/></svg>
+          <span class="ciclo-cometa"></span>
+          <span class="ciclo-nodo"><i>1</i><span></span></span><span class="ciclo-nodo"><i>2</i><span></span></span>
+          <span class="ciclo-nodo"><i>3</i><span></span></span><span class="ciclo-nodo"><i>4</i><span></span></span>
+        </div>
       </div>
       <div class="cambio" id="txt-sector" aria-live="polite"></div>
     </div>
@@ -1222,6 +1258,63 @@ function carrusel(contenedor, items, alCambiar, dur = 5200) {
   alCambiar(items[0], true);
   return elegir;
 }
+/* ================= sectores: la órbita del sector (su ciclo de trabajo, paso a paso) ================= */
+// [parada, qué pasa, punto fuerte que se enciende]
+const CICLOS = {
+  labs: [['Visita', 'El delegado presenta el producto y deja muestras con su lote.', 1], ['Recomendación', 'El médico se lo indica a su paciente y su estado avanza.', 2],
+    ['Venta', 'El paciente compra en la farmacia o en la web.', 0], ['Atribución', 'La venta cuenta para el médico que la recomendó y para su delegado.', 0]],
+  dental: [['Visita', 'Cada clínica, con su especialidad y su potencial.', 0], ['Interés', 'La clínica pasa de visitada a interesada.', 2],
+    ['Pedido', 'Reposición de consumibles con descuento por volumen.', 1], ['Cliente', 'Factura emitida y la clínica, cliente de su comercial.', 2]],
+  orto: [['Visita', 'Al fisio, al podólogo o al técnico, en sus días.', 0], ['Muestra', 'Lo que se deja en consulta sale del stock.', 1],
+    ['Recomienda', 'El profesional envía al paciente a la ortopedia.', 0], ['Venta', 'La ortopedia compra y cuenta para quien lo recomendó.', 2]],
+  pharma: [['Visita', 'El delegado pasa por la farmacia.', 2], ['Llamada', 'Televenta llama a la que toca reponer.', 0],
+    ['Pedido', 'Con su descuento y su lote, en la misma llamada.', 1], ['Factura', 'Con VeriFactu y su cobro, sin salir de delcos.', 1]],
+  medtech: [['Contacto', 'Enfermería, supervisión o compras de cada servicio.', 0], ['Evaluación', 'El producto entra a prueba en el servicio.', 1],
+    ['Homologación', 'El hospital lo aprueba y el estado avanza.', 1], ['Pedido', 'Pedidos grandes con su lote y su caducidad.', 2]],
+  vet: [['Visita', 'Al veterinario, con su clínica y sus días.', 0], ['Recomienda', 'Le indica el producto al propietario.', 1],
+    ['Compra', 'El propietario compra en la clínica o en la web.', 2], ['Atribución', 'La venta cuenta para el veterinario y su comercial.', 2]]
+};
+// Dónde se para cada paso en la órbita (grados; 0 = derecha, en el sentido del reloj): arriba a la izquierda, arriba a la derecha, a la derecha y abajo
+const CIC_ANG = [214, 290, 336, 485];
+const CIC_PUNTOS = [[0, CIC_ANG[0] - 45], [.125, CIC_ANG[0]], [.375, CIC_ANG[1]], [.625, CIC_ANG[2]], [.875, CIC_ANG[3]], [1, CIC_ANG[3] + 45]];
+const cicloEl = $('#ciclo'), cometa = cicloEl.querySelector('.ciclo-cometa'), orbC = cicloEl.querySelector('ellipse'), nodosC = [...cicloEl.querySelectorAll('.ciclo-nodo')];
+let cicPaso = -1, cicSector = null, cicTween = null;
+const enOrbita = (el, a) => { const r = a * Math.PI / 180; el.style.left = (50 + 50 * Math.cos(r)).toFixed(2) + '%'; el.style.top = (50 + 50 * Math.sin(r)).toFixed(2) + '%'; };
+const angCiclo = p => { for (let i = 1; i < CIC_PUNTOS.length; i++) { const [p1, a1] = CIC_PUNTOS[i], [p0, a0] = CIC_PUNTOS[i - 1]; if (p <= p1) return a0 + (a1 - a0) * (p - p0) / (p1 - p0); } return CIC_PUNTOS[CIC_PUNTOS.length - 1][1]; };
+function cicloEn(p) {
+  if (!cicSector) return;
+  p = Math.max(0, Math.min(1, p));
+  enOrbita(cometa, angCiclo(p));
+  const k = Math.min(3, Math.floor(p * 4));
+  if (k === cicPaso) return;
+  cicPaso = k;
+  nodosC.forEach((n, i) => { n.classList.toggle('on', i === k); n.classList.toggle('hecho', i < k); });
+  const [t, d, f] = CICLOS[cicSector.clave][k], pie = $('#ciclo-pie');
+  if (pie) {
+    pie.innerHTML = `<b>${k + 1} · ${t}</b><span>${d}</span>`;
+    if (window.gsap && !QUIETO) gsap.fromTo(pie.children, { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: .45, stagger: .05, ease: 'expo.out' });
+  }
+  const fs = txtS.querySelector('.fuertes');
+  if (fs) { fs.classList.add('ciclo-on'); [...fs.children].forEach((x, i) => x.classList.toggle('activo', i === f)); }
+}
+function cicloSector(x, inicial) {
+  cicSector = x; cicPaso = -1;
+  CICLOS[x.clave].forEach(([t], i) => { nodosC[i].querySelector('span').textContent = t; });
+  if (cicTween) cicTween.kill();
+  if (QUIETO || !window.gsap) { nodosC.forEach((n, i) => enOrbita(n, CIC_ANG[i])); cicloEn(.15); return; }
+  // Las paradas vuelven a su sitio girando por la órbita, una tras otra, y la órbita da un giro
+  nodosC.forEach((n, i) => {
+    const o = { a: CIC_ANG[i] - (inicial ? 0 : 70) };
+    enOrbita(n, o.a);
+    if (!inicial) { gsap.fromTo(n, { opacity: 0 }, { opacity: 1, duration: .45, delay: i * .07 }); gsap.to(o, { a: CIC_ANG[i], duration: .9, delay: i * .07, ease: 'expo.out', onUpdate: () => enOrbita(n, o.a) }); }
+  });
+  if (!inicial) gsap.fromTo(orbC, { strokeDashoffset: 0 }, { strokeDashoffset: -18, duration: 1.1, ease: 'expo.out' });
+  // En el modo foco manda el desplazamiento; si no, el satélite recorre el ciclo mientras se ve el sector
+  if (window.__irSector) { cicloEn(window.__cicloLocal || 0); return; }
+  const st = { p: 0 };
+  cicTween = gsap.to(st, { p: 1, duration: 5.2, ease: 'none', onUpdate: () => cicloEn(st.p) });
+  cicloEn(0);
+}
 const telS = $('#tel-sector'), escS = $('#esc-sector'), txtS = $('#txt-sector');
 const pintaSector = x => {
   const ie = escS.querySelector('img'), it = telS.querySelector('img');
@@ -1231,20 +1324,19 @@ const pintaSector = x => {
 let elegirSector = () => {};
 elegirSector = carrusel($('#pest-sectores'), SECTORES, (x, inicial) => {
   const html = `<div class="ojo">${x.empresa} · demostración</div><h3 class="titular" style="font-size:clamp(30px,3vw,42px)">${x.titulo}</h3>
-    <div class="fuertes">${x.fuertes.map(([t, d]) => `<div class="fuerte">${check('#0E6B4C')}<div><b>${t}</b><span>${d}</span></div></div>`).join('')}</div>
+    <div class="ciclo-pie" id="ciclo-pie" aria-hidden="true"></div><div class="fuertes">${x.fuertes.map(([t, d]) => `<div class="fuerte">${check('#0E6B4C')}<div><b>${t}</b><span>${d}</span></div></div>`).join('')}</div>
     <div class="chips">${x.estados.map(e => `<span>${e}</span>`).join('')}</div>`;
-  if (inicial || QUIETO || !window.gsap) { pintaSector(x); txtS.innerHTML = html; return; }
+  if (inicial || QUIETO || !window.gsap) { pintaSector(x); txtS.innerHTML = html; cicloSector(x, true); return; }
   // La pantalla del ordenador sale en órbita hacia un lado y vuelve por el otro con la otra empresa; el móvil gira sobre sí mismo
   gsap.killTweensOf([escS, telS, txtS]);
   const num = $('#sec-num'); num.textContent = String(SECTORES.indexOf(x) + 1).padStart(2, '0');
   gsap.fromTo(num, { yPercent: 60, opacity: 0 }, { yPercent: 0, opacity: 1, duration: .6, ease: 'expo.out' });
   gsap.timeline()
-    .to(escS, { rotateY: -24, x: -60, scale: .9, opacity: 0, duration: .35, ease: 'power2.in' })
-    .to(telS, { rotateY: 90, duration: .3, ease: 'power2.in' }, '<.05')
+    .to([escS, telS], { opacity: 0, y: 14, duration: .25, ease: 'power2.in' })
     .add(() => pintaSector(x))
-    .fromTo(escS, { rotateY: 24, x: 60, scale: .9, opacity: 0 }, { rotateY: 0, x: 0, scale: 1, opacity: 1, duration: .7, ease: 'expo.out' })
-    .fromTo(telS, { rotateY: -90 }, { rotateY: 0, duration: .6, ease: 'expo.out' }, '<.08');
-  gsap.to(txtS, { opacity: 0, y: -10, duration: .2, onComplete: () => { txtS.innerHTML = html; gsap.fromTo(txtS.children, { opacity: 0, y: 18 }, { opacity: 1, y: 0, stagger: .06, duration: .5, ease: 'expo.out' }); gsap.set(txtS, { opacity: 1, y: 0 }); } });
+    .to(escS, { opacity: 1, y: 0, duration: .6, ease: 'expo.out' })
+    .to(telS, { opacity: 1, y: 0, duration: .6, ease: 'expo.out' }, '<.1');
+  gsap.to(txtS, { opacity: 0, y: -10, duration: .2, onComplete: () => { txtS.innerHTML = html; cicloSector(x); gsap.fromTo(txtS.children, { opacity: 0, y: 18 }, { opacity: 1, y: 0, stagger: .06, duration: .5, ease: 'expo.out' }); gsap.set(txtS, { opacity: 1, y: 0 }); } });
 });
 [...SECTORES.map(s => s.clave + '_m_inicio'), ...SECTORES.map(s => s.esc)].forEach(n => { const i = new Image(); i.src = cap(n); });
 
@@ -1603,7 +1695,8 @@ ScrollTrigger.matchMedia({ '(min-width: 1101px)': () => {
     snap: { snapTo: v => Math.min((n - .5) / n, Math.max(.5 / n, (Math.round(v * n - .5) + .5) / n)), duration: { min: .25, max: .7 }, delay: .1, ease: 'power2.inOut' },
     onUpdate: s => {
       const p = s.progress * n, i = Math.min(n - 1, Math.floor(p)), local = Math.min(1, p - i);
-      if (i !== actual) { actual = i; elegirSector(i); }
+      window.__cicloLocal = local; if (cicTween) { cicTween.kill(); cicTween = null; }
+      if (i !== actual) { actual = i; elegirSector(i); } else cicloEn(local);
       botones.forEach((b, k) => { b.querySelector('.prog').style.transform = `scaleY(${k < i ? 1 : k === i ? local : 0})`; });
     } });
   // Pulsar un sector lleva a su tramo del recorrido
