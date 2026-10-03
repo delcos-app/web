@@ -163,15 +163,41 @@ body.noche .tel{background:#05182B;box-shadow:0 0 0 1px var(--linea-t),var(--som
 .orbita-dia{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
 .orbita-dia ellipse{fill:none;stroke:var(--linea-f);stroke-width:1;stroke-dasharray:2 7}
 .orbita-dia circle{fill:var(--celeste)}
+/* El frente de la órbita, más marcado: da la profundidad (lo de delante pasa por delante) */
+.orbita-dia .frente{fill:none;stroke:var(--celeste);stroke-width:1.6;opacity:.85}
+/* Reloj orbital: las ocho horas del día marcadas en su órbita y un satélite que marca la hora */
+.reloj-orb{display:flex;align-items:center;gap:18px}
+.dial{width:clamp(70px,6.4vw,104px);height:auto;overflow:visible}
+.dial-o{fill:none;stroke:var(--linea-f);stroke-width:1.2;stroke-dasharray:1.5 4}
+#dial-marcas circle{fill:var(--blanco);stroke:var(--linea-f);stroke-width:1.2;transition:fill .3s,stroke .3s}
+#dial-marcas circle.hecha{fill:var(--azul);stroke:var(--azul)}
+#dial-sat{fill:var(--celeste);filter:drop-shadow(0 0 6px rgba(124,195,236,.9))}
+/* El relevo: lo que una pantalla pasa a la siguiente viaja por la órbita */
+.relevo{position:absolute;left:0;top:0;z-index:200;display:none;align-items:center;gap:10px;padding:7px 16px 7px 7px;border-radius:999px;background:var(--blanco);
+  border:1px solid var(--linea);box-shadow:var(--sombra-2);pointer-events:none;white-space:nowrap;will-change:transform}
+.relevo i{width:28px;height:28px;border-radius:50%;background:var(--marino);position:relative;flex-shrink:0}
+.relevo i::after{content:"";position:absolute;inset:0;margin:auto;width:9px;height:9px;border-radius:50%;background:var(--celeste);box-shadow:0 0 10px var(--celeste)}
+.relevo span{display:flex;flex-direction:column;line-height:1.15}
+.relevo small{font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--azul)}
+.relevo b{font-family:var(--f-titulo);font-size:15px;color:var(--tinta)}
+.paso .pasa{display:none}
+@media (min-width:901px){ .relevo{display:flex} }
+@media (max-width:900px){
+  .paso .pasa{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:999px;background:var(--hielo);font-size:14px;color:var(--texto2)}
+  .paso .pasa b{color:var(--tinta)}
+  .reloj-orb{gap:12px}
+}
 .paso{display:flex;flex-direction:column;align-items:center;gap:22px}
 .paso .info{display:flex;flex-direction:column;gap:12px;align-items:center;text-align:center;max-width:600px}
 @media (min-width:901px){
   .dia{height:100vh;display:flex;flex-direction:column}
-  .dia .cabeza{padding-block:96px 0}
+  .dia .cabeza{padding-block:88px 0}
+  .dia .paso .info{max-width:780px;gap:8px}
+  .dia .barra-dia{bottom:26px}
   .dia .titular{font-size:clamp(34px,3.6vw,56px)}
   .dia .reloj{font-size:clamp(56px,6.4vw,104px)}
-  .escenario{flex:1;min-height:0;perspective:1800px;--pant:clamp(240px,calc(100vh - 480px),500px)}
-  .escenario .paso{position:absolute;left:50%;top:46%;transform-style:preserve-3d;will-change:transform,opacity}
+  .escenario{flex:1;min-height:0;perspective:1800px;--pant:clamp(200px,calc(100vh - 600px),480px)}
+  .escenario .paso{position:absolute;left:50%;top:50%;transform-style:preserve-3d;will-change:transform,opacity}
   .escenario .ordenador{width:calc(var(--pant) * 1.6)}
   .escenario .tel{width:calc((var(--pant) + 30px) * .477)}
 }
@@ -818,9 +844,12 @@ body.noche .arriba .pista{stroke:var(--linea-t)}
       <h2 class="titular" data-letras>Toda la empresa, <em>en la misma plataforma.</em></h2>
       <p class="entrada">Dirección, campo, televenta, almacén, compras y administración trabajan sobre los mismos datos. Cada pantalla es la app real con una empresa de demostración.</p>
     </div>
-    <div class="reloj" id="reloj" aria-hidden="true">08:05</div>
+    <div class="reloj-orb" aria-hidden="true">
+      <svg class="dial" viewBox="0 0 100 100"><circle class="dial-o" cx="50" cy="50" r="42"/><g id="dial-marcas"></g><circle id="dial-sat" r="5.5" cx="50" cy="8"/></svg>
+      <div class="reloj" id="reloj">08:05</div>
+    </div>
   </div></div>
-  <div class="escenario" id="escenario"><svg class="orbita-dia" id="orbita-dia" aria-hidden="true"><ellipse/><circle r="5"/></svg></div>
+  <div class="escenario" id="escenario"><svg class="orbita-dia" id="orbita-dia" aria-hidden="true"><ellipse/><path class="frente"/><circle r="5"/></svg><div class="relevo" id="relevo" aria-hidden="true"><i></i><span><small></small><b></b></span></div></div>
   <div class="barra-dia" aria-hidden="true"><i id="barra-dia"></i></div>
 </section>
 
@@ -1075,6 +1104,9 @@ const DIA = [
   { h: '16:10', rol: 'Administración', img: 'labs_e_factura', t: 'Factura, cobro y correo.', d: 'Facturas inalterables con VeriFactu, rectificativas cuando hace falta y cobros que nunca pasan de lo pendiente.' },
   { h: '19:00', rol: 'Dirección', img: 'labs_e_analitica', t: 'Las cifras del día, sin pedirlas.', d: 'Ventas por zona, producto, cliente y comercial. Y las comisiones del mes, calculadas por tramos.' }
 ];
+// Lo que cada momento del día pasa al siguiente: [para quién, qué]
+const RELEVOS = [['Comercial', 'Citas y ruta de hoy'], ['La visita', 'La cita, con su ficha'], ['Televenta', 'La recomendación'], ['Almacén', 'El pedido'],
+  ['Compras', 'El stock bajo mínimos'], ['Administración', 'El pedido servido'], ['Dirección', 'Factura y cobro']];
 const PARA_QUIEN = [
   { ojo: 'Laboratorios y nutracéutica', t: 'Del delegado al almacén, un mismo dato.', d: 'La visita genera la recomendación, la recomendación el pedido y el pedido mueve su lote y su factura.', usa: ['Visitas', 'Muestras', 'Lotes', 'Facturación'] },
   { ojo: 'Visita médica', t: 'Cada médico, su historia y su ruta.', d: 'Fichas con consulta, horario y estado; rutas que respetan cuándo atiende cada uno.', usa: ['Cartera', 'Agenda', 'Rutas', 'Seguimiento'], oscura: true },
@@ -1146,9 +1178,9 @@ const PREGUNTAS = [
 
 /* ================= construir ================= */
 $('#cinta-mod').innerHTML = [...MODULOS_CINTA, ...MODULOS_CINTA].map((m, i) => `<span class="${i % 2 ? 'h' : ''}">${m}</span><b aria-hidden="true">·</b>`).join('');
-$('#escenario').insertAdjacentHTML('beforeend', DIA.map(p => `<article class="paso" data-hora="${p.h}">
+$('#escenario').insertAdjacentHTML('beforeend', DIA.map((p, i) => `<article class="paso" data-hora="${p.h}">
   ${p.tel ? telHTML(p.img, p.t) : escHTML(p.img, p.t)}
-  <div class="info"><div class="hora">${p.h}<span class="rol">${p.rol}</span></div><h3>${p.t}</h3><p>${p.d}</p></div>
+  <div class="info"><div class="hora">${p.h}<span class="rol">${p.rol}</span></div><h3>${p.t}</h3><p>${p.d}</p>${RELEVOS[i] ? `<span class="pasa">Pasa a ${RELEVOS[i][0].toLowerCase()}: <b>${RELEVOS[i][1]}</b></span>` : ''}</div>
 </article>`).join(''));
 const anillo = '<svg viewBox="0 0 150 150" aria-hidden="true"><circle cx="75" cy="75" r="60" fill="none" stroke="#C5D5E4" stroke-dasharray="2 5"/><circle cx="75" cy="15" r="7" fill="#7CC3EC"/></svg>';
 $('#pq-rejilla').innerHTML = PARA_QUIEN.map(p => `<article class="pq ${p.oscura ? 'oscura' : ''}">${anillo}<div class="ojo">${p.ojo}</div><h3>${p.t}</h3><p>${p.d}</p>
@@ -1618,14 +1650,41 @@ $$('[data-noche]').forEach(sec => ScrollTrigger.create({ trigger: sec, start: 't
 /* ================= un día: recorrido horizontal con reloj ================= */
 const minutos = h => { const [a, b] = h.split(':').map(Number); return a * 60 + b; };
 const reloj = $('#reloj'), pasos = $$('.paso');
-const pintaReloj = m => { const h = Math.floor(m / 60), mi = Math.round(m % 60); reloj.textContent = `${String(h).padStart(2, '0')}:${String(mi).padStart(2, '0')}`; };
+// La hora, en su órbita: 07:00 arriba y una vuelta entera hasta las 20:00; cada momento del día, una marca que se enciende al pasarla
+const DIAL_INI = 7 * 60, DIAL_FIN = 20 * 60, dialSat = $('#dial-sat');
+const enDial = m => { const a = -Math.PI / 2 + (m - DIAL_INI) / (DIAL_FIN - DIAL_INI) * Math.PI * 2; return [50 + 42 * Math.cos(a), 50 + 42 * Math.sin(a)]; };
+$('#dial-marcas').innerHTML = DIA.map(p => { const [x, y] = enDial(minutos(p.h)); return `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="3.4"/>`; }).join('');
+const marcasDial = $$('#dial-marcas circle');
+const pintaReloj = m => {
+  m = Math.round(m); const h = Math.floor(m / 60), mi = m % 60; reloj.textContent = `${String(h).padStart(2, '0')}:${String(mi).padStart(2, '0')}`;
+  const [x, y] = enDial(m); dialSat.setAttribute('cx', x.toFixed(2)); dialSat.setAttribute('cy', y.toFixed(2));
+  marcasDial.forEach((c, i) => c.classList.toggle('hecha', minutos(DIA[i].h) <= m + .5));
+};
+pintaReloj(minutos(DIA[1].h));
 ScrollTrigger.matchMedia({
   '(min-width: 901px)': () => {
     // Las escenas recorren una órbita elíptica: la del centro se acerca (zoom) y las demás se alejan hacia el fondo
     const n = pasos.length, esc = $('#escenario'), elipse = $('#orbita-dia ellipse'), sat = $('#orbita-dia circle');
-    const medidas = () => ({ rx: Math.min(innerWidth * .4, 660), ry: Math.min(innerHeight * .09, 84), cx: esc.clientWidth / 2, cy: esc.clientHeight * .46 });
+    const medidas = () => ({ rx: Math.min(innerWidth * .4, 660), ry: Math.min(innerHeight * .09, 84), cx: esc.clientWidth / 2, cy: esc.clientHeight * .5 });
     let m = medidas();
-    const trazar = () => { m = medidas(); elipse.setAttribute('cx', m.cx); elipse.setAttribute('cy', m.cy - m.ry); elipse.setAttribute('rx', m.rx); elipse.setAttribute('ry', m.ry); };
+    const frente = $('#orbita-dia .frente'), relevo = $('#relevo'), relT = relevo.querySelector('small'), relD = relevo.querySelector('b');
+    let relI = -1;
+    const trazar = () => {
+      m = medidas(); elipse.setAttribute('cx', m.cx); elipse.setAttribute('cy', m.cy - m.ry); elipse.setAttribute('rx', m.rx); elipse.setAttribute('ry', m.ry);
+      const ey = m.cy - m.ry;
+      frente.setAttribute('d', `M ${m.cx - m.rx} ${ey} A ${m.rx} ${m.ry} 0 0 0 ${m.cx + m.rx} ${ey}`);
+    };
+    // El relevo sale de la esquina de la pantalla que se va y llega a la que entra, dando un salto por la órbita
+    const pintaRelevo = (i, f) => {
+      if (!RELEVOS[i] || (i === n - 1)) { relevo.style.opacity = 0; return; }
+      if (i !== relI) { relI = i; relT.textContent = '→ ' + RELEVOS[i][0]; relD.textContent = RELEVOS[i][1]; }
+      const caja = el => el.querySelector('.ordenador, .tel').getBoundingClientRect(), e = esc.getBoundingClientRect();
+      const a = caja(pasos[i]), b = caja(pasos[Math.min(i + 1, n - 1)]);
+      const x0 = a.right - e.left - 24, y0 = a.top - e.top + 26, x1 = b.left - e.left + 24, y1 = b.top - e.top + 26;
+      const t = f * f * (3 - 2 * f), x = x0 + (x1 - x0) * t, y = y0 + (y1 - y0) * t - Math.sin(Math.PI * f) * 46;
+      relevo.style.transform = `translate(${x.toFixed(1)}px, ${y.toFixed(1)}px) translate(-50%, -50%) scale(${(1 + Math.sin(Math.PI * f) * .08).toFixed(3)})`;
+      relevo.style.opacity = 1;
+    };
     const orbitar = pr => {
       pasos.forEach((p, i) => {
         const o = i - pr * (n - 1), th = Math.max(-Math.PI, Math.min(Math.PI, o * .78)), c = Math.cos(th), sn = Math.sin(th), prof = (c + 1) / 2;
@@ -1640,6 +1699,7 @@ ScrollTrigger.matchMedia({
       const tramo = pr * (n - 1), i = Math.min(Math.floor(tramo), n - 1), f = tramo - i;
       const a1 = minutos(DIA[i].h), b1 = minutos(DIA[Math.min(i + 1, n - 1)].h);
       pintaReloj(a1 + (b1 - a1) * f);
+      pintaRelevo(i, f);
       gsap.set('#barra-dia', { scaleX: pr });
     };
     const st = { p: 0 };
