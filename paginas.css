@@ -17,15 +17,15 @@ a{color:inherit}
 button,input,select,textarea{font:inherit;color:inherit}
 :focus-visible{outline:none;box-shadow:0 0 0 2px var(--blanco),0 0 0 4px var(--azul);border-radius:12px}
 h1,h2,h3{font-family:var(--f-titulo);text-wrap:balance;margin:0}
-.wrap{max-width:1180px;margin:0 auto;padding-inline:40px}
+.wrap{max-width:1280px;margin:0 auto;padding-inline:40px}
 .ojo{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#3F6488}
 
 /* cabecera: la misma de la portada (desplegables, demo, idioma y menú a pantalla completa; la monta js/cabecera.js) */
 .cab{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.96);box-shadow:0 1px 0 var(--linea);color:var(--tinta)}
-.cab > .wrap{height:72px;display:flex;align-items:center;gap:24px}
+.cab > .wrap{height:72px;display:flex;align-items:center;gap:32px}
 .logo{display:flex;align-items:center;gap:10px;text-decoration:none}
 .logo b{font-family:var(--f-titulo);font-weight:800;font-size:25px;letter-spacing:-.035em}
-.cab > .wrap > nav{display:flex;align-items:center;gap:22px;margin-left:auto;font-weight:600;font-size:15px}
+.cab > .wrap > nav{display:flex;align-items:center;gap:28px;margin-left:auto;font-weight:600;font-size:15px}
 .cab > .wrap > nav a{text-decoration:none;position:relative}
 .cab > .wrap > nav a::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:2px;background:var(--azul);transform:scaleX(0);transform-origin:left;transition:transform .18s var(--ease-sal)}
 .cab > .wrap > nav a:hover::after,.cab > .wrap > nav a[aria-current="page"]::after{transform:scaleX(1)}

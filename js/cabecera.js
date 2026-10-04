@@ -8,7 +8,7 @@
   const ALTA = (EN ? '../' : '') + 'empezar.html';
   const cab = document.querySelector('header.cab');
   if (!cab) return;
-  // Idioma: el enlace al otro idioma es el que ya trae la página
+  // Idioma: el enlace al otro idioma es el que ya trae la página (si no lo hay, como en el alta, la portada del otro idioma)
   const otro = cab.querySelector('.idioma a');
   const ESTA = (location.pathname.split('/').pop() || '').replace(/\?.*$/, '');
   const T = EN ? {
@@ -74,7 +74,7 @@
     <nav class="nav" aria-label="${EN ? 'Sections' : 'Secciones'}">${desp('plataforma', T.plat)}${desp('sectores', T.sect)}<a href="./#clientes">${T.clientes}</a><a href="./#precios">${T.precios}</a>${desp('ayuda', T.ayuda)}</nav>
     <a class="demo-l" href="dudas.html?tipo=Demo">${T.demo}</a>
     <a class="boton" href="${ALTA}">${T.prueba}</a>
-    <div class="idioma" role="group" aria-label="${T.idioma}">${globo}<span class="activo" aria-current="true" lang="${EN ? 'en' : 'es'}">${EN ? 'EN' : 'ES'}</span>${otro ? `<a href="${otro.getAttribute('href')}" hreflang="${EN ? 'es' : 'en'}" lang="${EN ? 'es' : 'en'}">${EN ? 'ES' : 'EN'}</a>` : ''}</div>
+    <div class="idioma" role="group" aria-label="${T.idioma}">${globo}<span class="activo" aria-current="true" lang="${EN ? 'en' : 'es'}">${EN ? 'EN' : 'ES'}</span><a href="${otro ? otro.getAttribute('href') : (EN ? '../' : 'en/')}" hreflang="${EN ? 'es' : 'en'}" lang="${EN ? 'es' : 'en'}">${EN ? 'ES' : 'EN'}</a></div>
     <button class="menu-b" id="menu-b" type="button" aria-expanded="false" aria-controls="menu"><span class="ico" aria-hidden="true"><i></i><i></i></span><span id="menu-t">${T.menu}</span></button>
   </div>
   <div class="panel" id="panel-plataforma" role="region" aria-label="${T.plat}">${plat}</div>
