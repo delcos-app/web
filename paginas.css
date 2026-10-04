@@ -22,10 +22,10 @@ h1,h2,h3{font-family:var(--f-titulo);text-wrap:balance;margin:0}
 
 /* cabecera: la misma de la portada (desplegables, demo, idioma y menú a pantalla completa; la monta js/cabecera.js) */
 .cab{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.96);box-shadow:0 1px 0 var(--linea);color:var(--tinta)}
-.cab > .wrap{height:72px;display:flex;align-items:center;gap:32px}
+.cab > .wrap{height:72px;display:flex;align-items:center;gap:24px}
 .logo{display:flex;align-items:center;gap:10px;text-decoration:none}
 .logo b{font-family:var(--f-titulo);font-weight:800;font-size:25px;letter-spacing:-.035em}
-.cab > .wrap > nav{display:flex;align-items:center;gap:28px;margin-left:auto;font-weight:600;font-size:15px}
+.cab > .wrap > nav{display:flex;align-items:center;gap:22px;margin-left:auto;font-weight:600;font-size:15px}
 .cab > .wrap > nav a{text-decoration:none;position:relative}
 .cab > .wrap > nav a::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:2px;background:var(--azul);transform:scaleX(0);transform-origin:left;transition:transform .18s var(--ease-sal)}
 .cab > .wrap > nav a:hover::after,.cab > .wrap > nav a[aria-current="page"]::after{transform:scaleX(1)}
@@ -35,7 +35,7 @@ h1,h2,h3{font-family:var(--f-titulo);text-wrap:balance;margin:0}
 .boton:disabled{background:var(--linea-f);color:var(--texto2);cursor:not-allowed}
 .boton.sec{background:transparent;color:var(--tinta);border:1px solid var(--linea-f)}
 .boton.sec:hover{background:var(--hielo)}
-.cab .boton{height:44px;padding:0 20px;font-size:15px}
+.cab .boton{height:44px;padding:0 20px;font-size:15px;white-space:nowrap}
 /* Selector de idioma: los dos idiomas a la vista, el activo relleno */
 .idioma{display:inline-flex;align-items:center;gap:2px;height:44px;padding:4px;border:1px solid var(--linea-f);border-radius:999px;flex-shrink:0;color:inherit}
 .idioma .globo{width:18px;height:18px;margin:0 4px 0 7px;color:var(--azul);transition:transform .8s var(--ease-sal)}
@@ -193,6 +193,15 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--azul);bo
 .gracias{grid-column:1/-1;background:var(--ok-s);color:var(--ok);border-radius:14px;padding:16px 18px}
 .lado-form{display:flex;flex-direction:column;gap:18px;position:sticky;top:110px}
 .lado-form .canal{min-height:0}
+
+/* formulario enviado */
+.trampa{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.gracias{display:flex;flex-direction:column;gap:14px;align-self:start;padding:36px 36px 32px;border-radius:28px;background:var(--hielo)}
+.gracias[hidden],#form[hidden]{display:none}
+.gracias h2{color:var(--tinta);font-weight:300;font-size:clamp(32px,3.4vw,48px);letter-spacing:-.035em}
+.gracias h2 em{font-style:normal;color:var(--azul)}
+.gracias p{margin:0;font-size:17px;color:var(--texto2)}
+.gracias .sigue a{color:var(--azul);font-weight:600}
 
 /* pie */
 .pie-web{padding-block:48px 40px;border-top:1px solid var(--linea)}
