@@ -67,6 +67,19 @@ input.mal{border-color:#B42318}
   .datos{grid-template-columns:minmax(0,1fr)}
   .alta .boton[type="submit"]{width:100%}
 }
+/* Móvil: los tres planes en una fila (nombre y precio) y la descripción del elegido debajo (opción B elegida por Eric) */
+.plan-desc{display:none}
+@media (max-width:600px){
+  .planes-a{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+  .plan-a{padding:12px 8px;border-radius:16px;align-items:center;text-align:center;gap:2px}
+  .plan-a b{font-size:15px}
+  .plan-a .pr{font-size:24px}
+  .plan-a .pr small{display:block;font-size:11px;line-height:1.2}
+  .plan-a p{display:none}
+  .plan-a[aria-checked="true"]{background:var(--marino);color:var(--blanco);box-shadow:none}
+  .plan-a[aria-checked="true"] .pr small{color:var(--en-tinta)}
+  .plan-desc{display:block;margin:-4px 0 0;padding:12px 14px;border-radius:14px;background:var(--hielo);font-size:14.5px;color:var(--texto2)}
+}
 </style>
 </head>
 <body>
@@ -98,6 +111,7 @@ input.mal{border-color:#B42318}
       <section class="bloque">
         <h2>Tu plan</h2>
         <div class="planes-a" id="planes" role="radiogroup" aria-label="Plan"></div>
+        <p class="plan-desc" id="plan-desc" aria-live="polite"></p>
         <div class="fila-a">
           <div class="campo"><label>Pago</label><div class="seg" id="pago" role="group" aria-label="Pago">
             <button type="button" data-pago="mensual" aria-pressed="true">Mensual</button>
@@ -186,6 +200,8 @@ function pinta() {
     <b>${p.nombre}</b><span class="pr">${eur(est.pago === 'anual' ? Math.round(p.mes * 10 / 12) : p.mes)}<small> por usuario y mes</small></span><p>${p.para}</p></button>`).join('');
   document.querySelectorAll('[data-pago]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.pago === est.pago)));
   const p = PLANES.find(x => x.id === est.plan), u = usuarios(), anual = est.pago === 'anual';
+  // En el móvil las tarjetas van en una fila y la descripción del plan elegido, debajo
+  $('plan-desc').textContent = p.para;
   // Lo que se cobra de verdad, como en un recibo: la cuota, la puesta en marcha (solo con pago mensual) y el IVA
   const unidad = anual ? p.mes * 10 : p.mes, cuota = unidad * u, puesta = anual ? 0 : PUESTA;
   const iva = x => Math.round(x * IVA * 100) / 100, primero = cuota + puesta + iva(cuota + puesta), despues = cuota + iva(cuota);
