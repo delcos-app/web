@@ -4,13 +4,15 @@
 (() => {
   const EN = document.documentElement.lang === 'en';
   const CAP = (EN ? '../' : '') + 'capturas/';
+  // El alta solo existe en español
+  const ALTA = (EN ? '../' : '') + 'empezar.html';
   const cab = document.querySelector('header.cab');
   if (!cab) return;
   // Idioma: el enlace al otro idioma es el que ya trae la página
   const otro = cab.querySelector('.idioma a');
   const ESTA = (location.pathname.split('/').pop() || '').replace(/\?.*$/, '');
   const T = EN ? {
-    plat: 'Platform', sect: 'Sectors', clientes: 'Clients', precios: 'Pricing', ayuda: 'Help', demo: 'Request a demo', menu: 'Menu', cerrar: 'Close',
+    plat: 'Platform', sect: 'Sectors', clientes: 'Clients', precios: 'Pricing', ayuda: 'Help', demo: 'Request a demo', menu: 'Menu', cerrar: 'Close', prueba: 'Try it free', prueba30: 'Try it free for 30 days',
     idioma: 'Language · Idioma', demoTxt: ' · demo',
     grupos: [['Field', [['Accounts', 'Professionals, centres and their history', 'labs_e_directorio'], ['Calendar', 'Your day, your week and your month', 'labs_e_agenda'],
       ['Routes', 'Proposed every morning', 'labs_e_rutas'], ['Duplicates', 'One person, one record', 'labs_e_calidad']]],
@@ -32,7 +34,7 @@
     aside: 'Sales and operations software for companies that sell through healthcare professionals and centres.',
     legal: [['../', 'Español'], ['../aviso-legal.html', 'Legal notice'], ['../privacidad.html', 'Privacy'], ['../cookies.html', 'Cookies']]
   } : {
-    plat: 'Plataforma', sect: 'Sectores', clientes: 'Clientes', precios: 'Precios', ayuda: 'Ayuda', demo: 'Pide una demo', menu: 'Menú', cerrar: 'Cerrar',
+    plat: 'Plataforma', sect: 'Sectores', clientes: 'Clientes', precios: 'Precios', ayuda: 'Ayuda', demo: 'Pide una demo', menu: 'Menú', cerrar: 'Cerrar', prueba: 'Pruébalo gratis', prueba30: 'Pruébalo 30 días gratis',
     idioma: 'Idioma · Language', demoTxt: ' · demostración',
     grupos: [['Campo', [['Cartera', 'Profesionales, centros y su historial', 'labs_e_directorio'], ['Agenda', 'Tu día, tu semana y tu mes', 'labs_e_agenda'],
       ['Rutas', 'Propuestas cada mañana', 'labs_e_rutas'], ['Duplicados', 'Una persona, una sola ficha', 'labs_e_calidad']]],
@@ -70,7 +72,8 @@
   cab.innerHTML = `<div class="wrap">
     <a class="logo" href="./" aria-label="delcos">${cab.querySelector('.logo').innerHTML}</a>
     <nav class="nav" aria-label="${EN ? 'Sections' : 'Secciones'}">${desp('plataforma', T.plat)}${desp('sectores', T.sect)}<a href="./#clientes">${T.clientes}</a><a href="./#precios">${T.precios}</a>${desp('ayuda', T.ayuda)}</nav>
-    <a class="boton" href="dudas.html?tipo=Demo">${T.demo}</a>
+    <a class="demo-l" href="dudas.html?tipo=Demo">${T.demo}</a>
+    <a class="boton" href="${ALTA}">${T.prueba}</a>
     <div class="idioma" role="group" aria-label="${T.idioma}">${globo}<span class="activo" aria-current="true" lang="${EN ? 'en' : 'es'}">${EN ? 'EN' : 'ES'}</span>${otro ? `<a href="${otro.getAttribute('href')}" hreflang="${EN ? 'es' : 'en'}" lang="${EN ? 'es' : 'en'}">${EN ? 'ES' : 'EN'}</a>` : ''}</div>
     <button class="menu-b" id="menu-b" type="button" aria-expanded="false" aria-controls="menu"><span class="ico" aria-hidden="true"><i></i><i></i></span><span id="menu-t">${T.menu}</span></button>
   </div>
@@ -83,7 +86,7 @@
     <aside>
       <svg class="orbita" viewBox="0 0 44 44" aria-hidden="true"><circle cx="20" cy="24" r="19.5" fill="none" stroke="#22405F" stroke-width=".6" stroke-dasharray="1.5 2"/><circle cx="20" cy="24" r="16" fill="#17457A"/><g class="sat"><circle cx="35" cy="9" r="5" fill="#7CC3EC"/></g></svg>
       <p>${T.aside}</p>
-      <a class="boton" href="dudas.html?tipo=Demo">${T.demo}</a>
+      <div class="menu-cta"><a class="boton" href="${ALTA}">${T.prueba30}</a><a class="demo-l" href="dudas.html?tipo=Demo">${T.demo}</a></div>
       <div class="legal">${T.legal.map(([h, t]) => `<a href="${h}">${t}</a>`).join('')}</div>
     </aside>
   </div></div>`);

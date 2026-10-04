@@ -124,6 +124,49 @@ body.noche .tel{background:#05182B;box-shadow:0 0 0 1px var(--linea-t),var(--som
 .portada .texto{display:flex;flex-direction:column;gap:26px;position:relative;z-index:2}
 .portada h1{font-size:clamp(46px,6.2vw,96px)}
 .acciones{display:flex;gap:12px;flex-wrap:wrap}
+/* Lo esencial del precio, bajo los botones del inicio */
+.garantia-h{list-style:none;margin:4px 0 0;padding:0;display:grid;grid-template-columns:repeat(2,max-content);gap:8px 24px;font-size:15px;color:var(--texto2)}
+.garantia-h li{display:flex;align-items:center;gap:8px}
+.garantia-h svg{color:#0E6B4C;flex-shrink:0}
+/* «Pide una demo» como enlace, junto al botón de la prueba */
+.demo-l{font-weight:600;font-size:15px;text-decoration:none;white-space:nowrap;position:relative}
+.demo-l::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:2px;background:var(--azul);transform:scaleX(0);transform-origin:left;transition:transform .18s var(--ease-sal)}
+.demo-l:hover::after{transform:scaleX(1)}
+.cab .demo-l{margin-left:-8px}
+.menu-abierto .cab .demo-l{opacity:0;pointer-events:none}
+.menu-cta{display:flex;align-items:center;gap:22px;flex-wrap:wrap}
+.menu-cta .demo-l{color:var(--blanco)}
+/* Barra fija del móvil: la prueba siempre a mano */
+.barra-cta{display:none}
+@media (max-width:900px){
+  .barra-cta{position:fixed;left:12px;right:12px;bottom:12px;z-index:37;display:flex;align-items:center;gap:14px;padding:8px 18px 8px 8px;border-radius:999px;
+    background:var(--tinta);color:var(--blanco);box-shadow:var(--sombra-3);transform:translateY(140%);transition:transform .45s var(--ease-sal)}
+  .barra-cta .boton{flex:1;height:48px;justify-content:center;background:var(--blanco);color:var(--tinta)}
+  .barra-cta .demo-l{color:var(--blanco)}
+  body.con-barra .barra-cta{transform:none}
+  body.con-barra .arriba{bottom:84px}
+  body.con-barra .aviso-idioma{bottom:84px}
+  body.menu-abierto .barra-cta{transform:translateY(140%)}
+}
+/* Precios: cómo funciona */
+.como-va{list-style:none;margin:0 0 40px;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;counter-reset:paso}
+.como-va li{display:flex;flex-direction:column;gap:6px;padding:20px 22px;border-radius:20px;background:var(--hielo);counter-increment:paso}
+.como-va b{font-family:var(--f-titulo);font-weight:700;font-size:17px;color:var(--tinta)}
+.como-va b::before{content:counter(paso);display:inline-grid;place-items:center;width:26px;height:26px;margin-right:10px;border-radius:50%;background:var(--marino);color:var(--blanco);font-size:13px}
+.como-va span{color:var(--texto2);font-size:15.5px}
+/* Cierre: las dos opciones */
+.dos-caminos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;width:100%;max-width:900px;text-align:left}
+.camino{display:flex;flex-direction:column;gap:10px;align-items:flex-start;padding:30px 32px;border-radius:28px;border:1px solid var(--linea-t);background:rgba(255,255,255,.04)}
+.camino small{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--celeste)}
+.camino b{font-family:var(--f-titulo);font-weight:700;font-size:26px;letter-spacing:-.02em}
+.camino p{margin:0 0 8px;color:var(--en-tinta);font-size:16px}
+.camino:first-child{background:rgba(124,195,236,.10);border-color:rgba(124,195,236,.45)}
+body.noche .cierre .camino .boton.sec{background:transparent;color:var(--blanco);border-color:var(--linea-t)}
+@media (max-width:1280px){ .cab .demo-l{display:none} }
+@media (max-width:900px){
+  .como-va,.dos-caminos{grid-template-columns:minmax(0,1fr)}
+  .garantia-h{grid-template-columns:minmax(0,1fr)}
+}
 .baraja{position:relative;height:640px;perspective:1600px}
 .baraja .carta{position:absolute;z-index:5;will-change:transform;transform-style:preserve-3d}
 /* La órbita de los módulos: la mitad de delante pasa por encima de las pantallas y la de detrás, por debajo */
@@ -751,7 +794,8 @@ body.noche .arriba .pista{stroke:var(--linea-t)}
       <a href="#clientes">Clients</a><a href="#precios">Pricing</a>
       <button class="desp-b" type="button" aria-expanded="false" aria-controls="panel-ayuda">Help <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
     </nav>
-    <a class="boton iman" href="#cierre">Book a demo</a>
+    <a class="demo-l" href="dudas.html?tipo=Demo">Request a demo</a>
+    <a class="boton iman" href="../empezar.html">Try it free</a>
     <div class="idioma" role="group" aria-label="Language · Idioma"><svg class="globo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg><a href="../" hreflang="es" lang="es" title="Versión en español" data-idioma="es">ES</a><span class="activo" aria-current="true" lang="en">EN</span></div>
     <button class="menu-b" id="menu-b" type="button" aria-expanded="false" aria-controls="menu"><span class="ico" aria-hidden="true"><i></i><i></i></span><span id="menu-t">Menu</span></button>
   </div>
@@ -777,7 +821,7 @@ body.noche .arriba .pista{stroke:var(--linea-t)}
     <aside>
       <svg class="orbita" viewBox="0 0 44 44" aria-hidden="true"><circle cx="20" cy="24" r="19.5" fill="none" stroke="#22405F" stroke-width=".6" stroke-dasharray="1.5 2"/><circle cx="20" cy="24" r="16" fill="#17457A"/><g class="sat"><circle cx="35" cy="9" r="5" fill="#7CC3EC"/></g></svg>
       <p>Commercial and operations software for companies that sell through healthcare professionals and centres.</p>
-      <a class="boton" href="#cierre">Book a demo</a>
+      <div class="menu-cta"><a class="boton" href="../empezar.html">Try it free for 30 days</a><a class="demo-l" href="dudas.html?tipo=Demo">Request a demo</a></div>
       <div class="legal"><a href="../" hreflang="es" lang="es">Español</a><a href="../aviso-legal.html">Legal notice</a><a href="../privacidad.html">Privacy</a><a href="../cookies.html">Cookies</a></div>
     </aside>
   </div>
@@ -788,6 +832,8 @@ body.noche .arriba .pista{stroke:var(--linea-t)}
     <g class="satg" id="arriba-sat"><circle cx="29" cy="4" r="3.5"/></g>
     <path class="flecha" d="M29 37V22M22.5 28.5 29 22l6.5 6.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
 </a>
+
+<div class="barra-cta" id="barra-cta"><a class="boton" href="../empezar.html">Start your free 30 days</a><a class="demo-l" href="dudas.html?tipo=Demo">Demo</a></div>
 
 <main>
 <!-- 1 · Portada -->
@@ -803,9 +849,13 @@ body.noche .arriba .pista{stroke:var(--linea-t)}
       <h1 class="titular" data-letras>Everything revolves <em>around those who care.</em></h1>
       <p class="entrada">Doctors, pharmacies, clinics, hospitals or vets: your company lives on those relationships. delcos brings them together in one platform, with everything that supports them: visits, orders, batch-tracked stock, VeriFactu invoicing and commissions.</p>
       <div class="acciones">
-        <a class="boton iman" href="dudas.html?tipo=Demo">Book a demo <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-        <a class="boton sec" href="#dia">See a full day</a>
+        <a class="boton" href="../empezar.html">Start your free 30 days <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        <a class="boton sec" href="dudas.html?tipo=Demo">Request a demo</a>
       </div>
+      <ul class="garantia-h">
+        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>From €24 per user per month</li><li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>30 days free, nothing to pay today</li>
+        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>No lock-in</li><li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Your data, always yours</li>
+      </ul>
     </div>
     <div class="baraja" id="baraja" aria-label="App screens">
       <svg class="orbe atras" aria-hidden="true"><ellipse/></svg>
@@ -1024,6 +1074,11 @@ body.noche .arriba .pista{stroke:var(--linea-t)}
         <button type="button" id="p-anual" aria-pressed="false">Annual <small>2 months free</small></button>
       </div>
     </div>
+    <ol class="como-va">
+      <li><b>Choose your plan and team</b><span>Online, in five minutes and without calls. Change it whenever you like.</span></li>
+      <li><b>30 days free, with everything</b><span>You leave your card and nothing is charged today. We remind you 7 days before it ends.</span></li>
+      <li><b>Stay, or don’t</b><span>If you stay, the first charge comes on day 31. If not, you cancel from the platform and pay nothing.</span></li>
+    </ol>
     <div class="planes" id="planes"></div>
     <div class="garantias">
       <div><b>Onboarding included</b><span>With annual billing, we import your spreadsheets, set up your company and train your team. With monthly billing, a one-off €490.</span></div>
@@ -1057,8 +1112,10 @@ body.noche .arriba .pista{stroke:var(--linea-t)}
   <div class="wrap">
     <svg class="orbita" viewBox="0 0 44 44" aria-hidden="true"><circle cx="20" cy="24" r="16" fill="#17457A"/><circle cx="20" cy="24" r="19.5" fill="none" stroke="#C5D5E4" stroke-width=".6" stroke-dasharray="1.5 2"/><g class="sat"><circle cx="35" cy="9" r="5" fill="#7CC3EC"/></g></svg>
     <h2 class="titular" data-letras>Put your company <em>in orbit.</em></h2>
-    <p class="entrada">We’ll show you delcos running with your sector, your products and the way you invoice. Then you try it for 30 days with your team.</p>
-    <a class="boton iman" href="dudas.html?tipo=Demo">Book a demo <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    <div class="dos-caminos">
+      <div class="camino"><small>Ready to go?</small><b>Try it free for 30 days</b><p>Choose your plan and team, leave your card and you’re in. Nothing to pay today and no lock-in.</p><a class="boton iman" href="../empezar.html">Start free <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
+      <div class="camino"><small>Rather see it first?</small><b>Request a demo</b><p>We’ll show you delcos with your sector, your products and your way of invoicing, on a video call.</p><a class="boton sec" href="dudas.html?tipo=Demo">Request a demo <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
+    </div>
     <p class="nota-demo">Every screen is a real capture of the app, shown in Spanish, with demo companies: the data is fictitious.</p>
   </div>
 </section>
@@ -1173,6 +1230,8 @@ const PREGUNTAS = [
   ['What if a record is duplicated?', 'delcos warns you when you create it if it looks like another one, and watches your whole portfolio for similar names. You compare both records, choose which details stay and merge them: visits, sales and accounts move to the one that remains.'],
   ['Where is my data?', 'On servers in the European Union, in Frankfurt, with daily backups. Each company is kept separate from the rest.'],
   ['Does delcos sell or use my data?', 'No. delcos only sells software. The data you store belongs to your company: we never sell it or share it with anyone, and you can export it whenever you like.'],
+  ['How do I sign up?', 'Online, in five minutes: press “Start your free 30 days”, choose your plan and how many people, leave your card and you’re in. If you’d rather see it first, request a demo and we’ll show it to you with your sector.'],
+  ['When am I charged and how do I cancel?', 'Nothing is charged during the 30-day trial; we remind you 7 days before it ends. If you stay, you pay by card monthly or yearly, as you choose. You cancel or change plan from the platform itself, with no lock-in, and you take your data with you.'],
   ['How much does it cost?', 'From €24 per user per month with annual billing (€29 with monthly billing), from three users. There are three plans depending on what you need, plus a custom one for teams of more than 50. With annual billing onboarding is included, and you can try it for 30 days with your own data.']
 ];
 
@@ -1210,6 +1269,8 @@ const PLANES = [
   { nombre: 'Custom', medida: true, para: 'For networks of more than 50 people or with specific needs.',
     incluye: ['Everything in Company', 'Migration of your data', 'Connection to your management software', 'Portal for professionals and centres, unlimited', 'See the platform as each person on your team does, to help them', 'Priority support'] }
 ];
+// La clave del plan en el alta (no depende del idioma)
+const PLAN_CLAVE = ['campo', 'comercial', 'empresa', 'medida'];
 const eur = n => '€' + String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 let anual = false;
 $('#planes').innerHTML = PLANES.map((p, i) => `<article class="plan ${p.fuerte ? 'fuerte' : ''}">
@@ -1219,7 +1280,7 @@ $('#planes').innerHTML = PLANES.map((p, i) => `<article class="plan ${p.fuerte ?
     : `<div class="cifra"><b data-plan="${i}">${eur(p.mes)}</b><small>per user<br>per month</small></div><p class="anual" data-anual="${i}"></p>`}
   <div class="usuarios">${p.medida ? '<b>From 50 users</b>' : '<b>From 3 users</b> · add as many as you need'}</div>
   <ul>${p.incluye.map(t => `<li>${check(p.fuerte ? '#7CC3EC' : '#0E6B4C')}<span>${t}</span></li>`).join('')}</ul>
-  <a class="boton ${p.fuerte ? '' : 'sec'}" ${p.medida ? 'href="dudas.html?tipo=Precios"' : `data-empezar="${p.nombre.toLowerCase()}" href="empezar.html?plan=${p.nombre.toLowerCase()}"`}>${p.medida ? 'Get a quote' : 'Try it for 30 days'}</a>
+  <a class="boton ${p.fuerte ? '' : 'sec'}" ${p.medida ? 'href="dudas.html?tipo=Precios"' : `data-empezar="${PLAN_CLAVE[i]}" href="../empezar.html?plan=${PLAN_CLAVE[i]}"`}>${p.medida ? 'Get a quote' : 'Try it for 30 days'}</a>
 </article>`).join('');
 function pintaPrecios(animar) {
   PLANES.forEach((p, i) => {
@@ -1232,7 +1293,7 @@ function pintaPrecios(animar) {
     requestAnimationFrame(paso);
   });
   // El alta (empezar.html) se abre con el plan y el pago que se están viendo
-  $$('[data-empezar]').forEach(a => a.href = `empezar.html?plan=${a.dataset.empezar}&pago=${anual ? 'anual' : 'mensual'}`);
+  $$('[data-empezar]').forEach(a => a.href = `../empezar.html?plan=${a.dataset.empezar}&pago=${anual ? 'anual' : 'mensual'}`);
   $('#p-mes').setAttribute('aria-pressed', String(!anual)); $('#p-anual').setAttribute('aria-pressed', String(anual));
   const b = anual ? $('#p-anual') : $('#p-mes'), m = $('.periodo .marca-p');
   m.style.left = b.offsetLeft + 'px'; m.style.width = b.offsetWidth + 'px';
@@ -1498,6 +1559,15 @@ function colocarOrbita() {
   m.setAttribute('x', cx - rx - 40); m.setAttribute('y', cy); m.setAttribute('width', rx * 2 + 80); m.setAttribute('height', ry + 40); m.setAttribute('transform', `rotate(${orb.tilt} ${cx} ${cy})`);
 }
 colocarOrbita(); addEventListener('resize', colocarOrbita);
+
+/* ================= barra fija del móvil: la prueba a mano en cuanto se pasan los botones del inicio ================= */
+(() => {
+  const acc = $('.portada .acciones'), cie = $('#cierre .dos-caminos');
+  let pasado = false, enCierre = false;
+  const pinta = () => document.body.classList.toggle('con-barra', pasado && !enCierre);
+  new IntersectionObserver(([e]) => { pasado = !e.isIntersecting && e.boundingClientRect.top < 0; pinta(); }).observe(acc);
+  new IntersectionObserver(([e]) => { enCierre = e.isIntersecting; pinta(); }).observe(cie);
+})();
 
 /* ================= menú a pantalla completa ================= */
 const menu = $('#menu'), menuB = $('#menu-b');
