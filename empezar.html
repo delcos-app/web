@@ -51,6 +51,7 @@ input.mal{border-color:#B42318}
 .trampa{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
 .alta .boton[type="submit"]{height:58px;font-size:18px;align-self:flex-start;padding:0 34px}
 .nota{margin:-14px 0 0;font-size:14.5px;color:var(--texto2)}
+.nota.mal{color:#B42318;font-weight:600}
 .nota.lista{color:var(--ok)}
 .pasos-a{display:flex;flex-direction:column;gap:18px;margin:0;padding:0;list-style:none}
 .pasos-a li{display:flex;gap:14px}
@@ -258,6 +259,7 @@ function revisa(mostrar) {
 }
 Object.keys(COMPRUEBA).forEach(k => { $(k).addEventListener('input', () => revisa(false)); $(k).addEventListener('blur', () => { if ($(k).value.trim()) tocados.add(k); revisa(false); }); });
 $('acepta').addEventListener('change', () => revisa(false));
+document.addEventListener('input', () => { const f = $('falta'); if (f && f.classList.contains('mal')) { f.classList.remove('mal'); f.removeAttribute('role'); revisa(false); } });
 const marca = (campo, t) => { const e = document.querySelector(`[data-err="${campo}"]`); if (e) e.textContent = t || ''; const i = $(campo); if (i && i.type !== 'checkbox') i.classList.toggle('mal', !!t); };
 $('alta').addEventListener('submit', async e => {
   e.preventDefault(); if (!PRUEBAS) aviso('');
@@ -266,14 +268,17 @@ $('alta').addEventListener('submit', async e => {
     telefono: $('telefono').value.trim(), plan: est.plan, pago: est.pago, usuarios: usuarios(), acepta: $('acepta').checked,
     web: $('web').value, t: Date.now() - t0, volver: location.origin + location.pathname + (PRUEBAS ? '?pruebas=1' : '') };
   const b = $('enviar'); b.disabled = true; b.textContent = 'Preparando tu alta…';
+  let fallo = '';
   try {
     const r = await fetch(E.url + '/functions/v1/alta', { method: 'POST', headers: { 'Content-Type': 'application/json', apikey: E.anon, Authorization: 'Bearer ' + E.anon }, body: JSON.stringify(d) });
     const res = await r.json().catch(() => ({}));
     if (res.ok && res.url) { location.href = res.url; return; }
-    if (res.campo) { marca(res.campo, ERR[res.error] || ERR[res.campo]); if ($(res.campo)) $(res.campo).focus(); }
-    else aviso(ERR[res.error] || 'No se ha podido empezar el alta. Vuelve a intentarlo en un momento o escríbenos.');
-  } catch (x) { aviso('No hay conexión. Revisa internet y vuelve a intentarlo.'); }
+    if (res.campo) { fallo = ERR[res.error] || ERR[res.campo]; marca(res.campo, fallo); if ($(res.campo)) $(res.campo).focus(); }
+    else fallo = ERR[res.error] || 'No se ha podido empezar el alta. Vuelve a intentarlo en un momento o escríbenos a hola@delcos.app.';
+  } catch (x) { fallo = 'No hay conexión. Revisa internet y vuelve a intentarlo.'; }
   b.textContent = 'Empezar la prueba gratis'; revisa(false);
+  // El motivo, junto al botón (arriba quedaba fuera de la vista y parecía que no hacía nada)
+  if (fallo) { const f = $('falta'); f.textContent = fallo; f.classList.add('mal'); f.setAttribute('role', 'alert'); }
 });
 })();
 </script>
