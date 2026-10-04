@@ -1219,7 +1219,7 @@ $('#planes').innerHTML = PLANES.map((p, i) => `<article class="plan ${p.fuerte ?
     : `<div class="cifra"><b data-plan="${i}">${eur(p.mes)}</b><small>por usuario<br>y mes</small></div><p class="anual" data-anual="${i}"></p>`}
   <div class="usuarios">${p.medida ? '<b>Desde 50 usuarios</b>' : '<b>Desde 3 usuarios</b> · añade los que necesites'}</div>
   <ul>${p.incluye.map(t => `<li>${check(p.fuerte ? '#7CC3EC' : '#0E6B4C')}<span>${t}</span></li>`).join('')}</ul>
-  <a class="boton ${p.fuerte ? '' : 'sec'}" href="dudas.html?tipo=${p.medida ? 'Precios' : 'Demo'}">${p.medida ? 'Pide presupuesto' : 'Pruébalo 30 días'}</a>
+  <a class="boton ${p.fuerte ? '' : 'sec'}" ${p.medida ? 'href="dudas.html?tipo=Precios"' : `data-empezar="${p.nombre.toLowerCase()}" href="empezar.html?plan=${p.nombre.toLowerCase()}"`}>${p.medida ? 'Pide presupuesto' : 'Pruébalo 30 días'}</a>
 </article>`).join('');
 function pintaPrecios(animar) {
   PLANES.forEach((p, i) => {
@@ -1231,6 +1231,8 @@ function pintaPrecios(animar) {
     const paso = t => { const k = Math.min(1, (t - t0) / d), e = 1 - Math.pow(1 - k, 3); el.textContent = eur(Math.round(ini + (fin - ini) * e)); if (k < 1) requestAnimationFrame(paso); };
     requestAnimationFrame(paso);
   });
+  // El alta (empezar.html) se abre con el plan y el pago que se están viendo
+  $$('[data-empezar]').forEach(a => a.href = `empezar.html?plan=${a.dataset.empezar}&pago=${anual ? 'anual' : 'mensual'}`);
   $('#p-mes').setAttribute('aria-pressed', String(!anual)); $('#p-anual').setAttribute('aria-pressed', String(anual));
   const b = anual ? $('#p-anual') : $('#p-mes'), m = $('.periodo .marca-p');
   m.style.left = b.offsetLeft + 'px'; m.style.width = b.offsetWidth + 'px';
