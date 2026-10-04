@@ -236,7 +236,7 @@ $('alta').addEventListener('submit', async e => {
     web: $('web').value, t: Date.now() - t0, volver: location.origin + location.pathname + (PRUEBAS ? '?pruebas=1' : '') };
   const b = $('enviar'); b.disabled = true; b.textContent = 'Preparando tu alta…';
   try {
-    const r = await fetch(E.url + '/functions/v1/alta', { method: 'POST', headers: { 'Content-Type': 'application/json', apikey: E.anon }, body: JSON.stringify(d) });
+    const r = await fetch(E.url + '/functions/v1/alta', { method: 'POST', headers: { 'Content-Type': 'application/json', apikey: E.anon, Authorization: 'Bearer ' + E.anon }, body: JSON.stringify(d) });
     const res = await r.json().catch(() => ({}));
     if (res.ok && res.url) { location.href = res.url; return; }
     if (res.campo) { marca(res.campo, ERR[res.error] || ERR[res.campo]); if ($(res.campo)) $(res.campo).focus(); }
