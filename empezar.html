@@ -36,7 +36,14 @@
 .medida-a{font-size:15px;color:var(--texto2);margin:0}
 .resumen{border-radius:20px;background:var(--hielo);padding:16px 20px;display:flex;flex-direction:column;gap:6px;font-size:16px}
 .resumen div{display:flex;justify-content:space-between;gap:16px}
-.resumen .hoy{font-family:var(--f-titulo);font-weight:800;font-size:20px;color:var(--ok)}
+.resumen .hoy{font-family:var(--f-titulo);font-weight:800;font-size:20px;color:var(--ok);padding-bottom:8px;margin-bottom:4px;border-bottom:1px solid var(--linea)}
+.resumen .lin{font-size:15px;color:var(--texto2)}
+.resumen .lin span:last-child,.resumen .tot span:last-child{font-variant-numeric:tabular-nums;white-space:nowrap}
+.resumen .tot{padding-top:8px;margin-top:4px;border-top:1px solid var(--linea);font-family:var(--f-titulo);font-weight:700;font-size:17px;color:var(--tinta)}
+.resumen .sig{color:var(--tinta)}
+.resumen .ivanota{margin:6px 0 0;font-size:13.5px;color:var(--texto2)}
+.recap{margin:0;font-size:16px;color:var(--texto2)}
+.recap b{color:var(--tinta)}
 .datos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 20px}
 .datos .ancho{grid-column:1/-1}
 input.mal{border-color:#B42318}
@@ -118,6 +125,7 @@ input.mal{border-color:#B42318}
         </div>
       </section>
 
+      <p class="recap" id="recap" aria-live="polite"></p>
       <button class="boton" id="enviar" type="submit" disabled>Empezar la prueba gratis</button>
       <p class="nota" id="falta">Completa tus datos y acepta la política de privacidad para continuar.</p>
     </form>
@@ -178,10 +186,17 @@ function pinta() {
     <b>${p.nombre}</b><span class="pr">${eur(est.pago === 'anual' ? Math.round(p.mes * 10 / 12) : p.mes)}<small> por usuario y mes</small></span><p>${p.para}</p></button>`).join('');
   document.querySelectorAll('[data-pago]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.pago === est.pago)));
   const p = PLANES.find(x => x.id === est.plan), u = usuarios(), anual = est.pago === 'anual';
-  const base = anual ? p.mes * 10 * u : p.mes * u;
-  $('resumen').innerHTML = `<div class="hoy"><span>Hoy</span><span>0 €</span></div>
-    <div><span>Desde el ${fin}: ${u} × ${eur(anual ? p.mes * 10 : p.mes)} ${anual ? 'al año' : 'al mes'} + IVA</span><b>${eur(base * (1 + IVA))}</b></div>
-    ${anual ? '<div><span>Puesta en marcha</span><b>Incluida</b></div>' : `<div><span>Puesta en marcha (una vez, con el primer recibo) + IVA</span><b>${eur(PUESTA * (1 + IVA))}</b></div>`}`;
+  // Lo que se cobra de verdad, como en un recibo: la cuota, la puesta en marcha (solo con pago mensual) y el IVA
+  const unidad = anual ? p.mes * 10 : p.mes, cuota = unidad * u, puesta = anual ? 0 : PUESTA;
+  const iva = x => Math.round(x * IVA * 100) / 100, primero = cuota + puesta + iva(cuota + puesta), despues = cuota + iva(cuota);
+  $('resumen').innerHTML = `<div class="hoy"><span>Hoy pagas</span><span>0 €</span></div>
+    <div class="lin"><span>Plan ${p.nombre} · ${u} usuarios × ${eur(unidad)} ${anual ? 'al año' : 'al mes'}</span><span>${eur(cuota)}</span></div>
+    <div class="lin"><span>Puesta en marcha ${anual ? '(incluida con el pago anual)' : '(solo en el primer recibo)'}</span><span>${anual ? 'Incluida' : eur(PUESTA)}</span></div>
+    <div class="lin"><span>IVA (21 %)</span><span>${eur(iva(cuota + puesta))}</span></div>
+    <div class="tot"><span>Primer recibo, el ${fin}</span><span>${eur(primero)}</span></div>
+    <div class="lin sig"><span>Después, cada ${anual ? 'año' : 'mes'}</span><span>${eur(despues)}</span></div>
+    <p class="ivanota">Los precios de la web no llevan IVA: aquí tienes lo que se cobra, con IVA. Si te das de baja antes del ${fin}, no pagas nada.</p>`;
+  $('recap').innerHTML = `Hoy pagas <b>0 €</b>. Primer recibo, el ${fin}: <b>${eur(primero)}</b> con IVA.`;
 }
 $('planes').addEventListener('click', e => { const b = e.target.closest('[data-plan]'); if (b) { est.plan = b.dataset.plan; pinta(); } });
 $('pago').addEventListener('click', e => { const b = e.target.closest('[data-pago]'); if (b) { est.pago = b.dataset.pago; pinta(); } });
