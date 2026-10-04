@@ -70,7 +70,7 @@ input.mal{border-color:#B42318}
       <svg width="28" height="28" viewBox="0 0 44 44" aria-hidden="true"><circle cx="20" cy="24" r="16" fill="#17457A"/><circle cx="35" cy="9" r="6" fill="#7CC3EC"/></svg><b>delcos</b>
     </a>
     <nav aria-label="Secciones"><a href="./">Inicio</a><a href="./#precios">Precios</a><a href="soporte.html">Soporte</a><a href="dudas.html">Envíanos tu duda</a></nav>
-    <a class="boton sec" href="https://app.dlchealthgroup.com/" id="entrar">Entrar</a>
+    <a class="boton sec" href="https://app.delcos.app/" id="entrar">Entrar</a>
   </div>
 </header>
 
@@ -154,7 +154,7 @@ const q = new URLSearchParams(location.search);
 // Dónde se da de alta: la plataforma de producción; con ?pruebas=1, el entorno de pruebas (Stripe en modo de prueba, nada real).
 // Las claves «anon» son públicas por diseño: solo sirven para llamar a la función «alta», que lo comprueba todo.
 const ENTORNOS = {
-  produccion: { url: 'https://bxivvtdcatceopruhnnc.supabase.co', panel: 'https://app.dlchealthgroup.com/',   // pasará a https://app.delcos.app/ con el cambio de dirección
+  produccion: { url: 'https://bxivvtdcatceopruhnnc.supabase.co', panel: 'https://app.delcos.app/',
     anon: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ4aXZ2dGRjYXRjZW9wcnVobm5jIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTAxMTE2MjksImV4cCI6MjEwNTY4NzYyOX0.b4RGIlcKdWWHe6mUFjUGZ1KCfo7lN1DOCZlkfGF_a3U' },
   pruebas: { url: 'https://ozcsaedtlrklfvkkludm.supabase.co', panel: 'https://apptest.delcos.app/',
     anon: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im96Y3NhZWR0bHJrbGZ2a2tsdWRtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTAyMTkxNDIsImV4cCI6MjEwNTc5NTE0Mn0.2RC4BrO-186cAGbOkIUqKNsNZkYF8uOfQ4QJHoQL4Zk' } };
