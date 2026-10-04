@@ -44,6 +44,7 @@ input.mal{border-color:#B42318}
 .trampa{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
 .alta .boton[type="submit"]{height:58px;font-size:18px;align-self:flex-start;padding:0 34px}
 .nota{margin:-14px 0 0;font-size:14.5px;color:var(--texto2)}
+.nota.lista{color:var(--ok)}
 .pasos-a{display:flex;flex-direction:column;gap:18px;margin:0;padding:0;list-style:none}
 .pasos-a li{display:flex;gap:14px}
 .pasos-a i{flex-shrink:0;width:32px;height:32px;border-radius:50%;background:var(--celeste);color:var(--tinta);display:grid;place-items:center;font-style:normal;font-weight:700;font-family:var(--f-titulo)}
@@ -104,10 +105,10 @@ input.mal{border-color:#B42318}
       <section class="bloque">
         <h2>Tus datos</h2>
         <div class="datos">
-          <div class="campo"><label for="empresa">Empresa</label><input id="empresa" autocomplete="organization" required><span class="error" data-err="empresa"></span></div>
-          <div class="campo"><label for="nif">NIF de la empresa <small>(opcional)</small></label><input id="nif" autocomplete="off"></div>
+          <div class="campo"><label for="empresa">Empresa <small>(razón social)</small></label><input id="empresa" autocomplete="organization" required><span class="error" data-err="empresa"></span></div>
+          <div class="campo"><label for="nif">NIF o CIF</label><input id="nif" autocomplete="off" autocapitalize="characters" placeholder="B65410011" required><span class="error" data-err="nif"></span></div>
           <div class="campo"><label for="nombre">Tu nombre y apellidos</label><input id="nombre" autocomplete="name" required><span class="error" data-err="nombre"></span></div>
-          <div class="campo"><label for="telefono">Teléfono <small>(opcional)</small></label><input id="telefono" type="tel" autocomplete="tel" inputmode="tel"></div>
+          <div class="campo"><label for="telefono">Teléfono <small>(opcional)</small></label><input id="telefono" type="tel" autocomplete="tel" inputmode="tel"><span class="error" data-err="telefono"></span></div>
           <div class="campo ancho"><label for="email">Correo de trabajo</label><input id="email" type="email" autocomplete="email" required>
             <span class="error" data-err="email"></span></div>
           <div class="trampa" aria-hidden="true"><label for="web">Web</label><input id="web" tabindex="-1" autocomplete="off"></div>
@@ -117,8 +118,8 @@ input.mal{border-color:#B42318}
         </div>
       </section>
 
-      <button class="boton" id="enviar" type="submit">Empezar la prueba gratis</button>
-      <p class="nota">Te llevamos a la página segura de Stripe para dejar la tarjeta. Hoy no se cobra nada.</p>
+      <button class="boton" id="enviar" type="submit" disabled>Empezar la prueba gratis</button>
+      <p class="nota" id="falta">Completa tus datos y acepta la política de privacidad para continuar.</p>
     </form>
 
     <aside class="lado-form">
@@ -188,22 +189,51 @@ document.querySelectorAll('[data-n]').forEach(b => b.onclick = () => { $('usuari
 $('usuarios').onchange = () => { $('usuarios').value = usuarios(); pinta(); };
 pinta();
 const ERR = { empresa: 'Escribe el nombre de tu empresa.', nombre: 'Escribe tu nombre.', email: 'Revisa el correo: parece que le falta algo.',
-  email_existe: 'Ese correo ya tiene acceso a delcos. Entra con él o usa otro.', acepta: 'Para seguir, acepta el aviso legal y la política de privacidad.',
+  email_existe: 'Ese correo ya tiene acceso a delcos. Entra con él o usa otro.', nif: 'Revisa el NIF o CIF: no es válido.',
+  telefono: 'Revisa el teléfono: faltan cifras.', acepta: 'Para seguir, acepta el aviso legal y la política de privacidad.',
   usuarios: 'Entre 3 y 49 usuarios.', demasiadas: 'Has hecho muchos intentos seguidos. Espera un rato y vuelve a probar.',
   robot: 'No hemos podido comprobar el formulario. Vuelve a intentarlo.', configuracion: 'El alta no está disponible ahora mismo. Escríbenos y te ayudamos.' };
+// Comprobaciones (las mismas que hace la función «alta»): NIF, NIE o CIF con su control, nombre con apellidos, correo y teléfono
+function nifValido(v) {
+  v = String(v || '').toUpperCase().replace(/[\s.-]/g, '');
+  const L = 'TRWAGMYFPDXBNJZSQVHLCKE';
+  if (/^\d{8}[A-Z]$/.test(v)) return L[+v.slice(0, 8) % 23] === v[8];
+  if (/^[XYZ]\d{7}[A-Z]$/.test(v)) return L[+('XYZ'.indexOf(v[0]) + v.slice(1, 8)) % 23] === v[8];
+  if (/^[ABCDEFGHJNPQRSUVW]\d{7}[0-9A-J]$/.test(v)) {
+    let s = 0;
+    for (let i = 0; i < 7; i++) { const x = +v[i + 1]; if (i % 2 === 0) { const y = x * 2; s += Math.floor(y / 10) + (y % 10); } else s += x; }
+    const c = (10 - (s % 10)) % 10;
+    return v[8] === String(c) || v[8] === 'JABCDEFGHI'[c];
+  }
+  return false;
+}
+const COMPRUEBA = {
+  empresa: v => v.trim().length >= 2 || 'Escribe el nombre de tu empresa.',
+  nif: v => nifValido(v) || 'Revisa el NIF o CIF: no es válido.',
+  nombre: v => v.trim().split(/\s+/).filter(x => x.length > 1).length >= 2 || 'Escribe tu nombre y al menos un apellido.',
+  email: v => /^[^@\s]+@[^@\s]+\.[a-z]{2,}$/i.test(v.trim()) || 'Revisa el correo: parece que le falta algo.',
+  telefono: v => !v.trim() || v.replace(/\D/g, '').length >= 9 || 'Revisa el teléfono: faltan cifras.' };
+const tocados = new Set();
+function revisa(mostrar) {
+  let ok = true;
+  Object.keys(COMPRUEBA).forEach(k => { const r = COMPRUEBA[k]($(k).value); if (r !== true) ok = false; if (mostrar || tocados.has(k)) marca(k, r === true ? '' : r); });
+  const acepta = $('acepta').checked; if (!acepta) ok = false;
+  $('enviar').disabled = !ok;
+  $('falta').textContent = ok ? 'Te llevamos a la página segura de Stripe para dejar la tarjeta. Hoy no se cobra nada.'
+    : !acepta && Object.keys(COMPRUEBA).every(k => COMPRUEBA[k]($(k).value) === true) ? 'Acepta el aviso legal y la política de privacidad para continuar.'
+    : 'Completa tus datos y acepta la política de privacidad para continuar.';
+  $('falta').classList.toggle('lista', ok);
+  return ok;
+}
+Object.keys(COMPRUEBA).forEach(k => { $(k).addEventListener('input', () => revisa(false)); $(k).addEventListener('blur', () => { if ($(k).value.trim()) tocados.add(k); revisa(false); }); });
+$('acepta').addEventListener('change', () => revisa(false));
 const marca = (campo, t) => { const e = document.querySelector(`[data-err="${campo}"]`); if (e) e.textContent = t || ''; const i = $(campo); if (i && i.type !== 'checkbox') i.classList.toggle('mal', !!t); };
 $('alta').addEventListener('submit', async e => {
   e.preventDefault(); if (!PRUEBAS) aviso('');
-  ['empresa', 'nombre', 'email', 'acepta'].forEach(c => marca(c, ''));
+  if (!revisa(true)) { const k = Object.keys(COMPRUEBA).find(x => COMPRUEBA[x]($(x).value) !== true); if (k) $(k).focus(); else marca('acepta', ERR.acepta); return; }
   const d = { empresa: $('empresa').value.trim(), nif: $('nif').value.trim(), nombre: $('nombre').value.trim(), email: $('email').value.trim(),
     telefono: $('telefono').value.trim(), plan: est.plan, pago: est.pago, usuarios: usuarios(), acepta: $('acepta').checked,
     web: $('web').value, t: Date.now() - t0, volver: location.origin + location.pathname + (PRUEBAS ? '?pruebas=1' : '') };
-  let mal = null;
-  if (!d.empresa) { marca('empresa', ERR.empresa); mal = mal || 'empresa'; }
-  if (!d.nombre) { marca('nombre', ERR.nombre); mal = mal || 'nombre'; }
-  if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(d.email)) { marca('email', ERR.email); mal = mal || 'email'; }
-  if (!d.acepta) { marca('acepta', ERR.acepta); mal = mal || 'acepta'; }
-  if (mal) { $(mal).focus(); return; }
   const b = $('enviar'); b.disabled = true; b.textContent = 'Preparando tu alta…';
   try {
     const r = await fetch(E.url + '/functions/v1/alta', { method: 'POST', headers: { 'Content-Type': 'application/json', apikey: E.anon }, body: JSON.stringify(d) });
@@ -212,7 +242,7 @@ $('alta').addEventListener('submit', async e => {
     if (res.campo) { marca(res.campo, ERR[res.error] || ERR[res.campo]); if ($(res.campo)) $(res.campo).focus(); }
     else aviso(ERR[res.error] || 'No se ha podido empezar el alta. Vuelve a intentarlo en un momento o escríbenos.');
   } catch (x) { aviso('No hay conexión. Revisa internet y vuelve a intentarlo.'); }
-  b.disabled = false; b.textContent = 'Empezar la prueba gratis';
+  b.textContent = 'Empezar la prueba gratis'; revisa(false);
 });
 })();
 </script>
