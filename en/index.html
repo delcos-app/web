@@ -957,11 +957,10 @@ body.noche .arriba .pista{stroke:var(--linea-t)}
   <div class="wrap canal-in">
     <div class="canal-txt">
       <div class="ojo">The channel</div>
-      <h2 class="titular" data-letras>Your clients don’t buy. <em>They recommend.</em></h2>
+      <h2 class="titular" data-letras>A direct channel <em>with every professional.</em></h2>
       <p class="entrada">Your professionals log in to delcos with their own access, which their rep grants from their record. What today gets lost between emails, messages and calls moves into a single two-way channel, linked to their record.</p>
       <ul class="canal-lista">
-        <li><span class="estado hoy">Available</span><b>Their report, always up to date</b><p>What has been sold on their recommendation month by month, their position among professionals and how consistent their patients are: how many started, repeat, stopped after the first order or have not ordered for over 60 days. Figures only, and from 5 patients up.</p></li>
-        <li><span class="estado hoy">Available</span><b>Instant alerts</b><p>Every time an order is logged in their name, they get an alert.</p></li>
+        <li><span class="estado hoy">Available</span><b>Their patients’ follow-up</b><p>How many started, how many come back, how many stopped after the first order and how many have not ordered for over 60 days. Figures only, no health data, and from 5 patients up.</p></li>
         <li><span class="estado hoy">Available</span><b>Materials and questions</b><p>They request the materials your company offers and send you their questions. You get an alert and it stays in their record; they see when you deliver it and your reply.</p></li>
         <li><span class="estado hoy">Available</span><b>Centre orders</b><p>The centre restocks only the products it has set up, at its own price. It reaches you as a draft to approve, and the centre sees whether it is pending, approved or packed.</p></li>
       </ul>
@@ -1019,7 +1018,7 @@ body.noche .arriba .pista{stroke:var(--linea-t)}
       <div class="caso-marca">
         <span class="fundador">Founding client</span>
         <img src="../clientes/dlc-health-group.webp" alt="DLC Health Group" width="900" height="404" loading="lazy">
-        <p>A laboratory founded in 2025, with its own formulations and a catalogue specialised in the musculoskeletal area. It works with healthcare professionals, who recommend its products to their patients.</p>
+        <p>A laboratory founded in 2025, with its own formulations and a catalogue specialised in the musculoskeletal area. It works with healthcare professionals, clinics and healthcare centres.</p>
       </div>
       <div class="caso-der">
         <svg class="caso-orbita" viewBox="0 0 200 200" aria-hidden="true"><circle cx="100" cy="100" r="80" fill="none" stroke="#C5D5E4" stroke-dasharray="2 6"/><circle cx="100" cy="20" r="7" fill="#7CC3EC"/></svg>
@@ -1034,16 +1033,16 @@ body.noche .arriba .pista{stroke:var(--linea-t)}
     <div class="recorrido" id="recorrido">
       <div class="rec-cabeza">
         <div class="ojo">How DLC Health Group works with delcos</div>
-        <h3>From the professional who recommends <em>to the rep’s commission.</em></h3>
+        <h3>From visit to invoice, <em>with the same data.</em></h3>
       </div>
       <div class="rec-pista" aria-hidden="true"><i id="rec-avance"></i><b id="rec-sat"></b></div>
       <ol class="rec-pasos">
         <li><span class="n">01</span><b>The visit</b><p>Its rep visits the professional and logs the visit on their phone on the way out.</p></li>
-        <li><span class="n">02</span><b>The recommendation</b><p>The professional recommends the product to their patient.</p></li>
-        <li><span class="n">03</span><b>The call</b><p>The patient orders by phone and telesales logs the order, credited to whoever recommended it.</p></li>
+        <li><span class="n">02</span><b>The call</b><p>The patient orders by phone and telesales logs the order on the same call.</p></li>
+        <li><span class="n">03</span><b>The follow-up</b><p>You see who buys, who comes back and who stops, so you call in time.</p></li>
         <li><span class="n">04</span><b>The warehouse</b><p>The order ships from its batch, with its expiry date.</p></li>
         <li><span class="n">05</span><b>The invoice</b><p>Invoiced with VeriFactu and collected, with no other software.</p></li>
-        <li><span class="n">06</span><b>The commission</b><p>The rep sees this month’s commission and management sees the figures for the whole network.</p></li>
+        <li><span class="n">06</span><b>The figures</b><p>Each rep sees their own and management sees the whole network’s figures as they happen.</p></li>
       </ol>
     </div>
     <div class="historia">
@@ -1162,18 +1161,18 @@ const DIA = [
   { h: '19:00', rol: 'Management', img: 'labs_e_analitica', t: 'The day’s figures, without asking.', d: 'Sales by area, product, client and rep. And this month’s commissions, calculated by tiers.' }
 ];
 // Lo que cada momento del día pasa al siguiente: [para quién, qué]
-const RELEVOS = [['Sales rep', 'Today’s appointments and route'], ['The visit', 'The appointment, with its record'], ['Telesales', 'The recommendation'], ['Warehouse', 'The order'],
+const RELEVOS = [['Sales rep', 'Today’s appointments and route'], ['The visit', 'The appointment, with its record'], ['Telesales', 'The clients due a call'], ['Warehouse', 'The order'],
   ['Purchasing', 'Stock below minimum'], ['Accounts', 'The order shipped'], ['Management', 'Invoice and payment']];
 const PARA_QUIEN = [
-  { ojo: 'Laboratories and nutraceuticals', t: 'From rep to warehouse, one set of data.', d: 'The visit generates the recommendation, the recommendation the order, and the order moves its batch and its invoice.', usa: ['Visits', 'Samples', 'Batches', 'Invoicing'] },
+  { ojo: 'Laboratories and nutraceuticals', t: 'From rep to warehouse, one set of data.', d: 'The visit, the order, the batch and the invoice share the same data, and you see who buys, who comes back and who stops.', usa: ['Visits', 'Samples', 'Batches', 'Invoicing'] },
   { ojo: 'Medical detailing', t: 'Every doctor, their history and their route.', d: 'Records with practice, hours and stage; routes that respect when each one sees visitors.', usa: ['Accounts', 'Calendar', 'Routes', 'Follow-up'], oscura: true },
   { ojo: 'Hospital and surgical supplies', t: 'Long cycles, under control.', d: 'Contacts by department, products under evaluation, approvals and large orders with batch traceability.', usa: ['Contacts', 'Approval', 'Traceability'] },
   { ojo: 'Pharma sales', t: 'Pharmacies that restock on time.', d: 'Visits, telesales and orders in the same portfolio, with the calls to make in plain sight.', usa: ['Pharmacies', 'Telesales', 'Orders'] },
-  { ojo: 'Veterinary', t: 'Clinics and vets, in their own language.', d: 'Specialties, owners instead of patients, and the recommendation credited to whoever makes it.', usa: ['Vets', 'Recommendation', 'Orders'] },
-  { ojo: 'Orthopaedics and dental', t: 'Samples, clinics and restocking.', d: 'Prescribers, centres and clinics with their usage, their discounts and their stock.', usa: ['Clinics', 'Discounts', 'Stock'] }
+  { ojo: 'Veterinary', t: 'Clinics and vets, in their own language.', d: 'Specialties, owners instead of patients, and who buys, who comes back and who stops.', usa: ['Vets', 'Follow-up', 'Orders'] },
+  { ojo: 'Orthopaedics and dental', t: 'Samples, clinics and restocking.', d: 'Professionals, centres and clinics with their usage, their discounts and their stock.', usa: ['Clinics', 'Discounts', 'Stock'] }
 ];
 const TALLAS = [
-  ['Small', 'From 3 to 10 people', 'Organise your accounts, take orders and invoice without any other software.'],
+  ['Small', 'From 3 to 10 people', 'From €24 per user and no months of implementation: import your Excel, invite your team and add your brand.'],
   ['Medium-sized', 'From 10 to 50', 'Areas, batch-tracked stock, purchasing and tiered commissions, with every role in its place.'],
   ['Large', 'Over 50', 'Several teams and warehouses, role-based permissions, auditing and a custom plan.']
 ];
@@ -1182,7 +1181,7 @@ const MODULOS = [
   { g: '', ojo: 'Data quality', t: 'A portfolio with no gaps', d: 'No phone, no centre or no rep: you see it at a glance and fill it in.', img: 'labs_e_seguimiento' },
   { g: '', ojo: 'Calendar', t: 'Your day, your week and your month', d: 'Today’s appointments with suggestions of who to see, on a single screen.', img: 'labs_e_agenda' },
   { g: 'g8', ojo: 'Routes', t: 'Routes proposed every morning', d: 'Up to three routes, each in one area, filled to your working day: urgent visits, who is consulting that day, interested prospects, pending visits and good clients. Into your calendar in one click.', img: 'labs_e_rutas' },
-  { g: 'g8', ojo: 'Orders', t: 'From visit to order', d: 'Patient recommendation or sale to a centre, with discounts, shipping and the operations of every order.', img: 'labs_e_ventas' },
+  { g: 'g8', ojo: 'Orders', t: 'From visit to order', d: 'Sales to patients or centres, with discounts, shipping and the operations of every order.', img: 'labs_e_ventas' },
   { g: '', ojo: 'New sale', t: 'Repeat the last order in one click', d: 'Find the client, repeat their last order or note what they want, and close.', img: 'pharma_e_nueva_venta' },
   { g: 'g6', ojo: 'Opportunities', t: 'Measure the sales that don’t close, too', d: 'Conversion, value won and lost, what people ask for, at what time and through which channel each client arrives.', img: 'pharma_e_oportunidades' },
   { g: 'g6', ojo: 'Web orders', t: 'Online sales, separate and measured', d: 'Orders placed through your website, with their own filter and sales summary.', img: 'pharma_e_pedidos_web' },
@@ -1200,27 +1199,27 @@ const MODULOS = [
   { g: '', ojo: 'Catalogues', t: 'Make it fit your company, no coding', d: 'Specialties, reasons, outcomes and custom fields, with no coding.', img: 'labs_e_clasificadores' }
 ];
 const RAZONES = [
-  ['Speaks your language', 'Doctor, clinic, pharmacy or hospital contact; “Prescribes”, “Active client” or “Approved”. Each company sets its own words and stages.'],
+  ['Speaks your language', 'Doctor, clinic, pharmacy or hospital contact; “Interested”, “Active client” or “Approved”. Each company sets its own words and stages.'],
   ['Knows where the visit happens', 'Centres with floor and room, each professional’s consulting hours and how to find them inside. Routes respect all of it.'],
-  ['Understands recommendations', 'A sale the patient makes on a professional’s advice is credited to that professional and to their rep. And sales to centres, with their discount.'],
+  ['Knows who needs you', 'Who calls you and where they come from, who buys, who comes back and who stops. And sales to centres, with their discount.'],
   ['Controls samples and batches', 'Samples and materials go out with the visit; stock is tracked by batch and expiry, from purchase to sale.'],
   ['From order to invoice, all in one place', 'Every order is invoiced with VeriFactu, the right VAT (21, 10, 4 or 0 %) and its payment. Need a correction? A credit note. Nothing to copy into other software.'],
   ['Organises the team', 'Exclusive accounts by area, role-based permissions and tiered commissions. Management sees everything; each rep sees their own.'],
   ['Looks after your data', 'One record per person, the change history of every record and daily backups, in the European Union. Each company kept separate from the rest.']
 ];
 const SECTORES = [
-  { clave: 'labs', esc: 'labs_e_ventas', nombre: 'Laboratories', empresa: 'Company Labs', titulo: 'Every recommendation, credited to whoever made it.',
-    fuertes: [['Patient recommendation', 'The sale the patient makes is credited to the doctor who recommended it and to their rep.'], ['Samples with batches', 'Each sample leaves the warehouse with the visit, with its batch and expiry date.'], ['The visit cycle', 'Introduced, interested, prescribes: the stage moves on when the visit is logged.']], estados: ['Introduced', 'Interested', 'Prescribes'] },
-  { clave: 'dental', esc: 'dental_e_directorio', nombre: 'Dental', empresa: 'Company Dental', titulo: 'More clinics buying, and buying more.',
-    fuertes: [['Clinics by specialty', 'Implantology, orthodontics, aesthetics or general: each record with its centre and its potential.'], ['Restocking with discounts', 'Consumables orders with volume discounts and their invoice.'], ['A shared-out portfolio', 'Each clinic with its rep and its stage: visited, interested or client.']], estados: ['Visited', 'Interested', 'Client'] },
-  { clave: 'orto', esc: 'orto_e_ventas', nombre: 'Orthopaedics', empresa: 'Company Orto', titulo: 'From the physio who recommends to the shop that sells.',
-    fuertes: [['A network of prescribers', 'Physiotherapists, podiatrists and orthotists, each with their centre and their days.'], ['Samples at every visit', 'What is left at the practice comes out of stock and is logged on the record.'], ['Sales to orthopaedic shops', 'Orders to centres with their discount, linked to the professional who generated them.']], estados: ['Introduced', 'Interested', 'Recommends'] },
+  { clave: 'labs', esc: 'labs_e_ventas', nombre: 'Laboratories', empresa: 'Company Labs', titulo: 'Who buys, who comes back and who stops.',
+    fuertes: [['Every client, their history', 'What they ordered, when and through which channel they arrived, so you call back in time.'], ['Samples with batches', 'Each sample leaves the warehouse with the visit, with its batch and expiry date.'], ['The visit cycle', 'Introduced, interested, active: the stage moves on when the visit is logged.']], estados: ['Introduced', 'Interested', 'Active'] },
+  { clave: 'dental', esc: 'dental_e_directorio', nombre: 'Dental', empresa: 'Company Dental', titulo: 'The clinic’s order, repeated in one tap.',
+    fuertes: [['Clinics by specialty', 'Implantology, orthodontics, aesthetics or general: each record with its centre and its potential.'], ['Restocking with discounts', 'Consumables orders with volume discounts and their invoice.'], ['Batches and expiry dates', 'Every product with its batch and expiry date, from purchase to the clinic.'], ['Restocking from their portal', 'The clinic orders what it has set up, at its own price, and sees where its order stands.']], estados: ['Visited', 'Interested', 'Client'] },
+  { clave: 'orto', esc: 'orto_e_ventas', nombre: 'Orthopaedics', empresa: 'Company Orto', titulo: 'From physio to orthopaedic shop, in one portfolio.',
+    fuertes: [['A network of professionals', 'Physiotherapists, podiatrists and orthotists, each with their centre and their days.'], ['Samples at every visit', 'What is left at the practice comes out of stock and is logged on the record.'], ['Sales to orthopaedic shops', 'Orders to centres with their discount, their batch and their invoice.']], estados: ['Introduced', 'Interested', 'Active'] },
   { clave: 'pharma', esc: 'pharma_e_llamadas', nombre: 'Pharmacy', empresa: 'Company Pharma', titulo: 'Pharmacies that restock without slipping through the cracks.',
     fuertes: [['Calls to make', 'Pharmacies that didn’t buy and the ones you promised to call back, in sight every morning.'], ['Order on the call', 'The call ends in an order with its discount, its batch and its VeriFactu invoice.'], ['Visits and telesales, together', 'The rep and telesales work the same pharmacy portfolio.']], estados: ['Visited', 'Interested', 'Active client'] },
   { clave: 'medtech', esc: 'medtech_e_directorio', nombre: 'Hospital', empresa: 'Company Medtech', titulo: 'From the department that evaluates to the hospital that approves.',
     fuertes: [['Contacts by department', 'Nursing, supervisors, theatre or purchasing: each contact with their hospital and their weight in the decision.'], ['Evaluation and approval', 'Stages follow the real cycle: introduced, under evaluation, approved.'], ['Batch traceability', 'Large orders with the batch and expiry of every product, from purchase to hospital.']], estados: ['Introduced', 'Under evaluation', 'Approved'] },
-  { clave: 'vet', esc: 'vet_e_directorio', nombre: 'Veterinary', empresa: 'Company Vet', titulo: 'Veterinary clinics, in their own language.',
-    fuertes: [['Vets by specialty', 'Small animals, exotics, traumatology or dermatology, with their clinic and their days.'], ['Owners, not patients', 'The whole app speaks like the sector: vets, clinics and owners.'], ['Credited recommendations', 'What the owner buys on the vet’s advice counts for the vet and their rep.']], estados: ['Introduced', 'Interested', 'Recommends'] }
+  { clave: 'vet', esc: 'vet_e_directorio', nombre: 'Veterinary', empresa: 'Company Vet', titulo: 'Speaks your sector’s language: vet, owner, clinic.',
+    fuertes: [['Vets by specialty', 'Small animals, exotics, traumatology or dermatology, with their clinic and their days.'], ['Your way, no coding', 'Words, stages and record fields are changed from the settings.'], ['Owners who come back', 'Who buys, who comes back and who has not ordered for a while.']], estados: ['Introduced', 'Interested', 'Active'] }
 ];
 const PREGUNTAS = [
   ['Who is delcos for?', 'For laboratories, distributors and manufacturers that sell through healthcare professionals and centres: medical detailing, dental, orthopaedics, pharmacy, hospital and veterinary.'],
@@ -1356,18 +1355,18 @@ function carrusel(contenedor, items, alCambiar, dur = 5200) {
 /* ================= sectores: la órbita del sector (su ciclo de trabajo, paso a paso) ================= */
 // [parada, qué pasa, punto fuerte que se enciende]
 const CICLOS = {
-  labs: [['Visit', 'The rep presents the product and leaves samples with their batch.', 1], ['Recommendation', 'The doctor recommends it to their patient and their stage moves on.', 2],
-    ['Sale', 'The patient buys at the pharmacy or online.', 0], ['Credit', 'The sale counts for the doctor who recommended it and for their rep.', 0]],
+  labs: [['Visit', 'The rep presents the product and leaves samples with their batch.', 1], ['Interest', 'The doctor asks for more information and their stage moves on.', 2],
+    ['Sale', 'The patient buys at the pharmacy or online.', 0], ['Follow-up', 'Who comes back and who stops, so you return in time.', 0]],
   dental: [['Visit', 'Each clinic, with its specialty and its potential.', 0], ['Interest', 'The clinic moves from visited to interested.', 2],
     ['Order', 'Restocking consumables with a volume discount.', 1], ['Client', 'Invoice issued and the clinic, a client of its rep.', 2]],
   orto: [['Visit', 'To the physio, the podiatrist or the technician, on their days.', 0], ['Sample', 'What is left at the practice comes out of stock.', 1],
-    ['Recommends', 'The professional sends the patient to the orthopaedic shop.', 0], ['Sale', 'The shop buys and it counts for whoever recommended it.', 2]],
+    ['Order', 'The shop orders with its discount.', 2], ['Restocking', 'Who comes back and who has not ordered for a while.', 0]],
   pharma: [['Visit', 'The rep drops by the pharmacy.', 2], ['Call', 'Telesales calls the one that needs restocking.', 0],
     ['Order', 'With its discount and its batch, on the same call.', 1], ['Invoice', 'With VeriFactu and its payment, without leaving delcos.', 1]],
   medtech: [['Contact', 'Nursing, supervisors or purchasing in each department.', 0], ['Evaluation', 'The product goes on trial in the department.', 1],
     ['Approval', 'The hospital approves it and the stage moves on.', 1], ['Order', 'Large orders with their batch and expiry.', 2]],
-  vet: [['Visit', 'To the vet, with their clinic and their days.', 0], ['Recommends', 'They recommend the product to the owner.', 1],
-    ['Purchase', 'The owner buys at the clinic or online.', 2], ['Credit', 'The sale counts for the vet and their rep.', 2]]
+  vet: [['Visit', 'To the vet, with their clinic and their days.', 0], ['Interest', 'The clinic asks for more information and its stage moves on.', 1],
+    ['Purchase', 'The owner buys at the clinic or online.', 2], ['Follow-up', 'Who comes back and who stops.', 2]]
 };
 // Dónde se para cada paso en la órbita (grados; 0 = derecha, en el sentido del reloj): arriba a la izquierda, arriba a la derecha, a la derecha y abajo
 const CIC_ANG = [214, 290, 336, 485];

@@ -957,11 +957,10 @@ body.noche .arriba .pista{stroke:var(--linea-t)}
   <div class="wrap canal-in">
     <div class="canal-txt">
       <div class="ojo">El canal</div>
-      <h2 class="titular" data-letras>Tu cliente no compra. <em>Recomienda.</em></h2>
+      <h2 class="titular" data-letras>Un canal directo <em>con cada profesional.</em></h2>
       <p class="entrada">Tus profesionales entran en delcos con su propio acceso, que les da su comercial desde la ficha. Lo que hoy se pierde entre correos, mensajes y llamadas pasa a un solo canal, de ida y vuelta, unido a su ficha.</p>
       <ul class="canal-lista">
-        <li><span class="estado hoy">Disponible</span><b>Su informe, siempre al día</b><p>Lo que se ha vendido por su recomendación mes a mes, su posición entre los profesionales y la constancia de sus pacientes: cuántos empezaron, repiten, lo dejaron tras el primer pedido o llevan más de 60 días sin pedir. Solo cifras, y a partir de 5 pacientes.</p></li>
-        <li><span class="estado hoy">Disponible</span><b>Avisos al momento</b><p>Cada vez que se registra un pedido a su nombre, le llega un aviso.</p></li>
+        <li><span class="estado hoy">Disponible</span><b>El seguimiento de sus pacientes</b><p>Cuántos empezaron, cuántos repiten, cuántos lo dejaron tras el primer pedido y cuántos llevan más de 60 días sin pedir. Solo cifras, sin datos de salud, y a partir de 5 pacientes.</p></li>
         <li><span class="estado hoy">Disponible</span><b>Material y dudas</b><p>Piden el material que tu empresa ofrece y te escriben sus dudas. Te llega como aviso y queda en su ficha; ellos ven cuándo se lo entregas y tu respuesta.</p></li>
         <li><span class="estado hoy">Disponible</span><b>Pedidos del centro</b><p>El centro repone solo los productos que tiene dados de alta, a su precio. Te llega como borrador para validar y el centro ve si está pendiente, validado o preparado.</p></li>
       </ul>
@@ -1019,7 +1018,7 @@ body.noche .arriba .pista{stroke:var(--linea-t)}
       <div class="caso-marca">
         <span class="fundador">Cliente fundador</span>
         <img src="clientes/dlc-health-group.webp" alt="DLC Health Group" width="900" height="404" loading="lazy">
-        <p>Laboratorio fundado en 2025, con formulación propia y un catálogo especializado en el área musculoesquelética. Trabaja con profesionales sanitarios, que recomiendan sus productos a sus pacientes.</p>
+        <p>Laboratorio fundado en 2025, con formulación propia y un catálogo especializado en el área musculoesquelética. Trabaja con profesionales sanitarios, clínicas y centros de salud.</p>
       </div>
       <div class="caso-der">
         <svg class="caso-orbita" viewBox="0 0 200 200" aria-hidden="true"><circle cx="100" cy="100" r="80" fill="none" stroke="#C5D5E4" stroke-dasharray="2 6"/><circle cx="100" cy="20" r="7" fill="#7CC3EC"/></svg>
@@ -1034,16 +1033,16 @@ body.noche .arriba .pista{stroke:var(--linea-t)}
     <div class="recorrido" id="recorrido">
       <div class="rec-cabeza">
         <div class="ojo">Así trabaja DLC Health Group con delcos</div>
-        <h3>Del profesional que recomienda <em>a la comisión de su comercial.</em></h3>
+        <h3>De la visita a la factura, <em>con el mismo dato.</em></h3>
       </div>
       <div class="rec-pista" aria-hidden="true"><i id="rec-avance"></i><b id="rec-sat"></b></div>
       <ol class="rec-pasos">
         <li><span class="n">01</span><b>La visita</b><p>Su delegado visita al profesional y la registra en el móvil al salir.</p></li>
-        <li><span class="n">02</span><b>La recomendación</b><p>El profesional recomienda el producto a su paciente.</p></li>
-        <li><span class="n">03</span><b>La llamada</b><p>El paciente pide por teléfono y televenta registra el pedido, atribuido a quien lo recomendó.</p></li>
+        <li><span class="n">02</span><b>La llamada</b><p>El paciente pide por teléfono y televenta registra el pedido en la misma llamada.</p></li>
+        <li><span class="n">03</span><b>El seguimiento</b><p>Se ve quién compra, quién repite y quién lo deja, para llamar a tiempo.</p></li>
         <li><span class="n">04</span><b>El almacén</b><p>El pedido sale de su lote, con su caducidad.</p></li>
         <li><span class="n">05</span><b>La factura</b><p>Factura con VeriFactu y su cobro, sin otro programa.</p></li>
-        <li><span class="n">06</span><b>La comisión</b><p>El comercial ve su comisión del mes y dirección, las cifras de toda la red.</p></li>
+        <li><span class="n">06</span><b>Las cifras</b><p>Cada comercial ve lo suyo y dirección, las cifras de toda la red al momento.</p></li>
       </ol>
     </div>
     <div class="historia">
@@ -1162,18 +1161,18 @@ const DIA = [
   { h: '19:00', rol: 'Dirección', img: 'labs_e_analitica', t: 'Las cifras del día, sin pedirlas.', d: 'Ventas por zona, producto, cliente y comercial. Y las comisiones del mes, calculadas por tramos.' }
 ];
 // Lo que cada momento del día pasa al siguiente: [para quién, qué]
-const RELEVOS = [['Comercial', 'Citas y ruta de hoy'], ['La visita', 'La cita, con su ficha'], ['Televenta', 'La recomendación'], ['Almacén', 'El pedido'],
+const RELEVOS = [['Comercial', 'Citas y ruta de hoy'], ['La visita', 'La cita, con su ficha'], ['Televenta', 'Los clientes que toca llamar'], ['Almacén', 'El pedido'],
   ['Compras', 'El stock bajo mínimos'], ['Administración', 'El pedido servido'], ['Dirección', 'Factura y cobro']];
 const PARA_QUIEN = [
-  { ojo: 'Laboratorios y nutracéutica', t: 'Del delegado al almacén, un mismo dato.', d: 'La visita genera la recomendación, la recomendación el pedido y el pedido mueve su lote y su factura.', usa: ['Visitas', 'Muestras', 'Lotes', 'Facturación'] },
+  { ojo: 'Laboratorios y nutracéutica', t: 'Del delegado al almacén, un mismo dato.', d: 'La visita, el pedido, el lote y la factura comparten el mismo dato, y ves quién compra, quién repite y quién lo deja.', usa: ['Visitas', 'Muestras', 'Lotes', 'Facturación'] },
   { ojo: 'Visita médica', t: 'Cada médico, su historia y su ruta.', d: 'Fichas con consulta, horario y estado; rutas que respetan cuándo atiende cada uno.', usa: ['Cartera', 'Agenda', 'Rutas', 'Seguimiento'], oscura: true },
   { ojo: 'Material hospitalario y quirúrgico', t: 'Ciclos largos, bajo control.', d: 'Contactos por servicio, pruebas en evaluación, homologaciones y pedidos grandes con trazabilidad por lote.', usa: ['Contactos', 'Homologación', 'Trazabilidad'] },
   { ojo: 'Comercial farmacéutico', t: 'Farmacias que reponen a tiempo.', d: 'Visita, televenta y pedido en la misma cartera, con las llamadas por hacer a la vista.', usa: ['Farmacias', 'Televenta', 'Pedidos'] },
-  { ojo: 'Veterinaria', t: 'Clínicas y veterinarios, con su idioma.', d: 'Especialidades, propietarios en lugar de pacientes y la recomendación atribuida a quien la hace.', usa: ['Veterinarios', 'Recomendación', 'Pedidos'] },
-  { ojo: 'Ortopedia y dental', t: 'Muestras, clínicas y reposición.', d: 'Prescriptores, centros y clínicas con su consumo, sus descuentos y su stock.', usa: ['Clínicas', 'Descuentos', 'Stock'] }
+  { ojo: 'Veterinaria', t: 'Clínicas y veterinarios, con su idioma.', d: 'Especialidades, propietarios en lugar de pacientes y quién compra, quién repite y quién lo deja.', usa: ['Veterinarios', 'Seguimiento', 'Pedidos'] },
+  { ojo: 'Ortopedia y dental', t: 'Muestras, clínicas y reposición.', d: 'Profesionales, centros y clínicas con su consumo, sus descuentos y su stock.', usa: ['Clínicas', 'Descuentos', 'Stock'] }
 ];
 const TALLAS = [
-  ['pequeña', 'De 3 a 10 personas', 'Ordena la cartera, toma pedidos y factura sin otro programa.'],
+  ['pequeña', 'De 3 a 10 personas', 'Desde 24 € por usuario y sin meses de implantación: importas tu Excel, invitas al equipo y pones tu marca.'],
   ['mediana', 'De 10 a 50', 'Zonas, almacén por lotes, compras y comisiones por tramos, con cada rol en su sitio.'],
   ['grande', 'Más de 50', 'Varios equipos y almacenes, permisos por rol, auditoría y un plan a medida.']
 ];
@@ -1182,7 +1181,7 @@ const MODULOS = [
   { g: '', ojo: 'Calidad del dato', t: 'Una cartera sin huecos', d: 'Sin teléfono, sin centro o sin comercial: lo ves de un vistazo y lo completas.', img: 'labs_e_seguimiento' },
   { g: '', ojo: 'Agenda', t: 'Tu día, tu semana y tu mes', d: 'Las citas de hoy con sugerencias de a quién ver, en una sola pantalla.', img: 'labs_e_agenda' },
   { g: 'g8', ojo: 'Rutas', t: 'Rutas propuestas cada mañana', d: 'Hasta tres rutas, cada una en una zona, llenas hasta tu jornada: urgentes, quien pasa consulta ese día, interesados, pendientes y buenos clientes. A tu agenda en un clic.', img: 'labs_e_rutas' },
-  { g: 'g8', ojo: 'Pedidos', t: 'De la visita al pedido', d: 'Recomendación al paciente o venta a centro, con descuentos, envío y la operativa de cada pedido.', img: 'labs_e_ventas' },
+  { g: 'g8', ojo: 'Pedidos', t: 'De la visita al pedido', d: 'Venta al paciente o a centro, con descuentos, envío y la operativa de cada pedido.', img: 'labs_e_ventas' },
   { g: '', ojo: 'Nueva venta', t: 'Repite el último pedido con un clic', d: 'Buscas al cliente, repites su último pedido o apuntas lo que quiere, y cierras.', img: 'pharma_e_nueva_venta' },
   { g: 'g6', ojo: 'Oportunidades', t: 'Mide también las ventas que no se cierran', d: 'Conversión, importe ganado y perdido, qué piden, a qué hora y por qué canal llega cada cliente.', img: 'pharma_e_oportunidades' },
   { g: 'g6', ojo: 'Pedidos web', t: 'La venta online, separada y medida', d: 'Los pedidos que llegan por la web, con su filtro y su propio resumen de ventas.', img: 'pharma_e_pedidos_web' },
@@ -1200,27 +1199,27 @@ const MODULOS = [
   { g: '', ojo: 'Catálogos', t: 'Adáptala a tu empresa sin programar', d: 'Especialidades, motivos, resultados y campos propios, sin programar.', img: 'labs_e_clasificadores' }
 ];
 const RAZONES = [
-  ['Habla tu idioma', 'Médico, clínica, farmacia o contacto de hospital; «Prescribe», «Cliente activa» u «Homologado». Cada empresa pone sus palabras y sus estados.'],
+  ['Habla tu idioma', 'Médico, clínica, farmacia o contacto de hospital; «Interesado», «Cliente activa» u «Homologado». Cada empresa pone sus palabras y sus estados.'],
   ['Sabe dónde se visita', 'Centros con planta y consulta, el horario de consulta de cada profesional y cómo llegar dentro. Las rutas lo respetan.'],
-  ['Entiende la recomendación', 'La venta que hace el paciente por indicación del profesional se atribuye a ese profesional y a su comercial. Y la venta a centro, con su descuento.'],
+  ['Sabe quién te necesita', 'Quién te llama y de dónde viene, quién compra, quién repite y quién lo deja. Y la venta a centro, con su descuento.'],
   ['Controla muestras y lotes', 'Las muestras y el material salen de la visita; el stock va por lote y caducidad, de la compra a la venta.'],
   ['Del pedido a la factura, sin salir', 'Cada pedido se factura con VeriFactu, con el IVA que toca (21, 10, 4 o 0 %) y su cobro. Si hay que corregir, rectificativa. Nada que copiar a otro programa.'],
   ['Ordena el equipo', 'Cartera exclusiva por zonas, permisos por rol y comisiones por tramos. Dirección lo ve todo; cada comercial, lo suyo.'],
   ['Cuida los datos', 'Una sola ficha por persona, el historial de cambios de cada ficha y copias de seguridad diarias, en la Unión Europea. Cada empresa, separada de las demás.']
 ];
 const SECTORES = [
-  { clave: 'labs', esc: 'labs_e_ventas', nombre: 'Laboratorios', empresa: 'Company Labs', titulo: 'Cada recomendación, atribuida a quien la generó.',
-    fuertes: [['Recomendación al paciente', 'La venta que hace el paciente se atribuye al médico que la recomendó y a su delegado.'], ['Muestras con lote', 'Cada muestra sale de la visita y del almacén con su lote y su caducidad.'], ['El ciclo de la visita', 'Presentado, interesado, prescribe: el estado avanza al registrar la visita.']], estados: ['Presentado', 'Interesado', 'Prescribe'] },
-  { clave: 'dental', esc: 'dental_e_directorio', nombre: 'Dental', empresa: 'Company Dental', titulo: 'Más clínicas que compran, y que compran más.',
-    fuertes: [['Clínicas por especialidad', 'Implantología, ortodoncia, estética o general: cada ficha con su centro y su potencial.'], ['Reposición con descuento', 'Pedidos de consumibles con descuento por volumen y su factura.'], ['Cartera repartida', 'Cada clínica con su comercial y su estado: visitada, interesada o cliente.']], estados: ['Visitada', 'Interesada', 'Cliente'] },
-  { clave: 'orto', esc: 'orto_e_ventas', nombre: 'Ortopedia', empresa: 'Company Orto', titulo: 'Del fisio que recomienda a la ortopedia que vende.',
-    fuertes: [['Red de prescriptores', 'Fisioterapeutas, podólogos y técnicos ortopédicos, cada uno con su centro y sus días.'], ['Muestras en cada visita', 'Lo que se deja en consulta sale del stock y queda en la ficha.'], ['Venta a ortopedias', 'Pedidos a centro con su descuento, unidos al profesional que los generó.']], estados: ['Presentado', 'Interesado', 'Recomienda'] },
+  { clave: 'labs', esc: 'labs_e_ventas', nombre: 'Laboratorios', empresa: 'Company Labs', titulo: 'Quién compra, quién repite y quién lo deja.',
+    fuertes: [['Cada cliente, su historial', 'Lo que pidió, cuándo y por qué canal llegó, para volver a llamar a tiempo.'], ['Muestras con lote', 'Cada muestra sale de la visita y del almacén con su lote y su caducidad.'], ['El ciclo de la visita', 'Presentado, interesado, activo: el estado avanza al registrar la visita.']], estados: ['Presentado', 'Interesado', 'Activo'] },
+  { clave: 'dental', esc: 'dental_e_directorio', nombre: 'Dental', empresa: 'Company Dental', titulo: 'El pedido de la clínica, repetido en un toque.',
+    fuertes: [['Clínicas por especialidad', 'Implantología, ortodoncia, estética o general: cada ficha con su centro y su potencial.'], ['Reposición con descuento', 'Pedidos de consumibles con descuento por volumen y su factura.'], ['Lotes y caducidades', 'Cada producto con su lote y su caducidad, de la compra a la clínica.'], ['Su reposición, desde su portal', 'La clínica pide lo que tiene dado de alta, a su precio, y ve en qué punto está su pedido.']], estados: ['Visitada', 'Interesada', 'Cliente'] },
+  { clave: 'orto', esc: 'orto_e_ventas', nombre: 'Ortopedia', empresa: 'Company Orto', titulo: 'Del fisio a la ortopedia, en la misma cartera.',
+    fuertes: [['Red de profesionales', 'Fisioterapeutas, podólogos y técnicos ortopédicos, cada uno con su centro y sus días.'], ['Muestras en cada visita', 'Lo que se deja en consulta sale del stock y queda en la ficha.'], ['Venta a ortopedias', 'Pedidos a centro con su descuento, su lote y su factura.']], estados: ['Presentado', 'Interesado', 'Activo'] },
   { clave: 'pharma', esc: 'pharma_e_llamadas', nombre: 'Farmacia', empresa: 'Company Pharma', titulo: 'Farmacias que reponen sin que se te escapen.',
     fuertes: [['Llamadas por hacer', 'Las farmacias que no compraron y las que quedaste en volver a llamar, a la vista cada mañana.'], ['Pedido en la llamada', 'La llamada acaba en pedido con su descuento, su lote y su factura con VeriFactu.'], ['Visita y televenta, juntas', 'El delegado y televenta trabajan la misma cartera de farmacias.']], estados: ['Visitada', 'Interesada', 'Cliente activa'] },
   { clave: 'medtech', esc: 'medtech_e_directorio', nombre: 'Hospital', empresa: 'Company Medtech', titulo: 'Del servicio que evalúa al hospital que homologa.',
     fuertes: [['Contactos por servicio', 'Enfermería, supervisión, quirófano o compras: cada contacto con su hospital y su peso en la decisión.'], ['Evaluación y homologación', 'Los estados siguen el ciclo real: presentado, en evaluación, homologado.'], ['Trazabilidad por lote', 'Pedidos grandes con el lote y la caducidad de cada producto, de la compra al hospital.']], estados: ['Presentado', 'En evaluación', 'Homologado'] },
-  { clave: 'vet', esc: 'vet_e_directorio', nombre: 'Veterinaria', empresa: 'Company Vet', titulo: 'Clínicas veterinarias, con su propio idioma.',
-    fuertes: [['Veterinarios por especialidad', 'Pequeños animales, exóticos, traumatología o dermatología, con su clínica y sus días.'], ['Propietarios, no pacientes', 'Toda la app habla como el sector: veterinarios, clínicas y propietarios.'], ['Recomendación atribuida', 'Lo que compra el propietario por indicación del veterinario cuenta para él y su comercial.']], estados: ['Presentado', 'Interesado', 'Recomienda'] }
+  { clave: 'vet', esc: 'vet_e_directorio', nombre: 'Veterinaria', empresa: 'Company Vet', titulo: 'Habla como tu sector: veterinario, propietario, clínica.',
+    fuertes: [['Veterinarios por especialidad', 'Pequeños animales, exóticos, traumatología o dermatología, con su clínica y sus días.'], ['A tu medida, sin programar', 'Las palabras, los estados y los campos de la ficha se cambian desde la configuración.'], ['Propietarios que repiten', 'Quién compra, quién repite y quién lleva tiempo sin pedir.']], estados: ['Presentado', 'Interesado', 'Activo'] }
 ];
 const PREGUNTAS = [
   ['¿Para qué empresas es delcos?', 'Para laboratorios, distribuidoras y fabricantes que venden a través de profesionales y centros sanitarios: visita médica, dental, ortopedia, farmacia, hospital y veterinaria.'],
@@ -1356,18 +1355,18 @@ function carrusel(contenedor, items, alCambiar, dur = 5200) {
 /* ================= sectores: la órbita del sector (su ciclo de trabajo, paso a paso) ================= */
 // [parada, qué pasa, punto fuerte que se enciende]
 const CICLOS = {
-  labs: [['Visita', 'El delegado presenta el producto y deja muestras con su lote.', 1], ['Recomendación', 'El médico se lo indica a su paciente y su estado avanza.', 2],
-    ['Venta', 'El paciente compra en la farmacia o en la web.', 0], ['Atribución', 'La venta cuenta para el médico que la recomendó y para su delegado.', 0]],
+  labs: [['Visita', 'El delegado presenta el producto y deja muestras con su lote.', 1], ['Interés', 'El médico pide más información y su estado avanza.', 2],
+    ['Venta', 'El paciente compra en la farmacia o en la web.', 0], ['Seguimiento', 'Quién repite y quién lo deja, para volver a tiempo.', 0]],
   dental: [['Visita', 'Cada clínica, con su especialidad y su potencial.', 0], ['Interés', 'La clínica pasa de visitada a interesada.', 2],
     ['Pedido', 'Reposición de consumibles con descuento por volumen.', 1], ['Cliente', 'Factura emitida y la clínica, cliente de su comercial.', 2]],
   orto: [['Visita', 'Al fisio, al podólogo o al técnico, en sus días.', 0], ['Muestra', 'Lo que se deja en consulta sale del stock.', 1],
-    ['Recomienda', 'El profesional envía al paciente a la ortopedia.', 0], ['Venta', 'La ortopedia compra y cuenta para quien lo recomendó.', 2]],
+    ['Pedido', 'La ortopedia pide con su descuento.', 2], ['Reposición', 'Quién repite y quién lleva tiempo sin pedir.', 0]],
   pharma: [['Visita', 'El delegado pasa por la farmacia.', 2], ['Llamada', 'Televenta llama a la que toca reponer.', 0],
     ['Pedido', 'Con su descuento y su lote, en la misma llamada.', 1], ['Factura', 'Con VeriFactu y su cobro, sin salir de delcos.', 1]],
   medtech: [['Contacto', 'Enfermería, supervisión o compras de cada servicio.', 0], ['Evaluación', 'El producto entra a prueba en el servicio.', 1],
     ['Homologación', 'El hospital lo aprueba y el estado avanza.', 1], ['Pedido', 'Pedidos grandes con su lote y su caducidad.', 2]],
-  vet: [['Visita', 'Al veterinario, con su clínica y sus días.', 0], ['Recomienda', 'Le indica el producto al propietario.', 1],
-    ['Compra', 'El propietario compra en la clínica o en la web.', 2], ['Atribución', 'La venta cuenta para el veterinario y su comercial.', 2]]
+  vet: [['Visita', 'Al veterinario, con su clínica y sus días.', 0], ['Interés', 'La clínica pide más información y su estado avanza.', 1],
+    ['Compra', 'El propietario compra en la clínica o en la web.', 2], ['Seguimiento', 'Quién repite y quién lo deja.', 2]]
 };
 // Dónde se para cada paso en la órbita (grados; 0 = derecha, en el sentido del reloj): arriba a la izquierda, arriba a la derecha, a la derecha y abajo
 const CIC_ANG = [214, 290, 336, 485];
