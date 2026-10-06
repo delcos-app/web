@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://www.delcos.app/</loc></url>
-  <url><loc>https://www.delcos.app/soporte.html</loc></url>
-  <url><loc>https://www.delcos.app/dudas.html</loc></url>
-  <url><loc>https://www.delcos.app/en/</loc></url>
-  <url><loc>https://www.delcos.app/en/soporte.html</loc></url>
-  <url><loc>https://www.delcos.app/en/dudas.html</loc></url>
-  <url><loc>https://www.delcos.app/empezar.html</loc></url>
+  <url><loc>https://www.delcos.app/</loc><lastmod>2026-10-06</lastmod></url>
+  <url><loc>https://www.delcos.app/soporte.html</loc><lastmod>2026-10-04</lastmod></url>
+  <url><loc>https://www.delcos.app/dudas.html</loc><lastmod>2026-10-04</lastmod></url>
+  <url><loc>https://www.delcos.app/en/</loc><lastmod>2026-10-06</lastmod></url>
+  <url><loc>https://www.delcos.app/en/soporte.html</loc><lastmod>2026-10-04</lastmod></url>
+  <url><loc>https://www.delcos.app/en/dudas.html</loc><lastmod>2026-10-04</lastmod></url>
+  <url><loc>https://www.delcos.app/empezar.html</loc><lastmod>2026-10-04</lastmod></url>
 </urlset>
