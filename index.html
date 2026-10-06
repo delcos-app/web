@@ -1179,7 +1179,7 @@ const TALLAS = [
 const MODULOS = [
   { g: 'g8', ojo: 'Cartera', t: 'Fichas con todo lo que importa', d: 'Profesionales, centros y clientes con su historial, horarios, estado comercial y tus propios campos.', img: 'labs_e_directorio' },
   { g: '', ojo: 'Calidad del dato', t: 'Una cartera sin huecos', d: 'Sin teléfono, sin centro o sin comercial: lo ves de un vistazo y lo completas.', img: 'labs_e_seguimiento' },
-  { g: '', ojo: 'Agenda', t: 'Tu día, tu semana y tu mes', d: 'Las citas de hoy con sugerencias de a quién ver, en una sola pantalla.', img: 'labs_e_agenda' },
+  { g: '', ojo: 'Agenda', t: 'Tu día, tu semana y tu mes', d: 'Las citas de hoy con sugerencias de a quién ver, en una sola pantalla. Registra tus visitas y citas aunque no haya cobertura: se envían solas al recuperarla.', img: 'labs_e_agenda' },
   { g: 'g8', ojo: 'Rutas', t: 'Rutas propuestas cada mañana', d: 'Hasta tres rutas, cada una en una zona, llenas hasta tu jornada: urgentes, quien pasa consulta ese día, interesados, pendientes y buenos clientes. A tu agenda en un clic.', img: 'labs_e_rutas' },
   { g: 'g8', ojo: 'Pedidos', t: 'De la visita al pedido', d: 'Venta al paciente o a centro, con descuentos, envío y la operativa de cada pedido.', img: 'labs_e_ventas' },
   { g: '', ojo: 'Nueva venta', t: 'Repite el último pedido con un clic', d: 'Buscas al cliente, repites su último pedido o apuntas lo que quiere, y cierras.', img: 'pharma_e_nueva_venta' },
@@ -1209,7 +1209,7 @@ const RAZONES = [
 ];
 const SECTORES = [
   { clave: 'labs', esc: 'labs_e_ventas', nombre: 'Laboratorios', empresa: 'Company Labs', titulo: 'Quién compra, quién repite y quién lo deja.',
-    fuertes: [['Cada cliente, su historial', 'Lo que pidió, cuándo y por qué canal llegó, para volver a llamar a tiempo.'], ['Muestras con lote', 'Cada muestra sale de la visita y del almacén con su lote y su caducidad.'], ['El ciclo de la visita', 'Presentado, interesado, activo: el estado avanza al registrar la visita.']], estados: ['Presentado', 'Interesado', 'Activo'] },
+    fuertes: [['Cada cliente, su historial', 'Lo que pidió, cuándo y por qué canal llegó, para volver a llamar a tiempo.'], ['Muestras con lote', 'Cada muestra sale de la visita y del almacén con su lote y su caducidad.'], ['El ciclo de la visita', 'Presentado, interesado, activo: el estado avanza al registrar la visita.'], ['Aunque no haya cobertura', 'Registra tus visitas y citas aunque no haya cobertura: se envían solas al recuperarla.']], estados: ['Presentado', 'Interesado', 'Activo'] },
   { clave: 'dental', esc: 'dental_e_directorio', nombre: 'Dental', empresa: 'Company Dental', titulo: 'El pedido de la clínica, repetido en un toque.',
     fuertes: [['Clínicas por especialidad', 'Implantología, ortodoncia, estética o general: cada ficha con su centro y su potencial.'], ['Reposición con descuento', 'Pedidos de consumibles con descuento por volumen y su factura.'], ['Lotes y caducidades', 'Cada producto con su lote y su caducidad, de la compra a la clínica.'], ['Su reposición, desde su portal', 'La clínica pide lo que tiene dado de alta, a su precio, y ve en qué punto está su pedido.']], estados: ['Visitada', 'Interesada', 'Cliente'] },
   { clave: 'orto', esc: 'orto_e_ventas', nombre: 'Ortopedia', empresa: 'Company Orto', titulo: 'Del fisio a la ortopedia, en la misma cartera.',
