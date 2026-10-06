@@ -1194,10 +1194,11 @@ const MODULOS = [
   { g: '', ojo: 'Explore', t: 'Cross your data', d: 'Sales, visits and coverage by any dimension.', img: 'labs_e_explorar' },
   { g: 'g6', ojo: 'History', t: 'Any change, undone in one click', d: 'Administrators see on each record who changed what, when and what was there before.', img: 'labs_e_historial' },
   { g: 'g6', ojo: 'Notifications', t: 'Every alert, with its action one click away', d: 'Grouped by day. Each person chooses what arrives instantly and what goes into the daily summary.', img: 'labs_e_notificaciones' },
+  { g: 'g6', ojo: 'Visit cycle', t: 'Everyone gets the visits they need', d: 'Sort your portfolio into A, B and C and set how many visits each class needs per cycle. See who is behind and book them in one click.', img: 'labs_e_ciclo' },
+  { g: 'g6', ojo: 'Events', t: 'Workshops, courses and congresses, in order', d: 'Attendees, registrations and expenses for every event, linked to each professional’s record. Each year, the summary by professional for your compliance officer to review.', img: 'labs_e_eventos' },
   { g: '', ojo: 'Team', t: 'Users, roles and permissions', d: 'Each person sees and does what is theirs and, on the computer, arranges their own menu.', img: 'labs_e_usuarios' },
-  { g: 'g8', ojo: 'Events', t: 'Workshops, courses and congresses, in order', d: 'Attendees, registrations and expenses for every event, linked to each professional’s record. Each year, the summary by professional for your compliance officer to review.', img: 'labs_e_eventos' },
-  { g: 'g6', ojo: 'Import', t: 'Start with your own data from day one', d: 'Clients, products, records and sales from Excel or CSV, with a preview.', img: 'labs_e_importar' },
-  { g: 'g6', ojo: 'Catalogues', t: 'Make it fit your company, no coding', d: 'Specialties, reasons, outcomes and custom fields, with no coding.', img: 'labs_e_clasificadores' }
+  { g: '', ojo: 'Import', t: 'Start with your own data from day one', d: 'Clients, products, records and sales from Excel or CSV, with a preview.', img: 'labs_e_importar' },
+  { g: '', ojo: 'Catalogues', t: 'Make it fit your company, no coding', d: 'Specialties, reasons, outcomes and custom fields, with no coding.', img: 'labs_e_clasificadores' }
 ];
 const RAZONES = [
   ['Speaks your language', 'Doctor, clinic, pharmacy or hospital contact; “Interested”, “Active client” or “Approved”. Each company sets its own words and stages.'],
@@ -1261,7 +1262,7 @@ $$('.preg button').forEach(b => b.addEventListener('click', () => {
 /* ================= precios por usuario (decisión del 1/10/2026, tras el estudio de la competencia) ================= */
 const PLANES = [
   { nombre: 'Field', mes: 29, para: 'For teams that visit and want to organise their accounts.',
-    incluye: ['Professional and centre accounts', 'Calendar, “Your day” and visits, remote ones too', 'Routes and weekly planning', 'Signed samples and materials', 'Data quality and duplicates'] },
+    incluye: ['Professional and centre accounts', 'Calendar, “Your day” and visits, remote ones too', 'Routes and weekly planning', 'A, B and C visit cycle', 'Signed samples and materials', 'Data quality and duplicates'] },
   { nombre: 'Sales', mes: 42, para: 'For teams that sell and want to measure results.',
     incluye: ['Everything in Field', 'Orders, also through distributors, telesales and clients', 'Products and batch-tracked stock', 'Sales and visit analytics', 'Tiered commissions', 'Opportunities: every sale, closed or not', 'Events, with their yearly summary'] },
   { nombre: 'Company', mes: 59, fuerte: true, para: 'For companies that invoice and run their own warehouse.',
@@ -1476,13 +1477,13 @@ addEventListener('scroll', alDesplazar, { passive: true }); alDesplazar();
 /* ================= menú desplegable de la cabecera ================= */
 const MENU_PLAT = [
   ['Field', [['Accounts', 'Professionals, centres and their history', 'labs_e_directorio', 0], ['Calendar', 'Your day, your week and your month', 'labs_e_agenda', 2],
-    ['Routes', 'Proposed every morning', 'labs_e_rutas', 3], ['Duplicates', 'One person, one record', 'labs_e_calidad', 1], ['Events', 'Workshops, courses and congresses, in order', 'labs_e_eventos', 19]]],
+    ['Routes', 'Proposed every morning', 'labs_e_rutas', 3], ['Visit cycle', 'A, B and C, with their visits per cycle', 'labs_e_ciclo', 17], ['Duplicates', 'One person, one record', 'labs_e_calidad', 1], ['Events', 'Workshops, courses and congresses, in order', 'labs_e_eventos', 18]]],
   ['Sales', [['Orders', 'From visit to order', 'labs_e_ventas', 4], ['New sale and opportunities', 'Measure the sales that don’t close, too', 'pharma_e_oportunidades', 6],
     ['Commissions', 'Commissions calculated for you, every month', 'labs_e_comisiones', 12], ['Analytics', 'How the business is doing, against last year', 'labs_e_analitica', 13],
     ['Web orders', 'With their filter, their summary and the payment reference', 'pharma_e_pedidos_web', 7]]],
   ['Office', [['Warehouse and batches', 'Stock by batch and expiry', 'labs_e_stock', 9], ['Purchasing', 'Suppliers and purchase orders', 'labs_e_compras', 10],
     ['Invoicing', 'VeriFactu, credit notes and payments', 'labs_e_facturas', 11], ['History', 'Any change, undone in one click', 'labs_e_historial', 15],
-    ['Team and permissions', 'Each role sees and does its own part', 'labs_e_usuarios', 17]]]
+    ['Team and permissions', 'Each role sees and does its own part', 'labs_e_usuarios', 19]]]
 ];
 const previa = (img, pie) => `<div class="previa"><div class="ordenador"><div class="barra"><i></i><i></i><i></i></div><div class="vista"><img src="${cap(img)}" alt="" width="1600" height="1000"><img class="fuera" alt="" width="1600" height="1000"></div></div><p>${pie}</p></div>`;
 let ni = 0;
