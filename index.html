@@ -1199,7 +1199,10 @@ const MODULOS = [
   { g: 'g8', ojo: 'Eventos', t: 'Talleres, cursos y congresos, en orden', d: 'Asistentes, inscripciones y gastos de cada evento, unidos a la ficha de cada profesional. Cada año, el resumen por profesional para que lo revise tu responsable de cumplimiento.', img: 'labs_e_eventos' },
   { g: '', ojo: 'Equipo', t: 'Usuarios, roles y permisos', d: 'Cada persona ve y hace lo que le toca y, en el ordenador, ordena su propio menú.', img: 'labs_e_usuarios' },
   { g: 'g6', ojo: 'Importar', t: 'Empieza con tus datos desde el primer día', d: 'Clientes, productos, fichas y ventas desde Excel o CSV, con vista previa.', img: 'labs_e_importar' },
-  { g: 'g6', ojo: 'Catálogos', t: 'Adáptala a tu empresa sin programar', d: 'Especialidades, motivos, resultados y campos propios, sin programar.', img: 'labs_e_clasificadores' }
+  { g: 'g6', ojo: 'Catálogos', t: 'Adáptala a tu empresa sin programar', d: 'Especialidades, motivos, resultados y campos propios, sin programar.', img: 'labs_e_clasificadores' },
+  { g: '', ojo: 'Cirugías', t: 'Lo usado en quirófano, con lote y número de serie', d: 'Programa la cirugía, apunta lo usado con su lote y su número de serie o UDI y deja listos el pedido al hospital y la reposición en 48 horas.', img: 'medtech_e_cirugias_ficha' },
+  { g: '', ojo: 'Concursos', t: 'Del pliego al contrato, con sus precios', d: 'Pliegos con lotes, productos y precios. Con el lote ganado, los pedidos de ese cliente llevan solos el precio de concurso mientras dure el contrato, con aviso antes de que venza.', img: 'medtech_e_concursos_ficha' },
+  { g: '', ojo: 'Parque instalado', t: 'Cada equipo instalado, con su historia', d: 'Número de serie, contrato o garantía y revisiones de cada equipo en el cliente, con aviso de lo que vence y la revisión en la agenda.', img: 'medtech_e_parque' }
 ];
 const RAZONES = [
   ['Habla tu idioma', 'Médico, clínica, farmacia o contacto de hospital; «Interesado», «Cliente activa» u «Homologado». Cada empresa pone sus palabras y sus estados.'],
@@ -1267,7 +1270,7 @@ const PLANES = [
   { nombre: 'Comercial', mes: 42, para: 'Para equipos que venden y quieren medir resultados.',
     incluye: ['Todo lo de Campo', 'Pedidos, también por distribuidor, televenta y clientes', 'Productos y stock por lotes', 'Analítica de ventas y visitas', 'Comisiones por tramos', 'Oportunidades: cada venta, se cierre o no', 'Cobertura de cada producto por ciclo', 'Eventos, con su resumen anual'] },
   { nombre: 'Empresa', mes: 59, fuerte: true, para: 'Para empresas que facturan y llevan su almacén.',
-    incluye: ['Todo lo de Comercial', 'Facturación con VeriFactu y cobros', 'Compras, proveedores y trazabilidad', 'Zonas, supervisión del equipo y auditoría', 'Portal del profesional y del centro (hasta 50)'] },
+    incluye: ['Todo lo de Comercial', 'Facturación con VeriFactu y cobros', 'Compras, proveedores y trazabilidad', 'Material en depósito y cirugías con número de serie', 'Concursos y parque instalado', 'Zonas, supervisión del equipo y auditoría', 'Portal del profesional y del centro (hasta 50)'] },
   { nombre: 'A medida', medida: true, para: 'Para redes de más de 50 personas o con necesidades propias.',
     incluye: ['Todo lo de Empresa', 'Migración de tus datos', 'Conexión con tu programa de gestión', 'Portal del profesional y del centro, sin límite', 'Ver la plataforma como cada persona de tu equipo, para ayudarla', 'Soporte prioritario'] }
 ];
@@ -1481,10 +1484,10 @@ const MENU_PLAT = [
     ['Rutas', 'Propuestas cada mañana', 'labs_e_rutas', 3], ['Ciclo de visitas', 'A, B y C, con sus visitas por ciclo', 'labs_e_ciclo', 17], ['Duplicados', 'Una persona, una sola ficha', 'labs_e_calidad', 1], ['Eventos', 'Talleres, cursos y congresos, en orden', 'labs_e_eventos', 19]]],
   ['Venta', [['Pedidos', 'De la visita al pedido', 'labs_e_ventas', 4], ['Nueva venta y oportunidades', 'Mide también las ventas que no se cierran', 'pharma_e_oportunidades', 6],
     ['Comisiones', 'Comisiones calculadas solas, cada mes', 'labs_e_comisiones', 12], ['Analítica', 'Cómo va el negocio, frente al año pasado', 'labs_e_analitica', 13],
-    ['Pedidos por la web', 'Con su filtro, su resumen y la referencia del pago', 'pharma_e_pedidos_web', 7]]],
+    ['Pedidos por la web', 'Con su filtro, su resumen y la referencia del pago', 'pharma_e_pedidos_web', 7], ['Concursos', 'Del pliego al contrato, con sus precios', 'medtech_e_concursos_ficha', 24]]],
   ['Oficina', [['Almacén y lotes', 'Stock por lote y caducidad', 'labs_e_stock', 9], ['Compras', 'Proveedores y pedidos de compra', 'labs_e_compras', 10],
     ['Facturación', 'VeriFactu, rectificativas y cobros', 'labs_e_facturas', 11], ['Historial', 'Cualquier cambio, deshecho con un clic', 'labs_e_historial', 15],
-    ['Equipo y permisos', 'Cada rol ve y hace lo suyo', 'labs_e_usuarios', 20]]]
+    ['Equipo y permisos', 'Cada rol ve y hace lo suyo', 'labs_e_usuarios', 20], ['Cirugías', 'Lote y número de serie en quirófano', 'medtech_e_cirugias_ficha', 23], ['Parque instalado', 'Cada equipo, con su historia', 'medtech_e_parque', 25]]]
 ];
 const previa = (img, pie) => `<div class="previa"><div class="ordenador"><div class="barra"><i></i><i></i><i></i></div><div class="vista"><img src="${cap(img)}" alt="" width="1600" height="1000"><img class="fuera" alt="" width="1600" height="1000"></div></div><p>${pie}</p></div>`;
 let ni = 0;

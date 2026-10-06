@@ -1199,7 +1199,10 @@ const MODULOS = [
   { g: 'g8', ojo: 'Events', t: 'Workshops, courses and congresses, in order', d: 'Attendees, registrations and expenses for every event, linked to each professional’s record. Each year, the summary by professional for your compliance officer to review.', img: 'labs_e_eventos' },
   { g: '', ojo: 'Team', t: 'Users, roles and permissions', d: 'Each person sees and does what is theirs and, on the computer, arranges their own menu.', img: 'labs_e_usuarios' },
   { g: 'g6', ojo: 'Import', t: 'Start with your own data from day one', d: 'Clients, products, records and sales from Excel or CSV, with a preview.', img: 'labs_e_importar' },
-  { g: 'g6', ojo: 'Catalogues', t: 'Make it fit your company, no coding', d: 'Specialties, reasons, outcomes and custom fields, with no coding.', img: 'labs_e_clasificadores' }
+  { g: 'g6', ojo: 'Catalogues', t: 'Make it fit your company, no coding', d: 'Specialties, reasons, outcomes and custom fields, with no coding.', img: 'labs_e_clasificadores' },
+  { g: '', ojo: 'Surgeries', t: 'What is used in theatre, with batch and serial number', d: 'Schedule the surgery, log what is used with its batch and serial number or UDI, and get the hospital order and the 48-hour restock ready.', img: 'medtech_e_cirugias_ficha' },
+  { g: '', ojo: 'Tenders', t: 'From tender to contract, with its prices', d: 'Tenders with lots, products and prices. Once a lot is won, that client’s orders carry the tender price automatically while the contract lasts, with a reminder before it expires.', img: 'medtech_e_concursos_ficha' },
+  { g: '', ojo: 'Installed base', t: 'Every installed device, with its history', d: 'Serial number, contract or warranty and services for each device at the client, with alerts for what is due and the service in your calendar.', img: 'medtech_e_parque' }
 ];
 const RAZONES = [
   ['Speaks your language', 'Doctor, clinic, pharmacy or hospital contact; “Interested”, “Active client” or “Approved”. Each company sets its own words and stages.'],
@@ -1267,7 +1270,7 @@ const PLANES = [
   { nombre: 'Sales', mes: 42, para: 'For teams that sell and want to measure results.',
     incluye: ['Everything in Field', 'Orders, also through distributors, telesales and clients', 'Products and batch-tracked stock', 'Sales and visit analytics', 'Tiered commissions', 'Opportunities: every sale, closed or not', 'Coverage of each product per cycle', 'Events, with their yearly summary'] },
   { nombre: 'Company', mes: 59, fuerte: true, para: 'For companies that invoice and run their own warehouse.',
-    incluye: ['Everything in Sales', 'VeriFactu invoicing and payments', 'Purchasing, suppliers and traceability', 'Areas, team supervision and auditing', 'Portal for professionals and centres (up to 50)'] },
+    incluye: ['Everything in Sales', 'VeriFactu invoicing and payments', 'Purchasing, suppliers and traceability', 'Consignment stock and surgeries with serial numbers', 'Tenders and installed base', 'Areas, team supervision and auditing', 'Portal for professionals and centres (up to 50)'] },
   { nombre: 'Custom', medida: true, para: 'For networks of more than 50 people or with specific needs.',
     incluye: ['Everything in Company', 'Migration of your data', 'Connection to your management software', 'Portal for professionals and centres, unlimited', 'See the platform as each person on your team does, to help them', 'Priority support'] }
 ];
@@ -1481,10 +1484,10 @@ const MENU_PLAT = [
     ['Routes', 'Proposed every morning', 'labs_e_rutas', 3], ['Visit cycle', 'A, B and C, with their visits per cycle', 'labs_e_ciclo', 17], ['Duplicates', 'One person, one record', 'labs_e_calidad', 1], ['Events', 'Workshops, courses and congresses, in order', 'labs_e_eventos', 19]]],
   ['Sales', [['Orders', 'From visit to order', 'labs_e_ventas', 4], ['New sale and opportunities', 'Measure the sales that don’t close, too', 'pharma_e_oportunidades', 6],
     ['Commissions', 'Commissions calculated for you, every month', 'labs_e_comisiones', 12], ['Analytics', 'How the business is doing, against last year', 'labs_e_analitica', 13],
-    ['Web orders', 'With their filter, their summary and the payment reference', 'pharma_e_pedidos_web', 7]]],
+    ['Web orders', 'With their filter, their summary and the payment reference', 'pharma_e_pedidos_web', 7], ['Tenders', 'From tender to contract, with its prices', 'medtech_e_concursos_ficha', 24]]],
   ['Office', [['Warehouse and batches', 'Stock by batch and expiry', 'labs_e_stock', 9], ['Purchasing', 'Suppliers and purchase orders', 'labs_e_compras', 10],
     ['Invoicing', 'VeriFactu, credit notes and payments', 'labs_e_facturas', 11], ['History', 'Any change, undone in one click', 'labs_e_historial', 15],
-    ['Team and permissions', 'Each role sees and does its own part', 'labs_e_usuarios', 20]]]
+    ['Team and permissions', 'Each role sees and does its own part', 'labs_e_usuarios', 20], ['Surgeries', 'Batch and serial number in theatre', 'medtech_e_cirugias_ficha', 23], ['Installed base', 'Every device, with its history', 'medtech_e_parque', 25]]]
 ];
 const previa = (img, pie) => `<div class="previa"><div class="ordenador"><div class="barra"><i></i><i></i><i></i></div><div class="vista"><img src="${cap(img)}" alt="" width="1600" height="1000"><img class="fuera" alt="" width="1600" height="1000"></div></div><p>${pie}</p></div>`;
 let ni = 0;
