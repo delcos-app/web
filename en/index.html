@@ -1177,16 +1177,16 @@ const TALLAS = [
   ['Large', 'Over 50', 'Several teams and warehouses, role-based permissions, auditing and a custom plan.']
 ];
 const MODULOS = [
-  { g: 'g8', ojo: 'Accounts', t: 'Records with everything that matters', d: 'Professionals, centres and clients with their history, hours, sales stage and your own fields.', img: 'labs_e_directorio' },
+  { g: 'g8', ojo: 'Accounts', t: 'Records with everything that matters', d: 'Professionals, centres and clients with their history, hours, sales stage and your own fields. Every visit, in person, by phone or by video call, with its photos.', img: 'labs_e_directorio' },
   { g: '', ojo: 'Data quality', t: 'A portfolio with no gaps', d: 'No phone, no centre or no rep: you see it at a glance and fill it in.', img: 'labs_e_seguimiento' },
   { g: '', ojo: 'Calendar', t: 'Your day, your week and your month', d: 'Today’s appointments with suggestions of who to see, on a single screen. Log your visits and appointments even without signal: they sync on their own once you’re back online.', img: 'labs_e_agenda' },
   { g: 'g8', ojo: 'Routes', t: 'Routes proposed every morning', d: 'Up to three routes, each in one area, filled to your working day: urgent visits, who is consulting that day, interested prospects, pending visits and good clients. Into your calendar in one click.', img: 'labs_e_rutas' },
-  { g: 'g8', ojo: 'Orders', t: 'From visit to order', d: 'Sales to patients or centres, with discounts, shipping and the operations of every order.', img: 'labs_e_ventas' },
+  { g: 'g8', ojo: 'Orders', t: 'From visit to order', d: 'Sales to patients or centres, with discounts, shipping and the operations of every order. Also through each client’s distributor.', img: 'labs_e_ventas' },
   { g: '', ojo: 'New sale', t: 'Repeat the last order in one click', d: 'Find the client, repeat their last order or note what they want, and close.', img: 'pharma_e_nueva_venta' },
   { g: 'g6', ojo: 'Opportunities', t: 'Measure the sales that don’t close, too', d: 'Conversion, value won and lost, what people ask for, at what time and through which channel each client arrives.', img: 'pharma_e_oportunidades' },
   { g: 'g6', ojo: 'Web orders', t: 'Online sales, separate and measured', d: 'Orders placed through your website, with their own filter and sales summary.', img: 'pharma_e_pedidos_web' },
   { g: 'g6', ojo: 'Payments', t: 'Match every payment without hunting for the receipt', d: 'The bank transfer or Bizum reference and the proof of payment, right on the order.', img: 'pharma_e_pedido_web' },
-  { g: 'g6', ojo: 'Warehouse', t: 'Stock by batch and expiry', d: 'Goods in, goods out, samples and transfers by warehouse.', img: 'labs_e_stock' },
+  { g: 'g6', ojo: 'Warehouse', t: 'Stock by batch and expiry', d: 'Goods in, goods out and transfers by warehouse. Every sample signed for by whoever receives it, within the limit your company sets.', img: 'labs_e_stock' },
   { g: '', ojo: 'Purchasing', t: 'Suppliers and purchase orders', d: 'What has been sent, what is in transit and what has arrived.', img: 'labs_e_compras' },
   { g: '', ojo: 'Invoicing', t: 'VeriFactu-compliant invoices, no other software', d: 'Series, credit notes, payments and the record of every invoice.', img: 'labs_e_facturas' },
   { g: '', ojo: 'Commissions', t: 'Commissions calculated for you, every month', d: 'Tiered schemes and monthly settlements.', img: 'labs_e_comisiones' },
@@ -1195,8 +1195,9 @@ const MODULOS = [
   { g: 'g6', ojo: 'History', t: 'Any change, undone in one click', d: 'Administrators see on each record who changed what, when and what was there before.', img: 'labs_e_historial' },
   { g: 'g6', ojo: 'Notifications', t: 'Every alert, with its action one click away', d: 'Grouped by day. Each person chooses what arrives instantly and what goes into the daily summary.', img: 'labs_e_notificaciones' },
   { g: '', ojo: 'Team', t: 'Users, roles and permissions', d: 'Each person sees and does what is theirs and, on the computer, arranges their own menu.', img: 'labs_e_usuarios' },
-  { g: '', ojo: 'Import', t: 'Start with your own data from day one', d: 'Clients, products, records and sales from Excel or CSV, with a preview.', img: 'labs_e_importar' },
-  { g: '', ojo: 'Catalogues', t: 'Make it fit your company, no coding', d: 'Specialties, reasons, outcomes and custom fields, with no coding.', img: 'labs_e_clasificadores' }
+  { g: 'g8', ojo: 'Events', t: 'Workshops, courses and congresses, in order', d: 'Attendees, registrations and expenses for every event, linked to each professional’s record. Each year, the summary by professional for your compliance officer to review.', img: 'labs_e_eventos' },
+  { g: 'g6', ojo: 'Import', t: 'Start with your own data from day one', d: 'Clients, products, records and sales from Excel or CSV, with a preview.', img: 'labs_e_importar' },
+  { g: 'g6', ojo: 'Catalogues', t: 'Make it fit your company, no coding', d: 'Specialties, reasons, outcomes and custom fields, with no coding.', img: 'labs_e_clasificadores' }
 ];
 const RAZONES = [
   ['Speaks your language', 'Doctor, clinic, pharmacy or hospital contact; “Interested”, “Active client” or “Approved”. Each company sets its own words and stages.'],
@@ -1260,9 +1261,9 @@ $$('.preg button').forEach(b => b.addEventListener('click', () => {
 /* ================= precios por usuario (decisión del 1/10/2026, tras el estudio de la competencia) ================= */
 const PLANES = [
   { nombre: 'Field', mes: 29, para: 'For teams that visit and want to organise their accounts.',
-    incluye: ['Professional and centre accounts', 'Calendar, “Your day” and visit logging', 'Routes and weekly planning', 'Samples and materials', 'Data quality and duplicates'] },
+    incluye: ['Professional and centre accounts', 'Calendar, “Your day” and visits, remote ones too', 'Routes and weekly planning', 'Signed samples and materials', 'Data quality and duplicates'] },
   { nombre: 'Sales', mes: 42, para: 'For teams that sell and want to measure results.',
-    incluye: ['Everything in Field', 'Orders, telesales and clients', 'Products and batch-tracked stock', 'Sales and visit analytics', 'Tiered commissions', 'Opportunities: every sale, closed or not'] },
+    incluye: ['Everything in Field', 'Orders, also through distributors, telesales and clients', 'Products and batch-tracked stock', 'Sales and visit analytics', 'Tiered commissions', 'Opportunities: every sale, closed or not', 'Events, with their yearly summary'] },
   { nombre: 'Company', mes: 59, fuerte: true, para: 'For companies that invoice and run their own warehouse.',
     incluye: ['Everything in Sales', 'VeriFactu invoicing and payments', 'Purchasing, suppliers and traceability', 'Areas, team supervision and auditing', 'Portal for professionals and centres (up to 50)'] },
   { nombre: 'Custom', medida: true, para: 'For networks of more than 50 people or with specific needs.',
@@ -1475,7 +1476,7 @@ addEventListener('scroll', alDesplazar, { passive: true }); alDesplazar();
 /* ================= menú desplegable de la cabecera ================= */
 const MENU_PLAT = [
   ['Field', [['Accounts', 'Professionals, centres and their history', 'labs_e_directorio', 0], ['Calendar', 'Your day, your week and your month', 'labs_e_agenda', 2],
-    ['Routes', 'Proposed every morning', 'labs_e_rutas', 3], ['Duplicates', 'One person, one record', 'labs_e_calidad', 1]]],
+    ['Routes', 'Proposed every morning', 'labs_e_rutas', 3], ['Duplicates', 'One person, one record', 'labs_e_calidad', 1], ['Events', 'Workshops, courses and congresses, in order', 'labs_e_eventos', 19]]],
   ['Sales', [['Orders', 'From visit to order', 'labs_e_ventas', 4], ['New sale and opportunities', 'Measure the sales that don’t close, too', 'pharma_e_oportunidades', 6],
     ['Commissions', 'Commissions calculated for you, every month', 'labs_e_comisiones', 12], ['Analytics', 'How the business is doing, against last year', 'labs_e_analitica', 13],
     ['Web orders', 'With their filter, their summary and the payment reference', 'pharma_e_pedidos_web', 7]]],
