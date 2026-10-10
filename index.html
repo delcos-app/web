@@ -283,7 +283,7 @@ body.noche .cierre .camino .boton.sec{background:transparent;color:var(--blanco)
 .mosaico{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));grid-auto-rows:minmax(0,auto);gap:18px}
 .tesela{grid-column:span 4;position:relative;border-radius:28px;background:var(--hielo);padding:26px 26px 0;display:flex;flex-direction:column;gap:8px;overflow:hidden;
   text-align:left;border:0;color:var(--tinta);transform-style:preserve-3d;will-change:transform;transition:background .2s;min-height:360px}
-.tesela.g6{grid-column:span 6}.tesela.g8{grid-column:span 8}
+.tesela.g6{grid-column:span 6}.tesela.g8{grid-column:span 8}.tesela.g12{grid-column:span 12}.tesela.g12 .ventana{aspect-ratio:2.6/1}.tesela.g12 .ventana img{object-position:center 62%}
 .tesela:hover{background:var(--suave)}
 .tesela small{font-size:12.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#3F6488}
 .tesela h3{margin:0;font-family:var(--f-titulo);font-weight:700;font-size:22px;letter-spacing:-.015em}
@@ -738,7 +738,8 @@ body.noche .arriba .pista{stroke:var(--linea-t)}
   .escena-sector .tel{width:130px}
   .barra-dia{display:none}
   .mosaico{grid-template-columns:minmax(0,1fr)}
-  .tesela,.tesela.g6,.tesela.g8{grid-column:auto;min-height:0}
+  .tesela,.tesela.g6,.tesela.g8,.tesela.g12{grid-column:auto;min-height:0}
+  .tesela.g12 .ventana{aspect-ratio:16/9}
   .porque .wrap{grid-template-columns:minmax(0,1fr);gap:40px}
   .porque .fijo{position:static}
     .sector-dos{grid-template-columns:minmax(0,1fr)}
@@ -751,7 +752,7 @@ body.noche .arriba .pista{stroke:var(--linea-t)}
   .tallas{grid-template-columns:repeat(3,minmax(0,1fr))}
   .talla + .talla{padding-left:20px;border-left:1px solid var(--linea);border-top:0}
   .mosaico{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .tesela.g8{grid-column:span 2}
+  .tesela.g8,.tesela.g12{grid-column:span 2}
   .datos{grid-template-columns:repeat(3,minmax(0,1fr))}
   .historia{grid-template-columns:repeat(2,minmax(0,1fr))}
   .hito:nth-child(odd){padding-left:0;border-left:0}
@@ -1181,6 +1182,7 @@ const MODULOS = [
   { g: '', ojo: 'Calidad del dato', t: 'Una cartera sin huecos', d: 'Sin teléfono, sin centro o sin comercial: lo ves de un vistazo y lo completas.', img: 'labs_e_seguimiento' },
   { g: '', ojo: 'Agenda', t: 'Tu día, tu semana y tu mes', d: 'Las citas de hoy con sugerencias de a quién ver, en una sola pantalla. Registra tus visitas y citas aunque no haya cobertura: se envían solas al recuperarla.', img: 'labs_e_agenda' },
   { g: 'g8', ojo: 'Rutas', t: 'Tu ruta, paso a paso y por las calles', d: 'Eliges a quién ver en el mapa y el mejor orden se calcula solo, respetando sus horas de atención. Ves el día por las calles con tráfico: kilómetros, tiempo al volante y hora de fin. Y la pasas a la agenda para un día o cada semana, cada 15 días o una vez al mes.', img: 'labs_e_rutas' },
+  { g: 'g12', ojo: 'Tu día en el mapa', t: 'Las citas de hoy, por las calles', d: 'Tus citas de hoy numeradas en el mapa y la ruta por las calles con tráfico: kilómetros, tiempo al volante y hora de fin. «Ver el día» recorre la jornada hora a hora.', img: 'labs_e_mapa' },
   { g: 'g8', ojo: 'Pedidos', t: 'De la visita al pedido', d: 'Venta al paciente o a centro, con descuentos, envío y la operativa de cada pedido. Arriba, lo que espera: pagos por validar, paquetes por preparar y facturas por enviar, a un clic.', img: 'labs_e_ventas' },
   { g: '', ojo: 'Nueva venta', t: 'Repite el último pedido con un clic', d: 'Buscas al cliente, repites su último pedido o apuntas lo que quiere, y cierras.', img: 'pharma_e_nueva_venta' },
   { g: 'g6', ojo: 'Oportunidades', t: 'Mide también las ventas que no se cierran', d: 'Conversión, importe ganado y perdido, qué piden, a qué hora y por qué canal llega cada cliente.', img: 'pharma_e_oportunidades' },
@@ -1481,13 +1483,13 @@ addEventListener('scroll', alDesplazar, { passive: true }); alDesplazar();
 /* ================= menú desplegable de la cabecera ================= */
 const MENU_PLAT = [
   ['Campo', [['Cartera', 'Profesionales, centros y su historial', 'labs_e_directorio', 0], ['Agenda', 'Tu día, tu semana y tu mes', 'labs_e_agenda', 2],
-    ['Rutas', 'Paso a paso y por las calles', 'labs_e_rutas', 3], ['Ciclo de visitas', 'A, B y C, con sus visitas por ciclo', 'labs_e_ciclo', 17], ['Duplicados', 'Una persona, una sola ficha', 'labs_e_calidad', 1], ['Eventos', 'Talleres, cursos y congresos, en orden', 'labs_e_eventos', 19]]],
-  ['Venta', [['Pedidos', 'De la visita al pedido', 'labs_e_ventas', 4], ['Nueva venta y oportunidades', 'Mide también las ventas que no se cierran', 'pharma_e_oportunidades', 6],
-    ['Comisiones', 'Comisiones calculadas solas, cada mes', 'labs_e_comisiones', 12], ['Analítica', 'Cómo va el negocio, frente al año pasado', 'labs_e_analitica', 13],
-    ['Pedidos por la web', 'Con su filtro, su resumen y la referencia del pago', 'pharma_e_pedidos_web', 7], ['Concursos', 'Del pliego al contrato, con sus precios', 'medtech_e_concursos_ficha', 24]]],
-  ['Oficina', [['Almacén y lotes', 'Stock por lote y caducidad', 'labs_e_stock', 9], ['Compras', 'Proveedores y pedidos de compra', 'labs_e_compras', 10],
-    ['Facturación', 'VeriFactu, rectificativas y cobros', 'labs_e_facturas', 11], ['Historial', 'Cualquier cambio, deshecho con un clic', 'labs_e_historial', 15],
-    ['Equipo y permisos', 'Cada rol ve y hace lo suyo', 'labs_e_usuarios', 20], ['Cirugías', 'Lote y número de serie en quirófano', 'medtech_e_cirugias_ficha', 23], ['Parque instalado', 'Cada equipo, con su historia', 'medtech_e_parque', 25]]]
+    ['Rutas', 'Paso a paso y por las calles', 'labs_e_rutas', 3], ['Ciclo de visitas', 'A, B y C, con sus visitas por ciclo', 'labs_e_ciclo', 18], ['Duplicados', 'Una persona, una sola ficha', 'labs_e_calidad', 1], ['Eventos', 'Talleres, cursos y congresos, en orden', 'labs_e_eventos', 20]]],
+  ['Venta', [['Pedidos', 'De la visita al pedido', 'labs_e_ventas', 5], ['Nueva venta y oportunidades', 'Mide también las ventas que no se cierran', 'pharma_e_oportunidades', 7],
+    ['Comisiones', 'Comisiones calculadas solas, cada mes', 'labs_e_comisiones', 13], ['Analítica', 'Cómo va el negocio, frente al año pasado', 'labs_e_analitica', 14],
+    ['Pedidos por la web', 'Con su filtro, su resumen y la referencia del pago', 'pharma_e_pedidos_web', 8], ['Concursos', 'Del pliego al contrato, con sus precios', 'medtech_e_concursos_ficha', 25]]],
+  ['Oficina', [['Almacén y lotes', 'Stock por lote y caducidad', 'labs_e_stock', 10], ['Compras', 'Proveedores y pedidos de compra', 'labs_e_compras', 11],
+    ['Facturación', 'VeriFactu, rectificativas y cobros', 'labs_e_facturas', 12], ['Historial', 'Cualquier cambio, deshecho con un clic', 'labs_e_historial', 16],
+    ['Equipo y permisos', 'Cada rol ve y hace lo suyo', 'labs_e_usuarios', 21], ['Cirugías', 'Lote y número de serie en quirófano', 'medtech_e_cirugias_ficha', 24], ['Parque instalado', 'Cada equipo, con su historia', 'medtech_e_parque', 26]]]
 ];
 const previa = (img, pie) => `<div class="previa"><div class="ordenador"><div class="barra"><i></i><i></i><i></i></div><div class="vista"><img src="${cap(img)}" alt="" width="1600" height="1000"><img class="fuera" alt="" width="1600" height="1000"></div></div><p>${pie}</p></div>`;
 let ni = 0;

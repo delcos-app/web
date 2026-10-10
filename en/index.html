@@ -283,7 +283,7 @@ body.noche .cierre .camino .boton.sec{background:transparent;color:var(--blanco)
 .mosaico{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));grid-auto-rows:minmax(0,auto);gap:18px}
 .tesela{grid-column:span 4;position:relative;border-radius:28px;background:var(--hielo);padding:26px 26px 0;display:flex;flex-direction:column;gap:8px;overflow:hidden;
   text-align:left;border:0;color:var(--tinta);transform-style:preserve-3d;will-change:transform;transition:background .2s;min-height:360px}
-.tesela.g6{grid-column:span 6}.tesela.g8{grid-column:span 8}
+.tesela.g6{grid-column:span 6}.tesela.g8{grid-column:span 8}.tesela.g12{grid-column:span 12}.tesela.g12 .ventana{aspect-ratio:2.6/1}.tesela.g12 .ventana img{object-position:center 62%}
 .tesela:hover{background:var(--suave)}
 .tesela small{font-size:12.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#3F6488}
 .tesela h3{margin:0;font-family:var(--f-titulo);font-weight:700;font-size:22px;letter-spacing:-.015em}
@@ -738,7 +738,8 @@ body.noche .arriba .pista{stroke:var(--linea-t)}
   .escena-sector .tel{width:130px}
   .barra-dia{display:none}
   .mosaico{grid-template-columns:minmax(0,1fr)}
-  .tesela,.tesela.g6,.tesela.g8{grid-column:auto;min-height:0}
+  .tesela,.tesela.g6,.tesela.g8,.tesela.g12{grid-column:auto;min-height:0}
+  .tesela.g12 .ventana{aspect-ratio:16/9}
   .porque .wrap{grid-template-columns:minmax(0,1fr);gap:40px}
   .porque .fijo{position:static}
     .sector-dos{grid-template-columns:minmax(0,1fr)}
@@ -751,7 +752,7 @@ body.noche .arriba .pista{stroke:var(--linea-t)}
   .tallas{grid-template-columns:repeat(3,minmax(0,1fr))}
   .talla + .talla{padding-left:20px;border-left:1px solid var(--linea);border-top:0}
   .mosaico{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .tesela.g8{grid-column:span 2}
+  .tesela.g8,.tesela.g12{grid-column:span 2}
   .datos{grid-template-columns:repeat(3,minmax(0,1fr))}
   .historia{grid-template-columns:repeat(2,minmax(0,1fr))}
   .hito:nth-child(odd){padding-left:0;border-left:0}
@@ -1181,6 +1182,7 @@ const MODULOS = [
   { g: '', ojo: 'Data quality', t: 'A portfolio with no gaps', d: 'No phone, no centre or no rep: you see it at a glance and fill it in.', img: 'labs_e_seguimiento' },
   { g: '', ojo: 'Calendar', t: 'Your day, your week and your month', d: 'Today’s appointments with suggestions of who to see, on a single screen. Log your visits and appointments even without signal: they sync on their own once you’re back online.', img: 'labs_e_agenda' },
   { g: 'g8', ojo: 'Routes', t: 'Your route, step by step and street by street', d: 'Pick who to see on the map and the best order is worked out for you, respecting their hours. See the day on real streets with traffic: kilometres, driving time and finish time. Then add it to your calendar for one day, or every week, every two weeks or once a month.', img: 'labs_e_rutas' },
+  { g: 'g12', ojo: 'Your day on the map', t: 'Today’s appointments, street by street', d: 'Today’s appointments numbered on the map and the route along real streets with traffic: kilometres, driving time and finish time. “See the day” walks through it hour by hour.', img: 'labs_e_mapa' },
   { g: 'g8', ojo: 'Orders', t: 'From visit to order', d: 'Sales to patients or centres, with discounts, shipping and the operations of every order. At the top, what is waiting: payments to approve, parcels to pack and invoices to send, one click away.', img: 'labs_e_ventas' },
   { g: '', ojo: 'New sale', t: 'Repeat the last order in one click', d: 'Find the client, repeat their last order or note what they want, and close.', img: 'pharma_e_nueva_venta' },
   { g: 'g6', ojo: 'Opportunities', t: 'Measure the sales that don’t close, too', d: 'Conversion, value won and lost, what people ask for, at what time and through which channel each client arrives.', img: 'pharma_e_oportunidades' },
@@ -1481,13 +1483,13 @@ addEventListener('scroll', alDesplazar, { passive: true }); alDesplazar();
 /* ================= menú desplegable de la cabecera ================= */
 const MENU_PLAT = [
   ['Field', [['Accounts', 'Professionals, centres and their history', 'labs_e_directorio', 0], ['Calendar', 'Your day, your week and your month', 'labs_e_agenda', 2],
-    ['Routes', 'Step by step, street by street', 'labs_e_rutas', 3], ['Visit cycle', 'A, B and C, with their visits per cycle', 'labs_e_ciclo', 17], ['Duplicates', 'One person, one record', 'labs_e_calidad', 1], ['Events', 'Workshops, courses and congresses, in order', 'labs_e_eventos', 19]]],
-  ['Sales', [['Orders', 'From visit to order', 'labs_e_ventas', 4], ['New sale and opportunities', 'Measure the sales that don’t close, too', 'pharma_e_oportunidades', 6],
-    ['Commissions', 'Commissions calculated for you, every month', 'labs_e_comisiones', 12], ['Analytics', 'How the business is doing, against last year', 'labs_e_analitica', 13],
-    ['Web orders', 'With their filter, their summary and the payment reference', 'pharma_e_pedidos_web', 7], ['Tenders', 'From tender to contract, with its prices', 'medtech_e_concursos_ficha', 24]]],
-  ['Office', [['Warehouse and batches', 'Stock by batch and expiry', 'labs_e_stock', 9], ['Purchasing', 'Suppliers and purchase orders', 'labs_e_compras', 10],
-    ['Invoicing', 'VeriFactu, credit notes and payments', 'labs_e_facturas', 11], ['History', 'Any change, undone in one click', 'labs_e_historial', 15],
-    ['Team and permissions', 'Each role sees and does its own part', 'labs_e_usuarios', 20], ['Surgeries', 'Batch and serial number in theatre', 'medtech_e_cirugias_ficha', 23], ['Installed base', 'Every device, with its history', 'medtech_e_parque', 25]]]
+    ['Routes', 'Step by step, street by street', 'labs_e_rutas', 3], ['Visit cycle', 'A, B and C, with their visits per cycle', 'labs_e_ciclo', 18], ['Duplicates', 'One person, one record', 'labs_e_calidad', 1], ['Events', 'Workshops, courses and congresses, in order', 'labs_e_eventos', 20]]],
+  ['Sales', [['Orders', 'From visit to order', 'labs_e_ventas', 5], ['New sale and opportunities', 'Measure the sales that don’t close, too', 'pharma_e_oportunidades', 7],
+    ['Commissions', 'Commissions calculated for you, every month', 'labs_e_comisiones', 13], ['Analytics', 'How the business is doing, against last year', 'labs_e_analitica', 14],
+    ['Web orders', 'With their filter, their summary and the payment reference', 'pharma_e_pedidos_web', 8], ['Tenders', 'From tender to contract, with its prices', 'medtech_e_concursos_ficha', 25]]],
+  ['Office', [['Warehouse and batches', 'Stock by batch and expiry', 'labs_e_stock', 10], ['Purchasing', 'Suppliers and purchase orders', 'labs_e_compras', 11],
+    ['Invoicing', 'VeriFactu, credit notes and payments', 'labs_e_facturas', 12], ['History', 'Any change, undone in one click', 'labs_e_historial', 16],
+    ['Team and permissions', 'Each role sees and does its own part', 'labs_e_usuarios', 21], ['Surgeries', 'Batch and serial number in theatre', 'medtech_e_cirugias_ficha', 24], ['Installed base', 'Every device, with its history', 'medtech_e_parque', 26]]]
 ];
 const previa = (img, pie) => `<div class="previa"><div class="ordenador"><div class="barra"><i></i><i></i><i></i></div><div class="vista"><img src="${cap(img)}" alt="" width="1600" height="1000"><img class="fuera" alt="" width="1600" height="1000"></div></div><p>${pie}</p></div>`;
 let ni = 0;
