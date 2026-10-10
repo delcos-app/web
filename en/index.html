@@ -776,69 +776,50 @@ body.noche .arriba .pista{stroke:var(--linea-t)}
 }
 /* ================= Rutas y Agenda: el día que se crea, en órbita ================= */
 .orb{position:relative}
+.orb-v{padding:120px 0 110px}
 .orb-carril{position:relative}
 .orb-escena{position:relative;height:100vh;display:flex;align-items:center;padding-top:72px;overflow:hidden}
-.orb-dos{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:56px;align-items:center;width:100%}
+.orb-dos{display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);gap:64px;align-items:center;width:100%}
+.orb-dos-inv{grid-template-columns:minmax(0,1.18fr) minmax(0,.82fr)}
 .orb-dos-b{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr)}
 .orb-txt .titular{margin:14px 0 18px}
-.orb-pasos{list-style:none;margin:26px 0 0;padding:0;display:grid;gap:12px}
-.orb-pasos li{display:grid;grid-template-columns:34px 1fr;gap:12px;opacity:.35;transition:opacity .4s var(--ease-sal)}
+.orb-pasos{list-style:none;margin:28px 0 0;padding:0;display:grid;gap:14px}
+.orb-pasos li{display:grid;grid-template-columns:34px 1fr;gap:12px;opacity:.38;transition:opacity .4s var(--ease-sal);cursor:pointer}
 .orb-pasos li.on{opacity:1}
-.orb-pasos .n{width:30px;height:30px;border-radius:50%;border:1.5px solid currentColor;display:grid;place-items:center;font:700 13px/1 var(--f-titulo)}
+.orb-pasos .n{width:30px;height:30px;border-radius:50%;border:1.5px solid currentColor;display:grid;place-items:center;font:700 13px/1 var(--f-titulo);transition:background .3s,color .3s}
 .orb-pasos li.on .n{background:var(--marino);border-color:var(--marino);color:var(--blanco)}
 .orb-pasos b{font:700 18px/1.25 var(--f-titulo)}
 .orb-pasos p{margin:4px 0 0;color:var(--texto2);font-size:16px}
-.orb-lado{position:relative;padding:40px 30px 96px}
-.orb-svg{position:absolute;inset:-10px -30px 40px;width:calc(100% + 60px);height:calc(100% - 30px);z-index:5;overflow:visible;pointer-events:none}
-.orb-ord{position:relative;z-index:2}
+.orb-barra{display:block;height:3px;border-radius:3px;background:var(--linea);margin-top:10px;overflow:hidden}
+.orb-barra > i{display:block;height:100%;width:0;background:var(--marino)}
+.orb-lado{position:relative}
+.orb-lado-v{padding:34px 26px 40px}
+.orb-svg-v{position:absolute;inset:0;width:100%;height:100%;z-index:1;overflow:visible;pointer-events:none}
+.orb-sat{position:absolute;z-index:5;left:0;top:0;width:22px;height:22px;margin:-11px 0 0 -11px;border-radius:50%;background:var(--marino);border:3px solid var(--blanco);box-shadow:0 0 0 6px rgba(124,195,236,.35)}
+.orb-svg-dias{position:absolute;inset:-6% -5%;width:110%;height:112%;z-index:1;overflow:visible;pointer-events:none}
+.orb .ordenador{position:relative;z-index:3}
 .orb .ordenador .vista{position:relative}
-.orb .ordenador .vista img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top left;opacity:0;transition:opacity .6s var(--ease-sal)}
-.orb .ordenador .vista img.on{opacity:1}
-.orb-inst{position:absolute;z-index:6;background:var(--blanco);color:var(--tinta);border:1px solid var(--linea);border-radius:18px;box-shadow:var(--sombra-2);padding:14px 16px;min-width:140px}
+.orb .ordenador .vista img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top left}
+.orb-video .vista{aspect-ratio:16/10;background:var(--hielo)}
+.orb-video video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.orb-play{position:absolute;right:12px;bottom:12px;z-index:4;width:40px;height:40px;border-radius:50%;border:0;background:rgba(11,37,64,.78);cursor:pointer;opacity:0;transition:opacity .3s}
+.orb-video:hover .orb-play,.orb-play:focus-visible,.orb-play.parado{opacity:1}
+.orb-play::before{content:"";position:absolute;left:15px;top:12px;width:4px;height:16px;background:#fff;box-shadow:7px 0 0 #fff}
+.orb-play.parado::before{left:15px;top:12px;width:0;height:0;background:none;box-shadow:none;border-left:13px solid #fff;border-top:8px solid transparent;border-bottom:8px solid transparent}
+.orb-inst{position:absolute;z-index:6;background:var(--blanco);color:var(--tinta);border:1px solid var(--linea);border-radius:18px;box-shadow:var(--sombra-2);padding:12px 16px;min-width:120px}
+.orb-inst-a{left:-8px;top:-4px}
+.orb-inst-b{right:-8px;bottom:6px}
 .orb-inst small{display:block;font:700 11px/1 var(--f-titulo);letter-spacing:.12em;text-transform:uppercase;color:#3F6488;margin-bottom:8px}
 .orb-inst b{font:300 34px/1 var(--f-titulo);letter-spacing:-.04em;font-variant-numeric:tabular-nums}
 .orb-inst b i{font-style:normal}
 .orb-inst b span{font-size:15px;font-weight:600;letter-spacing:0;margin-left:5px;color:var(--texto2)}
-.orb-inst svg{display:block;margin-top:10px}
-.orb-hacia{position:absolute;z-index:7;left:40px;bottom:124px;display:flex;gap:12px;align-items:center;background:var(--blanco);color:var(--tinta);border-radius:16px;box-shadow:var(--sombra-3);padding:12px 16px;border:1px solid var(--linea);white-space:nowrap;transition:opacity .4s}
-.orb-hacia .ic{width:38px;height:38px;border-radius:12px;background:var(--marino);display:grid;place-items:center;flex:none}
-.orb-hacia b{display:block;font:700 15px/1.2 var(--f-titulo)}
-.orb-hacia span{font-size:14px;color:var(--texto2)}
-/* la tarjeta que aparece al crear: «+ Visita añadida», «+ Cita», «+ Tarea» */
-.orb-nueva{position:absolute;z-index:8;left:50%;top:44%;transform:translate(-50%,-50%);pointer-events:none;display:flex;gap:10px;align-items:center;background:var(--marino);color:var(--blanco);border-radius:999px;padding:10px 18px 10px 12px;font:700 14px/1.2 var(--f-titulo);white-space:nowrap;box-shadow:var(--sombra-3);opacity:0}
-.orb-nueva i{font-style:normal;width:24px;height:24px;border-radius:50%;background:var(--celeste);color:var(--tinta);display:grid;place-items:center;font-size:16px}
-.orb-nueva small{font-weight:600;color:var(--en-tinta);font-size:13px}
-.orb-tiempo{position:absolute;z-index:6;left:30px;right:30px;bottom:22px}
-.orb-tiempo .pista{position:relative;height:6px;border-radius:99px;background:var(--linea)}
-.orb-tiempo .lleno{position:absolute;left:0;top:0;bottom:0;border-radius:99px;background:var(--marino);width:0}
-.orb-tiempo .bola{position:absolute;top:50%;width:18px;height:18px;margin:-9px 0 0 -9px;border-radius:50%;background:var(--marino);box-shadow:0 0 0 5px rgba(23,69,122,.18);left:0}
-.orb-tiempo .horas{display:flex;justify-content:space-between;font:600 12.5px/1 var(--f-titulo);color:var(--texto2);margin-top:10px;font-variant-numeric:tabular-nums}
-.orb-tiempo .ahora{font:600 14px/1 var(--f-titulo);margin-top:8px}
-.orb-tiempo .ahora b{color:var(--marino);font-variant-numeric:tabular-nums}
+.orb-inst.salta{animation:orbSalta .45s var(--ease-sal)}
+@keyframes orbSalta{40%{transform:scale(1.08)}}
+.orb-nota{position:relative;z-index:3;margin:14px 0 0;text-align:center;font-size:13px;color:var(--texto2)}
 @keyframes orbLate{0%{transform:scale(1);opacity:.6}70%{transform:scale(2.6);opacity:0}100%{opacity:0}}
 .orb-late{transform-box:fill-box;transform-origin:center;animation:orbLate 1.4s ease-out infinite}
-/* noche */
 .orb-fila{display:flex;gap:14px;margin-top:28px;flex-wrap:wrap}
 .orb-fila .orb-inst{position:relative}
-body.noche .orb-noche .orb-inst{background:#0F2D4D;border-color:var(--linea-t);color:var(--blanco)}
-body.noche .orb-noche .orb-inst small{color:var(--celeste)}
-.orb-lado-b{height:min(76vh,640px);padding:0}
-.orb-svg-b{width:100%;height:100%;overflow:visible}
-.orb-tel{position:absolute;right:-10px;bottom:-30px;width:200px;opacity:0}
-.orb-lado-a{height:min(80vh,660px);display:grid;place-items:center;padding:0}
-.orb-svg-a{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
-.orb-tel-a{position:relative;z-index:3;width:210px}
-.orb .tel{border-radius:34px;padding:9px;background:var(--tinta);box-shadow:var(--sombra-3)}
-.orb .tel .pant{border-radius:26px;overflow:hidden;aspect-ratio:780/1688;background:var(--blanco)}
-.orb .tel img{width:100%;display:block}
-.orb-cab-b{display:flex;justify-content:space-between;gap:40px;align-items:end;flex-wrap:wrap}
-.orb-cab-b .titular{margin:14px 0 0}
-.orb-cab-b .entrada{max-width:40ch}
-.orb-zoom{position:relative;margin-top:30px;height:min(60vh,540px)}
-.orb-zoom > svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
-.orb-ord-b{position:absolute;left:50%;top:50%;width:min(860px,72%);transform:translate(-50%,-50%) scale(.55);opacity:0;z-index:3}
-#ab-hacia,#ab-fin{opacity:0}
-#ab-hacia{left:auto;bottom:auto}
 .orb-noche{background:var(--tinta);color:var(--blanco)}
 .orb-noche .ojo{color:var(--celeste)}
 .orb-noche .titular{color:var(--blanco)}
@@ -846,27 +827,24 @@ body.noche .orb-noche .orb-inst small{color:var(--celeste)}
 .orb-noche .entrada{color:var(--en-tinta)}
 .orb-noche .orb-fila .orb-inst{background:#0F2D4D;border-color:var(--linea-t);color:var(--blanco)}
 .orb-noche .orb-fila .orb-inst small{color:var(--celeste)}
-/* móvil y tableta: sin escena fija; la animación se reproduce sola al llegar */
+.orb-lado-b{height:min(76vh,640px);padding:0}
+.orb-svg-b{width:100%;height:100%;overflow:visible}
+.orb-tel{position:absolute;right:-10px;bottom:-30px;width:200px;opacity:0}
+.orb .tel{border-radius:34px;padding:9px;background:var(--tinta);box-shadow:var(--sombra-3)}
+.orb .tel .pant{border-radius:26px;overflow:hidden;aspect-ratio:780/1688;background:var(--blanco)}
+.orb .tel img{width:100%;display:block}
 @media (max-width:900px){
-  .orb-escena{position:relative;height:auto;padding:72px 0;overflow:visible}
-  .orb-dos,.orb-dos-b{grid-template-columns:minmax(0,1fr);gap:28px}
-  .orb-lado{padding:56px 0 96px}
-  .orb-svg{inset:10px -10px 60px;width:calc(100% + 20px)}
-  .orb-inst{padding:10px 12px;min-width:0;border-radius:14px}
+  .orb-v{padding:72px 0}
+  .orb-escena{height:auto;padding:72px 0;overflow:visible}
+  .orb-dos,.orb-dos-b,.orb-dos-inv{grid-template-columns:minmax(0,1fr);gap:28px}
+  .orb-dos-inv .orb-txt{order:-1}
+  .orb-lado-v{padding:26px 6px 10px}
+  .orb-inst{padding:9px 12px;min-width:0;border-radius:14px}
   .orb-inst b{font-size:24px}
   .orb-inst small{font-size:10px;margin-bottom:6px}
-  .orb-inst svg{display:none}
-  .orb-lado .orb-inst[style*="left:150px"]{left:auto!important;right:-4px}
-  .orb-lado .orb-inst[style*="right:-14px"]{display:none}
-  .orb-hacia{left:8px;bottom:118px;padding:9px 12px}
-  .orb-hacia b{font-size:13.5px}.orb-hacia span{font-size:12.5px}
-  .orb-tiempo{left:0;right:0}
   .orb-lado-b{height:auto;aspect-ratio:1}
   .orb-tel{width:150px;right:0;bottom:-20px}
-  .orb-lado-a{height:auto;aspect-ratio:1;max-width:520px;margin:0 auto;width:100%}
-  .orb-tel-a{width:150px}
-  .orb-zoom{height:auto;aspect-ratio:4/3}
-  .orb-ord-b{width:96%}
+  .orb-play{opacity:1}
 }
 @media (prefers-reduced-motion:reduce){.orb-late{animation:none}}
 </style>
@@ -1002,35 +980,28 @@ body.noche .orb-noche .orb-inst small{color:var(--celeste)}
 
 <!-- Rutas y Agenda: el día que se crea, en órbita -->
 <section class="orb orb-claro" id="rutas" aria-label="Routes">
-  <div class="orb-carril" id="ra"><div class="orb-escena"><div class="wrap orb-dos">
+  <div class="orb-v"><div class="wrap orb-dos">
     <div class="orb-txt">
       <div class="ojo">Routes</div>
-      <h2 class="titular" data-letras>Fewer kilometres. <em>More visits.</em></h2>
-      <p class="entrada">Start with a single visit. Add whoever you want to see and delcos finds the best order, respects each practice’s hours and shows you the whole day on real streets, before you set off.</p>
-      <ol class="orb-pasos" id="ra-pasos"><li><span class="n">1</span><div><b>Pick on the map</b><p>Your portfolio with filters: urgent, who sees reps that day, never visited.</p></div></li><li><span class="n">2</span><div><b>The order, worked out</b><p>With consulting hours and real driving times.</p></div></li><li><span class="n">3</span><div><b>Walk through the day</b><p>Kilometres, time at the wheel and when you’ll finish. Then into your calendar, for one day or every month.</p></div></li></ol>
+      <h2 class="titular" data-letras>Plan your day <em>in a minute.</em></h2>
+      <p class="entrada">Filter by who sees reps that day, look them up by name and tap to add them. delcos orders the visits around each one’s hours and shows you the day on real streets, ready to repeat every week.</p>
+      <ol class="orb-pasos orb-pasos-v" id="ra-pasos"><li data-paso="0"><span class="n">1</span><div><b>Search and add</b><p>Filter by urgent, who sees reps that day or never visited; or by name, centre or town.</p><i class="orb-barra"><i></i></i></div></li><li data-paso="1"><span class="n">2</span><div><b>The order, worked out</b><p>With each professional’s consulting hours and real driving times.</p><i class="orb-barra"><i></i></i></div></li><li data-paso="2"><span class="n">3</span><div><b>The day, street by street</b><p>Kilometres, time at the wheel and finish time. Then into your calendar, once or every week.</p><i class="orb-barra"><i></i></i></div></li></ol>
     </div>
-    <div class="orb-lado">
-      <svg class="orb-svg" id="ra-svg" viewBox="0 0 640 440" aria-hidden="true">
-        <path id="ra-camino" d="M60,330 C40,180 210,40 360,50 C520,60 640,170 600,290 C570,380 420,420 300,400 C190,382 120,360 60,330 Z" fill="none" stroke="#C5D5E4" stroke-width="1.5" stroke-dasharray="3 7"/>
-        <path id="ra-hecho" d="M60,330 C40,180 210,40 360,50 C520,60 640,170 600,290 C570,380 420,420 300,400 C190,382 120,360 60,330 Z" fill="none" stroke="#17457A" stroke-width="3" stroke-linecap="round"/>
-        <g id="ra-paradas"></g>
-        <g id="ra-sat"><path d="M0,0 L46,-16 A50,50 0 0 1 46,16 Z" fill="#7CC3EC" opacity=".35"/><circle r="11" fill="#17457A" stroke="#fff" stroke-width="3"/></g>
+    <div class="orb-lado orb-lado-v">
+      <svg class="orb-svg-v" viewBox="0 0 640 440" preserveAspectRatio="none" aria-hidden="true">
+        <path id="ra-camino" d="M40,300 C20,140 200,10 360,22 C540,34 650,150 612,286 C580,396 410,436 280,420 C160,404 70,380 40,300 Z" fill="none" stroke="#C5D5E4" stroke-width="1.5" stroke-dasharray="3 7" vector-effect="non-scaling-stroke"/>
+        <path id="ra-hecho" d="M40,300 C20,140 200,10 360,22 C540,34 650,150 612,286 C580,396 410,436 280,420 C160,404 70,380 40,300 Z" fill="none" stroke="#17457A" stroke-width="3" stroke-linecap="round" vector-effect="non-scaling-stroke"/>
       </svg>
-      <div class="ordenador orb-ord"><div class="barra"><i></i><i></i><i></i></div><div class="vista" id="ra-vista">
-        <img src="../capturas/labs_e_ruta_elegir.webp" alt="Routes, step 1: picking who to see on the map" width="1600" height="1000" loading="lazy" class="on">
-        <img src="../capturas/labs_e_rutas.webp" alt="Routes, step 3: preview of the day on real streets" width="1600" height="1000" loading="lazy">
-        <img src="../capturas/labs_e_mapa.webp" alt="Your day on the map" width="1600" height="1000" loading="lazy">
-      </div></div>
-      <div class="orb-inst" style="left:-14px;top:0"><small>Stops</small><b id="ra-n">0</b></div>
-      <div class="orb-inst" style="left:150px;top:0"><small>On real streets</small><b><i id="ra-km">0</i><span>km</span></b></div>
-      <div class="orb-inst" style="right:-14px;top:116px"><small>At the wheel</small><b id="ra-volante">0 h 00</b><svg width="130" height="26" viewBox="0 0 130 26"><g id="ra-barras"></g></svg></div>
-      <div class="orb-hacia" id="ra-hacia"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 17h14M6 17l1.5-5h9L18 17M8 12l1-3h6l1 3"/><circle cx="8" cy="17" r="1.6"/><circle cx="16" cy="17" r="1.6"/></svg></span><div><b id="ra-hacia-t"></b><span id="ra-hacia-s"></span></div></div>
-      <div class="orb-nueva" id="ra-nueva"></div>
-      <div class="orb-tiempo"><div class="pista"><div class="lleno" id="ra-lleno"></div><div class="bola" id="ra-bola"></div></div>
-        <div class="horas"><span>09:00</span><span>10:00</span><span>11:00</span><span>12:00</span><span>13:00</span><span>14:00</span></div>
-        <div class="ahora">At <b id="ra-hora">09:00</b> · estimated finish <b>13:57</b></div></div>
+      <span class="orb-sat" id="ra-sat"><i></i></span>
+      <div class="ordenador orb-ord orb-video"><div class="barra"><i></i><i></i><i></i></div><div class="vista">
+          <video id="ra-video" muted playsinline loop preload="none" poster="../videos/rutas.jpg" aria-label="Video: creating a route in delcos, from picking who to see to the street-by-street preview"><source src="../videos/rutas.mp4" type="video/mp4"></video>
+          <button type="button" class="orb-play" data-video="ra-video" aria-label="Pause"></button>
+        </div></div>
+      <div class="orb-inst orb-inst-a"><small>Stops</small><b id="ra-n">0</b></div>
+      <div class="orb-inst orb-inst-b"><small>Step</small><b><i id="ra-paso">1</i><span>/ 3</span></b></div>
+      <p class="orb-nota">Recorded in the real app, with a demo company</p>
     </div>
-  </div></div></div>
+  </div></div>
 </section>
 <section class="orb orb-noche" id="rutas-orbita" data-noche aria-label="Routes">
   <div class="orb-carril" id="rb"><div class="orb-escena"><div class="wrap orb-dos orb-dos-b">
@@ -1056,40 +1027,24 @@ body.noche .orb-noche .orb-inst small{color:var(--celeste)}
   </div></div></div>
 </section>
 <section class="orb orb-claro" id="agenda" aria-label="Calendar">
-  <div class="orb-carril" id="aa"><div class="orb-escena"><div class="wrap orb-dos">
+  <div class="orb-v"><div class="wrap orb-dos orb-dos-inv">
+    <div class="orb-lado orb-lado-v">
+      <svg class="orb-svg-dias" id="aa-svg" viewBox="-400 -280 800 560" aria-hidden="true"><ellipse rx="372" ry="252" fill="none" stroke="#D8E4EF" stroke-dasharray="2 8"/><g id="aa-dias"></g></svg>
+      <div class="ordenador orb-ord orb-video"><div class="barra"><i></i><i></i><i></i></div><div class="vista">
+          <video id="aa-video" muted playsinline loop preload="none" poster="../videos/agenda.jpg" aria-label="Video: filling a day in the delcos Calendar, searching and adding appointments and a task"><source src="../videos/agenda.mp4" type="video/mp4"></video>
+          <button type="button" class="orb-play" data-video="aa-video" aria-label="Pause"></button>
+        </div></div>
+      <div class="orb-inst orb-inst-a"><small>Appointments</small><b id="aa-citas">0</b></div>
+      <div class="orb-inst orb-inst-b"><small>Tasks</small><b id="aa-tareas">0</b></div>
+      <p class="orb-nota">Recorded in the real app, with a demo company</p>
+    </div>
     <div class="orb-txt">
       <div class="ojo">Calendar</div>
-      <h2 class="titular" data-letras>The whole week. <em>One glance.</em></h2>
-      <p class="entrada">A day starts empty and fills up: appointments, tasks and what was left pending, with the whole fortnight turning around today.</p>
-      <ol class="orb-pasos" id="aa-pasos"><li><span class="n">1</span><div><b>The day fills up</b><p>Every appointment and every task finds its place in the day.</p></div></li><li><span class="n">2</span><div><b>Today, at the centre</b><p>The next appointment, where they see reps and what to bring, with the countdown.</p></div></li><li><span class="n">3</span><div><b>Nothing left behind</b><p>Pending items from earlier days and who is due a visit this cycle.</p></div></li></ol>
+      <h2 class="titular" data-letras>This is how <em>a working day fills up.</em></h2>
+      <p class="entrada">Pick the day in the fortnight, look up the professional and add them with a time. From an appointment you add another at the same centre, and note your tasks. Every appointment, in its place.</p>
+      <ol class="orb-pasos orb-pasos-v" id="aa-pasos"><li data-paso="0"><span class="n">1</span><div><b>Pick the day</b><p>The whole fortnight in view, with what each day already holds.</p><i class="orb-barra"><i></i></i></div></li><li data-paso="1"><span class="n">2</span><div><b>Search and add appointments</b><p>By name, centre or town, with a time. And another professional at the same centre, in one tap.</p><i class="orb-barra"><i></i></i></div></li><li data-paso="2"><span class="n">3</span><div><b>And your tasks</b><p>What you need to do that day, next to the appointments.</p><i class="orb-barra"><i></i></i></div></li></ol>
     </div>
-    <div class="orb-lado orb-lado-a">
-      <svg class="orb-svg-a" id="aa-svg" viewBox="-330 -330 660 660" aria-hidden="true">
-        <circle r="275" fill="none" stroke="#D8E4EF" stroke-dasharray="2 8"/><circle r="215" fill="none" stroke="#E4EFFA"/><g id="aa-dias"></g>
-      </svg>
-      <div class="tel orb-tel-a"><div class="pant"><img src="../capturas/labs_m_agenda.webp" alt="Calendar on the phone" width="780" height="1688" loading="lazy"></div></div>
-      <div class="orb-inst" style="left:0;top:6%"><small>Appointments today</small><b id="aa-citas">0</b><svg width="130" height="16" viewBox="0 0 130 16"><g id="aa-puntos"></g></svg></div>
-      <div class="orb-inst" style="right:0;top:6%"><small>Tasks</small><b id="aa-tareas">0</b></div>
-      <div class="orb-inst" style="right:0;top:34%"><small>Next appointment</small><b id="aa-cuenta">—</b></div>
-      <div class="orb-inst" style="left:2%;bottom:8%"><small>Pending</small><b><i id="aa-pend">0</i><span>from earlier days</span></b></div>
-      <div class="orb-inst" style="right:2%;bottom:2%"><small>Due a visit</small><b><i id="aa-toca">0</i><span>this cycle</span></b></div>
-      <div class="orb-nueva" id="aa-nueva"></div>
-    </div>
-  </div></div></div>
-</section>
-<section class="orb orb-noche" id="agenda-zoom" data-noche aria-label="Calendar">
-  <div class="orb-carril orb-carril-c" id="ab"><div class="orb-escena"><div class="wrap">
-    <div class="orb-cab-b">
-      <div><div class="ojo">Calendar</div><h2 class="titular" data-letras>From the month <em>to the minute.</em></h2></div>
-      <p class="entrada">Zoom in without changing screens: the fortnight, the day with its finish time and the next visit, in sight of the whole team.</p>
-    </div>
-    <div class="orb-zoom">
-      <svg id="ab-svg" viewBox="0 0 1200 520" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><g id="ab-orbitas"></g></svg>
-      <div class="ordenador orb-ord-b" id="ab-ord"><div class="barra"><i></i><i></i><i></i></div><div class="vista"><img class="on" src="../capturas/labs_e_agenda.webp" alt="Calendar: the fortnight and Your day" width="1600" height="1000" loading="lazy"></div></div>
-      <div class="orb-hacia" id="ab-hacia" style="right:3%;top:4%"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg></span><div><b>Next: 09:30</b><span id="ab-cuenta"></span></div></div>
-      <div class="orb-inst" id="ab-fin" style="left:2%;bottom:4%"><small>Estimated finish</small><b>17:34</b></div>
-    </div>
-  </div></div></div>
+  </div></div>
 </section>
 
 <!-- 3 · Módulos -->
@@ -2065,63 +2020,41 @@ gsap.fromTo('.cierre .orbita', { scale: .25, rotate: -160, y: 120 }, { scale: 1,
   const hh = m => String(Math.floor(m / 60)).padStart(2, '0') + ':' + String(Math.round(m % 60)).padStart(2, '0');
   const lerp = (a, b, t) => a + (b - a) * t, cl = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x));
   const num = (x, d = 0) => x.toFixed(d).replace('.', EN ? '.' : ',');
-  const dur = m => Math.floor(m / 60) + ' h ' + String(Math.round(m % 60)).padStart(2, '0');
-  const nueva = (caja, texto, sub) => { caja.innerHTML = '<i>+</i><span>' + texto + (sub ? ' <small>' + sub + '</small>' : '') + '</span>';
-    gsap.killTweensOf(caja); gsap.fromTo(caja, { opacity: 0, y: 14, scale: .92 }, { opacity: 1, y: 0, scale: 1, duration: .35, ease: 'back.out(2)' });
-    gsap.to(caja, { opacity: 0, y: -18, duration: .5, delay: .9, ease: 'power2.in' }); };
-  // En el ordenador la escena se queda fija y avanza con el desplazamiento; en el móvil se reproduce sola al llegar
   const escena = (id, fn) => {
     if (QUIETO) { fn(1); return; }
-    if (ESCRITORIO) { const c = $(id); ScrollTrigger.create({ trigger: c, pin: c.querySelector('.orb-escena'), start: 'top top', end: c.classList.contains('orb-carril-c') ? '+=200%' : '+=320%', scrub: .4, onUpdate: s => fn(s.progress) }); fn(0); return; }
+    if (ESCRITORIO) { const c = $(id); ScrollTrigger.create({ trigger: c, pin: c.querySelector('.orb-escena'), start: 'top top', end: '+=320%', scrub: .4, onUpdate: s => fn(s.progress) }); fn(0); return; }
     const o = { p: 0 }; fn(0);
     gsap.to(o, { p: 1, duration: 7, ease: 'none', onUpdate: () => fn(o.p), scrollTrigger: { trigger: id, start: 'top 65%' } });
   };
+  // Vídeo de la app: se reproduce al verse, se pausa al salir; los pasos y los instrumentos siguen al vídeo
+  const conVideo = (id, pasosId, marcas, alAvanzar) => {
+    const v = $('#' + id), btn = document.querySelector('[data-video="' + id + '"]'), lis = [...document.querySelectorAll('#' + pasosId + ' li')];
+    const corte = [marcas[0], marcas[1], marcas[2], marcas[3]];
+    let quiere = !QUIETO;
+    const pon = () => btn.classList.toggle('parado', v.paused);
+    v.addEventListener('play', pon); v.addEventListener('pause', pon);
+    btn.onclick = () => { quiere = v.paused; v.paused ? v.play().catch(() => {}) : v.pause(); };
+    new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting && quiere) { v.preload = 'auto'; v.play().catch(() => {}); } else if (!e.isIntersecting) v.pause(); }), { threshold: .35 }).observe(v);
+    lis.forEach((li, i) => li.onclick = () => { v.currentTime = corte[i] + .05; if (v.paused) { quiere = true; v.play().catch(() => {}); } });
+    const pinta = () => { const t = v.currentTime, d = v.duration || corte[3];
+      lis.forEach((li, i) => { const a = corte[i], b = corte[i + 1]; li.classList.toggle('on', t >= a - .05);
+        li.querySelector('.orb-barra > i').style.width = (cl((t - a) / (b - a)) * 100) + '%'; });
+      alAvanzar(t, d); requestAnimationFrame(pinta); };
+    pon(); requestAnimationFrame(pinta);
+  };
+  const salta = (b, valor) => { if (b.textContent !== String(valor)) { b.textContent = valor; const c = b.closest('.orb-inst'); c.classList.remove('salta'); c.offsetWidth; c.classList.add('salta'); } };
 
-  /* ---------- Rutas A: de una visita al día entero, y el satélite lo recorre ---------- */
+  /* ---------- Rutas: la app en vídeo; el satélite recorre la órbita al ritmo del vídeo ---------- */
   (() => {
-    const camino = $('#ra-camino'), hecho = $('#ra-hecho'), L = camino.getTotalLength(), sat = $('#ra-sat');
+    const camino = $('#ra-camino'), hecho = $('#ra-hecho'), L = camino.getTotalLength(), sat = $('#ra-sat'), svg = camino.ownerSVGElement;
     hecho.style.strokeDasharray = L;
-    const PAR = [[.08, '09:23', 'Dra. Alba Nieto', '4,2 km', 4.2], [.28, '10:02', 'Dr. Tomás Caballero', '11,8 km', 16], [.48, '10:53', 'Dr. Marcos Reyes', '19,5 km', 35.5], [.62, '11:08', 'Dra. Cristina Pascual', '0,4 km', 35.9], [.84, '12:06', 'Dr. Adrián Pastor', '28,3 km', 64.2]];
-    const g = $('#ra-paradas');
-    const nodos = PAR.map(([t], i) => { const p = camino.getPointAtLength(t * L), n = el('g', { transform: 'translate(' + p.x + ',' + p.y + ')', opacity: 0 }, g);
-      el('circle', { r: 16, fill: '#7CC3EC', opacity: 0 }, n); el('circle', { r: 13, fill: '#fff', stroke: '#17457A', 'stroke-width': 2.5 }, n);
-      const tx = el('text', { 'text-anchor': 'middle', 'dominant-baseline': 'central', 'font-family': 'Manrope', 'font-weight': 700, 'font-size': 12, fill: '#17457A' }, n); tx.textContent = i + 1; return n; });
-    const barras = $('#ra-barras'); [24, 36, 51, 15, 43].forEach((v, i) => el('rect', { x: i * 26, y: 26 - v / 2, width: 18, height: v / 2, rx: 3, fill: '#E4EFFA' }, barras));
-    const imgs = $$('#ra-vista img'), pasos = $$('#ra-pasos li'), caja = $('#ra-nueva');
-    let vistas = 0;
-    escena('#ra', p => {
-      // 1 · creación (0–0,34): las paradas llegan una a una
-      const n = Math.min(5, Math.floor(cl(p / .34) * 5.999) + (p > 0.02 ? 1 : 0) - (p > 0.02 ? 0 : 0));
-      const visibles = p < .02 ? 1 : Math.min(5, 1 + Math.floor(cl((p - .02) / .32) * 4.999));
-      if (visibles > vistas && p < .4) { const s = PAR[visibles - 1]; nueva(caja, (EN ? 'Visit added: ' : 'Visita añadida: ') + s[2], s[1]); }
-      vistas = visibles;
-      nodos.forEach((nd, i) => { nd.setAttribute('opacity', i < visibles ? 1 : 0); });
-      $('#ra-n').textContent = visibles;
-      // 2 · el orden (0,34–0,55): la órbita se traza entre las paradas
-      const traza = cl((p - .34) / .21);
-      // 3 · el recorrido (0,55–1): el satélite sale y el tiempo avanza
-      const t = cl((p - .55) / .43);
-      const fase = p < .34 ? 0 : p < .55 ? 1 : 2;
-      imgs.forEach((im, i) => im.classList.toggle('on', i === fase)); pasos.forEach((li, i) => li.classList.toggle('on', i <= fase));
-      hecho.style.strokeDashoffset = L * (1 - Math.max(traza * .999, 0));
-      hecho.setAttribute('stroke', t > 0 ? '#9DB3C8' : '#17457A');
-      const pt = camino.getPointAtLength(t * L), pt2 = camino.getPointAtLength(Math.min(L, t * L + 2));
-      sat.setAttribute('transform', 'translate(' + pt.x + ',' + pt.y + ') rotate(' + (Math.atan2(pt2.y - pt.y, pt2.x - pt.x) * 180 / Math.PI) + ')');
-      sat.style.opacity = traza > .98 ? 1 : 0;
-      let sig = t > 0 ? PAR.findIndex(x => x[0] > t) : 0; if (sig < 0) sig = PAR.length;
-      nodos.forEach((nd, i) => { const c = nd.children, h = t > 0 && i < sig;
-        c[1].setAttribute('fill', h ? '#9DB3C8' : '#fff'); c[1].setAttribute('stroke', h ? '#9DB3C8' : '#17457A'); c[2].setAttribute('fill', h ? '#fff' : '#17457A');
-        c[0].classList.toggle('orb-late', t > 0 && i === sig); });
-      const kmTotal = PAR[visibles - 1][4];
-      $('#ra-km').textContent = num(t > 0 ? lerp(0, 82.3, t) : kmTotal * (fase ? lerp(1, 82.3 / 64.2, traza) : 1), 1);
-      $('#ra-hora').textContent = hh(lerp(540, 837, t));
-      const pc = t * (837 - 540) / 300 * 100; $('#ra-lleno').style.width = pc + '%'; $('#ra-bola').style.left = pc + '%';
-      $('#ra-volante').textContent = dur(128 * t);
-      [...barras.children].forEach((r, i) => r.setAttribute('fill', t > 0 && i < sig ? '#17457A' : '#E4EFFA'));
-      const hacia = $('#ra-hacia'); hacia.style.opacity = t > 0 ? 1 : 0;
-      const s = PAR[Math.min(sig, PAR.length - 1)];
-      $('#ra-hacia-t').textContent = sig >= PAR.length ? (EN ? 'Last visit done' : 'Última visita terminada') : (EN ? 'Heading to ' : 'Hacia ') + s[2];
-      $('#ra-hacia-s').textContent = sig >= PAR.length ? (EN ? 'Finish around 13:57' : 'Fin hacia las 13:57') : (EN ? 'Arriving around ' : 'Llegas hacia las ') + s[1] + ' · ' + s[3];
+    const M = [0.31, 14.96, 21.58, 33.48];
+    conVideo('ra-video', 'ra-pasos', M, (t, d) => {
+      const p = cl(t / d), pt = camino.getPointAtLength(p * L), m = svg.getScreenCTM(), caja = svg.parentNode.getBoundingClientRect();
+      if (m) { const x = pt.x * m.a + m.e - caja.left, y = pt.y * m.d + m.f - caja.top; sat.style.transform = 'translate(' + x + 'px,' + y + 'px)'; }
+      hecho.style.strokeDashoffset = L * (1 - p);
+      salta($('#ra-n'), t < M[0] + 1 ? 0 : Math.min(4, 1 + Math.floor(cl((t - M[0] - 1) / (M[1] - M[0] - 1.5)) * 4)));
+      salta($('#ra-paso'), t < M[1] ? 1 : t < M[2] ? 2 : 3);
     });
   })();
 
@@ -2160,60 +2093,37 @@ gsap.fromTo('.cierre .orbita', { scale: .25, rotate: -160, y: 120 }, { scale: 1,
     });
   })();
 
-  /* ---------- Agenda A: el día empieza vacío y se llena ---------- */
-  (() => {
-    const g = $('#aa-dias'), DIAS = EN ? ['M', 'T', 'W', 'T', 'F', 'S', 'S'] : ['L', 'M', 'X', 'J', 'V', 'S', 'D'], CIT = [4, 4, 4, 5, 5, 0, 0, 5, 4, 4, 5, 4, 0, 0];
-    const HOY = 5;
-    const nodos = CIT.map((c, i) => { const n = el('g', {}, g), hoy = i === HOY;
-      el('circle', { r: hoy ? 30 : 22, fill: hoy ? '#17457A' : '#fff', stroke: hoy ? '#17457A' : '#C5D5E4', 'stroke-width': 1.5 }, n);
-      const t = el('text', { y: -3, 'text-anchor': 'middle', fill: hoy ? '#fff' : '#0B2540', 'font-family': 'Manrope', 'font-weight': 700, 'font-size': hoy ? 17 : 14 }, n); t.textContent = 5 + i;
-      const s = el('text', { y: 12, 'text-anchor': 'middle', fill: hoy ? '#B9CCE0' : '#5F7389', 'font-family': 'Manrope', 'font-weight': 700, 'font-size': 9 }, n); s.textContent = DIAS[i % 7];
-      const k = hoy ? 7 : c; for (let j = 0; j < k; j++) { const cx = (j - (k - 1) / 2) * 7, tarea = hoy && j >= 5;
-        (tarea ? el('rect', { x: cx - 2.5, y: 41.5, width: 5, height: 5, rx: 1, fill: '#7CC3EC' }, n) : el('circle', { cx, cy: hoy ? 44 : 36, r: 2.4, fill: i < HOY ? '#9DB3C8' : hoy ? '#7CC3EC' : '#17457A' }, n)).setAttribute('opacity', hoy ? 0 : 1); }
-      return n; });
-    const pts = $('#aa-puntos'); for (let k = 0; k < 5; k++) el('circle', { cx: 8 + k * 24, cy: 8, r: 6, fill: '#fff', stroke: '#C5D5E4', 'stroke-width': 1.5 }, pts);
-    const NUE = EN ? [['Appointment 09:30', 'Dr Teresa García'], ['Appointment 10:15', 'Dr Patricia Vega'], ['Appointment 11:30', 'Dr Lucía Guerrero'], ['Appointment 12:45', 'Dr Paula Montero'], ['Appointment 16:00', 'Dr Óscar Cano'], ['Task', 'Bring the tolerance study'], ['Task', 'Call Farmacia Montero']]
-      : [['Cita 09:30', 'Dra. Teresa García'], ['Cita 10:15', 'Dra. Patricia Vega'], ['Cita 11:30', 'Dra. Lucía Guerrero'], ['Cita 12:45', 'Dra. Paula Montero'], ['Cita 16:00', 'Dr. Óscar Cano'], ['Tarea', 'Llevar el estudio de tolerancia'], ['Tarea', 'Llamar a Farmacia Montero']];
-    const pasos = $$('#aa-pasos li'), caja = $('#aa-nueva'), hoyN = nodos[HOY];
-    let vistas = 0;
-    escena('#aa', p => {
-      const llena = cl(p / .45), k = Math.floor(llena * 7.999), n = p < .01 ? 0 : Math.min(7, k + 1);
-      if (n > vistas && p < .5) nueva(caja, NUE[n - 1][0], NUE[n - 1][1]);
-      vistas = n;
-      [...hoyN.children].slice(3).forEach((m, j) => m.setAttribute('opacity', j < n ? 1 : 0));
-      gsap.set(hoyN.children[0], { attr: { r: 30 + (n ? 3 : 0) } });
-      const citas = Math.min(n, 5), tareas = Math.max(0, n - 5);
-      $('#aa-citas').textContent = citas; $('#aa-tareas').textContent = tareas;
-      [...pts.children].forEach((c, j) => { c.setAttribute('fill', j < citas ? '#17457A' : '#fff'); c.setAttribute('stroke', j < citas ? '#17457A' : '#C5D5E4'); });
-      // la quincena gira hasta dejar hoy delante
-      const base = lerp(-140, 0, cl(p / .6));
-      nodos.forEach((nd, i) => { const a = (90 + (i - HOY) * (360 / 14) + base) * Math.PI / 180; nd.setAttribute('transform', 'translate(' + (275 * Math.cos(a)) + ',' + (275 * Math.sin(a)) + ')'); });
-      const fase = p < .45 ? 0 : p < .72 ? 1 : 2; pasos.forEach((li, i) => li.classList.toggle('on', i <= fase));
-      const m = Math.round(lerp(140, 85, cl((p - .45) / .5))); $('#aa-cuenta').textContent = p < .45 ? '—' : (EN ? 'in ' : 'en ') + Math.floor(m / 60) + ' h ' + String(m % 60).padStart(2, '0') + ' min';
-      $('#aa-pend').textContent = Math.round(22 * cl((p - .72) / .15)); $('#aa-toca').textContent = Math.round(4 * cl((p - .78) / .12));
-    });
-  })();
 
-  /* ---------- Agenda B: del mes al minuto ---------- */
+  /* ---------- Agenda: la app en vídeo; la quincena gira alrededor y el día se llena ---------- */
   (() => {
-    const g = $('#ab-orbitas');
-    for (let i = 0; i < 30; i++) { const a = i / 30 * Math.PI * 2; el('circle', { cx: 600 + 520 * Math.cos(a), cy: 260 + 200 * Math.sin(a), r: 5, fill: i === 9 ? '#7CC3EC' : '#22405F' }, g); }
-    el('ellipse', { cx: 600, cy: 260, rx: 520, ry: 200, fill: 'none', stroke: '#22405F', 'stroke-dasharray': '2 8' }, g);
-    el('ellipse', { cx: 600, cy: 260, rx: 360, ry: 140, fill: 'none', stroke: '#22405F' }, g);
-    const ord = $('#ab-ord');
-    escena('#ab', p => {
-      const z = cl(p / .5);
-      g.style.transformOrigin = '600px 260px'; g.style.transform = 'scale(' + lerp(1, 2.4, z) + ') rotate(' + lerp(0, 25, z) + 'deg)'; g.style.opacity = 1 - z * .75;
-      const o = cl((p - .2) / .35); ord.style.opacity = o; ord.style.transform = 'translate(-50%,-50%) scale(' + lerp(.55, 1, o) + ')';
-      const h = cl((p - .6) / .15); $('#ab-hacia').style.opacity = h; $('#ab-fin').style.opacity = h;
-      const m = Math.round(lerp(140, 85, cl((p - .6) / .35))); $('#ab-cuenta').textContent = (EN ? 'in ' : 'en ') + Math.floor(m / 60) + ' h ' + String(m % 60).padStart(2, '0') + ' min';
+    const g = $('#aa-dias'), DIAS = EN ? ['M', 'T', 'W', 'T', 'F', 'S', 'S'] : ['L', 'M', 'X', 'J', 'V', 'S', 'D'], CIT = [4, 4, 4, 5, 5, 0, 0, 0, 4, 4, 5, 4, 0, 0];
+    const DIA = 7, M = [0.25, 2.51, 35.44, 43.48];
+    const nodos = CIT.map((c, i) => { const n = el('g', {}, g), hoy = i === DIA;
+      el('circle', { r: hoy ? 26 : 19, fill: hoy ? '#17457A' : '#fff', stroke: hoy ? '#17457A' : '#C5D5E4', 'stroke-width': 1.5 }, n);
+      const t = el('text', { y: -2, 'text-anchor': 'middle', fill: hoy ? '#fff' : '#0B2540', 'font-family': 'Manrope', 'font-weight': 700, 'font-size': hoy ? 15 : 12.5 }, n); t.textContent = 5 + i;
+      const s = el('text', { y: 11, 'text-anchor': 'middle', fill: hoy ? '#B9CCE0' : '#5F7389', 'font-family': 'Manrope', 'font-weight': 700, 'font-size': 8.5 }, n); s.textContent = DIAS[i % 7];
+      const k = hoy ? 6 : c; for (let j = 0; j < k; j++) { const cx = (j - (k - 1) / 2) * 6.5, tarea = hoy && j === 5;
+        (tarea ? el('rect', { x: cx - 2.4, y: 36, width: 4.8, height: 4.8, rx: 1, fill: '#7CC3EC' }, n) : el('circle', { cx, cy: hoy ? 39 : 32, r: 2.3, fill: i < DIA - 2 ? '#9DB3C8' : '#17457A' }, n)).setAttribute('opacity', hoy ? 0 : 1); }
+      if (hoy) el('circle', { r: 26, fill: 'none', stroke: '#7CC3EC', 'stroke-width': 2, class: 'orb-late' }, n);
+      return n; });
+    const hoyN = nodos[DIA];
+    conVideo('aa-video', 'aa-pasos', M, (t, d) => {
+      const p = cl(t / d);
+      nodos.forEach((nd, i) => { const a = (-90 + (i - DIA) * (360 / 14) + p * 40) * Math.PI / 180; nd.setAttribute('transform', 'translate(' + (372 * Math.cos(a)) + ',' + (252 * Math.sin(a)) + ')'); });
+      const citas = t < M[1] + 2 ? 0 : Math.min(5, 1 + Math.floor(cl((t - M[1] - 2) / (M[2] - M[1] - 2)) * 5)), tareas = t > M[2] + 6 ? 1 : 0;
+      [...hoyN.children].slice(3, 9).forEach((m, j) => m.setAttribute('opacity', j < citas || (j === 5 && tareas) ? 1 : 0));
+      salta($('#aa-citas'), citas); salta($('#aa-tareas'), tareas);
     });
   })();
-  // El modo noche de las dos secciones oscuras se calcula después de anclar las escenas (si no, su tramo queda corto)
+  // El modo noche de la sección oscura se calcula después de anclar su escena
   ScrollTrigger.getAll().filter(t => !t.pin && t.trigger && t.trigger.classList && t.trigger.classList.contains('orb-noche') && t.vars.start === 'top 55%').forEach(t => t.kill());
   $$('.orb-noche').forEach(sec => ScrollTrigger.create({ trigger: sec, start: 'top 55%', end: 'bottom 45%', onToggle: s => document.body.classList.toggle('noche', s.isActive) }));
+  // Los anclajes se calculan en el orden de la página: si no, uno de más abajo (Sectores) se monta sobre lo de arriba
+  const anclas = ScrollTrigger.getAll().filter(t => t.pin && t.trigger).sort((a, b) => a.trigger.compareDocumentPosition(b.trigger) & 4 ? -1 : 1);
+  anclas.forEach((t, i) => { t.vars.refreshPriority = anclas.length - i; });
+  ScrollTrigger.sort();
 })();
-ScrollTrigger.sort(); ScrollTrigger.refresh();
+ScrollTrigger.refresh();
 addEventListener('load', () => ScrollTrigger.refresh());
 })();
 </script>
