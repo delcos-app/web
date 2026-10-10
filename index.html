@@ -1084,7 +1084,7 @@ body.noche .arriba .pista{stroke:var(--linea-t)}
       <div><b>30 días de prueba</b><span>Pruébalo con tus propios datos y sin permanencia. Si no sigues, te llevas tus datos.</span></div>
       <div><b>Desde 3 usuarios</b><span>Para que un equipo pequeño pueda empezar. Añades o quitas personas cuando quieras.</span></div>
     </div>
-    <p class="notas-precio">Precios por usuario y mes, IVA no incluido. Con pago anual pagas diez meses y tienes doce.</p>
+    <p class="notas-precio">Precios por usuario y mes, IVA no incluido. Con pago anual pagas diez meses y tienes doce. Las rutas por las calles con tiempos reales van incluidas en todos los planes, sin coste aparte.</p>
   </div>
 </section>
 
@@ -1180,8 +1180,8 @@ const MODULOS = [
   { g: 'g8', ojo: 'Cartera', t: 'Fichas con todo lo que importa', d: 'Profesionales, centros y clientes con su historial, horarios, estado comercial y tus propios campos. Cada visita, presencial, por teléfono o por videollamada, con sus fotos.', img: 'labs_e_directorio' },
   { g: '', ojo: 'Calidad del dato', t: 'Una cartera sin huecos', d: 'Sin teléfono, sin centro o sin comercial: lo ves de un vistazo y lo completas.', img: 'labs_e_seguimiento' },
   { g: '', ojo: 'Agenda', t: 'Tu día, tu semana y tu mes', d: 'Las citas de hoy con sugerencias de a quién ver, en una sola pantalla. Registra tus visitas y citas aunque no haya cobertura: se envían solas al recuperarla.', img: 'labs_e_agenda' },
-  { g: 'g8', ojo: 'Rutas', t: 'Rutas propuestas cada mañana', d: 'Hasta tres rutas, cada una en una zona, llenas hasta tu jornada: urgentes, quien pasa consulta ese día, interesados, pendientes y buenos clientes. A tu agenda en un clic.', img: 'labs_e_rutas' },
-  { g: 'g8', ojo: 'Pedidos', t: 'De la visita al pedido', d: 'Venta al paciente o a centro, con descuentos, envío y la operativa de cada pedido. También a través del distribuidor de cada cliente.', img: 'labs_e_ventas' },
+  { g: 'g8', ojo: 'Rutas', t: 'Tu ruta, paso a paso y por las calles', d: 'Eliges a quién ver en el mapa y el mejor orden se calcula solo, respetando sus horas de atención. Ves el día por las calles con tráfico: kilómetros, tiempo al volante y hora de fin. Y la pasas a la agenda para un día o cada semana, cada 15 días o una vez al mes.', img: 'labs_e_rutas' },
+  { g: 'g8', ojo: 'Pedidos', t: 'De la visita al pedido', d: 'Venta al paciente o a centro, con descuentos, envío y la operativa de cada pedido. Arriba, lo que espera: pagos por validar, paquetes por preparar y facturas por enviar, a un clic.', img: 'labs_e_ventas' },
   { g: '', ojo: 'Nueva venta', t: 'Repite el último pedido con un clic', d: 'Buscas al cliente, repites su último pedido o apuntas lo que quiere, y cierras.', img: 'pharma_e_nueva_venta' },
   { g: 'g6', ojo: 'Oportunidades', t: 'Mide también las ventas que no se cierran', d: 'Conversión, importe ganado y perdido, qué piden, a qué hora y por qué canal llega cada cliente.', img: 'pharma_e_oportunidades' },
   { g: 'g6', ojo: 'Pedidos web', t: 'La venta online, separada y medida', d: 'Los pedidos que llegan por la web, con su filtro y su propio resumen de ventas.', img: 'pharma_e_pedidos_web' },
@@ -1190,10 +1190,10 @@ const MODULOS = [
   { g: '', ojo: 'Compras', t: 'Proveedores y pedidos de compra', d: 'Lo enviado, lo que está en tránsito y lo recibido.', img: 'labs_e_compras' },
   { g: '', ojo: 'Facturación', t: 'Facturas que cumplen VeriFactu, sin otro programa', d: 'Series, rectificativas, cobros y el registro de cada factura.', img: 'labs_e_facturas' },
   { g: '', ojo: 'Comisiones', t: 'Comisiones calculadas solas, cada mes', d: 'Esquemas por tramos y liquidaciones de cada mes.', img: 'labs_e_comisiones' },
-  { g: 'g8', ojo: 'Analítica', t: 'Cómo va el negocio, frente al año pasado', d: 'Ventas, clientes, equipo, oportunidades, cobros y stock, comparados con el periodo anterior o con el mismo del año pasado.', img: 'labs_e_analitica' },
+  { g: 'g8', ojo: 'Analítica', t: 'Cómo va el negocio, frente al año pasado', d: 'Ventas, clientes, equipo, oportunidades, cobros y stock, comparados con el periodo anterior o con el mismo del año pasado, cada uno con su línea de los últimos seis meses.', img: 'labs_e_analitica' },
   { g: '', ojo: 'Explorar', t: 'Cruza tus datos', d: 'Ventas, visitas y cobertura por cualquier dimensión.', img: 'labs_e_explorar' },
   { g: 'g6', ojo: 'Historial', t: 'Cualquier cambio, deshecho con un clic', d: 'La administración ve en cada ficha quién cambió qué, cuándo y lo que había antes.', img: 'labs_e_historial' },
-  { g: 'g6', ojo: 'Notificaciones', t: 'Cada aviso, con su acción a un clic', d: 'Agrupados por día. Cada persona elige qué le llega al momento y qué en el resumen del día.', img: 'labs_e_notificaciones' },
+  { g: 'g6', ojo: 'Notificaciones', t: 'Cada aviso, con su acción a un clic', d: 'Nuevas y anteriores, con la papelera en cada una: las que borras no vuelven. Cada persona elige qué le llega al momento y qué en el resumen del día.', img: 'labs_e_notificaciones' },
   { g: 'g6', ojo: 'Ciclo de visitas', t: 'A cada uno, las visitas que le tocan', d: 'Clasifica tu cartera en A, B y C y fija cuántas visitas pide cada clase por ciclo. Ves a quién le faltan y le das cita en un clic.', img: 'labs_e_ciclo' },
   { g: 'g6', ojo: 'Cobertura por producto', t: 'Cada producto, a quién se le ha presentado', d: 'Marca los productos que promocionas y ve en cada ciclo cuántos profesionales de A, B y C los conocen y a quién le falta, con cita en un clic.', img: 'labs_e_ciclo_producto' },
   { g: 'g8', ojo: 'Eventos', t: 'Talleres, cursos y congresos, en orden', d: 'Asistentes, inscripciones y gastos de cada evento, unidos a la ficha de cada profesional. Cada año, el resumen por profesional para que lo revise tu responsable de cumplimiento.', img: 'labs_e_eventos' },
@@ -1266,7 +1266,7 @@ $$('.preg button').forEach(b => b.addEventListener('click', () => {
 /* ================= precios por usuario (decisión del 1/10/2026, tras el estudio de la competencia) ================= */
 const PLANES = [
   { nombre: 'Campo', mes: 29, para: 'Para equipos que visitan y quieren ordenar su cartera.',
-    incluye: ['Cartera de profesionales y centros', 'Agenda, «Tu día» y visitas, también a distancia', 'Rutas y planificación semanal', 'Ciclo de visitas A, B y C', 'Muestras con firma y material', 'Calidad del dato y duplicados'] },
+    incluye: ['Cartera de profesionales y centros', 'Agenda, «Tu día» y visitas, también a distancia', 'Rutas por las calles con tiempos reales', 'Ciclo de visitas A, B y C', 'Muestras con firma y material', 'Calidad del dato y duplicados'] },
   { nombre: 'Comercial', mes: 42, para: 'Para equipos que venden y quieren medir resultados.',
     incluye: ['Todo lo de Campo', 'Pedidos, también por distribuidor, televenta y clientes', 'Productos y stock por lotes', 'Analítica de ventas y visitas', 'Comisiones por tramos', 'Oportunidades: cada venta, se cierre o no', 'Cobertura de cada producto por ciclo', 'Eventos, con su resumen anual'] },
   { nombre: 'Empresa', mes: 59, fuerte: true, para: 'Para empresas que facturan y llevan su almacén.',
@@ -1481,7 +1481,7 @@ addEventListener('scroll', alDesplazar, { passive: true }); alDesplazar();
 /* ================= menú desplegable de la cabecera ================= */
 const MENU_PLAT = [
   ['Campo', [['Cartera', 'Profesionales, centros y su historial', 'labs_e_directorio', 0], ['Agenda', 'Tu día, tu semana y tu mes', 'labs_e_agenda', 2],
-    ['Rutas', 'Propuestas cada mañana', 'labs_e_rutas', 3], ['Ciclo de visitas', 'A, B y C, con sus visitas por ciclo', 'labs_e_ciclo', 17], ['Duplicados', 'Una persona, una sola ficha', 'labs_e_calidad', 1], ['Eventos', 'Talleres, cursos y congresos, en orden', 'labs_e_eventos', 19]]],
+    ['Rutas', 'Paso a paso y por las calles', 'labs_e_rutas', 3], ['Ciclo de visitas', 'A, B y C, con sus visitas por ciclo', 'labs_e_ciclo', 17], ['Duplicados', 'Una persona, una sola ficha', 'labs_e_calidad', 1], ['Eventos', 'Talleres, cursos y congresos, en orden', 'labs_e_eventos', 19]]],
   ['Venta', [['Pedidos', 'De la visita al pedido', 'labs_e_ventas', 4], ['Nueva venta y oportunidades', 'Mide también las ventas que no se cierran', 'pharma_e_oportunidades', 6],
     ['Comisiones', 'Comisiones calculadas solas, cada mes', 'labs_e_comisiones', 12], ['Analítica', 'Cómo va el negocio, frente al año pasado', 'labs_e_analitica', 13],
     ['Pedidos por la web', 'Con su filtro, su resumen y la referencia del pago', 'pharma_e_pedidos_web', 7], ['Concursos', 'Del pliego al contrato, con sus precios', 'medtech_e_concursos_ficha', 24]]],
