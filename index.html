@@ -80,10 +80,10 @@ body.noche .cab.fondo{background:rgba(11,37,64,.94);box-shadow:0 1px 0 var(--lin
 .logo{display:flex;align-items:center;gap:10px;text-decoration:none}
 .logo b{font-family:var(--f-titulo);font-weight:800;font-size:25px;letter-spacing:-.035em}
 .nav{display:flex;gap:28px;margin-left:auto;font-weight:600;font-size:15px}
-.nav a{text-decoration:none;position:relative}
+.nav a{text-decoration:none;position:relative;white-space:nowrap}
 .nav a::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:2px;background:var(--azul);transform:scaleX(0);transform-origin:left;transition:transform .18s var(--ease-sal)}
 .nav a:hover::after{transform:scaleX(1)}
-.cab .boton{height:44px;padding:0 20px;font-size:15px}
+.cab .boton{height:44px;padding:0 20px;font-size:15px;white-space:nowrap}
 /* Selector de idioma: los dos idiomas a la vista, el activo relleno */
 .idioma{display:inline-flex;align-items:center;gap:2px;height:44px;padding:4px;border:1px solid var(--linea-f);border-radius:999px;flex-shrink:0;color:inherit}
 .idioma .globo{width:18px;height:18px;margin:0 4px 0 7px;color:var(--azul);transition:transform .8s var(--ease-sal)}
@@ -474,6 +474,7 @@ body.noche .cierre .camino .boton.sec{background:transparent;color:var(--blanco)
 .caso-marca img{width:min(260px,100%);height:auto;filter:grayscale(1) brightness(.85);opacity:.8;transition:filter .5s,opacity .5s}
 .caso:hover .caso-marca img{filter:none;opacity:1}
 .caso-marca p{margin:0;color:var(--texto2)}
+.caso-titulo{margin:0;font-family:var(--f-titulo);font-weight:300;font-size:clamp(28px,2.6vw,38px);line-height:1.1;letter-spacing:-.03em;max-width:16ch}
 .fundador{align-self:flex-start;padding:5px 12px;border-radius:999px;background:var(--suave);color:var(--marino);font-size:13px;font-weight:700}
 .caso-der{position:relative;overflow:hidden;border-radius:28px;background:var(--tinta);color:var(--blanco);padding:36px;display:flex;flex-direction:column;justify-content:space-between;gap:32px}
 .caso-orbita{position:absolute;right:-90px;top:-90px;width:240px;height:240px;opacity:.3;animation:gira 40s linear infinite}
@@ -792,7 +793,7 @@ body.noche .arriba .pista{stroke:var(--linea-t)}
     <nav class="nav" aria-label="Secciones">
       <button class="desp-b" type="button" aria-expanded="false" aria-controls="panel-plataforma">Plataforma <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
       <button class="desp-b" type="button" aria-expanded="false" aria-controls="panel-sectores">Sectores <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
-      <a href="#clientes">Clientes</a><a href="#precios">Precios</a>
+      <a href="#clientes">Cómo empezar</a><a href="#precios">Precios</a>
       <button class="desp-b" type="button" aria-expanded="false" aria-controls="panel-ayuda">Ayuda <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
     </nav>
     <a class="demo-l" href="dudas.html?tipo=Demo">Pide una demo</a>
@@ -814,7 +815,7 @@ body.noche .arriba .pista{stroke:var(--linea-t)}
       <a href="#dia" style="--i:2"><small>03</small><span>Un día en la empresa</span></a>
       <a href="#modulos" style="--i:3"><small>04</small><span>Módulos</span></a>
       <a href="#sectores" style="--i:4"><small>05</small><span>Sectores</span></a>
-      <a href="#clientes" style="--i:5"><small>06</small><span>Clientes</span></a>
+      <a href="#clientes" style="--i:5"><small>06</small><span>Cómo empezar</span></a>
       <a href="#precios" style="--i:6"><small>07</small><span>Precios</span></a>
       <a href="soporte.html" style="--i:7"><small>08</small><span>Soporte</span></a>
       <a href="dudas.html" style="--i:8"><small>09</small><span>Envíanos tu duda</span></a>
@@ -848,7 +849,7 @@ body.noche .arriba .pista{stroke:var(--linea-t)}
     <div class="texto">
       <div class="ojo">Plataforma de gestión comercial · sector salud</div>
       <h1 class="titular" data-letras>Tus clientes llevan bata. <em>Tu software debería saberlo.</em></h1>
-      <p class="entrada">Médicos, farmacias, clínicas, hospitales o veterinarios: tu empresa vive de esas relaciones. delcos las reúne en una sola plataforma con todo lo que las sostiene: visitas, pedidos, almacén por lotes, facturación con VeriFactu y comisiones.</p>
+      <p class="entrada">El software comercial para laboratorios, distribuidores y fabricantes que venden a médicos, clínicas, farmacias y hospitales. Visitas, rutas, pedidos, almacén por lotes, facturación con VeriFactu y las cifras de toda la red, en una plataforma que tu equipo usa desde la primera semana.</p>
       <div class="acciones">
         <a class="boton" href="empezar.html">Empieza gratis 30 días <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
         <a class="boton sec" href="dudas.html?tipo=Demo">Pide una demo</a>
@@ -880,7 +881,7 @@ body.noche .arriba .pista{stroke:var(--linea-t)}
     <div class="cabeza">
       <div class="ojo">Para quién</div>
       <h2 class="titular" data-letras>Hecha para el sector salud. <em>No adaptada a él.</em></h2>
-      <p class="entrada">No es otra app de rutas. Es la plataforma con la que una empresa del sector organiza su red comercial y su operativa, del laboratorio de tres personas a la red de doscientos comerciales.</p>
+      <p class="entrada">Si vendes a través de profesionales y centros sanitarios, tu día a día no se parece al de una pyme cualquiera: muestras con lote, horarios de consulta, pedidos a centro, concursos. delcos ya lo sabe, tengas tres comerciales o doscientos.</p>
     </div>
     <div class="pq-rejilla" id="pq-rejilla"></div>
     <div class="tallas" id="tallas"></div>
@@ -1011,35 +1012,35 @@ body.noche .arriba .pista{stroke:var(--linea-t)}
 <section class="clientes" id="clientes">
   <div class="wrap">
     <div class="cabeza">
-      <div class="ojo">Clientes</div>
-      <h2 class="titular" data-letras>Dos caminos. <em>Un mismo momento.</em></h2>
-      <p class="entrada">DLC Health Group buscaba algo que el mercado no tenía: una herramienta que entendiera de verdad cómo trabaja un laboratorio con profesionales sanitarios. Las aplicaciones que conocía estaban pensadas para cualquier pyme, eran rígidas y no dejaban adaptarse al sector. delcos llegó justo entonces, con la idea contraria: una plataforma que se adapta al sector, y no al revés.</p>
+      <div class="ojo">Cómo empezar</div>
+      <h2 class="titular" data-letras>En marcha en días. <em>No en meses.</em></h2>
+      <p class="entrada">Cambiar de software suele dar respeto por tres motivos: meses de implantación, consultores caros y un equipo que no lo adopta. Con delcos tu equipo trabaja con sus datos reales desde la primera semana, y te acompañamos en cada paso.</p>
     </div>
     <article class="caso">
       <div class="caso-marca">
-        <span class="fundador">Cliente fundador</span>
-        <img src="clientes/dlc-health-group.webp" alt="DLC Health Group" width="900" height="404" loading="lazy">
-        <p>Laboratorio fundado en 2025, con formulación propia y un catálogo especializado en el área musculoesquelética. Trabaja con profesionales sanitarios, clínicas y centros de salud.</p>
+        <span class="fundador">Clientes fundadores</span>
+        <h3 class="caso-titulo">Tu sector, con voz propia en delcos.</h3>
+        <p>Los primeros clientes de cada sector deciden con nosotros las próximas funciones. Te acompañamos en la puesta en marcha y adaptamos delcos a tu forma de trabajar, no al revés.</p>
       </div>
       <div class="caso-der">
         <svg class="caso-orbita" viewBox="0 0 200 200" aria-hidden="true"><circle cx="100" cy="100" r="80" fill="none" stroke="#C5D5E4" stroke-dasharray="2 6"/><circle cx="100" cy="20" r="7" fill="#7CC3EC"/></svg>
         <div class="datos">
-          <div class="dato"><b><span data-cuenta="100">100</span>+</b><span>versiones publicadas desde que trabajamos juntos, cada una probada con su equipo</span></div>
-          <div class="dato"><b data-cuenta="8">8</b><span>módulos en su día a día, del campo a la factura</span></div>
-          <div class="dato"><b data-cuenta="1">1</b><span>sola plataforma para el equipo de campo, la oficina y dirección</span></div>
+          <div class="dato"><b data-cuenta="30">30</b><span>días de prueba con tus propios datos y sin permanencia</span></div>
+          <div class="dato"><b data-cuenta="5">5</b><span>minutos para darte de alta desde la web, sin llamadas</span></div>
+          <div class="dato"><b data-cuenta="1">1</b><span>sola plataforma para el campo, la oficina y dirección</span></div>
         </div>
         <div class="usa"><span>Cartera y visitas</span><span>Agenda y rutas</span><span>Pedidos</span><span>Facturación con VeriFactu</span><span>Comisiones</span><span>Analítica</span></div>
       </div>
     </article>
     <div class="recorrido" id="recorrido">
       <div class="rec-cabeza">
-        <div class="ojo">Así trabaja DLC Health Group con delcos</div>
+        <div class="ojo">Un pedido, de principio a fin</div>
         <h3>De la visita a la factura, <em>con el mismo dato.</em></h3>
       </div>
       <div class="rec-pista" aria-hidden="true"><i id="rec-avance"></i><b id="rec-sat"></b></div>
       <ol class="rec-pasos">
-        <li><span class="n">01</span><b>La visita</b><p>Su delegado visita al profesional y la registra en el móvil al salir.</p></li>
-        <li><span class="n">02</span><b>La llamada</b><p>El paciente pide por teléfono y televenta registra el pedido en la misma llamada.</p></li>
+        <li><span class="n">01</span><b>La visita</b><p>El comercial la registra en el móvil al salir de la consulta.</p></li>
+        <li><span class="n">02</span><b>La llamada</b><p>El cliente pide por teléfono y televenta registra el pedido en la misma llamada.</p></li>
         <li><span class="n">03</span><b>El seguimiento</b><p>Se ve quién compra, quién repite y quién lo deja, para llamar a tiempo.</p></li>
         <li><span class="n">04</span><b>El almacén</b><p>El pedido sale de su lote, con su caducidad.</p></li>
         <li><span class="n">05</span><b>La factura</b><p>Factura con VeriFactu y su cobro, sin otro programa.</p></li>
@@ -1047,16 +1048,16 @@ body.noche .arriba .pista{stroke:var(--linea-t)}
       </ol>
     </div>
     <div class="historia">
-      <div class="hito"><small>2025</small><b>Nace DLC Health Group</b><p>Un laboratorio pequeño, de trato cercano, con formulación propia y una red de profesionales que empieza a crecer.</p></div>
-      <div class="hito"><small>La necesidad</small><b>Ninguna herramienta encajaba</b><p>Las aplicaciones del mercado estaban encasilladas en la pyme genérica: rígidas, sin visión del sector y sin margen para adaptarse.</p></div>
-      <div class="hito"><small>El encuentro</small><b>delcos y DLC se cruzan</b><p>delcos buscaba un laboratorio exigente con el que crecer; DLC, una plataforma con visión del sector. Se encontraron en el mejor momento.</p></div>
-      <div class="hito"><small>2026</small><b>Aire nuevo</b><p>DLC trabaja con todo su equipo en delcos, y delcos lleva lo aprendido a todo el sector, con el vocabulario de cada empresa.</p></div>
+      <div class="hito"><small>Día 1</small><b>Te das de alta</b><p>Desde la web, en cinco minutos. Tu empresa queda creada con tu marca y empiezan tus 30 días de prueba.</p></div>
+      <div class="hito"><small>Semana 1</small><b>Tus datos, dentro</b><p>Cartera, productos y clientes entran desde tu Excel, con tus palabras, tus estados y tus zonas. Con la puesta en marcha, lo hacemos por ti.</p></div>
+      <div class="hito"><small>Semana 2</small><b>Tu equipo, formado</b><p>Una sesión por perfil, del campo a dirección, y el manual dentro de la app con el vocabulario de tu empresa.</p></div>
+      <div class="hito"><small>Día 30</small><b>Decides con tus cifras</b><p>Al terminar la prueba ya ves tus resultados reales. Si sigues, no cambia nada; si no, te llevas tus datos.</p></div>
     </div>
-    <blockquote class="manifiesto"><p>«Lo que DLC necesitaba no existía. <em>Ahora existe, para todo el sector.</em>»</p><footer>El equipo de delcos</footer></blockquote>
+    <blockquote class="manifiesto"><p>«Un software que se adapta a tu sector, <em>y no al revés.</em>»</p><footer>El equipo de delcos</footer></blockquote>
     <div class="proximo">
       <div class="hueco" aria-hidden="true"><svg viewBox="0 0 44 44"><circle cx="20" cy="24" r="16" fill="none" stroke="#C5D5E4" stroke-dasharray="2 3"/><circle cx="35" cy="9" r="5" fill="#7CC3EC"/></svg></div>
-      <div><b>¿Tu empresa, la siguiente?</b><p>Buscamos a los próximos clientes fundadores de cada sector. Te acompañamos en la puesta en marcha y escuchamos lo que necesitas para las próximas versiones.</p></div>
-      <a class="boton" href="dudas.html?tipo=Demo">Quiero ser el siguiente</a>
+      <div><b>¿Quieres ser cliente fundador de tu sector?</b><p>Buscamos a los primeros clientes de cada sector. Te acompañamos en la puesta en marcha y tus peticiones marcan las próximas versiones.</p></div>
+      <a class="boton" href="dudas.html?tipo=Demo">Quiero ser cliente fundador</a>
     </div>
   </div>
 </section>
@@ -1152,59 +1153,59 @@ const escHTML = (img, alt) => `<div class="ordenador"><div class="barra"><i></i>
 /* ================= contenido ================= */
 const MODULOS_CINTA = ['Cartera', 'Visitas', 'Agenda', 'Rutas', 'Pedidos', 'Oportunidades', 'Clientes', 'Almacén', 'Lotes', 'Compras', 'Proveedores', 'Facturación', 'Cobros', 'Comisiones', 'Analítica', 'Duplicados', 'Historial', 'Portal'];
 const DIA = [
-  { h: '07:45', rol: 'Dirección', img: 'labs_e_agenda', t: 'El día, la semana y el mes, de un vistazo.', d: 'Las citas de hoy con sugerencias de a quién visitar, la semana en una franja y el mes con cada cita marcada.' },
-  { h: '08:05', rol: 'Comercial', img: 'labs_m_inicio', tel: 1, t: 'En la calle, su día en el móvil.', d: 'Citas en orden, dos seguidas en el mismo hospital y lo que quedó pendiente de la semana pasada.' },
-  { h: '09:50', rol: 'Comercial', img: 'labs_m_visita', tel: 1, t: 'Registra la visita al salir.', d: 'Resultado, muestras y material entregados, próxima acción. El estado de la ficha avanza solo.' },
-  { h: '11:20', rol: 'Televenta', img: 'pharma_e_nueva_venta', t: 'Una llamada que acaba en pedido.', d: 'Busca al cliente, repite su último pedido o apunta lo que quiere, y cierra con el pedido o con el motivo de no compra.' },
-  { h: '12:00', rol: 'Almacén', img: 'labs_e_stock', t: 'El pedido descuenta su lote.', d: 'Stock por almacén y por lote con caducidad. Avisa de lo que baja del mínimo y de lo que caduca.' },
-  { h: '13:30', rol: 'Compras', img: 'labs_e_compras', t: 'Lo que falta, al proveedor.', d: 'Pedidos de compra enviados, en tránsito o recibidos a medias. Al recibir, cada lote entra en el almacén.' },
-  { h: '16:10', rol: 'Administración', img: 'labs_e_factura', t: 'Factura, cobro y correo.', d: 'Facturas inalterables con VeriFactu, rectificativas cuando hace falta y cobros que nunca pasan de lo pendiente.' },
-  { h: '19:00', rol: 'Dirección', img: 'labs_e_analitica', t: 'Las cifras del día, sin pedirlas.', d: 'Ventas por zona, producto, cliente y comercial. Y las comisiones del mes, calculadas por tramos.' }
+  { h: '07:45', rol: 'Dirección', img: 'labs_e_inicio', t: 'Arranca el día sabiendo cómo vas.', d: 'Las cifras que importan, vivas desde primera hora: citas de hoy, urgencias, visitas del mes y el estado de la cartera, cada una con su gráfica.' },
+  { h: '08:05', rol: 'Comercial', img: 'labs_m_inicio', tel: 1, t: 'Su jornada, en el bolsillo.', d: 'Las citas en orden, la ruta por las calles y lo que quedó pendiente. Y si no hay cobertura, sigue trabajando igual.' },
+  { h: '09:50', rol: 'Comercial', img: 'labs_m_visita', tel: 1, t: 'La visita, registrada antes de arrancar el coche.', d: 'Resultado, productos presentados, muestras con firma y próxima acción en un minuto. La ficha avanza sola.' },
+  { h: '11:20', rol: 'Televenta', img: 'pharma_e_nueva_venta', t: 'Una llamada que acaba en pedido.', d: 'Busca al cliente, repite su último pedido o anota lo que necesita, y cierra con el pedido o con el motivo por el que no compra.' },
+  { h: '12:00', rol: 'Almacén', img: 'labs_e_stock', t: 'El pedido sale de su lote.', d: 'Stock por almacén, lote y caducidad, con aviso de lo que baja del mínimo y de lo que está a punto de caducar.' },
+  { h: '13:30', rol: 'Compras', img: 'labs_e_compras', t: 'Lo que falta, ya pedido al proveedor.', d: 'Pedidos de compra enviados, en tránsito o recibidos a medias. Al recibirlos, cada lote entra solo en el almacén.' },
+  { h: '16:10', rol: 'Administración', img: 'labs_e_factura', t: 'Factura, cobro y correo, sin otro programa.', d: 'Facturas con VeriFactu, rectificativas cuando hace falta y cobros que nunca superan lo pendiente.' },
+  { h: '19:00', rol: 'Dirección', img: 'labs_e_analitica', t: 'Las cifras del día, sin pedirlas.', d: 'Ventas por zona, producto, cliente y comercial frente al año pasado, y las comisiones del mes ya calculadas.' }
 ];
 // Lo que cada momento del día pasa al siguiente: [para quién, qué]
 const RELEVOS = [['Comercial', 'Citas y ruta de hoy'], ['La visita', 'La cita, con su ficha'], ['Televenta', 'Los clientes que toca llamar'], ['Almacén', 'El pedido'],
   ['Compras', 'El stock bajo mínimos'], ['Administración', 'El pedido servido'], ['Dirección', 'Factura y cobro']];
 const PARA_QUIEN = [
-  { ojo: 'Laboratorios y nutracéutica', t: 'Del delegado al almacén, un mismo dato.', d: 'La visita, el pedido, el lote y la factura comparten el mismo dato, y ves quién compra, quién repite y quién lo deja.', usa: ['Visitas', 'Muestras', 'Lotes', 'Facturación'] },
-  { ojo: 'Visita médica', t: 'Cada médico, su historia y su ruta.', d: 'Fichas con consulta, horario y estado; rutas que respetan cuándo atiende cada uno.', usa: ['Cartera', 'Agenda', 'Rutas', 'Seguimiento'], oscura: true },
-  { ojo: 'Material hospitalario y quirúrgico', t: 'Ciclos largos, bajo control.', d: 'Contactos por servicio, pruebas en evaluación, homologaciones y pedidos grandes con trazabilidad por lote.', usa: ['Contactos', 'Homologación', 'Trazabilidad'] },
-  { ojo: 'Comercial farmacéutico', t: 'Farmacias que reponen a tiempo.', d: 'Visita, televenta y pedido en la misma cartera, con las llamadas por hacer a la vista.', usa: ['Farmacias', 'Televenta', 'Pedidos'] },
-  { ojo: 'Veterinaria', t: 'Clínicas y veterinarios, con su idioma.', d: 'Especialidades, propietarios en lugar de pacientes y quién compra, quién repite y quién lo deja.', usa: ['Veterinarios', 'Seguimiento', 'Pedidos'] },
-  { ojo: 'Ortopedia y dental', t: 'Muestras, clínicas y reposición.', d: 'Profesionales, centros y clínicas con su consumo, sus descuentos y su stock.', usa: ['Clínicas', 'Descuentos', 'Stock'] }
+  { ojo: 'Laboratorios y nutracéutica', t: 'Del delegado a la factura, sin perder un dato.', d: 'Visita, muestra, pedido, lote y factura comparten la misma información. Sabes qué se vende, qué clientes repiten y a quién conviene volver.', usa: ['Visitas', 'Muestras', 'Lotes', 'Facturación'] },
+  { ojo: 'Visita médica', t: 'Cada visita, en el momento justo.', d: 'Fichas con su consulta y su horario, un ciclo A, B y C que marca a quién toca ver y rutas que respetan cuándo atiende cada profesional.', usa: ['Cartera', 'Ciclo A/B/C', 'Rutas', 'Agenda'], oscura: true },
+  { ojo: 'Material hospitalario y quirúrgico', t: 'Ciclos largos, bajo control.', d: 'Del servicio que evalúa al concurso adjudicado: cirugías con número de serie, material en depósito y el parque instalado de cada hospital.', usa: ['Concursos', 'Cirugías', 'Trazabilidad'] },
+  { ojo: 'Comercial farmacéutico', t: 'Que ninguna farmacia deje de reponer.', d: 'Visita, televenta y pedido sobre la misma cartera, con las llamadas de hoy a la vista y el pedido a través del distribuidor de cada farmacia.', usa: ['Farmacias', 'Televenta', 'Distribuidor'] },
+  { ojo: 'Veterinaria', t: 'Tu sector, con sus propias palabras.', d: 'Veterinarios, clínicas y propietarios en lugar de médicos y pacientes. Los estados, los campos y los informes hablan como tu equipo.', usa: ['Veterinarios', 'Clínicas', 'Pedidos'] },
+  { ojo: 'Ortopedia y dental', t: 'La reposición, antes de que falte.', d: 'Clínicas y ortopedias con su consumo, sus descuentos y su material en depósito, y un portal desde el que piden su propia reposición.', usa: ['Clínicas', 'Depósito', 'Portal'] }
 ];
 const TALLAS = [
-  ['pequeña', 'De 3 a 10 personas', 'Desde 24 € por usuario y sin meses de implantación: importas tu Excel, invitas al equipo y pones tu marca.'],
-  ['mediana', 'De 10 a 50', 'Zonas, almacén por lotes, compras y comisiones por tramos, con cada rol en su sitio.'],
-  ['grande', 'Más de 50', 'Varios equipos y almacenes, permisos por rol, auditoría y un plan a medida.']
+  ['pequeña', 'De 3 a 10 personas', 'Empieza esta misma semana: importas tu Excel, invitas al equipo y trabajas con tu marca desde 24 € por usuario.'],
+  ['mediana', 'De 10 a 50', 'Zonas, almacén por lotes, compras y comisiones por tramos, y cada persona viendo solo lo suyo.'],
+  ['grande', 'Más de 50', 'Varios equipos y almacenes, permisos por rol, auditoría de cada cambio y un plan a tu medida.']
 ];
 const MODULOS = [
-  { g: 'g8', ojo: 'Cartera', t: 'Fichas con todo lo que importa', d: 'Profesionales, centros y clientes con su historial, horarios, estado comercial y tus propios campos. Cada visita, presencial, por teléfono o por videollamada, con sus fotos.', img: 'labs_e_directorio' },
-  { g: '', ojo: 'Calidad del dato', t: 'Una cartera sin huecos', d: 'Sin teléfono, sin centro o sin comercial: lo ves de un vistazo y lo completas.', img: 'labs_e_seguimiento' },
-  { g: '', ojo: 'Agenda', t: 'Tu día, tu semana y tu mes', d: 'Las citas de hoy con sugerencias de a quién ver, en una sola pantalla. Registra tus visitas y citas aunque no haya cobertura: se envían solas al recuperarla.', img: 'labs_e_agenda' },
-  { g: 'g8', ojo: 'Rutas', t: 'Tu ruta, paso a paso y por las calles', d: 'Eliges a quién ver en el mapa y el mejor orden se calcula solo, respetando sus horas de atención. Ves el día por las calles con tráfico: kilómetros, tiempo al volante y hora de fin. Y la pasas a la agenda para un día o cada semana, cada 15 días o una vez al mes.', img: 'labs_e_rutas' },
-  { g: 'g12', ojo: 'Tu día en el mapa', t: 'Las citas de hoy, por las calles', d: 'Tus citas de hoy numeradas en el mapa y la ruta por las calles con tráfico: kilómetros, tiempo al volante y hora de fin. «Ver el día» recorre la jornada hora a hora.', img: 'labs_e_mapa' },
-  { g: 'g8', ojo: 'Pedidos', t: 'De la visita al pedido', d: 'Venta al paciente o a centro, con descuentos, envío y la operativa de cada pedido. Arriba, lo que espera: pagos por validar, paquetes por preparar y facturas por enviar, a un clic.', img: 'labs_e_ventas' },
-  { g: '', ojo: 'Nueva venta', t: 'Repite el último pedido con un clic', d: 'Buscas al cliente, repites su último pedido o apuntas lo que quiere, y cierras.', img: 'pharma_e_nueva_venta' },
-  { g: 'g6', ojo: 'Oportunidades', t: 'Mide también las ventas que no se cierran', d: 'Conversión, importe ganado y perdido, qué piden, a qué hora y por qué canal llega cada cliente.', img: 'pharma_e_oportunidades' },
-  { g: 'g6', ojo: 'Pedidos web', t: 'La venta online, separada y medida', d: 'Los pedidos que llegan por la web, con su filtro y su propio resumen de ventas.', img: 'pharma_e_pedidos_web' },
-  { g: 'g6', ojo: 'Pagos', t: 'Cuadra cada cobro sin buscar el justificante', d: 'La referencia de la transferencia o el bizum y el justificante, en el mismo pedido.', img: 'pharma_e_pedido_web' },
-  { g: 'g6', ojo: 'Almacén', t: 'Stock por lotes y caducidad', d: 'Entradas, salidas y traspasos por almacén, y el material en depósito en cada centro: reponer, apuntar lo usado y hacer recuento. Cada muestra, con la firma de quien la recibe y el límite que fije tu empresa.', img: 'dental_e_deposito' },
-  { g: '', ojo: 'Compras', t: 'Proveedores y pedidos de compra', d: 'Lo enviado, lo que está en tránsito y lo recibido.', img: 'labs_e_compras' },
-  { g: '', ojo: 'Facturación', t: 'Facturas que cumplen VeriFactu, sin otro programa', d: 'Series, rectificativas, cobros y el registro de cada factura.', img: 'labs_e_facturas' },
-  { g: '', ojo: 'Comisiones', t: 'Comisiones calculadas solas, cada mes', d: 'Esquemas por tramos y liquidaciones de cada mes.', img: 'labs_e_comisiones' },
-  { g: 'g8', ojo: 'Analítica', t: 'Cómo va el negocio, frente al año pasado', d: 'Ventas, clientes, equipo, oportunidades, cobros y stock, comparados con el periodo anterior o con el mismo del año pasado, cada uno con su línea de los últimos seis meses.', img: 'labs_e_analitica' },
-  { g: '', ojo: 'Explorar', t: 'Cruza tus datos', d: 'Ventas, visitas y cobertura por cualquier dimensión.', img: 'labs_e_explorar' },
-  { g: 'g6', ojo: 'Historial', t: 'Cualquier cambio, deshecho con un clic', d: 'La administración ve en cada ficha quién cambió qué, cuándo y lo que había antes.', img: 'labs_e_historial' },
-  { g: 'g6', ojo: 'Notificaciones', t: 'Cada aviso, con su acción a un clic', d: 'Nuevas y anteriores, con la papelera en cada una: las que borras no vuelven. Cada persona elige qué le llega al momento y qué en el resumen del día.', img: 'labs_e_notificaciones' },
-  { g: 'g6', ojo: 'Ciclo de visitas', t: 'A cada uno, las visitas que le tocan', d: 'Clasifica tu cartera en A, B y C y fija cuántas visitas pide cada clase por ciclo. Ves a quién le faltan y le das cita en un clic.', img: 'labs_e_ciclo' },
-  { g: 'g6', ojo: 'Cobertura por producto', t: 'Cada producto, a quién se le ha presentado', d: 'Marca los productos que promocionas y ve en cada ciclo cuántos profesionales de A, B y C los conocen y a quién le falta, con cita en un clic.', img: 'labs_e_ciclo_producto' },
-  { g: 'g8', ojo: 'Eventos', t: 'Talleres, cursos y congresos, en orden', d: 'Asistentes, inscripciones y gastos de cada evento, unidos a la ficha de cada profesional. Cada año, el resumen por profesional para que lo revise tu responsable de cumplimiento.', img: 'labs_e_eventos' },
-  { g: '', ojo: 'Equipo', t: 'Usuarios, roles y permisos', d: 'Cada persona ve y hace lo que le toca y, en el ordenador, ordena su propio menú.', img: 'labs_e_usuarios' },
-  { g: 'g6', ojo: 'Importar', t: 'Empieza con tus datos desde el primer día', d: 'Clientes, productos, fichas y ventas desde Excel o CSV, con vista previa.', img: 'labs_e_importar' },
-  { g: 'g6', ojo: 'Catálogos', t: 'Adáptala a tu empresa sin programar', d: 'Especialidades, motivos, resultados y campos propios, sin programar.', img: 'labs_e_clasificadores' },
-  { g: '', ojo: 'Cirugías', t: 'Lo usado en quirófano, con lote y número de serie', d: 'Programa la cirugía, apunta lo usado con su lote y su número de serie o UDI y deja listos el pedido al hospital y la reposición en 48 horas.', img: 'medtech_e_cirugias_ficha' },
-  { g: '', ojo: 'Concursos', t: 'Del pliego al contrato, con sus precios', d: 'Pliegos con lotes, productos y precios. Con el lote ganado, los pedidos de ese cliente llevan solos el precio de concurso mientras dure el contrato, con aviso antes de que venza.', img: 'medtech_e_concursos_ficha' },
-  { g: '', ojo: 'Parque instalado', t: 'Cada equipo instalado, con su historia', d: 'Número de serie, contrato o garantía y revisiones de cada equipo en el cliente, con aviso de lo que vence y la revisión en la agenda.', img: 'medtech_e_parque' }
+  { g: 'g8', ojo: 'Cartera', t: 'Toda tu cartera, completa y al día', d: 'Profesionales, centros y clientes con su historial, sus horarios y tus propios campos. Cada visita queda registrada, en persona, por teléfono o por videollamada, con sus fotos.', img: 'labs_e_directorio' },
+  { g: '', ojo: 'Calidad del dato', t: 'Una cartera sin huecos', d: 'Las fichas sin teléfono, sin centro o sin comercial, señaladas para completarlas en un momento.', img: 'labs_e_seguimiento' },
+  { g: '', ojo: 'Agenda', t: 'La semana del equipo, de un vistazo', d: 'Las citas de hoy y de las próximas semanas, lo que quedó pendiente y a quién toca visitar. También sin cobertura: se sincroniza sola.', img: 'labs_e_agenda' },
+  { g: 'g8', ojo: 'Rutas', t: 'Rutas que se planifican solas', d: 'Eliges a quién ver y delcos calcula el mejor orden, respetando sus horarios y con el tiempo real por carretera. La ruta pasa a la agenda para un día, o cada semana, quincena o mes.', img: 'labs_e_rutas' },
+  { g: 'g12', ojo: 'Tu día en el mapa', t: 'Menos kilómetros, más visitas', d: 'Cada comercial ve su jornada sobre el mapa: las citas en orden, el recorrido por las calles con tráfico, el tiempo al volante y a qué hora termina.', img: 'labs_e_mapa' },
+  { g: '', ojo: 'Ciclo de visitas', t: 'A cada cliente, las visitas que le tocan', d: 'Clasifica tu cartera en A, B y C, fija cuántas visitas pide cada clase y ve a quién le faltan. La cita, a un clic.', img: 'labs_e_ciclo' },
+  { g: '', ojo: 'Cobertura por producto', t: 'Cada lanzamiento, presentado a quien importa', d: 'Marca los productos que promocionas y ve qué profesionales de cada clase los conocen ya y a quién falta presentárselos.', img: 'labs_e_ciclo_producto' },
+  { g: '', ojo: 'Eventos', t: 'Talleres y congresos, en orden', d: 'Asistentes, inscripciones y gastos de cada evento, unidos a la ficha del profesional, con el resumen anual listo para tu responsable de cumplimiento.', img: 'labs_e_eventos' },
+  { g: 'g8', ojo: 'Pedidos', t: 'Ningún pedido se queda esperando', d: 'Venta al paciente o a centro, con descuentos y envío. Arriba, lo pendiente: pagos por validar, paquetes por preparar y facturas por enviar, a un clic.', img: 'labs_e_ventas' },
+  { g: '', ojo: 'Nueva venta', t: 'Repite el último pedido con un clic', d: 'Buscas al cliente, repites lo que pidió la última vez o anotas lo que necesita, y cierras la venta en la misma llamada.', img: 'pharma_e_nueva_venta' },
+  { g: 'g6', ojo: 'Oportunidades', t: 'Aprende también de lo que no se vende', d: 'Conversión, importe ganado y perdido, qué te piden, a qué hora y por qué canal llega cada cliente.', img: 'pharma_e_oportunidades' },
+  { g: 'g6', ojo: 'Pedidos web', t: 'La venta online, separada y medida', d: 'Los pedidos que entran por tu web, con su propio filtro y su resumen de ventas.', img: 'pharma_e_pedidos_web' },
+  { g: 'g6', ojo: 'Pagos', t: 'Cada cobro cuadrado, sin buscar justificantes', d: 'La referencia de la transferencia o del bizum y el justificante, guardados en el propio pedido.', img: 'pharma_e_pedido_web' },
+  { g: 'g6', ojo: 'Concursos', t: 'Del pliego al contrato, con sus precios', d: 'Pliegos con lotes, productos y precios. Con el lote ganado, los pedidos de ese cliente aplican solos el precio adjudicado, con aviso antes de que venza el contrato.', img: 'medtech_e_concursos_ficha' },
+  { g: '', ojo: 'Almacén', t: 'Stock por lote y caducidad, también en el cliente', d: 'Entradas, salidas y traspasos por almacén, y el material en depósito en cada centro. Cada muestra, firmada por quien la recibe.', img: 'dental_e_deposito' },
+  { g: '', ojo: 'Compras', t: 'Compras sin hojas de cálculo', d: 'Pedidos a proveedores enviados, en tránsito o recibidos. Al recibirlos, cada lote entra solo en el almacén.', img: 'labs_e_compras' },
+  { g: '', ojo: 'Facturación', t: 'Facturas con VeriFactu, sin otro programa', d: 'Series, rectificativas y cobros, emitidos desde el propio pedido y con el registro de cada factura.', img: 'labs_e_facturas' },
+  { g: '', ojo: 'Comisiones', t: 'Comisiones calculadas solas, cada mes', d: 'Esquemas por tramos y la liquidación de cada persona, sin hojas de cálculo ni discusiones.', img: 'labs_e_comisiones' },
+  { g: '', ojo: 'Cirugías', t: 'Lo usado en quirófano, trazado y repuesto', d: 'Cada cirugía con lo usado por lote y número de serie o UDI, el pedido al hospital preparado y la reposición en 48 horas.', img: 'medtech_e_cirugias_ficha' },
+  { g: '', ojo: 'Parque instalado', t: 'Cada equipo instalado, con su historia', d: 'Número de serie, contrato o garantía y revisiones de cada equipo en el cliente, con aviso de lo que vence.', img: 'medtech_e_parque' },
+  { g: 'g8', ojo: 'Analítica', t: 'Cómo va el negocio, frente al año pasado', d: 'Ventas, clientes, equipo, oportunidades, cobros y stock, comparados con el periodo anterior, cada indicador con su tendencia de seis meses.', img: 'labs_e_analitica' },
+  { g: '', ojo: 'Explorar', t: 'Las respuestas que tu Excel no da', d: 'Ventas, visitas y cobertura cruzadas por zona, producto, cliente o comercial, en segundos.', img: 'labs_e_explorar' },
+  { g: 'g6', ojo: 'Notificaciones', t: 'Avisos que se convierten en acción', d: 'Facturas vencidas, pagos por confirmar o llamadas para hoy, cada uno con su botón. Cada persona elige qué le llega, y lo que borra no vuelve.', img: 'labs_e_notificaciones' },
+  { g: 'g6', ojo: 'Historial', t: 'Cualquier cambio, deshecho con un clic', d: 'Quién cambió qué y cuándo en cada ficha, con lo que había antes para recuperarlo.', img: 'labs_e_historial' },
+  { g: '', ojo: 'Equipo', t: 'Cada persona ve lo suyo', d: 'Roles y permisos a tu medida: dirección lo ve todo y cada comercial, su cartera.', img: 'labs_e_usuarios' },
+  { g: '', ojo: 'Importar', t: 'Tus datos, dentro desde el primer día', d: 'Clientes, productos, fichas y ventas desde Excel o CSV, con vista previa antes de guardar.', img: 'labs_e_importar' },
+  { g: '', ojo: 'Catálogos', t: 'Tu forma de trabajar, sin programar', d: 'Especialidades, motivos, resultados, estados y campos propios, configurados por ti.', img: 'labs_e_clasificadores' }
 ];
 const RAZONES = [
   ['Habla tu idioma', 'Médico, clínica, farmacia o contacto de hospital; «Interesado», «Cliente activa» u «Homologado». Cada empresa pone sus palabras y sus estados.'],
@@ -1482,14 +1483,9 @@ addEventListener('scroll', alDesplazar, { passive: true }); alDesplazar();
 
 /* ================= menú desplegable de la cabecera ================= */
 const MENU_PLAT = [
-  ['Campo', [['Cartera', 'Profesionales, centros y su historial', 'labs_e_directorio', 0], ['Agenda', 'Tu día, tu semana y tu mes', 'labs_e_agenda', 2],
-    ['Rutas', 'Paso a paso y por las calles', 'labs_e_rutas', 3], ['Ciclo de visitas', 'A, B y C, con sus visitas por ciclo', 'labs_e_ciclo', 18], ['Duplicados', 'Una persona, una sola ficha', 'labs_e_calidad', 1], ['Eventos', 'Talleres, cursos y congresos, en orden', 'labs_e_eventos', 20]]],
-  ['Venta', [['Pedidos', 'De la visita al pedido', 'labs_e_ventas', 5], ['Nueva venta y oportunidades', 'Mide también las ventas que no se cierran', 'pharma_e_oportunidades', 7],
-    ['Comisiones', 'Comisiones calculadas solas, cada mes', 'labs_e_comisiones', 13], ['Analítica', 'Cómo va el negocio, frente al año pasado', 'labs_e_analitica', 14],
-    ['Pedidos por la web', 'Con su filtro, su resumen y la referencia del pago', 'pharma_e_pedidos_web', 8], ['Concursos', 'Del pliego al contrato, con sus precios', 'medtech_e_concursos_ficha', 25]]],
-  ['Oficina', [['Almacén y lotes', 'Stock por lote y caducidad', 'labs_e_stock', 10], ['Compras', 'Proveedores y pedidos de compra', 'labs_e_compras', 11],
-    ['Facturación', 'VeriFactu, rectificativas y cobros', 'labs_e_facturas', 12], ['Historial', 'Cualquier cambio, deshecho con un clic', 'labs_e_historial', 16],
-    ['Equipo y permisos', 'Cada rol ve y hace lo suyo', 'labs_e_usuarios', 21], ['Cirugías', 'Lote y número de serie en quirófano', 'medtech_e_cirugias_ficha', 24], ['Parque instalado', 'Cada equipo, con su historia', 'medtech_e_parque', 26]]]
+  ['Campo', [['Cartera', 'Toda tu cartera, al día', 'labs_e_directorio', 0], ['Agenda', 'La semana del equipo', 'labs_e_agenda', 2], ['Rutas', 'Planificadas solas, por las calles', 'labs_e_rutas', 3], ['Ciclo de visitas', 'A cada cliente, sus visitas', 'labs_e_ciclo', 5], ['Duplicados', 'Una persona, una sola ficha', 'labs_e_calidad', 1], ['Eventos', 'Talleres y congresos, en orden', 'labs_e_eventos', 7]]],
+  ['Venta', [['Pedidos', 'Ningún pedido esperando', 'labs_e_ventas', 8], ['Nueva venta y oportunidades', 'También lo que no se vende', 'pharma_e_oportunidades', 10], ['Pedidos por la web', 'Con su referencia de pago', 'pharma_e_pedidos_web', 11], ['Concursos', 'Del pliego al contrato', 'medtech_e_concursos_ficha', 13], ['Comisiones', 'Calculadas solas, cada mes', 'labs_e_comisiones', 17], ['Analítica', 'Frente al año pasado', 'labs_e_analitica', 20]]],
+  ['Oficina', [['Almacén y lotes', 'Lote, caducidad y depósito', 'labs_e_stock', 14], ['Compras', 'Proveedores y pedidos de compra', 'labs_e_compras', 15], ['Facturación', 'VeriFactu y cobros', 'labs_e_facturas', 16], ['Cirugías', 'Lote y número de serie', 'medtech_e_cirugias_ficha', 18], ['Parque instalado', 'Cada equipo, con su historia', 'medtech_e_parque', 19], ['Historial', 'Cualquier cambio, deshecho', 'labs_e_historial', 23], ['Equipo y permisos', 'Cada persona ve lo suyo', 'labs_e_usuarios', 24]]]
 ];
 const previa = (img, pie) => `<div class="previa"><div class="ordenador"><div class="barra"><i></i><i></i><i></i></div><div class="vista"><img src="${cap(img)}" alt="" width="1600" height="1000"><img class="fuera" alt="" width="1600" height="1000"></div></div><p>${pie}</p></div>`;
 let ni = 0;
@@ -1501,7 +1497,7 @@ $('#panel-sectores').innerHTML = `<div class="wrap panel-in"><div class="grupos 
 $('#panel-ayuda').innerHTML = `<div class="wrap panel-in"><div class="grupos">
   <div class="grupo"><small>Soporte</small><a class="it" href="soporte.html" style="--i:0"><b>Centro de ayuda</b><span>Preguntas frecuentes con buscador</span></a><a class="it" href="#preguntas" style="--i:1"><b>Preguntas</b><span>Lo que más nos preguntan antes de empezar</span></a></div>
   <div class="grupo"><small>Contacto</small><a class="it" href="dudas.html" style="--i:2"><b>Envíanos tu duda</b><span>Te responde una persona del equipo</span></a><a class="it" href="dudas.html?tipo=Precios" style="--i:3"><b>Precios a medida</b><span>Para equipos de más de 50 personas</span></a></div>
-  <div class="grupo"><small>Empresa</small><a class="it" href="#clientes" style="--i:4"><b>Clientes</b><span>Quién usa delcos cada día</span></a><a class="it" href="aviso-legal.html" style="--i:5"><b>Aviso legal</b><span>Quiénes somos</span></a></div>
+  <div class="grupo"><small>Empresa</small><a class="it" href="#clientes" style="--i:4"><b>Cómo empezar</b><span>De la prueba a tu equipo trabajando</span></a><a class="it" href="aviso-legal.html" style="--i:5"><b>Aviso legal</b><span>Quiénes somos</span></a></div>
 </div><div class="previa"><div class="tarjeta"><b>¿Lo vemos con tus datos?</b><p>Te enseñamos delcos con tu sector y tu forma de trabajar, y lo pruebas 30 días.</p><a class="boton" href="dudas.html?tipo=Demo">Pide una demo</a></div></div></div>`;
 const cab = $('#cab'), velo = $('#velo'), CON_RATON = matchMedia('(hover: hover) and (pointer: fine)').matches;
 let panelAbierto = null, tAbrir, tCerrar;
@@ -1704,7 +1700,7 @@ if (ESCRITORIO) {
   gsap.to(cartas, { yPercent: (i, c) => -(+c.dataset.p) * .9, rotateX: 8, ease: 'none', scrollTrigger: { trigger: '.portada', start: 'top top', end: 'bottom top', scrub: .6 } });
 }
 
-/* ================= clientes: el recorrido de DLC avanza paso a paso ================= */
+/* ================= cómo empezar: el recorrido de un pedido avanza paso a paso ================= */
 ScrollTrigger.matchMedia({ '(min-width: 901px)': () => {
   const pasosRec = $$('.rec-pasos li'), sat = $('#rec-sat');
   const st = ScrollTrigger.create({ trigger: '#recorrido', start: 'top 70%', end: 'bottom 45%', scrub: true, onUpdate: s => {
@@ -1794,7 +1790,10 @@ ScrollTrigger.matchMedia({
 });
 
 /* ================= para quién: las tarjetas suben en cascada ================= */
-gsap.from('.pq', { y: 80, opacity: 0, rotateX: -12, duration: 1, stagger: .07, ease: 'expo.out', scrollTrigger: { trigger: '#pq-rejilla', start: 'top 82%' } });
+// La transición de CSS del hover no puede pelear con la animación: se quita mientras dura y al acabar no queda ningún resto
+gsap.from('.pq', { y: 80, opacity: 0, rotateX: -12, duration: 1, stagger: .07, ease: 'expo.out', clearProps: 'transform,opacity',
+  onStart() { this.targets().forEach(t => { t.style.transition = 'none'; }); }, onComplete() { this.targets().forEach(t => { t.style.transition = ''; }); },
+  scrollTrigger: { trigger: '#pq-rejilla', start: 'top 82%', once: true } });
 gsap.from('.talla', { y: 30, opacity: 0, duration: .9, stagger: .1, ease: 'expo.out', scrollTrigger: { trigger: '#tallas', start: 'top 88%' } });
 
 /* ================= módulos: entrada en cascada, inclinación hacia el ratón y cursor «Ver» ================= */

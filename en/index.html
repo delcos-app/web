@@ -80,10 +80,10 @@ body.noche .cab.fondo{background:rgba(11,37,64,.94);box-shadow:0 1px 0 var(--lin
 .logo{display:flex;align-items:center;gap:10px;text-decoration:none}
 .logo b{font-family:var(--f-titulo);font-weight:800;font-size:25px;letter-spacing:-.035em}
 .nav{display:flex;gap:28px;margin-left:auto;font-weight:600;font-size:15px}
-.nav a{text-decoration:none;position:relative}
+.nav a{text-decoration:none;position:relative;white-space:nowrap}
 .nav a::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:2px;background:var(--azul);transform:scaleX(0);transform-origin:left;transition:transform .18s var(--ease-sal)}
 .nav a:hover::after{transform:scaleX(1)}
-.cab .boton{height:44px;padding:0 20px;font-size:15px}
+.cab .boton{height:44px;padding:0 20px;font-size:15px;white-space:nowrap}
 /* Selector de idioma: los dos idiomas a la vista, el activo relleno */
 .idioma{display:inline-flex;align-items:center;gap:2px;height:44px;padding:4px;border:1px solid var(--linea-f);border-radius:999px;flex-shrink:0;color:inherit}
 .idioma .globo{width:18px;height:18px;margin:0 4px 0 7px;color:var(--azul);transition:transform .8s var(--ease-sal)}
@@ -474,6 +474,7 @@ body.noche .cierre .camino .boton.sec{background:transparent;color:var(--blanco)
 .caso-marca img{width:min(260px,100%);height:auto;filter:grayscale(1) brightness(.85);opacity:.8;transition:filter .5s,opacity .5s}
 .caso:hover .caso-marca img{filter:none;opacity:1}
 .caso-marca p{margin:0;color:var(--texto2)}
+.caso-titulo{margin:0;font-family:var(--f-titulo);font-weight:300;font-size:clamp(28px,2.6vw,38px);line-height:1.1;letter-spacing:-.03em;max-width:16ch}
 .fundador{align-self:flex-start;padding:5px 12px;border-radius:999px;background:var(--suave);color:var(--marino);font-size:13px;font-weight:700}
 .caso-der{position:relative;overflow:hidden;border-radius:28px;background:var(--tinta);color:var(--blanco);padding:36px;display:flex;flex-direction:column;justify-content:space-between;gap:32px}
 .caso-orbita{position:absolute;right:-90px;top:-90px;width:240px;height:240px;opacity:.3;animation:gira 40s linear infinite}
@@ -792,7 +793,7 @@ body.noche .arriba .pista{stroke:var(--linea-t)}
     <nav class="nav" aria-label="Sections">
       <button class="desp-b" type="button" aria-expanded="false" aria-controls="panel-plataforma">Platform <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
       <button class="desp-b" type="button" aria-expanded="false" aria-controls="panel-sectores">Sectors <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
-      <a href="#clientes">Clients</a><a href="#precios">Pricing</a>
+      <a href="#clientes">Getting started</a><a href="#precios">Pricing</a>
       <button class="desp-b" type="button" aria-expanded="false" aria-controls="panel-ayuda">Help <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
     </nav>
     <a class="demo-l" href="dudas.html?tipo=Demo">Request a demo</a>
@@ -814,7 +815,7 @@ body.noche .arriba .pista{stroke:var(--linea-t)}
       <a href="#dia" style="--i:2"><small>03</small><span>A day at the company</span></a>
       <a href="#modulos" style="--i:3"><small>04</small><span>Modules</span></a>
       <a href="#sectores" style="--i:4"><small>05</small><span>Sectors</span></a>
-      <a href="#clientes" style="--i:5"><small>06</small><span>Clients</span></a>
+      <a href="#clientes" style="--i:5"><small>06</small><span>Getting started</span></a>
       <a href="#precios" style="--i:6"><small>07</small><span>Pricing</span></a>
       <a href="soporte.html" style="--i:7"><small>08</small><span>Support</span></a>
       <a href="dudas.html" style="--i:8"><small>09</small><span>Send us a question</span></a>
@@ -848,7 +849,7 @@ body.noche .arriba .pista{stroke:var(--linea-t)}
     <div class="texto">
       <div class="ojo">Commercial management platform · healthcare</div>
       <h1 class="titular" data-letras>Your clients wear white coats. <em>Your software should know it.</em></h1>
-      <p class="entrada">Doctors, pharmacies, clinics, hospitals or vets: your company lives on those relationships. delcos brings them together in one platform, with everything that supports them: visits, orders, batch-tracked stock, VeriFactu invoicing and commissions.</p>
+      <p class="entrada">The sales software for laboratories, distributors and manufacturers that sell to doctors, clinics, pharmacies and hospitals. Visits, routes, orders, batch-tracked stock, VeriFactu invoicing and your whole network’s figures, in one platform your team uses from the very first week.</p>
       <div class="acciones">
         <a class="boton" href="../empezar.html">Start your free 30 days <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
         <a class="boton sec" href="dudas.html?tipo=Demo">Request a demo</a>
@@ -880,7 +881,7 @@ body.noche .arriba .pista{stroke:var(--linea-t)}
     <div class="cabeza">
       <div class="ojo">Who it’s for</div>
       <h2 class="titular" data-letras>Built for healthcare. <em>Not adapted to it.</em></h2>
-      <p class="entrada">Not another route-planning app. It’s the platform a healthcare company uses to run its sales network and its operations, from a three-person laboratory to a network of two hundred reps.</p>
+      <p class="entrada">If you sell through healthcare professionals and centres, your day looks nothing like any other small business: samples with batches, consulting hours, orders to centres, tenders. delcos already knows that, whether you have three reps or two hundred.</p>
     </div>
     <div class="pq-rejilla" id="pq-rejilla"></div>
     <div class="tallas" id="tallas"></div>
@@ -1011,35 +1012,35 @@ body.noche .arriba .pista{stroke:var(--linea-t)}
 <section class="clientes" id="clientes">
   <div class="wrap">
     <div class="cabeza">
-      <div class="ojo">Clients</div>
-      <h2 class="titular" data-letras>Two paths. <em>One moment.</em></h2>
-      <p class="entrada">DLC Health Group was looking for something the market didn’t have: a tool that truly understood how a laboratory works with healthcare professionals. The apps it knew were built for any small business, rigid and impossible to adapt to the sector. delcos arrived right then, with the opposite idea: a platform that adapts to the sector, not the other way round.</p>
+      <div class="ojo">Getting started</div>
+      <h2 class="titular" data-letras>Up and running in days. <em>Not months.</em></h2>
+      <p class="entrada">Switching software tends to worry people for three reasons: months of implementation, expensive consultants and a team that never adopts it. With delcos your team works with its real data from the first week, and we’re with you every step of the way.</p>
     </div>
     <article class="caso">
       <div class="caso-marca">
-        <span class="fundador">Founding client</span>
-        <img src="../clientes/dlc-health-group.webp" alt="DLC Health Group" width="900" height="404" loading="lazy">
-        <p>A laboratory founded in 2025, with its own formulations and a catalogue specialised in the musculoskeletal area. It works with healthcare professionals, clinics and healthcare centres.</p>
+        <span class="fundador">Founding clients</span>
+        <h3 class="caso-titulo">Your sector, with its own voice in delcos.</h3>
+        <p>The first clients in each sector decide the next features with us. We’re with you through onboarding and we adapt delcos to the way you work, not the other way round.</p>
       </div>
       <div class="caso-der">
         <svg class="caso-orbita" viewBox="0 0 200 200" aria-hidden="true"><circle cx="100" cy="100" r="80" fill="none" stroke="#C5D5E4" stroke-dasharray="2 6"/><circle cx="100" cy="20" r="7" fill="#7CC3EC"/></svg>
         <div class="datos">
-          <div class="dato"><b><span data-cuenta="100">100</span>+</b><span>versions released since we started working together, each one tested with its team</span></div>
-          <div class="dato"><b data-cuenta="8">8</b><span>modules in daily use, from the field to the invoice</span></div>
-          <div class="dato"><b data-cuenta="1">1</b><span>single platform for the field team, the office and management</span></div>
+          <div class="dato"><b data-cuenta="30">30</b><span>days’ trial with your own data and no lock-in</span></div>
+          <div class="dato"><b data-cuenta="5">5</b><span>minutes to sign up on the website, no calls needed</span></div>
+          <div class="dato"><b data-cuenta="1">1</b><span>single platform for the field, the office and management</span></div>
         </div>
         <div class="usa"><span>Accounts and visits</span><span>Calendar and routes</span><span>Orders</span><span>VeriFactu invoicing</span><span>Commissions</span><span>Analytics</span></div>
       </div>
     </article>
     <div class="recorrido" id="recorrido">
       <div class="rec-cabeza">
-        <div class="ojo">How DLC Health Group works with delcos</div>
+        <div class="ojo">One order, start to finish</div>
         <h3>From visit to invoice, <em>with the same data.</em></h3>
       </div>
       <div class="rec-pista" aria-hidden="true"><i id="rec-avance"></i><b id="rec-sat"></b></div>
       <ol class="rec-pasos">
-        <li><span class="n">01</span><b>The visit</b><p>Its rep visits the professional and logs the visit on their phone on the way out.</p></li>
-        <li><span class="n">02</span><b>The call</b><p>The patient orders by phone and telesales logs the order on the same call.</p></li>
+        <li><span class="n">01</span><b>The visit</b><p>The rep logs it on their phone on the way out of the practice.</p></li>
+        <li><span class="n">02</span><b>The call</b><p>The client orders by phone and telesales logs the order on the same call.</p></li>
         <li><span class="n">03</span><b>The follow-up</b><p>You see who buys, who comes back and who stops, so you call in time.</p></li>
         <li><span class="n">04</span><b>The warehouse</b><p>The order ships from its batch, with its expiry date.</p></li>
         <li><span class="n">05</span><b>The invoice</b><p>Invoiced with VeriFactu and collected, with no other software.</p></li>
@@ -1047,16 +1048,16 @@ body.noche .arriba .pista{stroke:var(--linea-t)}
       </ol>
     </div>
     <div class="historia">
-      <div class="hito"><small>2025</small><b>DLC Health Group is born</b><p>A small, close-knit laboratory with its own formulations and a network of professionals that is starting to grow.</p></div>
-      <div class="hito"><small>The need</small><b>No tool fit</b><p>The apps on the market were boxed into the generic small business: rigid, with no vision of the sector and no room to adapt.</p></div>
-      <div class="hito"><small>The meeting</small><b>delcos and DLC cross paths</b><p>delcos was looking for a demanding laboratory to grow with; DLC, a platform with a real vision of the sector. They met at the best possible moment.</p></div>
-      <div class="hito"><small>2026</small><b>A breath of fresh air</b><p>DLC works with its whole team on delcos, and delcos brings what it learned to the whole sector, in each company’s own vocabulary.</p></div>
+      <div class="hito"><small>Day 1</small><b>You sign up</b><p>On the website, in five minutes. Your company is set up with your brand and your 30-day trial begins.</p></div>
+      <div class="hito"><small>Week 1</small><b>Your data, in</b><p>Accounts, products and clients come in from your Excel, with your words, your stages and your areas. With onboarding, we do it for you.</p></div>
+      <div class="hito"><small>Week 2</small><b>Your team, trained</b><p>One session per profile, from the field to management, and the manual inside the app in your company’s vocabulary.</p></div>
+      <div class="hito"><small>Day 30</small><b>You decide with your own figures</b><p>By the end of the trial you already see your real results. If you stay, nothing changes; if not, you take your data with you.</p></div>
     </div>
-    <blockquote class="manifiesto"><p>“What DLC needed didn’t exist. <em>Now it does, for the whole sector.</em>”</p><footer>The delcos team</footer></blockquote>
+    <blockquote class="manifiesto"><p>“Software that adapts to your sector, <em>not the other way round.</em>”</p><footer>The delcos team</footer></blockquote>
     <div class="proximo">
       <div class="hueco" aria-hidden="true"><svg viewBox="0 0 44 44"><circle cx="20" cy="24" r="16" fill="none" stroke="#C5D5E4" stroke-dasharray="2 3"/><circle cx="35" cy="9" r="5" fill="#7CC3EC"/></svg></div>
-      <div><b>Your company, next?</b><p>We’re looking for the next founding clients in every sector. We’ll be with you through onboarding and listen to what you need in the next versions.</p></div>
-      <a class="boton" href="dudas.html?tipo=Demo">I want to be next</a>
+      <div><b>Want to be a founding client in your sector?</b><p>We’re looking for the first clients in each sector. We’re with you through onboarding and your requests shape the next versions.</p></div>
+      <a class="boton" href="dudas.html?tipo=Demo">I want to be a founding client</a>
     </div>
   </div>
 </section>
@@ -1152,59 +1153,59 @@ const escHTML = (img, alt) => `<div class="ordenador"><div class="barra"><i></i>
 /* ================= contenido ================= */
 const MODULOS_CINTA = ['Accounts', 'Visits', 'Calendar', 'Routes', 'Orders', 'Opportunities', 'Clients', 'Warehouse', 'Batches', 'Purchasing', 'Suppliers', 'Invoicing', 'Payments', 'Commissions', 'Analytics', 'Duplicates', 'History', 'Portal'];
 const DIA = [
-  { h: '07:45', rol: 'Management', img: 'labs_e_agenda', t: 'The day, the week and the month at a glance.', d: 'Today’s appointments with suggestions of who to visit, the week in a strip and the month with every appointment marked.' },
-  { h: '08:05', rol: 'Sales rep', img: 'labs_m_inicio', tel: 1, t: 'On the road, the day on their phone.', d: 'Appointments in order, two back to back at the same hospital, and what was left pending last week.' },
-  { h: '09:50', rol: 'Sales rep', img: 'labs_m_visita', tel: 1, t: 'Log the visit on the way out.', d: 'Outcome, samples and materials handed over, next step. The record’s stage moves on by itself.' },
-  { h: '11:20', rol: 'Telesales', img: 'pharma_e_nueva_venta', t: 'A call that ends in an order.', d: 'Find the client, repeat their last order or note what they want, and close with the order or the reason they didn’t buy.' },
-  { h: '12:00', rol: 'Warehouse', img: 'labs_e_stock', t: 'The order draws down its batch.', d: 'Stock by warehouse and by batch with expiry dates. Alerts for what drops below the minimum and what is about to expire.' },
-  { h: '13:30', rol: 'Purchasing', img: 'labs_e_compras', t: 'What’s missing, off to the supplier.', d: 'Purchase orders sent, in transit or partly received. On receipt, each batch goes into the warehouse.' },
-  { h: '16:10', rol: 'Accounts', img: 'labs_e_factura', t: 'Invoice, payment and email.', d: 'Unalterable invoices with VeriFactu, credit notes when needed and payments that never exceed what is outstanding.' },
-  { h: '19:00', rol: 'Management', img: 'labs_e_analitica', t: 'The day’s figures, without asking.', d: 'Sales by area, product, client and rep. And this month’s commissions, calculated by tiers.' }
+  { h: '07:45', rol: 'Management', img: 'labs_e_inicio', t: 'Start the day knowing where you stand.', d: 'The figures that matter, live from first thing: today’s appointments, urgent accounts, this month’s visits and the state of the portfolio, each with its chart.' },
+  { h: '08:05', rol: 'Sales rep', img: 'labs_m_inicio', tel: 1, t: 'The whole day, in their pocket.', d: 'Appointments in order, the route along real streets and what was left pending. And with no signal, they keep working just the same.' },
+  { h: '09:50', rol: 'Sales rep', img: 'labs_m_visita', tel: 1, t: 'The visit, logged before starting the car.', d: 'Outcome, products presented, signed samples and next step in a minute. The record moves on by itself.' },
+  { h: '11:20', rol: 'Telesales', img: 'pharma_e_nueva_venta', t: 'A call that ends in an order.', d: 'Find the client, repeat their last order or note what they need, and close with the order or the reason they didn’t buy.' },
+  { h: '12:00', rol: 'Warehouse', img: 'labs_e_stock', t: 'The order ships from its batch.', d: 'Stock by warehouse, batch and expiry, with alerts for what drops below the minimum and what is about to expire.' },
+  { h: '13:30', rol: 'Purchasing', img: 'labs_e_compras', t: 'What’s missing, already ordered.', d: 'Purchase orders sent, in transit or partly received. On receipt, each batch goes into the warehouse by itself.' },
+  { h: '16:10', rol: 'Accounts', img: 'labs_e_factura', t: 'Invoice, payment and email, no other software.', d: 'VeriFactu invoices, credit notes when needed and payments that never exceed what is outstanding.' },
+  { h: '19:00', rol: 'Management', img: 'labs_e_analitica', t: 'The day’s figures, without asking.', d: 'Sales by area, product, client and rep against last year, and this month’s commissions already worked out.' }
 ];
 // Lo que cada momento del día pasa al siguiente: [para quién, qué]
 const RELEVOS = [['Sales rep', 'Today’s appointments and route'], ['The visit', 'The appointment, with its record'], ['Telesales', 'The clients due a call'], ['Warehouse', 'The order'],
   ['Purchasing', 'Stock below minimum'], ['Accounts', 'The order shipped'], ['Management', 'Invoice and payment']];
 const PARA_QUIEN = [
-  { ojo: 'Laboratories and nutraceuticals', t: 'From rep to warehouse, one set of data.', d: 'The visit, the order, the batch and the invoice share the same data, and you see who buys, who comes back and who stops.', usa: ['Visits', 'Samples', 'Batches', 'Invoicing'] },
-  { ojo: 'Medical detailing', t: 'Every doctor, their history and their route.', d: 'Records with practice, hours and stage; routes that respect when each one sees visitors.', usa: ['Accounts', 'Calendar', 'Routes', 'Follow-up'], oscura: true },
-  { ojo: 'Hospital and surgical supplies', t: 'Long cycles, under control.', d: 'Contacts by department, products under evaluation, approvals and large orders with batch traceability.', usa: ['Contacts', 'Approval', 'Traceability'] },
-  { ojo: 'Pharma sales', t: 'Pharmacies that restock on time.', d: 'Visits, telesales and orders in the same portfolio, with the calls to make in plain sight.', usa: ['Pharmacies', 'Telesales', 'Orders'] },
-  { ojo: 'Veterinary', t: 'Clinics and vets, in their own language.', d: 'Specialties, owners instead of patients, and who buys, who comes back and who stops.', usa: ['Vets', 'Follow-up', 'Orders'] },
-  { ojo: 'Orthopaedics and dental', t: 'Samples, clinics and restocking.', d: 'Professionals, centres and clinics with their usage, their discounts and their stock.', usa: ['Clinics', 'Discounts', 'Stock'] }
+  { ojo: 'Laboratories and nutraceuticals', t: 'From rep to invoice, without losing a thing.', d: 'Visit, sample, order, batch and invoice share the same information. You know what sells, which clients come back and who is worth revisiting.', usa: ['Visits', 'Samples', 'Batches', 'Invoicing'] },
+  { ojo: 'Medical detailing', t: 'Every visit, at the right time.', d: 'Records with each practice and its hours, an A, B and C cycle that shows who is due a visit, and routes that respect when each professional sees reps.', usa: ['Accounts', 'A/B/C cycle', 'Routes', 'Calendar'], oscura: true },
+  { ojo: 'Hospital and surgical supplies', t: 'Long cycles, under control.', d: 'From the department that evaluates to the tender you win: surgeries with serial numbers, consignment stock and each hospital’s installed base.', usa: ['Tenders', 'Surgeries', 'Traceability'] },
+  { ojo: 'Pharma sales', t: 'No pharmacy runs out of stock.', d: 'Visits, telesales and orders on the same portfolio, with today’s calls in plain sight and orders placed through each pharmacy’s distributor.', usa: ['Pharmacies', 'Telesales', 'Distributor'] },
+  { ojo: 'Veterinary', t: 'Your sector, in its own words.', d: 'Vets, clinics and owners instead of doctors and patients. Stages, fields and reports speak the way your team does.', usa: ['Vets', 'Clinics', 'Orders'] },
+  { ojo: 'Orthopaedics and dental', t: 'Restocking before anything runs out.', d: 'Clinics and orthopaedic shops with their usage, discounts and consignment stock, and a portal where they order their own restocking.', usa: ['Clinics', 'Consignment', 'Portal'] }
 ];
 const TALLAS = [
-  ['Small', 'From 3 to 10 people', 'From €24 per user and no months of implementation: import your Excel, invite your team and add your brand.'],
-  ['Medium-sized', 'From 10 to 50', 'Areas, batch-tracked stock, purchasing and tiered commissions, with every role in its place.'],
-  ['Large', 'Over 50', 'Several teams and warehouses, role-based permissions, auditing and a custom plan.']
+  ['Small', 'From 3 to 10 people', 'Start this very week: import your Excel, invite your team and work under your own brand from €24 per user.'],
+  ['Medium-sized', 'From 10 to 50', 'Areas, batch-tracked stock, purchasing and tiered commissions, with each person seeing only their own.'],
+  ['Large', 'Over 50', 'Several teams and warehouses, role-based permissions, an audit trail of every change and a plan built around you.']
 ];
 const MODULOS = [
-  { g: 'g8', ojo: 'Accounts', t: 'Records with everything that matters', d: 'Professionals, centres and clients with their history, hours, sales stage and your own fields. Every visit, in person, by phone or by video call, with its photos.', img: 'labs_e_directorio' },
-  { g: '', ojo: 'Data quality', t: 'A portfolio with no gaps', d: 'No phone, no centre or no rep: you see it at a glance and fill it in.', img: 'labs_e_seguimiento' },
-  { g: '', ojo: 'Calendar', t: 'Your day, your week and your month', d: 'Today’s appointments with suggestions of who to see, on a single screen. Log your visits and appointments even without signal: they sync on their own once you’re back online.', img: 'labs_e_agenda' },
-  { g: 'g8', ojo: 'Routes', t: 'Your route, step by step and street by street', d: 'Pick who to see on the map and the best order is worked out for you, respecting their hours. See the day on real streets with traffic: kilometres, driving time and finish time. Then add it to your calendar for one day, or every week, every two weeks or once a month.', img: 'labs_e_rutas' },
-  { g: 'g12', ojo: 'Your day on the map', t: 'Today’s appointments, street by street', d: 'Today’s appointments numbered on the map and the route along real streets with traffic: kilometres, driving time and finish time. “See the day” walks through it hour by hour.', img: 'labs_e_mapa' },
-  { g: 'g8', ojo: 'Orders', t: 'From visit to order', d: 'Sales to patients or centres, with discounts, shipping and the operations of every order. At the top, what is waiting: payments to approve, parcels to pack and invoices to send, one click away.', img: 'labs_e_ventas' },
-  { g: '', ojo: 'New sale', t: 'Repeat the last order in one click', d: 'Find the client, repeat their last order or note what they want, and close.', img: 'pharma_e_nueva_venta' },
-  { g: 'g6', ojo: 'Opportunities', t: 'Measure the sales that don’t close, too', d: 'Conversion, value won and lost, what people ask for, at what time and through which channel each client arrives.', img: 'pharma_e_oportunidades' },
-  { g: 'g6', ojo: 'Web orders', t: 'Online sales, separate and measured', d: 'Orders placed through your website, with their own filter and sales summary.', img: 'pharma_e_pedidos_web' },
-  { g: 'g6', ojo: 'Payments', t: 'Match every payment without hunting for the receipt', d: 'The bank transfer or Bizum reference and the proof of payment, right on the order.', img: 'pharma_e_pedido_web' },
-  { g: 'g6', ojo: 'Warehouse', t: 'Stock by batch and expiry', d: 'Goods in, goods out and transfers by warehouse, plus consignment stock at each centre: restock, log what is used and count it. Every sample signed for by whoever receives it, within the limit your company sets.', img: 'dental_e_deposito' },
-  { g: '', ojo: 'Purchasing', t: 'Suppliers and purchase orders', d: 'What has been sent, what is in transit and what has arrived.', img: 'labs_e_compras' },
-  { g: '', ojo: 'Invoicing', t: 'VeriFactu-compliant invoices, no other software', d: 'Series, credit notes, payments and the record of every invoice.', img: 'labs_e_facturas' },
-  { g: '', ojo: 'Commissions', t: 'Commissions calculated for you, every month', d: 'Tiered schemes and monthly settlements.', img: 'labs_e_comisiones' },
-  { g: 'g8', ojo: 'Analytics', t: 'How the business is doing, against last year', d: 'Sales, clients, team, opportunities, payments and stock, compared with the previous period or with the same period last year, each with its six-month trend line.', img: 'labs_e_analitica' },
-  { g: '', ojo: 'Explore', t: 'Cross your data', d: 'Sales, visits and coverage by any dimension.', img: 'labs_e_explorar' },
-  { g: 'g6', ojo: 'History', t: 'Any change, undone in one click', d: 'Administrators see on each record who changed what, when and what was there before.', img: 'labs_e_historial' },
-  { g: 'g6', ojo: 'Notifications', t: 'Every alert, with its action one click away', d: 'New and earlier, each with its own bin: once deleted, they don’t come back. Each person chooses what arrives instantly and what goes into the daily summary.', img: 'labs_e_notificaciones' },
-  { g: 'g6', ojo: 'Visit cycle', t: 'Everyone gets the visits they need', d: 'Sort your portfolio into A, B and C and set how many visits each class needs per cycle. See who is behind and book them in one click.', img: 'labs_e_ciclo' },
-  { g: 'g6', ojo: 'Coverage by product', t: 'Each product, and who has heard about it', d: 'Mark the products you promote and see, each cycle, how many A, B and C professionals know them and who is still missing, with an appointment in one click.', img: 'labs_e_ciclo_producto' },
-  { g: 'g8', ojo: 'Events', t: 'Workshops, courses and congresses, in order', d: 'Attendees, registrations and expenses for every event, linked to each professional’s record. Each year, the summary by professional for your compliance officer to review.', img: 'labs_e_eventos' },
-  { g: '', ojo: 'Team', t: 'Users, roles and permissions', d: 'Each person sees and does what is theirs and, on the computer, arranges their own menu.', img: 'labs_e_usuarios' },
-  { g: 'g6', ojo: 'Import', t: 'Start with your own data from day one', d: 'Clients, products, records and sales from Excel or CSV, with a preview.', img: 'labs_e_importar' },
-  { g: 'g6', ojo: 'Catalogues', t: 'Make it fit your company, no coding', d: 'Specialties, reasons, outcomes and custom fields, with no coding.', img: 'labs_e_clasificadores' },
-  { g: '', ojo: 'Surgeries', t: 'What is used in theatre, with batch and serial number', d: 'Schedule the surgery, log what is used with its batch and serial number or UDI, and get the hospital order and the 48-hour restock ready.', img: 'medtech_e_cirugias_ficha' },
-  { g: '', ojo: 'Tenders', t: 'From tender to contract, with its prices', d: 'Tenders with lots, products and prices. Once a lot is won, that client’s orders carry the tender price automatically while the contract lasts, with a reminder before it expires.', img: 'medtech_e_concursos_ficha' },
-  { g: '', ojo: 'Installed base', t: 'Every installed device, with its history', d: 'Serial number, contract or warranty and services for each device at the client, with alerts for what is due and the service in your calendar.', img: 'medtech_e_parque' }
+  { g: 'g8', ojo: 'Accounts', t: 'Your whole portfolio, complete and up to date', d: 'Professionals, centres and clients with their history, their hours and your own fields. Every visit is logged, in person, by phone or by video call, with its photos.', img: 'labs_e_directorio' },
+  { g: '', ojo: 'Data quality', t: 'A portfolio with no gaps', d: 'Records with no phone, no centre or no rep, flagged so you can complete them in a moment.', img: 'labs_e_seguimiento' },
+  { g: '', ojo: 'Calendar', t: 'The team’s week at a glance', d: 'Today’s and the coming weeks’ appointments, what was left pending and who is due a visit. Works without signal too and syncs by itself.', img: 'labs_e_agenda' },
+  { g: 'g8', ojo: 'Routes', t: 'Routes that plan themselves', d: 'Pick who to see and delcos works out the best order, respecting their hours and with real driving times. The route goes into the calendar for one day, or every week, fortnight or month.', img: 'labs_e_rutas' },
+  { g: 'g12', ojo: 'Your day on the map', t: 'Fewer kilometres, more visits', d: 'Each rep sees their day on the map: appointments in order, the route along real streets with traffic, the driving time and when they’ll finish.', img: 'labs_e_mapa' },
+  { g: '', ojo: 'Visit cycle', t: 'Every client gets the visits they need', d: 'Sort your portfolio into A, B and C, set how many visits each class needs and see who is behind. The appointment, one click away.', img: 'labs_e_ciclo' },
+  { g: '', ojo: 'Coverage by product', t: 'Every launch, presented to the people who matter', d: 'Mark the products you promote and see which professionals in each class already know them and who still needs to hear about them.', img: 'labs_e_ciclo_producto' },
+  { g: '', ojo: 'Events', t: 'Workshops and congresses, in order', d: 'Attendees, registrations and expenses for every event, linked to each professional’s record, with the yearly summary ready for your compliance officer.', img: 'labs_e_eventos' },
+  { g: 'g8', ojo: 'Orders', t: 'No order left waiting', d: 'Sales to patients or centres, with discounts and shipping. At the top, what is pending: payments to approve, parcels to pack and invoices to send, one click away.', img: 'labs_e_ventas' },
+  { g: '', ojo: 'New sale', t: 'Repeat the last order in one click', d: 'Find the client, repeat what they ordered last time or note what they need, and close the sale on the same call.', img: 'pharma_e_nueva_venta' },
+  { g: 'g6', ojo: 'Opportunities', t: 'Learn from the sales that don’t close, too', d: 'Conversion, value won and lost, what people ask for, at what time and through which channel each client arrives.', img: 'pharma_e_oportunidades' },
+  { g: 'g6', ojo: 'Web orders', t: 'Online sales, separate and measured', d: 'Orders that come in through your website, with their own filter and sales summary.', img: 'pharma_e_pedidos_web' },
+  { g: 'g6', ojo: 'Payments', t: 'Every payment matched, no hunting for receipts', d: 'The bank transfer or Bizum reference and the proof of payment, kept on the order itself.', img: 'pharma_e_pedido_web' },
+  { g: 'g6', ojo: 'Tenders', t: 'From tender to contract, with its prices', d: 'Tenders with lots, products and prices. Once a lot is won, that client’s orders apply the awarded price by themselves, with a reminder before the contract expires.', img: 'medtech_e_concursos_ficha' },
+  { g: '', ojo: 'Warehouse', t: 'Stock by batch and expiry, at the client too', d: 'Goods in, goods out and transfers by warehouse, plus consignment stock at each centre. Every sample, signed for by whoever receives it.', img: 'dental_e_deposito' },
+  { g: '', ojo: 'Purchasing', t: 'Purchasing without spreadsheets', d: 'Supplier orders sent, in transit or received. On receipt, each batch goes into the warehouse by itself.', img: 'labs_e_compras' },
+  { g: '', ojo: 'Invoicing', t: 'VeriFactu invoices, no other software', d: 'Series, credit notes and payments, issued from the order itself, with the record of every invoice.', img: 'labs_e_facturas' },
+  { g: '', ojo: 'Commissions', t: 'Commissions calculated for you, every month', d: 'Tiered schemes and each person’s settlement, with no spreadsheets and no arguments.', img: 'labs_e_comisiones' },
+  { g: '', ojo: 'Surgeries', t: 'What is used in theatre, traced and restocked', d: 'Every surgery with what was used by batch and serial number or UDI, the hospital order ready and the restock within 48 hours.', img: 'medtech_e_cirugias_ficha' },
+  { g: '', ojo: 'Installed base', t: 'Every installed device, with its history', d: 'Serial number, contract or warranty and services for each device at the client, with alerts for what is due.', img: 'medtech_e_parque' },
+  { g: 'g8', ojo: 'Analytics', t: 'How the business is doing, against last year', d: 'Sales, clients, team, opportunities, payments and stock, compared with the previous period, each indicator with its six-month trend.', img: 'labs_e_analitica' },
+  { g: '', ojo: 'Explore', t: 'The answers your spreadsheet can’t give', d: 'Sales, visits and coverage cross-referenced by area, product, client or rep, in seconds.', img: 'labs_e_explorar' },
+  { g: 'g6', ojo: 'Notifications', t: 'Alerts that turn into action', d: 'Overdue invoices, payments to confirm or calls for today, each with its button. Each person chooses what they get, and what they delete doesn’t come back.', img: 'labs_e_notificaciones' },
+  { g: 'g6', ojo: 'History', t: 'Any change, undone in one click', d: 'Who changed what and when on every record, with what was there before so you can bring it back.', img: 'labs_e_historial' },
+  { g: '', ojo: 'Team', t: 'Everyone sees their own', d: 'Roles and permissions to suit you: management sees everything and each rep, their own portfolio.', img: 'labs_e_usuarios' },
+  { g: '', ojo: 'Import', t: 'Your data, in from day one', d: 'Clients, products, records and sales from Excel or CSV, with a preview before saving.', img: 'labs_e_importar' },
+  { g: '', ojo: 'Catalogues', t: 'Your way of working, no coding', d: 'Specialties, reasons, outcomes, stages and custom fields, set up by you.', img: 'labs_e_clasificadores' }
 ];
 const RAZONES = [
   ['Speaks your language', 'Doctor, clinic, pharmacy or hospital contact; “Interested”, “Active client” or “Approved”. Each company sets its own words and stages.'],
@@ -1482,14 +1483,9 @@ addEventListener('scroll', alDesplazar, { passive: true }); alDesplazar();
 
 /* ================= menú desplegable de la cabecera ================= */
 const MENU_PLAT = [
-  ['Field', [['Accounts', 'Professionals, centres and their history', 'labs_e_directorio', 0], ['Calendar', 'Your day, your week and your month', 'labs_e_agenda', 2],
-    ['Routes', 'Step by step, street by street', 'labs_e_rutas', 3], ['Visit cycle', 'A, B and C, with their visits per cycle', 'labs_e_ciclo', 18], ['Duplicates', 'One person, one record', 'labs_e_calidad', 1], ['Events', 'Workshops, courses and congresses, in order', 'labs_e_eventos', 20]]],
-  ['Sales', [['Orders', 'From visit to order', 'labs_e_ventas', 5], ['New sale and opportunities', 'Measure the sales that don’t close, too', 'pharma_e_oportunidades', 7],
-    ['Commissions', 'Commissions calculated for you, every month', 'labs_e_comisiones', 13], ['Analytics', 'How the business is doing, against last year', 'labs_e_analitica', 14],
-    ['Web orders', 'With their filter, their summary and the payment reference', 'pharma_e_pedidos_web', 8], ['Tenders', 'From tender to contract, with its prices', 'medtech_e_concursos_ficha', 25]]],
-  ['Office', [['Warehouse and batches', 'Stock by batch and expiry', 'labs_e_stock', 10], ['Purchasing', 'Suppliers and purchase orders', 'labs_e_compras', 11],
-    ['Invoicing', 'VeriFactu, credit notes and payments', 'labs_e_facturas', 12], ['History', 'Any change, undone in one click', 'labs_e_historial', 16],
-    ['Team and permissions', 'Each role sees and does its own part', 'labs_e_usuarios', 21], ['Surgeries', 'Batch and serial number in theatre', 'medtech_e_cirugias_ficha', 24], ['Installed base', 'Every device, with its history', 'medtech_e_parque', 26]]]
+  ['Field', [['Accounts', 'Your whole portfolio, up to date', 'labs_e_directorio', 0], ['Calendar', 'The team’s week', 'labs_e_agenda', 2], ['Routes', 'Planned for you, street by street', 'labs_e_rutas', 3], ['Visit cycle', 'Every client, their visits', 'labs_e_ciclo', 5], ['Duplicates', 'One person, one record', 'labs_e_calidad', 1], ['Events', 'Workshops and congresses, in order', 'labs_e_eventos', 7]]],
+  ['Sales', [['Orders', 'No order left waiting', 'labs_e_ventas', 8], ['New sale and opportunities', 'What doesn’t sell, too', 'pharma_e_oportunidades', 10], ['Web orders', 'With their payment reference', 'pharma_e_pedidos_web', 11], ['Tenders', 'From tender to contract', 'medtech_e_concursos_ficha', 13], ['Commissions', 'Calculated for you, every month', 'labs_e_comisiones', 17], ['Analytics', 'Against last year', 'labs_e_analitica', 20]]],
+  ['Office', [['Warehouse and batches', 'Batch, expiry and consignment', 'labs_e_stock', 14], ['Purchasing', 'Suppliers and purchase orders', 'labs_e_compras', 15], ['Invoicing', 'VeriFactu and payments', 'labs_e_facturas', 16], ['Surgeries', 'Batch and serial number', 'medtech_e_cirugias_ficha', 18], ['Installed base', 'Every device, with its history', 'medtech_e_parque', 19], ['History', 'Any change, undone', 'labs_e_historial', 23], ['Team and permissions', 'Everyone sees their own', 'labs_e_usuarios', 24]]]
 ];
 const previa = (img, pie) => `<div class="previa"><div class="ordenador"><div class="barra"><i></i><i></i><i></i></div><div class="vista"><img src="${cap(img)}" alt="" width="1600" height="1000"><img class="fuera" alt="" width="1600" height="1000"></div></div><p>${pie}</p></div>`;
 let ni = 0;
@@ -1501,7 +1497,7 @@ $('#panel-sectores').innerHTML = `<div class="wrap panel-in"><div class="grupos 
 $('#panel-ayuda').innerHTML = `<div class="wrap panel-in"><div class="grupos">
   <div class="grupo"><small>Support</small><a class="it" href="soporte.html" style="--i:0"><b>Help centre</b><span>Searchable FAQs</span></a><a class="it" href="#preguntas" style="--i:1"><b>Questions</b><span>What people ask us most before starting</span></a></div>
   <div class="grupo"><small>Contact</small><a class="it" href="dudas.html" style="--i:2"><b>Send us a question</b><span>A real person from the team replies</span></a><a class="it" href="dudas.html?tipo=Precios" style="--i:3"><b>Custom pricing</b><span>For teams of more than 50 people</span></a></div>
-  <div class="grupo"><small>Company</small><a class="it" href="#clientes" style="--i:4"><b>Clients</b><span>Who uses delcos every day</span></a><a class="it" href="../aviso-legal.html" style="--i:5"><b>Legal notice</b><span>Who we are</span></a></div>
+  <div class="grupo"><small>Company</small><a class="it" href="#clientes" style="--i:4"><b>Getting started</b><span>From trial to your team at work</span></a><a class="it" href="../aviso-legal.html" style="--i:5"><b>Legal notice</b><span>Who we are</span></a></div>
 </div><div class="previa"><div class="tarjeta"><b>Shall we look at it with your data?</b><p>We’ll show you delcos with your sector and your way of working, and you try it for 30 days.</p><a class="boton" href="dudas.html?tipo=Demo">Book a demo</a></div></div></div>`;
 const cab = $('#cab'), velo = $('#velo'), CON_RATON = matchMedia('(hover: hover) and (pointer: fine)').matches;
 let panelAbierto = null, tAbrir, tCerrar;
@@ -1704,7 +1700,7 @@ if (ESCRITORIO) {
   gsap.to(cartas, { yPercent: (i, c) => -(+c.dataset.p) * .9, rotateX: 8, ease: 'none', scrollTrigger: { trigger: '.portada', start: 'top top', end: 'bottom top', scrub: .6 } });
 }
 
-/* ================= clientes: el recorrido de DLC avanza paso a paso ================= */
+/* ================= cómo empezar: el recorrido de un pedido avanza paso a paso ================= */
 ScrollTrigger.matchMedia({ '(min-width: 901px)': () => {
   const pasosRec = $$('.rec-pasos li'), sat = $('#rec-sat');
   const st = ScrollTrigger.create({ trigger: '#recorrido', start: 'top 70%', end: 'bottom 45%', scrub: true, onUpdate: s => {
@@ -1794,7 +1790,10 @@ ScrollTrigger.matchMedia({
 });
 
 /* ================= para quién: las tarjetas suben en cascada ================= */
-gsap.from('.pq', { y: 80, opacity: 0, rotateX: -12, duration: 1, stagger: .07, ease: 'expo.out', scrollTrigger: { trigger: '#pq-rejilla', start: 'top 82%' } });
+// La transición de CSS del hover no puede pelear con la animación: se quita mientras dura y al acabar no queda ningún resto
+gsap.from('.pq', { y: 80, opacity: 0, rotateX: -12, duration: 1, stagger: .07, ease: 'expo.out', clearProps: 'transform,opacity',
+  onStart() { this.targets().forEach(t => { t.style.transition = 'none'; }); }, onComplete() { this.targets().forEach(t => { t.style.transition = ''; }); },
+  scrollTrigger: { trigger: '#pq-rejilla', start: 'top 82%', once: true } });
 gsap.from('.talla', { y: 30, opacity: 0, duration: .9, stagger: .1, ease: 'expo.out', scrollTrigger: { trigger: '#tallas', start: 'top 88%' } });
 
 /* ================= módulos: entrada en cascada, inclinación hacia el ratón y cursor «Ver» ================= */
