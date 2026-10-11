@@ -46,6 +46,8 @@ html,body{overflow-x:clip}
 html.lenis,html.lenis body{height:auto}
 .lenis.lenis-smooth{scroll-behavior:auto!important}
 body{margin:0;background:var(--fondo);color:var(--tinta-txt);font-family:var(--f-texto);font-size:17px;line-height:1.5;overflow-x:hidden;transition:background .6s var(--ease-sal),color .6s var(--ease-sal)}
+body{background:var(--blanco);color:var(--tinta)}
+[data-noche]{background:var(--tinta);color:var(--blanco)}
 body.noche{--fondo:var(--tinta);--tinta-txt:var(--blanco)}
 img{max-width:100%;display:block}
 a{color:inherit}
@@ -54,12 +56,12 @@ button{font:inherit;color:inherit;cursor:pointer}
 h1,h2,h3{text-wrap:balance}
 .wrap{max-width:1280px;margin:0 auto;padding-inline:40px}
 .ojo{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#3F6488}
-body.noche .ojo{color:var(--celeste)}
+[data-noche] .ojo{color:var(--celeste)}
 .titular{margin:0;font-family:var(--f-titulo);font-weight:300;font-size:clamp(40px,5.4vw,76px);line-height:1.02;letter-spacing:-.04em}
 .titular em{font-style:normal;color:var(--azul)}
-body.noche .titular em{color:var(--celeste)}
+[data-noche] .titular em{color:var(--celeste)}
 .entrada{margin:0;font-size:clamp(17px,1.5vw,20px);color:var(--texto2);max-width:58ch}
-body.noche .entrada{color:var(--en-tinta)}
+[data-noche] .entrada{color:var(--en-tinta)}
 .linea-txt{display:block;overflow:hidden;padding-bottom:.2em;margin-bottom:-.12em}
 .boton{display:inline-flex;align-items:center;gap:10px;height:54px;padding:0 28px;border-radius:999px;background:var(--marino);color:var(--blanco);
   font-weight:600;font-size:17px;text-decoration:none;border:0;transition:background .1s;will-change:transform}
@@ -68,8 +70,8 @@ body.noche .entrada{color:var(--en-tinta)}
 .boton:hover svg{transform:translateX(4px)}
 .boton.sec{background:transparent;color:inherit;border:1px solid var(--linea-f)}
 .boton.sec:hover{background:var(--hielo)}
-body.noche .boton.sec{border-color:var(--linea-t)}
-body.noche .boton.sec:hover{background:var(--linea-t)}
+[data-noche] .boton.sec{border-color:var(--linea-t)}
+[data-noche] .boton.sec:hover{background:var(--linea-t)}
 
 /* ---------- cabecera */
 .cab{position:fixed;inset:0 0 auto 0;z-index:40;padding-top:env(safe-area-inset-top,0px);transition:transform .3s var(--ease-sal),background .3s,box-shadow .3s,color .3s}
@@ -109,7 +111,7 @@ body.desp-abierto .idioma .activo{background:var(--marino);color:var(--blanco)}
 
 /* ---------- marcos: siempre una captura real de la app dentro */
 .tel{width:280px;aspect-ratio:300/629;border-radius:44px;background:var(--tinta);padding:9px;flex-shrink:0;box-shadow:var(--sombra-3)}
-body.noche .tel{background:#05182B;box-shadow:0 0 0 1px var(--linea-t),var(--sombra-3)}
+[data-noche] .tel{background:#05182B;box-shadow:0 0 0 1px var(--linea-t),var(--sombra-3)}
 .tel .pant{width:100%;height:100%;border-radius:36px;overflow:hidden;background:var(--blanco);position:relative}
 .tel .pant img{width:100%;height:auto}
 .ordenador{border-radius:16px;background:var(--blanco);box-shadow:var(--sombra-3);overflow:hidden;border:1px solid var(--linea)}
@@ -161,7 +163,7 @@ body.noche .tel{background:#05182B;box-shadow:0 0 0 1px var(--linea-t),var(--som
 .camino b{font-family:var(--f-titulo);font-weight:700;font-size:26px;letter-spacing:-.02em}
 .camino p{margin:0 0 8px;color:var(--en-tinta);font-size:16px}
 .camino:first-child{background:rgba(124,195,236,.10);border-color:rgba(124,195,236,.45)}
-body.noche .cierre .camino .boton.sec{background:transparent;color:var(--blanco);border-color:var(--linea-t)}
+[data-noche] .cierre .camino .boton.sec{background:transparent;color:var(--blanco);border-color:var(--linea-t)}
 @media (max-width:1280px){ .cab .demo-l{display:none} }
 @media (max-width:900px){
   .como-va,.dos-caminos{grid-template-columns:minmax(0,1fr)}
@@ -680,18 +682,18 @@ html.con-intro .intro{position:fixed;inset:0;z-index:100;display:flex;flex-direc
 .orbita-fondo{position:absolute;z-index:0;pointer-events:none;width:1100px;height:1100px;right:-260px;top:50%;margin-top:-500px}
 .orbita-fondo .giro{transform-origin:550px 550px;animation:gira 48s linear infinite}
 .estrellas{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0;opacity:0;transition:opacity .8s var(--ease-sal)}
-body.noche .estrellas{opacity:1}
+[data-noche] .estrellas{opacity:1}
 .estrellas .capa{position:absolute;inset:-20% 0}
 .estrellas i{position:absolute;border-radius:50%;background:var(--blanco);opacity:var(--o);animation:titila var(--d) ease-in-out infinite alternate}
 @keyframes titila{to{opacity:calc(var(--o) * .25)}}
 .porque,.frase,.cierre{position:relative}
 .porque > .wrap,.frase > .wrap,.cierre > .wrap{position:relative;z-index:1}
 .eclipse{display:block;width:200px;height:200px;margin:0 auto 48px;overflow:visible}
-body.noche .cierre .boton{background:var(--blanco);color:var(--tinta)}
-body.noche .nota-demo{color:var(--en-tinta)}
+[data-noche] .cierre .boton{background:var(--blanco);color:var(--tinta)}
+[data-noche] .nota-demo{color:var(--en-tinta)}
 .cierre .orbita{width:150px;height:150px}
-body.noche .pie-web{border-top-color:var(--linea-t)}
-body.noche .pie-web .wrap{color:var(--en-tinta)}
+.pie-web{background:var(--tinta);color:var(--blanco);border-top-color:var(--linea-t)}
+.pie-web .wrap{color:var(--en-tinta)}
 
 /* ---------- volver arriba: una órbita que se completa al bajar */
 .arriba{position:fixed;right:24px;bottom:24px;z-index:38;width:58px;height:58px;border-radius:999px;background:var(--fondo);color:var(--tinta-txt);box-shadow:var(--sombra-2);
@@ -768,7 +770,60 @@ body.noche .arriba .pista{stroke:var(--linea-t)}
   .cab .boton{display:none}
   .menu-b{margin-left:auto}
 }
-@media (prefers-reduced-motion:reduce){
+/* ===== Móvil con las mismas animaciones que el ordenador: las secciones fijas caben en una pantalla ===== */
+@media (max-width:900px){
+  /* Un día en la empresa: la órbita fija */
+  .dia{height:100vh;height:100svh;display:flex;flex-direction:column;box-sizing:border-box;padding-bottom:76px}
+  .dia .cabeza{padding-block:78px 0}
+  .dia .cabeza .wrap{gap:10px}
+  .dia .cabeza .wrap > div:first-child{gap:8px!important}
+  .dia .titular{font-size:27px}
+  .dia .entrada{font-size:14.5px;line-height:1.42}
+  .dia .dial{width:50px}
+  .dia .reloj{font-size:44px}
+  .escenario{flex:1;min-height:0;display:block;padding:0;perspective:1200px;--pant:clamp(110px,calc(100svh - 650px),320px)}
+  .escenario .paso{position:absolute;left:50%;top:50%;width:calc(100vw - 32px);gap:12px;transform-style:preserve-3d;will-change:transform,opacity}
+  .escenario .ordenador{width:min(calc(var(--pant) * 1.6),100%)}
+  .escenario .tel{width:calc((var(--pant) + 30px) * .477);border-radius:28px;padding:6px}
+  .escenario .tel .pant{border-radius:23px}
+  .dia .paso .info{gap:6px}
+  .dia .paso h3{font-size:22px}
+  .dia .paso p{font-size:14.5px;line-height:1.4}
+  .orbita-dia{display:block}
+  .barra-dia{display:block;left:16px;right:16px;bottom:84px}
+  /* Cómo empezar: el pedido avanza por una línea vertical */
+  .rec-pasos{position:relative}
+  .rec-pasos::before,.rec-pasos::after{content:"";position:absolute;left:13px;top:14px;bottom:14px;width:2px;background:var(--linea-f)}
+  .rec-pasos::after{background:var(--marino);transform-origin:top;transform:scaleY(var(--rp,0))}
+  .rec-pasos li{opacity:.38;transform:translateX(8px)}
+  .rec-pasos li.hecho{opacity:1;transform:none}
+  .rec-pasos li{position:relative;padding-left:44px}
+  .rec-pasos .n{position:absolute;left:0;top:-3px;z-index:1}
+}
+@media (max-width:900px) and (max-height:740px){ .dia .entrada{display:none} }
+@media (max-width:1100px) and (max-height:740px){
+  .sectores.foco .fuertes{display:none}
+  .sectores.foco .cabeza .titular{font-size:24px}
+  .sectores.foco .escena-sector{width:min(100%,calc((100svh - 450px) * 1.6 + 40px))}
+}
+@media (max-width:1100px){
+  /* Sectores: la sección fija recorre los sectores uno a uno */
+  .sectores.foco{height:100vh;height:100svh;box-sizing:border-box;padding-block:78px 80px;display:flex;flex-direction:column;overflow:hidden}
+  .sectores.foco .cabeza{margin-bottom:12px;gap:6px}
+  .sectores.foco .cabeza .titular{font-size:27px}
+  .sectores.foco .cabeza .entrada{display:none}
+  .sectores.foco .sector-dos{gap:14px}
+  .sectores.foco .escena-sector{width:min(100%,calc((100svh - 600px) * 1.6 + 40px));margin-inline:auto;padding:0 40px 30px 0}
+  .sectores.foco .escena-sector .tel{width:min(110px,28%)}
+  .sectores.foco .cambio{gap:8px}
+  .sectores.foco .cambio .titular{font-size:22px!important;margin:0}
+  .sectores.foco .fuerte:not(.activo){display:none}
+  .sectores.foco .fuertes.ciclo-on .fuerte{opacity:1}
+  .sectores.foco .fuerte{padding:10px 0}
+  .sectores.foco .fuerte span{font-size:14.5px}
+  .sectores.foco .chips{display:none}
+  .sectores.foco .ciclo-pie{min-height:0;padding:8px 12px;font-size:14px}
+}@media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
   .frase .p{opacity:1}
   .rec-pasos li{opacity:1;transform:none}
@@ -835,7 +890,13 @@ body.noche .arriba .pista{stroke:var(--linea-t)}
 .orb .tel img{width:100%;display:block}
 @media (max-width:900px){
   .orb-v{padding:72px 0}
-  .orb-escena{height:auto;padding:72px 0;overflow:visible}
+  .orb-escena{height:100vh;height:100svh;padding:64px 0 12px;overflow:hidden}
+  .orb-escena .orb-dos-b{gap:14px}
+  .orb-escena .titular{font-size:28px;margin:8px 0 10px}
+  .orb-escena .entrada{font-size:15px;line-height:1.45}
+  .orb-escena .orb-fila{margin-top:14px;gap:10px;flex-wrap:nowrap}
+  .orb-escena .orb-fila .orb-inst{flex:1}
+  .orb-escena .orb-lado-b{aspect-ratio:auto;height:min(370px,calc(100svh - 430px));min-height:200px}
   .orb-dos,.orb-dos-b,.orb-dos-inv{grid-template-columns:minmax(0,1fr);gap:28px}
   .orb-dos-inv .orb-txt{order:-1}
   .orb-lado-v{padding:26px 6px 10px}
@@ -845,6 +906,7 @@ body.noche .arriba .pista{stroke:var(--linea-t)}
   .orb-inst-b{bottom:auto;top:-4px;right:-4px}
   .orb-inst-a{left:-4px}
   .orb-lado-b{height:auto;aspect-ratio:1}
+  .orb-escena .orb-tel{width:96px;bottom:-6px}
   .orb-tel{width:150px;right:0;bottom:-20px}
   .orb-play{opacity:1}
 }
@@ -1832,7 +1894,7 @@ orb.k = 0; orb.t = -4;
 gsap.to(orb, { k: 1, duration: 2.4, ease: 'expo.out', delay: RET + .35 });
 gsap.from('.orbe', { opacity: 0, duration: 1.2, delay: RET + .3 });
 gsap.ticker.add((t, dt) => { if (scrollY > innerHeight * 1.3) return; orb.t += Math.min(dt, 50) / 1000; colocarOrbita(); });
-if (ESCRITORIO) gsap.to('#satelites, .orbe', { opacity: 0, ease: 'none', scrollTrigger: { trigger: '.portada', start: 'top top', end: '60% top', scrub: true } });
+gsap.to('#satelites, .orbe', { opacity: 0, ease: 'none', scrollTrigger: { trigger: '.portada', start: 'top top', end: '60% top', scrub: true } });
 if (ESCRITORIO) {
   const qx = cartas.map(c => gsap.quickTo(c, 'x', { duration: 1.1, ease: 'power3' })), qy = cartas.map(c => gsap.quickTo(c, 'y', { duration: 1.1, ease: 'power3' }));
   const qr = cartas.map(c => gsap.quickTo(c, 'rotateY', { duration: 1.1, ease: 'power3' })), qt = gsap.quickTo(orb, 'tilt', { duration: 1.4, ease: 'power3' });
@@ -1841,15 +1903,15 @@ if (ESCRITORIO) {
   // Si el ratón se para o sale de la ventana, todo vuelve al centro: nada se queda «clavado» hacia un lado
   addEventListener('mousemove', e => { mover(e.clientX / innerWidth - .5, e.clientY / innerHeight - .5); clearTimeout(quieto); quieto = setTimeout(() => mover(0, 0), 2200); });
   document.documentElement.addEventListener('mouseleave', () => mover(0, 0));
-  gsap.to(cartas, { yPercent: (i, c) => -(+c.dataset.p) * .9, rotateX: 8, ease: 'none', scrollTrigger: { trigger: '.portada', start: 'top top', end: 'bottom top', scrub: .6 } });
 }
+gsap.to(cartas, { yPercent: (i, c) => -(+c.dataset.p) * .9, rotateX: 8, ease: 'none', scrollTrigger: { trigger: '.portada', start: 'top top', end: 'bottom top', scrub: .6 } });
 
 /* ================= cómo empezar: el recorrido de un pedido avanza paso a paso ================= */
-ScrollTrigger.matchMedia({ '(min-width: 901px)': () => {
+ScrollTrigger.matchMedia({ 'all': () => {
   const pasosRec = $$('.rec-pasos li'), sat = $('#rec-sat');
   const st = ScrollTrigger.create({ trigger: '#recorrido', start: 'top 70%', end: 'bottom 45%', scrub: true, onUpdate: s => {
     const p = s.progress;
-    gsap.set('#rec-avance', { scaleX: p }); gsap.set(sat, { left: (p * 100) + '%' });
+    gsap.set('#rec-avance', { scaleX: p }); gsap.set(sat, { left: (p * 100) + '%' }); gsap.set('.rec-pasos', { '--rp': p });
     pasosRec.forEach((li, i) => li.classList.toggle('hecho', p >= i / (pasosRec.length - 1) - .02));
   } });
   return () => { st.kill(); pasosRec.forEach(li => li.classList.add('hecho')); };
@@ -1863,8 +1925,13 @@ $$('[data-cuenta]').forEach(el => { const fin = +el.dataset.cuenta, o = { v: 0 }
   gsap.to(o, { v: fin, duration: 1.6, ease: 'power2.out', scrollTrigger: { trigger: '.caso', start: 'top 75%' }, onUpdate: () => { el.textContent = Math.round(o.v); } }); });
 
 /* ================= fondo que cambia de color por escena ================= */
-$$('[data-noche]').forEach(sec => ScrollTrigger.create({ trigger: sec, start: 'top 55%', end: 'bottom 45%',
-  onToggle: s => document.body.classList.toggle('noche', s.isActive) }));
+// Cabecera oscura mientras pasa por encima de una sección oscura (el fondo de la página ya no cambia)
+const NOCHE_ACT = new Set();
+const nocheCab = (sec, on) => { on ? NOCHE_ACT.add(sec) : NOCHE_ACT.delete(sec); document.body.classList.toggle('noche', NOCHE_ACT.size > 0); };
+window.__nocheCab = nocheCab;
+$$('[data-noche]').forEach(sec => ScrollTrigger.create({ trigger: sec, start: 'top 40px', end: 'bottom 40px', onToggle: s => nocheCab(sec, s.isActive) }));
+// La página crece al cargar imágenes y vídeos: recalcular las marcas cuando cambia de alto
+if (!window.__altoVigia) { let alto = 0, t; window.__altoVigia = new ResizeObserver(() => { const h = document.documentElement.scrollHeight; if (Math.abs(h - alto) < 4) return; alto = h; clearTimeout(t); t = setTimeout(() => ScrollTrigger.refresh(), 250); }); window.__altoVigia.observe(document.body); }
 
 /* ================= un día: recorrido horizontal con reloj ================= */
 const minutos = h => { const [a, b] = h.split(':').map(Number); return a * 60 + b; };
@@ -1881,10 +1948,10 @@ const pintaReloj = m => {
 };
 pintaReloj(minutos(DIA[1].h));
 ScrollTrigger.matchMedia({
-  '(min-width: 901px)': () => {
+  'all': () => {
     // Las escenas recorren una órbita elíptica: la del centro se acerca (zoom) y las demás se alejan hacia el fondo
     const n = pasos.length, esc = $('#escenario'), elipse = $('#orbita-dia ellipse'), sat = $('#orbita-dia circle');
-    const medidas = () => ({ rx: Math.min(innerWidth * .4, 660), ry: Math.min(innerHeight * .09, 84), cx: esc.clientWidth / 2, cy: esc.clientHeight * .5 });
+    const medidas = () => ({ rx: Math.min(innerWidth * .4, 660), ry: Math.min(innerHeight * (innerWidth > 900 ? .09 : .05), 84), cx: esc.clientWidth / 2, cy: esc.clientHeight * .5 });
     let m = medidas();
     const frente = $('#orbita-dia .frente'), relevo = $('#relevo'), relT = relevo.querySelector('small'), relD = relevo.querySelector('b');
     let relI = -1;
@@ -1927,10 +1994,8 @@ ScrollTrigger.matchMedia({
       scrub: .9, pin: true, refreshPriority: 1, invalidateOnRefresh: true, onRefresh: () => { trazar(); orbitar(st.p); },
       snap: { snapTo: 1 / (n - 1), duration: { min: .25, max: .7 }, delay: .08, ease: 'power2.inOut' } } });
     return () => { tw.scrollTrigger && tw.scrollTrigger.kill(); tw.kill(); gsap.set(pasos, { clearProps: 'all' }); pasos.forEach(p => { p.querySelector('.info').style.opacity = ''; p.style.pointerEvents = ''; }); };
-  },
-  '(max-width: 900px)': () => {
-    pasos.forEach(p => gsap.from(p, { y: 60, opacity: 0, duration: .9, ease: 'expo.out', scrollTrigger: { trigger: p, start: 'top 88%', onEnter: () => pintaReloj(minutos(p.dataset.hora)) } }));
   }
+
 });
 
 /* ================= para quién: las tarjetas suben en cascada ================= */
@@ -1969,17 +2034,19 @@ gsap.to('.canal-et', { y: -6, duration: 2.6, ease: 'sine.inOut', yoyo: true, rep
 gsap.from('.canal-lista li', { y: 30, opacity: 0, duration: .8, stagger: .08, ease: 'expo.out', scrollTrigger: { trigger: '.canal-lista', start: 'top 85%' } });
 
 /* ================= sectores: modo foco, el desplazamiento recorre cada sector ================= */
-ScrollTrigger.matchMedia({ '(min-width: 1101px)': () => {
+ScrollTrigger.matchMedia({ 'all': () => {
   const pest = $('#pest-sectores'), botones = [...pest.children], n = SECTORES.length;
+  // En pantallas estrechas las pestañas van en fila: la barra de progreso avanza a lo ancho y la pestaña activa se centra
+  const fila = !matchMedia('(min-width: 1101px)').matches, secc = $('#sectores');
   let actual = 0;
-  pest.classList.add('por-scroll');
+  pest.classList.add('por-scroll'); secc.classList.add('foco');
   const st = ScrollTrigger.create({ trigger: '#sectores', start: 'top top', end: () => '+=' + innerHeight * .7 * n, pin: true, refreshPriority: 1, invalidateOnRefresh: true,
     snap: { snapTo: v => Math.min((n - .5) / n, Math.max(.5 / n, (Math.round(v * n - .5) + .5) / n)), duration: { min: .25, max: .7 }, delay: .1, ease: 'power2.inOut' },
     onUpdate: s => {
       const p = s.progress * n, i = Math.min(n - 1, Math.floor(p)), local = Math.min(1, p - i);
       window.__cicloLocal = local; if (cicTween) { cicTween.kill(); cicTween = null; }
-      if (i !== actual) { actual = i; elegirSector(i); } else cicloEn(local);
-      botones.forEach((b, k) => { b.querySelector('.prog').style.transform = `scaleY(${k < i ? 1 : k === i ? local : 0})`; });
+      if (i !== actual) { actual = i; elegirSector(i); if (fila) { const b = botones[i]; pest.scrollTo({ left: b.offsetLeft - (pest.clientWidth - b.clientWidth) / 2, behavior: 'smooth' }); } } else cicloEn(local);
+      botones.forEach((b, k) => { b.querySelector('.prog').style.transform = `scale${fila ? 'X' : 'Y'}(${k < i ? 1 : k === i ? local : 0})`; });
     } });
   // Pulsar un sector lleva a su tramo del recorrido
   const alPulsar = e => {
@@ -1990,7 +2057,7 @@ ScrollTrigger.matchMedia({ '(min-width: 1101px)': () => {
   };
   pest.addEventListener('click', alPulsar, true);
   window.__irSector = k => __lenis.scrollTo(st.start + (k + .5) / n * (st.end - st.start), { duration: 1.4 });
-  return () => { delete window.__irSector; st.kill(); pest.classList.remove('por-scroll'); pest.removeEventListener('click', alPulsar, true); botones.forEach(b => { b.querySelector('.prog').style.transform = ''; }); };
+  return () => { delete window.__irSector; st.kill(); pest.classList.remove('por-scroll'); secc.classList.remove('foco'); pest.removeEventListener('click', alPulsar, true); botones.forEach(b => { b.querySelector('.prog').style.transform = ''; }); };
 } });
 
 /* ================= precios: los planes suben en cascada ================= */
@@ -2014,6 +2081,7 @@ gsap.to('#eclipse .anillo', { rotate: 120, transformOrigin: '100px 100px', ease:
 
 /* ================= cierre: el planeta llega desde lejos y se queda en órbita ================= */
 gsap.fromTo('.cierre .orbita', { scale: .25, rotate: -160, y: 120 }, { scale: 1, rotate: 0, y: 0, ease: 'none', scrollTrigger: { trigger: '.cierre', start: 'top bottom', end: 'top 25%', scrub: 1 } });
+
 /* ================= Rutas y Agenda: el día que se crea, en órbita ================= */
 (() => {
   const EN = document.documentElement.lang === 'en';
@@ -2024,9 +2092,8 @@ gsap.fromTo('.cierre .orbita', { scale: .25, rotate: -160, y: 120 }, { scale: 1,
   const num = (x, d = 0) => x.toFixed(d).replace('.', EN ? '.' : ',');
   const escena = (id, fn) => {
     if (QUIETO) { fn(1); return; }
-    if (ESCRITORIO) { const c = $(id); ScrollTrigger.create({ trigger: c, pin: c.querySelector('.orb-escena'), start: 'top top', end: '+=320%', scrub: .4, onUpdate: s => fn(s.progress) }); fn(0); return; }
-    const o = { p: 0 }; fn(0);
-    gsap.to(o, { p: 1, duration: 7, ease: 'none', onUpdate: () => fn(o.p), scrollTrigger: { trigger: id, start: 'top 65%' } });
+    // Igual en el ordenador y en el móvil: la escena se queda fija y el desplazamiento dibuja la ruta
+    const c = $(id); ScrollTrigger.create({ trigger: c, pin: c.querySelector('.orb-escena'), start: 'top top', end: ESCRITORIO ? '+=320%' : '+=240%', scrub: .4, onUpdate: s => fn(s.progress) }); fn(0);
   };
   // Vídeo de la app: se reproduce al verse, se pausa al salir; los pasos y los instrumentos siguen al vídeo
   const conVideo = (id, pasosId, marcas, alAvanzar) => {
@@ -2118,8 +2185,8 @@ gsap.fromTo('.cierre .orbita', { scale: .25, rotate: -160, y: 120 }, { scale: 1,
     });
   })();
   // El modo noche de la sección oscura se calcula después de anclar su escena
-  ScrollTrigger.getAll().filter(t => !t.pin && t.trigger && t.trigger.classList && t.trigger.classList.contains('orb-noche') && t.vars.start === 'top 55%').forEach(t => t.kill());
-  $$('.orb-noche').forEach(sec => ScrollTrigger.create({ trigger: sec, start: 'top 55%', end: 'bottom 45%', onToggle: s => document.body.classList.toggle('noche', s.isActive) }));
+  ScrollTrigger.getAll().filter(t => !t.pin && t.trigger && t.trigger.classList && t.trigger.classList.contains('orb-noche') && t.vars.start === 'top 40px').forEach(t => t.kill());
+  $$('.orb-noche').forEach(sec => ScrollTrigger.create({ trigger: sec, start: 'top 40px', end: 'bottom 40px', onToggle: s => window.__nocheCab && window.__nocheCab(sec, s.isActive) }));
   // Los anclajes se calculan en el orden de la página: si no, uno de más abajo (Sectores) se monta sobre lo de arriba
   const anclas = ScrollTrigger.getAll().filter(t => t.pin && t.trigger).sort((a, b) => a.trigger.compareDocumentPosition(b.trigger) & 4 ? -1 : 1);
   anclas.forEach((t, i) => { t.vars.refreshPriority = anclas.length - i; });
