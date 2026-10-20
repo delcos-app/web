@@ -187,7 +187,7 @@ $('entrar').href = E.panel;
 const PLANES = [
   { id: 'campo', nombre: 'Campo', mes: 29, para: 'Cartera, agenda, rutas y visitas para el equipo que sale cada día.' },
   { id: 'comercial', nombre: 'Comercial', mes: 42, para: 'Además, pedidos, clientes, productos, analítica y comisiones.' },
-  { id: 'empresa', nombre: 'Empresa', mes: 59, para: 'Además, facturación con VeriFactu, compras, almacén y portal.' }];
+  { id: 'empresa', nombre: 'Empresa', mes: 59, para: 'Además, facturación, compras, almacén y portal.' }];
 const PUESTA = 490, IVA = 0.21, t0 = Date.now();
 const est = { plan: PLANES.some(p => p.id === q.get('plan')) ? q.get('plan') : 'comercial', pago: q.get('pago') === 'anual' ? 'anual' : 'mensual' };
 const eur = n => { const d = Number.isInteger(Math.round(n * 100) / 100) ? 0 : 2; return n.toLocaleString('es-ES', { style: 'currency', currency: 'EUR', minimumFractionDigits: d, maximumFractionDigits: d }); };

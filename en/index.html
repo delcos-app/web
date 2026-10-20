@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>delcos · The sales platform for healthcare</title>
-<meta name="description" content="The commercial management platform for laboratories, distributors and manufacturers in healthcare: accounts and visits, orders and telesales, batch-tracked stock, purchasing, VeriFactu invoicing, commissions and analytics.">
+<meta name="description" content="The commercial management platform for laboratories, distributors and manufacturers in healthcare: accounts and visits, orders and telesales, batch-tracked stock, purchasing, invoicing, commissions and analytics.">
 <link rel="canonical" href="https://www.delcos.app/en/">
 <link rel="alternate" hreflang="es" href="https://www.delcos.app/">
 <link rel="alternate" hreflang="en" href="https://www.delcos.app/en/">
@@ -986,7 +986,7 @@ body.noche .arriba .pista{stroke:var(--linea-t)}
     <div class="texto">
       <div class="ojo">Commercial management platform · healthcare</div>
       <h1 class="titular" data-letras>Your clients wear white coats. <em>Your software should know it.</em></h1>
-      <p class="entrada">The sales software for laboratories, distributors and manufacturers that sell to doctors, clinics, pharmacies and hospitals. Visits, routes, orders, batch-tracked stock, VeriFactu invoicing and your whole network’s figures, in one platform your team uses from the very first week.</p>
+      <p class="entrada">The sales software for laboratories, distributors and manufacturers that sell to doctors, clinics, pharmacies and hospitals. Visits, routes, orders, batch-tracked stock, invoicing and your whole network’s figures, in one platform your team uses from the very first week.</p>
       <div class="acciones">
         <a class="boton" href="../empezar.html">Start your free 30 days <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
         <a class="boton sec" href="dudas.html?tipo=Demo">Request a demo</a>
@@ -1235,7 +1235,7 @@ body.noche .arriba .pista{stroke:var(--linea-t)}
           <div class="dato"><b data-cuenta="5">5</b><span>minutes to sign up on the website, no calls needed</span></div>
           <div class="dato"><b data-cuenta="1">1</b><span>single platform for the field, the office and management</span></div>
         </div>
-        <div class="usa"><span>Accounts and visits</span><span>Calendar and routes</span><span>Orders</span><span>VeriFactu invoicing</span><span>Commissions</span><span>Analytics</span></div>
+        <div class="usa"><span>Accounts and visits</span><span>Calendar and routes</span><span>Orders</span><span>Invoicing</span><span>Commissions</span><span>Analytics</span></div>
       </div>
     </article>
     <div class="recorrido" id="recorrido">
@@ -1249,7 +1249,7 @@ body.noche .arriba .pista{stroke:var(--linea-t)}
         <li><span class="n">02</span><b>The call</b><p>The client orders by phone and telesales logs the order on the same call.</p></li>
         <li><span class="n">03</span><b>The follow-up</b><p>You see who buys, who comes back and who stops, so you call in time.</p></li>
         <li><span class="n">04</span><b>The warehouse</b><p>The order ships from its batch, with its expiry date.</p></li>
-        <li><span class="n">05</span><b>The invoice</b><p>Invoiced with VeriFactu and collected, with no other software.</p></li>
+        <li><span class="n">05</span><b>The invoice</b><p>The invoice and its payment, with no other software.</p></li>
         <li><span class="n">06</span><b>The figures</b><p>Each rep sees their own and management sees the whole network’s figures as they happen.</p></li>
       </ol>
     </div>
@@ -1365,7 +1365,7 @@ const DIA = [
   { h: '11:20', rol: 'Telesales', img: 'pharma_e_nueva_venta', t: 'A call that ends in an order.', d: 'Find the client, repeat their last order or note what they need, and close with the order or the reason they didn’t buy.' },
   { h: '12:00', rol: 'Warehouse', img: 'labs_e_stock', t: 'The order ships from its batch.', d: 'Stock by warehouse, batch and expiry, with alerts for what drops below the minimum and what is about to expire.' },
   { h: '13:30', rol: 'Purchasing', img: 'labs_e_compras', t: 'What’s missing, already ordered.', d: 'Purchase orders sent, in transit or partly received. On receipt, each batch goes into the warehouse by itself.' },
-  { h: '16:10', rol: 'Accounts', img: 'labs_e_factura', t: 'Invoice, payment and email, no other software.', d: 'VeriFactu invoices, credit notes when needed and payments that never exceed what is outstanding.' },
+  { h: '16:10', rol: 'Accounts', img: 'labs_e_factura', t: 'Invoice, payment and email, no other software.', d: 'Invoices, credit notes when needed and payments that never exceed what is outstanding.' },
   { h: '19:00', rol: 'Management', img: 'labs_e_analitica', t: 'The day’s figures, without asking.', d: 'Sales by area, product, client and rep against last year, and this month’s commissions already worked out.' }
 ];
 // Lo que cada momento del día pasa al siguiente: [para quién, qué]
@@ -1401,7 +1401,7 @@ const MODULOS = [
   { g: 'g6', ojo: 'Tenders', t: 'From tender to contract, with its prices', d: 'Tenders with lots, products and prices. Once a lot is won, that client’s orders apply the awarded price by themselves, with a reminder before the contract expires.', img: 'medtech_e_concursos_ficha' },
   { g: '', ojo: 'Warehouse', t: 'Stock by batch and expiry, at the client too', d: 'Goods in, goods out and transfers by warehouse, plus consignment stock at each centre. Every sample, signed for by whoever receives it.', img: 'dental_e_deposito' },
   { g: '', ojo: 'Purchasing', t: 'Purchasing without spreadsheets', d: 'Supplier orders sent, in transit or received. On receipt, each batch goes into the warehouse by itself.', img: 'labs_e_compras' },
-  { g: '', ojo: 'Invoicing', t: 'VeriFactu invoices, no other software', d: 'Series, credit notes and payments, issued from the order itself, with the record of every invoice.', img: 'labs_e_facturas' },
+  { g: '', ojo: 'Invoicing', t: 'Invoices with no other software', d: 'Series, credit notes and payments, issued from the order itself. VeriFactu, from 2027.', img: 'labs_e_facturas' },
   { g: '', ojo: 'Commissions', t: 'Commissions calculated for you, every month', d: 'Tiered schemes and each person’s settlement, with no spreadsheets and no arguments.', img: 'labs_e_comisiones' },
   { g: '', ojo: 'Surgeries', t: 'What is used in theatre, traced and restocked', d: 'Every surgery with what was used by batch and serial number or UDI, the hospital order ready and the restock within 48 hours.', img: 'medtech_e_cirugias_ficha' },
   { g: '', ojo: 'Installed base', t: 'Every installed device, with its history', d: 'Serial number, contract or warranty and services for each device at the client, with alerts for what is due.', img: 'medtech_e_parque' },
@@ -1418,7 +1418,7 @@ const RAZONES = [
   ['Knows where the visit happens', 'Centres with floor and room, each professional’s consulting hours and how to find them inside. Routes respect all of it.'],
   ['Knows who needs you', 'Who calls you and where they come from, who buys, who comes back and who stops. And sales to centres, with their discount.'],
   ['Controls samples and batches', 'Samples and materials go out with the visit; stock is tracked by batch and expiry, from purchase to sale.'],
-  ['From order to invoice, all in one place', 'Every order is invoiced with VeriFactu, the right VAT (21, 10, 4 or 0 %) and its payment. Need a correction? A credit note. Nothing to copy into other software.'],
+  ['From order to invoice, all in one place', 'Every order is invoiced with the right VAT (21, 10, 4 or 0 %) and its payment. Need a correction? A credit note. Nothing to copy into other software.'],
   ['Organises the team', 'Exclusive accounts by area, role-based permissions and tiered commissions. Management sees everything; each rep sees their own.'],
   ['Looks after your data', 'One record per person, the change history of every record and daily backups, in the European Union. Each company kept separate from the rest.']
 ];
@@ -1430,7 +1430,7 @@ const SECTORES = [
   { clave: 'orto', esc: 'orto_e_ventas', nombre: 'Orthopaedics', empresa: 'Company Orto', titulo: 'From physio to orthopaedic shop, in one portfolio.',
     fuertes: [['A network of professionals', 'Physiotherapists, podiatrists and orthotists, each with their centre and their days.'], ['Samples at every visit', 'What is left at the practice comes out of stock and is logged on the record.'], ['Sales to orthopaedic shops', 'Orders to centres with their discount, their batch and their invoice.']], estados: ['Introduced', 'Interested', 'Active'] },
   { clave: 'pharma', esc: 'pharma_e_llamadas', nombre: 'Pharmacy', empresa: 'Company Pharma', titulo: 'Pharmacies that restock without slipping through the cracks.',
-    fuertes: [['Calls to make', 'Pharmacies that didn’t buy and the ones you promised to call back, in sight every morning.'], ['Order on the call', 'The call ends in an order with its discount, its batch and its VeriFactu invoice.'], ['Visits and telesales, together', 'The rep and telesales work the same pharmacy portfolio.']], estados: ['Visited', 'Interested', 'Active client'] },
+    fuertes: [['Calls to make', 'Pharmacies that didn’t buy and the ones you promised to call back, in sight every morning.'], ['Order on the call', 'The call ends in an order with its discount, its batch and its invoice.'], ['Visits and telesales, together', 'The rep and telesales work the same pharmacy portfolio.']], estados: ['Visited', 'Interested', 'Active client'] },
   { clave: 'medtech', esc: 'medtech_e_directorio', nombre: 'Hospital', empresa: 'Company Medtech', titulo: 'From the department that evaluates to the hospital that approves.',
     fuertes: [['Contacts by department', 'Nursing, supervisors, theatre or purchasing: each contact with their hospital and their weight in the decision.'], ['Evaluation and approval', 'Stages follow the real cycle: introduced, under evaluation, approved.'], ['Batch traceability', 'Large orders with the batch and expiry of every product, from purchase to hospital.']], estados: ['Introduced', 'Under evaluation', 'Approved'] },
   { clave: 'vet', esc: 'vet_e_directorio', nombre: 'Veterinary', empresa: 'Company Vet', titulo: 'Speaks your sector’s language: vet, owner, clinic.',
@@ -1438,7 +1438,7 @@ const SECTORES = [
 ];
 const PREGUNTAS = [
   ['Who is delcos for?', 'For laboratories, distributors and manufacturers that sell through healthcare professionals and centres: medical detailing, dental, orthopaedics, pharmacy, hospital and veterinary.'],
-  ['Does it replace my management software?', 'It covers the commercial side and sales operations: orders, batch-tracked stock, purchasing, VeriFactu invoicing, payments and commissions. We help you see which part of your current software you can drop.'],
+  ['Does it replace my management software?', 'It covers the commercial side and sales operations: orders, batch-tracked stock, purchasing, invoicing, payments and commissions. We help you see which part of your current software you can drop.'],
   ['Do I need to install anything?', 'No. It opens in the browser on your computer or phone, and on your phone you can add it to the home screen like any other app.'],
   ['Can I bring my data from Excel?', 'Yes. Clients, products, records and sales. You upload the sheet, see how it looks before saving and, if something doesn’t add up, you undo it.'],
   ['What if a record is duplicated?', 'delcos warns you when you create it if it looks like another one, and watches your whole portfolio for similar names. You compare both records, choose which details stay and merge them: visits, sales and accounts move to the one that remains.'],
@@ -1479,7 +1479,7 @@ const PLANES = [
   { nombre: 'Sales', mes: 42, para: 'For teams that sell and want to measure results.',
     incluye: ['Everything in Field', 'Orders, also through distributors, telesales and clients', 'Products and batch-tracked stock', 'Sales and visit analytics', 'Tiered commissions', 'Opportunities: every sale, closed or not', 'Coverage of each product per cycle', 'Events, with their yearly summary'] },
   { nombre: 'Company', mes: 59, fuerte: true, para: 'For companies that invoice and run their own warehouse.',
-    incluye: ['Everything in Sales', 'VeriFactu invoicing and payments', 'Purchasing, suppliers and traceability', 'Consignment stock and surgeries with serial numbers', 'Tenders and installed base', 'Areas, team supervision and auditing', 'Portal for professionals and centres (up to 50)'] },
+    incluye: ['Everything in Sales', 'Invoicing and payments', 'Purchasing, suppliers and traceability', 'Consignment stock and surgeries with serial numbers', 'Tenders and installed base', 'Areas, team supervision and auditing', 'Portal for professionals and centres (up to 50)'] },
   { nombre: 'Custom', medida: true, para: 'For networks of more than 50 people or with specific needs.',
     incluye: ['Everything in Company', 'Migration of your data', 'Connection to your management software', 'Portal for professionals and centres, unlimited', 'See the platform as each person on your team does, to help them', 'Priority support'] }
 ];
@@ -1577,7 +1577,7 @@ const CICLOS = {
   orto: [['Visit', 'To the physio, the podiatrist or the technician, on their days.', 0], ['Sample', 'What is left at the practice comes out of stock.', 1],
     ['Order', 'The shop orders with its discount.', 2], ['Restocking', 'Who comes back and who has not ordered for a while.', 0]],
   pharma: [['Visit', 'The rep drops by the pharmacy.', 2], ['Call', 'Telesales calls the one that needs restocking.', 0],
-    ['Order', 'With its discount and its batch, on the same call.', 1], ['Invoice', 'With VeriFactu and its payment, without leaving delcos.', 1]],
+    ['Order', 'With its discount and its batch, on the same call.', 1], ['Invoice', 'With its VAT and its payment, without leaving delcos.', 1]],
   medtech: [['Contact', 'Nursing, supervisors or purchasing in each department.', 0], ['Evaluation', 'The product goes on trial in the department.', 1],
     ['Approval', 'The hospital approves it and the stage moves on.', 1], ['Order', 'Large orders with their batch and expiry.', 2]],
   vet: [['Visit', 'To the vet, with their clinic and their days.', 0], ['Interest', 'The clinic asks for more information and its stage moves on.', 1],
@@ -1691,7 +1691,7 @@ addEventListener('scroll', alDesplazar, { passive: true }); alDesplazar();
 const MENU_PLAT = [
   ['Field', [['Accounts', 'Your whole portfolio, up to date', 'labs_e_directorio', 0], ['Calendar', 'The team’s week', 'labs_e_agenda', 2], ['Routes', 'Planned for you, street by street', 'labs_e_rutas', 3], ['Visit cycle', 'Every client, their visits', 'labs_e_ciclo', 5], ['Duplicates', 'One person, one record', 'labs_e_calidad', 1], ['Events', 'Workshops and congresses, in order', 'labs_e_eventos', 7]]],
   ['Sales', [['Orders', 'No order left waiting', 'labs_e_ventas', 8], ['New sale and opportunities', 'What doesn’t sell, too', 'pharma_e_oportunidades', 10], ['Web orders', 'With their payment reference', 'pharma_e_pedidos_web', 11], ['Tenders', 'From tender to contract', 'medtech_e_concursos_ficha', 13], ['Commissions', 'Calculated for you, every month', 'labs_e_comisiones', 17], ['Analytics', 'Against last year', 'labs_e_analitica', 20]]],
-  ['Office', [['Warehouse and batches', 'Batch, expiry and consignment', 'labs_e_stock', 14], ['Purchasing', 'Suppliers and purchase orders', 'labs_e_compras', 15], ['Invoicing', 'VeriFactu and payments', 'labs_e_facturas', 16], ['Surgeries', 'Batch and serial number', 'medtech_e_cirugias_ficha', 18], ['Installed base', 'Every device, with its history', 'medtech_e_parque', 19], ['History', 'Any change, undone', 'labs_e_historial', 23], ['Team and permissions', 'Everyone sees their own', 'labs_e_usuarios', 24]]]
+  ['Office', [['Warehouse and batches', 'Batch, expiry and consignment', 'labs_e_stock', 14], ['Purchasing', 'Suppliers and purchase orders', 'labs_e_compras', 15], ['Invoicing', 'Series, credit notes and payments', 'labs_e_facturas', 16], ['Surgeries', 'Batch and serial number', 'medtech_e_cirugias_ficha', 18], ['Installed base', 'Every device, with its history', 'medtech_e_parque', 19], ['History', 'Any change, undone', 'labs_e_historial', 23], ['Team and permissions', 'Everyone sees their own', 'labs_e_usuarios', 24]]]
 ];
 const previa = (img, pie) => `<div class="previa"><div class="ordenador"><div class="barra"><i></i><i></i><i></i></div><div class="vista"><img src="${cap(img)}" alt="" width="1600" height="1000"><img class="fuera" alt="" width="1600" height="1000"></div></div><p>${pie}</p></div>`;
 let ni = 0;
@@ -1751,7 +1751,7 @@ $$('.panel a.it').forEach(a => {
 });
 
 /* ================= portada: los módulos giran en órbita alrededor de las pantallas ================= */
-const SATELITES = [['Visits', '#3F82C0'], ['Orders', '#1BAF7A'], ['Batches and expiry', '#E0762B'], ['VeriFactu', '#17457A'], ['Commissions', '#6E5BC4'], ['Routes', '#7CC3EC']];
+const SATELITES = [['Visits', '#3F82C0'], ['Orders', '#1BAF7A'], ['Batches and expiry', '#E0762B'], ['Invoices', '#17457A'], ['Commissions', '#6E5BC4'], ['Routes', '#7CC3EC']];
 $('#satelites').innerHTML = SATELITES.map(([t, c]) => `<span><i style="background:${c}"></i>${t}</span>`).join('');
 const baraja = $('#baraja'), sats = $$('#satelites span'), orb = { k: 1, tilt: -11, t: 0 };
 function colocarOrbita() {

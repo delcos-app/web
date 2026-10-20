@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>delcos · Plataforma comercial para el sector salud</title>
-<meta name="description" content="La plataforma de gestión comercial para laboratorios, distribuidores y fabricantes del sector salud: cartera y visitas, pedidos y televenta, almacén por lotes, compras, facturación con VeriFactu, comisiones y analítica.">
+<meta name="description" content="La plataforma de gestión comercial para laboratorios, distribuidores y fabricantes del sector salud: cartera y visitas, pedidos y televenta, almacén por lotes, compras, facturación, comisiones y analítica.">
 <link rel="canonical" href="https://www.delcos.app/">
 <link rel="alternate" hreflang="es" href="https://www.delcos.app/">
 <link rel="alternate" hreflang="en" href="https://www.delcos.app/en/">
@@ -986,7 +986,7 @@ body.noche .arriba .pista{stroke:var(--linea-t)}
     <div class="texto">
       <div class="ojo">Plataforma de gestión comercial · sector salud</div>
       <h1 class="titular" data-letras>Tus clientes llevan bata. <em>Tu software debería saberlo.</em></h1>
-      <p class="entrada">El software comercial para laboratorios, distribuidores y fabricantes que venden a médicos, clínicas, farmacias y hospitales. Visitas, rutas, pedidos, almacén por lotes, facturación con VeriFactu y las cifras de toda la red, en una plataforma que tu equipo usa desde la primera semana.</p>
+      <p class="entrada">El software comercial para laboratorios, distribuidores y fabricantes que venden a médicos, clínicas, farmacias y hospitales. Visitas, rutas, pedidos, almacén por lotes, facturación y las cifras de toda la red, en una plataforma que tu equipo usa desde la primera semana.</p>
       <div class="acciones">
         <a class="boton" href="empezar.html">Empieza gratis 30 días <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
         <a class="boton sec" href="dudas.html?tipo=Demo">Pide una demo</a>
@@ -1235,7 +1235,7 @@ body.noche .arriba .pista{stroke:var(--linea-t)}
           <div class="dato"><b data-cuenta="5">5</b><span>minutos para darte de alta desde la web, sin llamadas</span></div>
           <div class="dato"><b data-cuenta="1">1</b><span>sola plataforma para el campo, la oficina y dirección</span></div>
         </div>
-        <div class="usa"><span>Cartera y visitas</span><span>Agenda y rutas</span><span>Pedidos</span><span>Facturación con VeriFactu</span><span>Comisiones</span><span>Analítica</span></div>
+        <div class="usa"><span>Cartera y visitas</span><span>Agenda y rutas</span><span>Pedidos</span><span>Facturación</span><span>Comisiones</span><span>Analítica</span></div>
       </div>
     </article>
     <div class="recorrido" id="recorrido">
@@ -1249,7 +1249,7 @@ body.noche .arriba .pista{stroke:var(--linea-t)}
         <li><span class="n">02</span><b>La llamada</b><p>El cliente pide por teléfono y televenta registra el pedido en la misma llamada.</p></li>
         <li><span class="n">03</span><b>El seguimiento</b><p>Se ve quién compra, quién repite y quién lo deja, para llamar a tiempo.</p></li>
         <li><span class="n">04</span><b>El almacén</b><p>El pedido sale de su lote, con su caducidad.</p></li>
-        <li><span class="n">05</span><b>La factura</b><p>Factura con VeriFactu y su cobro, sin otro programa.</p></li>
+        <li><span class="n">05</span><b>La factura</b><p>La factura y su cobro, sin otro programa.</p></li>
         <li><span class="n">06</span><b>Las cifras</b><p>Cada comercial ve lo suyo y dirección, las cifras de toda la red al momento.</p></li>
       </ol>
     </div>
@@ -1365,7 +1365,7 @@ const DIA = [
   { h: '11:20', rol: 'Televenta', img: 'pharma_e_nueva_venta', t: 'Una llamada que acaba en pedido.', d: 'Busca al cliente, repite su último pedido o anota lo que necesita, y cierra con el pedido o con el motivo por el que no compra.' },
   { h: '12:00', rol: 'Almacén', img: 'labs_e_stock', t: 'El pedido sale de su lote.', d: 'Stock por almacén, lote y caducidad, con aviso de lo que baja del mínimo y de lo que está a punto de caducar.' },
   { h: '13:30', rol: 'Compras', img: 'labs_e_compras', t: 'Lo que falta, ya pedido al proveedor.', d: 'Pedidos de compra enviados, en tránsito o recibidos a medias. Al recibirlos, cada lote entra solo en el almacén.' },
-  { h: '16:10', rol: 'Administración', img: 'labs_e_factura', t: 'Factura, cobro y correo, sin otro programa.', d: 'Facturas con VeriFactu, rectificativas cuando hace falta y cobros que nunca superan lo pendiente.' },
+  { h: '16:10', rol: 'Administración', img: 'labs_e_factura', t: 'Factura, cobro y correo, sin otro programa.', d: 'Facturas, rectificativas cuando hace falta y cobros que nunca superan lo pendiente.' },
   { h: '19:00', rol: 'Dirección', img: 'labs_e_analitica', t: 'Las cifras del día, sin pedirlas.', d: 'Ventas por zona, producto, cliente y comercial frente al año pasado, y las comisiones del mes ya calculadas.' }
 ];
 // Lo que cada momento del día pasa al siguiente: [para quién, qué]
@@ -1401,7 +1401,7 @@ const MODULOS = [
   { g: 'g6', ojo: 'Concursos', t: 'Del pliego al contrato, con sus precios', d: 'Pliegos con lotes, productos y precios. Con el lote ganado, los pedidos de ese cliente aplican solos el precio adjudicado, con aviso antes de que venza el contrato.', img: 'medtech_e_concursos_ficha' },
   { g: '', ojo: 'Almacén', t: 'Stock por lote y caducidad, también en el cliente', d: 'Entradas, salidas y traspasos por almacén, y el material en depósito en cada centro. Cada muestra, firmada por quien la recibe.', img: 'dental_e_deposito' },
   { g: '', ojo: 'Compras', t: 'Compras sin hojas de cálculo', d: 'Pedidos a proveedores enviados, en tránsito o recibidos. Al recibirlos, cada lote entra solo en el almacén.', img: 'labs_e_compras' },
-  { g: '', ojo: 'Facturación', t: 'Facturas con VeriFactu, sin otro programa', d: 'Series, rectificativas y cobros, emitidos desde el propio pedido y con el registro de cada factura.', img: 'labs_e_facturas' },
+  { g: '', ojo: 'Facturación', t: 'Facturas sin otro programa', d: 'Series, rectificativas y cobros, emitidos desde el propio pedido. VeriFactu, a partir de 2027.', img: 'labs_e_facturas' },
   { g: '', ojo: 'Comisiones', t: 'Comisiones calculadas solas, cada mes', d: 'Esquemas por tramos y la liquidación de cada persona, sin hojas de cálculo ni discusiones.', img: 'labs_e_comisiones' },
   { g: '', ojo: 'Cirugías', t: 'Lo usado en quirófano, trazado y repuesto', d: 'Cada cirugía con lo usado por lote y número de serie o UDI, el pedido al hospital preparado y la reposición en 48 horas.', img: 'medtech_e_cirugias_ficha' },
   { g: '', ojo: 'Parque instalado', t: 'Cada equipo instalado, con su historia', d: 'Número de serie, contrato o garantía y revisiones de cada equipo en el cliente, con aviso de lo que vence.', img: 'medtech_e_parque' },
@@ -1418,7 +1418,7 @@ const RAZONES = [
   ['Sabe dónde se visita', 'Centros con planta y consulta, el horario de consulta de cada profesional y cómo llegar dentro. Las rutas lo respetan.'],
   ['Sabe quién te necesita', 'Quién te llama y de dónde viene, quién compra, quién repite y quién lo deja. Y la venta a centro, con su descuento.'],
   ['Controla muestras y lotes', 'Las muestras y el material salen de la visita; el stock va por lote y caducidad, de la compra a la venta.'],
-  ['Del pedido a la factura, sin salir', 'Cada pedido se factura con VeriFactu, con el IVA que toca (21, 10, 4 o 0 %) y su cobro. Si hay que corregir, rectificativa. Nada que copiar a otro programa.'],
+  ['Del pedido a la factura, sin salir', 'Cada pedido se factura con el IVA que toca (21, 10, 4 o 0 %) y su cobro. Si hay que corregir, rectificativa. Nada que copiar a otro programa.'],
   ['Ordena el equipo', 'Cartera exclusiva por zonas, permisos por rol y comisiones por tramos. Dirección lo ve todo; cada comercial, lo suyo.'],
   ['Cuida los datos', 'Una sola ficha por persona, el historial de cambios de cada ficha y copias de seguridad diarias, en la Unión Europea. Cada empresa, separada de las demás.']
 ];
@@ -1430,7 +1430,7 @@ const SECTORES = [
   { clave: 'orto', esc: 'orto_e_ventas', nombre: 'Ortopedia', empresa: 'Company Orto', titulo: 'Del fisio a la ortopedia, en la misma cartera.',
     fuertes: [['Red de profesionales', 'Fisioterapeutas, podólogos y técnicos ortopédicos, cada uno con su centro y sus días.'], ['Muestras en cada visita', 'Lo que se deja en consulta sale del stock y queda en la ficha.'], ['Venta a ortopedias', 'Pedidos a centro con su descuento, su lote y su factura.']], estados: ['Presentado', 'Interesado', 'Activo'] },
   { clave: 'pharma', esc: 'pharma_e_llamadas', nombre: 'Farmacia', empresa: 'Company Pharma', titulo: 'Farmacias que reponen sin que se te escapen.',
-    fuertes: [['Llamadas por hacer', 'Las farmacias que no compraron y las que quedaste en volver a llamar, a la vista cada mañana.'], ['Pedido en la llamada', 'La llamada acaba en pedido con su descuento, su lote y su factura con VeriFactu.'], ['Visita y televenta, juntas', 'El delegado y televenta trabajan la misma cartera de farmacias.']], estados: ['Visitada', 'Interesada', 'Cliente activa'] },
+    fuertes: [['Llamadas por hacer', 'Las farmacias que no compraron y las que quedaste en volver a llamar, a la vista cada mañana.'], ['Pedido en la llamada', 'La llamada acaba en pedido con su descuento, su lote y su factura.'], ['Visita y televenta, juntas', 'El delegado y televenta trabajan la misma cartera de farmacias.']], estados: ['Visitada', 'Interesada', 'Cliente activa'] },
   { clave: 'medtech', esc: 'medtech_e_directorio', nombre: 'Hospital', empresa: 'Company Medtech', titulo: 'Del servicio que evalúa al hospital que homologa.',
     fuertes: [['Contactos por servicio', 'Enfermería, supervisión, quirófano o compras: cada contacto con su hospital y su peso en la decisión.'], ['Evaluación y homologación', 'Los estados siguen el ciclo real: presentado, en evaluación, homologado.'], ['Trazabilidad por lote', 'Pedidos grandes con el lote y la caducidad de cada producto, de la compra al hospital.']], estados: ['Presentado', 'En evaluación', 'Homologado'] },
   { clave: 'vet', esc: 'vet_e_directorio', nombre: 'Veterinaria', empresa: 'Company Vet', titulo: 'Habla como tu sector: veterinario, propietario, clínica.',
@@ -1438,7 +1438,7 @@ const SECTORES = [
 ];
 const PREGUNTAS = [
   ['¿Para qué empresas es delcos?', 'Para laboratorios, distribuidoras y fabricantes que venden a través de profesionales y centros sanitarios: visita médica, dental, ortopedia, farmacia, hospital y veterinaria.'],
-  ['¿Sustituye a mi programa de gestión?', 'Cubre la parte comercial y la operativa de ventas: pedidos, almacén por lotes, compras, facturación con VeriFactu, cobros y comisiones. Te ayudamos a ver qué parte de tu programa actual puedes dejar.'],
+  ['¿Sustituye a mi programa de gestión?', 'Cubre la parte comercial y la operativa de ventas: pedidos, almacén por lotes, compras, facturación, cobros y comisiones. Te ayudamos a ver qué parte de tu programa actual puedes dejar.'],
   ['¿Hay que instalar algo?', 'No. Se abre en el navegador del ordenador o del móvil, y en el móvil se añade a la pantalla de inicio como una app más.'],
   ['¿Puedo traer mis datos desde Excel?', 'Sí. Clientes, productos, fichas y ventas. Subes la hoja, ves cómo queda antes de guardar y, si algo no cuadra, lo deshaces.'],
   ['¿Qué pasa si una ficha se repite?', 'delcos te avisa al darla de alta si se parece a otra y vigila toda la cartera en busca de nombres parecidos. Comparas las dos fichas, eliges qué datos se quedan y las unes: visitas, ventas y cartera pasan a la que queda.'],
@@ -1479,7 +1479,7 @@ const PLANES = [
   { nombre: 'Comercial', mes: 42, para: 'Para equipos que venden y quieren medir resultados.',
     incluye: ['Todo lo de Campo', 'Pedidos, también por distribuidor, televenta y clientes', 'Productos y stock por lotes', 'Analítica de ventas y visitas', 'Comisiones por tramos', 'Oportunidades: cada venta, se cierre o no', 'Cobertura de cada producto por ciclo', 'Eventos, con su resumen anual'] },
   { nombre: 'Empresa', mes: 59, fuerte: true, para: 'Para empresas que facturan y llevan su almacén.',
-    incluye: ['Todo lo de Comercial', 'Facturación con VeriFactu y cobros', 'Compras, proveedores y trazabilidad', 'Material en depósito y cirugías con número de serie', 'Concursos y parque instalado', 'Zonas, supervisión del equipo y auditoría', 'Portal del profesional y del centro (hasta 50)'] },
+    incluye: ['Todo lo de Comercial', 'Facturación y cobros', 'Compras, proveedores y trazabilidad', 'Material en depósito y cirugías con número de serie', 'Concursos y parque instalado', 'Zonas, supervisión del equipo y auditoría', 'Portal del profesional y del centro (hasta 50)'] },
   { nombre: 'A medida', medida: true, para: 'Para redes de más de 50 personas o con necesidades propias.',
     incluye: ['Todo lo de Empresa', 'Migración de tus datos', 'Conexión con tu programa de gestión', 'Portal del profesional y del centro, sin límite', 'Ver la plataforma como cada persona de tu equipo, para ayudarla', 'Soporte prioritario'] }
 ];
@@ -1577,7 +1577,7 @@ const CICLOS = {
   orto: [['Visita', 'Al fisio, al podólogo o al técnico, en sus días.', 0], ['Muestra', 'Lo que se deja en consulta sale del stock.', 1],
     ['Pedido', 'La ortopedia pide con su descuento.', 2], ['Reposición', 'Quién repite y quién lleva tiempo sin pedir.', 0]],
   pharma: [['Visita', 'El delegado pasa por la farmacia.', 2], ['Llamada', 'Televenta llama a la que toca reponer.', 0],
-    ['Pedido', 'Con su descuento y su lote, en la misma llamada.', 1], ['Factura', 'Con VeriFactu y su cobro, sin salir de delcos.', 1]],
+    ['Pedido', 'Con su descuento y su lote, en la misma llamada.', 1], ['Factura', 'Con su IVA y su cobro, sin salir de delcos.', 1]],
   medtech: [['Contacto', 'Enfermería, supervisión o compras de cada servicio.', 0], ['Evaluación', 'El producto entra a prueba en el servicio.', 1],
     ['Homologación', 'El hospital lo aprueba y el estado avanza.', 1], ['Pedido', 'Pedidos grandes con su lote y su caducidad.', 2]],
   vet: [['Visita', 'Al veterinario, con su clínica y sus días.', 0], ['Interés', 'La clínica pide más información y su estado avanza.', 1],
@@ -1691,7 +1691,7 @@ addEventListener('scroll', alDesplazar, { passive: true }); alDesplazar();
 const MENU_PLAT = [
   ['Campo', [['Cartera', 'Toda tu cartera, al día', 'labs_e_directorio', 0], ['Agenda', 'La semana del equipo', 'labs_e_agenda', 2], ['Rutas', 'Planificadas solas, por las calles', 'labs_e_rutas', 3], ['Ciclo de visitas', 'A cada cliente, sus visitas', 'labs_e_ciclo', 5], ['Duplicados', 'Una persona, una sola ficha', 'labs_e_calidad', 1], ['Eventos', 'Talleres y congresos, en orden', 'labs_e_eventos', 7]]],
   ['Venta', [['Pedidos', 'Ningún pedido esperando', 'labs_e_ventas', 8], ['Nueva venta y oportunidades', 'También lo que no se vende', 'pharma_e_oportunidades', 10], ['Pedidos por la web', 'Con su referencia de pago', 'pharma_e_pedidos_web', 11], ['Concursos', 'Del pliego al contrato', 'medtech_e_concursos_ficha', 13], ['Comisiones', 'Calculadas solas, cada mes', 'labs_e_comisiones', 17], ['Analítica', 'Frente al año pasado', 'labs_e_analitica', 20]]],
-  ['Oficina', [['Almacén y lotes', 'Lote, caducidad y depósito', 'labs_e_stock', 14], ['Compras', 'Proveedores y pedidos de compra', 'labs_e_compras', 15], ['Facturación', 'VeriFactu y cobros', 'labs_e_facturas', 16], ['Cirugías', 'Lote y número de serie', 'medtech_e_cirugias_ficha', 18], ['Parque instalado', 'Cada equipo, con su historia', 'medtech_e_parque', 19], ['Historial', 'Cualquier cambio, deshecho', 'labs_e_historial', 23], ['Equipo y permisos', 'Cada persona ve lo suyo', 'labs_e_usuarios', 24]]]
+  ['Oficina', [['Almacén y lotes', 'Lote, caducidad y depósito', 'labs_e_stock', 14], ['Compras', 'Proveedores y pedidos de compra', 'labs_e_compras', 15], ['Facturación', 'Series, rectificativas y cobros', 'labs_e_facturas', 16], ['Cirugías', 'Lote y número de serie', 'medtech_e_cirugias_ficha', 18], ['Parque instalado', 'Cada equipo, con su historia', 'medtech_e_parque', 19], ['Historial', 'Cualquier cambio, deshecho', 'labs_e_historial', 23], ['Equipo y permisos', 'Cada persona ve lo suyo', 'labs_e_usuarios', 24]]]
 ];
 const previa = (img, pie) => `<div class="previa"><div class="ordenador"><div class="barra"><i></i><i></i><i></i></div><div class="vista"><img src="${cap(img)}" alt="" width="1600" height="1000"><img class="fuera" alt="" width="1600" height="1000"></div></div><p>${pie}</p></div>`;
 let ni = 0;
@@ -1751,7 +1751,7 @@ $$('.panel a.it').forEach(a => {
 });
 
 /* ================= portada: los módulos giran en órbita alrededor de las pantallas ================= */
-const SATELITES = [['Visitas', '#3F82C0'], ['Pedidos', '#1BAF7A'], ['Lotes y caducidad', '#E0762B'], ['VeriFactu', '#17457A'], ['Comisiones', '#6E5BC4'], ['Rutas', '#7CC3EC']];
+const SATELITES = [['Visitas', '#3F82C0'], ['Pedidos', '#1BAF7A'], ['Lotes y caducidad', '#E0762B'], ['Facturas', '#17457A'], ['Comisiones', '#6E5BC4'], ['Rutas', '#7CC3EC']];
 $('#satelites').innerHTML = SATELITES.map(([t, c]) => `<span><i style="background:${c}"></i>${t}</span>`).join('');
 const baraja = $('#baraja'), sats = $$('#satelites span'), orb = { k: 1, tilt: -11, t: 0 };
 function colocarOrbita() {
