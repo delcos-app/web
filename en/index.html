@@ -801,13 +801,28 @@ body.noche .arriba .pista{stroke:var(--linea-t)}
   .rec-pasos .n{position:absolute;left:0;top:-3px;z-index:1}
 }
 @media (max-width:900px) and (max-height:740px){ .dia .entrada{display:none} }
-@media (max-width:1100px) and (max-height:740px){
+@media (max-width:900px) and (max-height:740px){
   .sectores.foco .fuertes{display:none}
   .sectores.foco .cabeza .titular{font-size:24px}
   .sectores.foco .escena-sector{width:min(100%,calc((100svh - 450px) * 1.6 + 40px))}
 }
-@media (max-width:1100px){
-  /* Sectores: la sección fija recorre los sectores uno a uno */
+/* Sectores fija en la tableta (901–1100): dos columnas como en el ordenador, sin la entrada */
+@media (min-width:901px) and (max-width:1100px){
+  .sectores.foco{height:100vh;box-sizing:border-box;padding-block:90px 16px;display:flex;flex-direction:column;justify-content:flex-start;overflow:hidden}
+  .sectores.foco .cabeza{margin-bottom:18px;gap:8px}
+  .sectores.foco .cabeza .titular{font-size:30px;max-width:none}
+  .sectores.foco .cabeza .entrada{display:none}
+  .sectores.foco .sector-dos{gap:20px 32px}
+  .sectores.foco .escena-sector{width:min(100%,calc((100vh - 330px) * 1.5));justify-self:center}
+  .sectores.foco .cambio{gap:8px}
+  .sectores.foco .cambio .titular{font-size:24px!important;margin:0}
+  .sectores.foco .fuerte{padding:9px 0}
+  .sectores.foco .fuerte:not(.activo) span{display:none}
+  .sectores.foco .fuerte span{font-size:15px}
+  .sectores.foco .chips{display:none}
+}
+@media (max-width:900px){
+  /* Sectores en el móvil: la sección fija recorre los sectores uno a uno */
   .sectores.foco{height:100vh;height:100svh;box-sizing:border-box;padding-block:78px 80px;display:flex;flex-direction:column;overflow:hidden}
   .sectores.foco .cabeza{margin-bottom:12px;gap:6px}
   .sectores.foco .cabeza .titular{font-size:27px}
